@@ -20,9 +20,9 @@ case block.type
         render 'block__content--image' with block as block
     when 'html'
         render 'block__general--html', block: block, section: section
-    when 'liquidBlock':
+    when 'liquidBlock'
         render 'block__general--liquid', block: block, section: section
-    when 'pageBlock':
+    when 'pageBlock'
         render 'block__general--page' with block as block 
     when 'blockImage'
         render 'block__general--image' with block as block

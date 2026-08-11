@@ -7,25 +7,27 @@
      =================================================== */
 
   .halo-funnel {
-    --space-black:   #08090C;
-    --obsidian:      #0F1117;
-    --titanium-dark: #1A1D26;
-    --titanium-mid:  #252836;
-    --border-subtle: rgba(255,255,255,0.07);
-    --cyan-orbit:    #00ECFF;
-    --cyan-dim:      rgba(0,236,255,0.15);
-    --cyan-glow:     0 0 40px rgba(0,236,255,0.25);
-    --green-signal:  #00C97B;
-    --amber-warn:    #F5A623;
-    --text-white:    #FFFFFF;
-    --text-muted:    #8A95A8;
-    --text-subtle:   #555E6E;
+    /* LIGHT MODE PALETTE */
+    --space-black:   #FFFFFF;          /* antes: fondo oscuro → ahora: blanco puro */
+    --obsidian:      #F5F7FA;          /* antes: obsidian oscuro → ahora: gris ultra-claro */
+    --titanium-dark: #FFFFFF;          /* antes: tarjeta oscura → ahora: blanco */
+    --titanium-mid:  #EDF0F5;          /* hover state */
+    --border-subtle: rgba(0,0,0,0.09); /* bordes sutiles oscuros sobre blanco */
+    --cyan-orbit:    #007A8C;          /* cyan oscurecido para contraste AAA sobre blanco */
+    --cyan-cta:      #00B8CC;          /* cyan original solo para botones CTA */
+    --cyan-dim:      rgba(0,122,140,0.08);
+    --cyan-glow:     0 4px 24px rgba(0,184,204,0.25);
+    --green-signal:  #008A54;
+    --amber-warn:    #D4861A;
+    --text-white:    #0D1117;          /* antes: blanco → ahora: casi negro */
+    --text-muted:    #4A5568;          /* texto secundario oscuro */
+    --text-subtle:   #8A95A8;          /* texto terciario */
     --radius-sm:     8px;
     --radius-md:     16px;
     --radius-lg:     24px;
     font-family: 'Inter', sans-serif;
-    background: var(--space-black);
-    color: var(--text-white);
+    background: #FFFFFF;
+    color: #0D1117;
     line-height: 1.6;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
@@ -50,7 +52,7 @@
   .halo-funnel .mono-tag {
     font-family: 'JetBrains Mono', monospace; font-weight: 600;
     font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--cyan-orbit);
+    color: var(--cyan-orbit); /* #007A8C — contraste AAA sobre blanco */
   }
   .halo-funnel .body-lg { font-size: 1.125rem; color: var(--text-muted); line-height: 1.7; }
   .halo-funnel .body-md { font-size: 1rem; color: var(--text-muted); line-height: 1.65; }
@@ -134,8 +136,8 @@
   }
   .hl-btn-cta:hover { transform: translateY(-2px); box-shadow: var(--cyan-glow); animation: none; }
   @keyframes pulse-cta {
-    0%,100%{ box-shadow: 0 0 0 0 rgba(0,236,255,0.3) }
-    50%{ box-shadow: 0 0 0 10px rgba(0,236,255,0) }
+    0%,100%{ box-shadow: 0 0 0 0 rgba(0,184,204,0.3) }
+    50%{ box-shadow: 0 0 0 10px rgba(0,184,204,0) }
   }
   .hl-btn-secondary {
     display: block; width: 100%; padding: 14px 24px; border-radius: var(--radius-md);
@@ -159,7 +161,7 @@
   }
   .hl-hero__img-wrap::after {
     content: ''; position: absolute; inset: 0;
-    background: radial-gradient(circle at 50% 80%, rgba(0,236,255,0.12) 0%, transparent 70%);
+    background: radial-gradient(circle at 50% 80%, rgba(0,184,204,0.06) 0%, transparent 70%);
     pointer-events: none;
   }
   .hl-hero__img-fallback {
@@ -202,7 +204,7 @@
     border: 1px solid var(--border-subtle); padding: 24px 20px;
   }
   .hl-pain__card--bad { border-color: rgba(255,80,80,0.25); }
-  .hl-pain__card--good { border-color: rgba(0,236,255,0.3); background: rgba(0,236,255,0.04); }
+  .hl-pain__card--good { border-color: rgba(0,184,204,0.3); background: rgba(0,184,204,0.04); }
   .hl-pain__card-label {
     font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
     margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border-subtle);
@@ -235,7 +237,7 @@
   /* ===== STEP 6: A-HA MOMENT ===== */
   .hl-aha { background: var(--space-black); }
   .hl-aha__mechanism {
-    background: var(--titanium-dark); border: 1px solid rgba(0,236,255,0.2);
+    background: var(--titanium-dark); border: 1px solid rgba(0,184,204,0.2);
     border-radius: var(--radius-lg); padding: 48px;
     position: relative; overflow: hidden;
   }
@@ -264,7 +266,7 @@
     border-radius: var(--radius-md); padding: 28px;
     transition: border-color 0.3s, transform 0.2s;
   }
-  .hl-bullet-card:hover { border-color: rgba(0,236,255,0.3); transform: translateY(-4px); }
+  .hl-bullet-card:hover { border-color: rgba(0,184,204,0.3); transform: translateY(-4px); }
   .hl-bullet-card__icon { font-size: 2rem; margin-bottom: 16px; }
   .hl-bullet-card__title { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.05rem; margin-bottom: 8px; }
   .hl-bullet-card__desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
@@ -278,7 +280,7 @@
   }
   .hl-compare__table thead th { font-weight: 700; font-size: 0.88rem; }
   .hl-compare__table .col-halo {
-    background: rgba(0,236,255,0.06); border: 1px solid rgba(0,236,255,0.25);
+    background: rgba(0,184,204,0.06); border: 1px solid rgba(0,184,204,0.25);
     color: var(--cyan-orbit);
   }
   .hl-compare__table .col-rival { color: var(--text-subtle); }
@@ -286,7 +288,7 @@
   .hl-compare__table .check { color: var(--green-signal); font-weight: 700; }
   .hl-compare__table .cross { color: #FF6B6B; }
   .hl-compare__table .feature-label { text-align: left; font-weight: 600; color: var(--text-white); }
-  .hl-compare__table tbody tr:hover td { background: rgba(255,255,255,0.02); }
+  .hl-compare__table tbody tr:hover td { background: rgba(0,0,0,0.02); }
 
   /* ===== STEP 9: TECHNOLOGY BREAKDOWN ===== */
   .hl-tech { background: var(--obsidian); }
@@ -356,7 +358,7 @@
   }
   .hl-how__step-num {
     width: 48px; height: 48px; border-radius: 50%;
-    border: 2px solid var(--cyan-orbit); background: rgba(0,236,255,0.08);
+    border: 2px solid var(--cyan-orbit); background: rgba(0,184,204,0.08);
     display: flex; align-items: center; justify-content: center;
     font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 1.1rem;
     color: var(--cyan-orbit); margin: 0 auto 20px;
@@ -371,7 +373,7 @@
   .hl-journey__timeline { position: relative; max-width: 800px; margin: 48px auto 0; }
   .hl-journey__timeline::before {
     content: ''; position: absolute; left: 24px; top: 0; bottom: 0;
-    width: 2px; background: linear-gradient(to bottom, var(--cyan-orbit), rgba(0,236,255,0.1));
+    width: 2px; background: linear-gradient(to bottom, var(--cyan-orbit), rgba(0,184,204,0.1));
   }
   .hl-journey__item {
     display: flex; gap: 32px; align-items: flex-start;
@@ -381,7 +383,7 @@
     position: absolute; left: 12px;
     width: 24px; height: 24px; border-radius: 50%;
     background: var(--cyan-orbit); border: 3px solid var(--space-black);
-    box-shadow: 0 0 12px rgba(0,236,255,0.5);
+    box-shadow: 0 0 12px rgba(0,184,204,0.3);
     flex-shrink: 0;
   }
   .hl-journey__month {
@@ -400,15 +402,15 @@
   /* ===== STEP 13: OFFER + GUARANTEE + FINAL CTA ===== */
   .hl-offer { background: var(--obsidian); }
   .hl-offer__box {
-    background: var(--titanium-dark); border: 1px solid rgba(0,236,255,0.25);
+    background: var(--titanium-dark); border: 1px solid rgba(0,184,204,0.25);
     border-radius: var(--radius-lg); overflow: hidden;
     max-width: 700px; margin: 48px auto 0;
-    box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.06);
   }
   .hl-offer__header {
-    background: linear-gradient(135deg, rgba(0,236,255,0.15), rgba(0,236,255,0.05));
+    background: linear-gradient(135deg, rgba(0,184,204,0.1), rgba(0,184,204,0.02));
     padding: 32px 40px; text-align: center;
-    border-bottom: 1px solid rgba(0,236,255,0.15);
+    border-bottom: 1px solid rgba(0,184,204,0.1);
   }
   .hl-offer__body { padding: 32px 40px; }
   .hl-offer__item {
@@ -452,8 +454,9 @@
   /* STICKY BAR */
   .hl-sticky-bar {
     position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
-    background: var(--obsidian); border-top: 1px solid rgba(0,236,255,0.25);
+    background: var(--obsidian); border-top: 1px solid rgba(0,184,204,0.25);
     padding: 12px 24px; transform: translateY(100%); transition: transform 0.4s ease;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
   }
   .hl-sticky-bar.visible { transform: translateY(0); }
   .hl-sticky-bar__inner { max-width: 1160px; margin: 0 auto; display: flex; align-items: center; gap: 20px; }
@@ -540,7 +543,7 @@
           </h1>
 
           <p class="body-lg" style="color:#A0AAB5; margin-top:20px; margin-bottom:0;">
-            La tecnología vestible que estimula tu Nervio Vago para forzar a tu sistema nervioso al modo de recuperación profunda. <strong style="color:#fff;">En menos de 10 minutos.</strong> Sin pastillas, sin efectos secundarios, sin suscripciones.
+            La tecnología vestible que estimula tu Nervio Vago para forzar a tu sistema nervioso al modo de recuperación profunda. <strong style="color:var(--text-white);">En menos de 10 minutos.</strong> Sin pastillas, sin efectos secundarios, sin suscripciones.
           </p>
 
           <div class="hl-hero__badge-row">
@@ -649,7 +652,7 @@
           <p class="body-md">
             El mercado te ofreció pastillas que te dopan, meditación que tarda años, o relojes de $300 USD que solo te dicen lo mal que duermes <em>sin hacer absolutamente nada para arreglarlo.</em>
           </p>
-          <p style="color:#fff; font-weight:700; font-size:1rem; margin-top:24px;">Necesitabas una intervención directa. Así que la creamos.</p>
+          <p style="color:var(--text-white); font-weight:700; font-size:1rem; margin-top:24px;">Necesitabas una intervención directa. Así que la creamos.</p>
         </div>
 
         <!-- PATTERN INTERRUPT: Antes vs. Después -->
@@ -729,7 +732,7 @@
         <div style="text-align:center;">
           <h3 class="h-sub" style="color:var(--cyan-orbit);">El Protocolo del Nervio Vago</h3>
           <p class="body-md" style="margin-top:12px; max-width:620px; margin-left:auto; margin-right:auto;">
-            El <strong style="color:#fff;">Nervio Vago</strong> es la autopista de relajación de tu cuerpo. Cuando se activa, manda una señal directa al cerebro para frenar el cortisol, bajar la frecuencia cardíaca y entrar en modo parasimpático (descanso y recuperación). HALO lo activa con precisión milimétrica.
+            El <strong style="color:var(--text-white);">Nervio Vago</strong> es la autopista de relajación de tu cuerpo. Cuando se activa, manda una señal directa al cerebro para frenar el cortisol, bajar la frecuencia cardíaca y entrar en modo parasimpático (descanso y recuperación). HALO lo activa con precisión milimétrica.
           </p>
         </div>
         <div class="hl-aha__flow">
@@ -1204,7 +1207,7 @@
         <div class="hl-guarantee__icon">🛡️</div>
         <div class="hl-guarantee__title">Garantía "Despierta Como Nuevo" — 30 Noches</div>
         <div class="hl-guarantee__text">
-          Úsalo todas las noches durante 30 días. Si no tienes el sueño más profundo y reparador de los últimos años — devuélvelo. Te reembolsamos el 100% del precio del dispositivo, sin preguntas, sin formularios interminables. <strong style="color:#fff;">Y te quedas con los bonos digitales como agradecimiento por probarnos.</strong> El riesgo es 100% nuestro.
+          Úsalo todas las noches durante 30 días. Si no tienes el sueño más profundo y reparador de los últimos años — devuélvelo. Te reembolsamos el 100% del precio del dispositivo, sin preguntas, sin formularios interminables. <strong style="color:var(--text-white);">Y te quedas con los bonos digitales como agradecimiento por probarnos.</strong> El riesgo es 100% nuestro.
         </div>
       </div>
     </div>

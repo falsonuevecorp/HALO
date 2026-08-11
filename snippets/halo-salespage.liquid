@@ -1,0 +1,702 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Outfit:wght@400;700;900&family=JetBrains+Mono:wght@600&display=swap');
+
+  /* RESET & CORE VARIABLES - HALO BRAND SYSTEM */
+  .halo-funnel {
+    --space-black: #0A0A0C;
+    --obsidian: #121215;
+    --titanium-dark: #1E2026;
+    --titanium-light: #E2E8F0;
+    --cyan-orbit: #00F0FF;
+    --cyan-glow: rgba(0, 240, 255, 0.3);
+    --emerald-secure: #00A650;
+    --text-main: #FFFFFF;
+    --text-muted: #A0AAB5;
+    
+    font-family: 'Inter', sans-serif;
+    background-color: var(--space-black);
+    color: var(--text-main);
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+  
+  .halo-funnel * {
+    box-sizing: border-box;
+  }
+
+  /* TYPOGRAPHY */
+  .halo-funnel h1, .halo-funnel h2, .halo-funnel h3, .halo-funnel h4 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    margin: 0;
+  }
+
+  .halo-funnel h1 {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+  }
+
+  .halo-funnel h2 {
+    font-size: clamp(1.8rem, 6vw, 3.2rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .halo-funnel p {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+  }
+  
+  .halo-funnel .mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* LAYOUT HELPERS */
+  .hl-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .hl-section {
+    padding: 100px 0;
+  }
+
+  /* BUTTONS */
+  .hl-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--cyan-orbit);
+    color: var(--space-black);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    padding: 22px 45px;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 0 25px var(--cyan-glow);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    width: 100%;
+    max-width: 450px;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 1px;
+  }
+
+  .hl-btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 40px var(--cyan-glow);
+    background: #33F3FF;
+  }
+  
+  .hl-btn-secure {
+    background: var(--emerald-secure);
+    color: white;
+    box-shadow: 0 0 25px rgba(0, 166, 80, 0.4);
+  }
+  
+  .hl-btn-secure:hover {
+    background: #00C760;
+    box-shadow: 0 0 40px rgba(0, 166, 80, 0.6);
+  }
+
+  /* 1. HERO SECTION */
+  .hl-hero {
+    position: relative;
+    padding: 80px 0 120px;
+    background: radial-gradient(circle at 50% -20%, #00222a 0%, var(--space-black) 80%);
+    text-align: center;
+  }
+
+  .hl-hero-eyebrow {
+    color: var(--cyan-orbit);
+    margin-bottom: 1rem;
+    display: inline-block;
+    background: rgba(0, 240, 255, 0.05);
+    padding: 6px 18px;
+    border-radius: 30px;
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    font-size: 0.85rem;
+  }
+
+  .hl-hero-mockup {
+    width: 100%;
+    max-width: 700px;
+    margin: 50px auto;
+    filter: drop-shadow(0 30px 60px rgba(0, 240, 255, 0.15));
+    border-radius: 16px;
+  }
+
+  /* 2. PAIN SECTION */
+  .hl-pain {
+    background-color: var(--obsidian);
+    text-align: center;
+    border-top: 1px solid var(--titanium-dark);
+    border-bottom: 1px solid var(--titanium-dark);
+  }
+
+  .hl-pain h2 span {
+    color: var(--cyan-orbit);
+  }
+
+  /* 3 & 4. FEATURES */
+  .hl-features {
+    background: var(--space-black);
+  }
+
+  .hl-feature-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-top: 60px;
+  }
+  
+  @media (min-width: 768px) {
+    .hl-feature-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .hl-feature-card {
+    background: var(--obsidian);
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid var(--titanium-dark);
+    text-align: left;
+    transition: transform 0.3s;
+  }
+
+  .hl-feature-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 240, 255, 0.3);
+  }
+
+  .hl-feature-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+  }
+
+  .hl-feature-card i {
+    font-size: 2.5rem;
+    color: var(--cyan-orbit);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  /* 5. US VS THEM */
+  .hl-compare {
+    background: var(--obsidian);
+  }
+
+  .hl-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 50px;
+    background: var(--space-black);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--titanium-dark);
+  }
+
+  .hl-table th, .hl-table td {
+    padding: 24px;
+    text-align: center;
+    border-bottom: 1px solid var(--titanium-dark);
+    font-size: 1.1rem;
+  }
+
+  .hl-table th:first-child, .hl-table td:first-child {
+    text-align: left;
+    color: var(--titanium-light);
+  }
+
+  .hl-table th {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+
+  .hl-table th.brand-us {
+    background: rgba(0, 240, 255, 0.05);
+    color: var(--cyan-orbit);
+    width: 30%;
+    border-left: 1px solid rgba(0,240,255,0.2);
+    border-right: 1px solid rgba(0,240,255,0.2);
+  }
+
+  .hl-table td.col-us {
+    background: rgba(0, 240, 255, 0.02);
+    border-left: 1px solid rgba(0,240,255,0.2);
+    border-right: 1px solid rgba(0,240,255,0.2);
+  }
+
+  .hl-table th.brand-them {
+    color: #666;
+    width: 30%;
+  }
+
+  .hl-check {
+    color: var(--cyan-orbit);
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  .hl-cross {
+    color: #444;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  /* 6. SOCIAL PROOF */
+  .hl-social-proof {
+    background: var(--space-black);
+    text-align: center;
+  }
+
+  .hl-review-card {
+    background: var(--obsidian);
+    border: 1px solid var(--titanium-dark);
+    border-radius: 12px;
+    padding: 40px;
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: left;
+  }
+
+  .hl-stars i {
+    color: var(--cyan-orbit);
+    font-size: 1.5rem;
+  }
+
+  /* 7. HOW IT WORKS */
+  .hl-steps {
+    background: var(--obsidian);
+    text-align: center;
+  }
+  
+  .hl-step-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-top: 60px;
+  }
+
+  @media (min-width: 768px) {
+    .hl-step-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .hl-step {
+    text-align: center;
+    position: relative;
+  }
+
+  .hl-step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    color: var(--cyan-orbit);
+    border: 2px solid var(--cyan-orbit);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    margin-bottom: 25px;
+  }
+
+  /* 8. FAQ ACCORDION */
+  .hl-faq {
+    background: var(--space-black);
+  }
+  
+  .hl-faq-item {
+    border-bottom: 1px solid var(--titanium-dark);
+    padding: 25px 0;
+  }
+
+  .hl-faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--titanium-light);
+  }
+
+  .hl-faq-answer {
+    padding-top: 15px;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    display: none;
+  }
+  
+  .hl-faq-item.active .hl-faq-answer {
+    display: block;
+  }
+
+  .hl-faq-item.active .hl-faq-question i {
+    transform: rotate(45deg);
+    color: var(--cyan-orbit);
+  }
+  
+  /* 9 & 10. GRAND SLAM OFFER & GUARANTEE */
+  .hl-offer {
+    text-align: center;
+    background: radial-gradient(circle at 50% 100%, #00222a 0%, var(--space-black) 70%);
+    border-top: 1px solid var(--cyan-orbit);
+  }
+
+  .hl-offer-stack {
+    background: var(--obsidian);
+    border: 1px solid var(--titanium-dark);
+    border-radius: 16px;
+    padding: 50px 40px;
+    max-width: 750px;
+    margin: 0 auto 40px;
+    position: relative;
+  }
+  
+  .hl-offer-stack::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: 50%; transform: translateX(-50%);
+    width: 200px; height: 3px;
+    background: var(--cyan-orbit);
+    box-shadow: 0 0 20px var(--cyan-glow);
+  }
+  
+  .hl-offer-stack-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    border-bottom: 1px dashed var(--titanium-dark);
+    padding: 18px 0;
+    font-weight: 500;
+  }
+  
+  .hl-offer-stack-item:last-of-type {
+    border-bottom: none;
+    margin-bottom: 25px;
+  }
+  
+  .hl-offer-stack-item .value {
+    color: #666;
+    text-decoration: line-through;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  
+  .hl-offer-total {
+    background: rgba(0, 240, 255, 0.05);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    padding: 30px;
+    border-radius: 12px;
+    margin: 30px 0;
+  }
+
+  .hl-price-sale {
+    color: var(--text-main);
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1;
+    margin: 10px 0;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .hl-guarantee-box {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: var(--space-black);
+    padding: 25px;
+    border-radius: 12px;
+    margin-top: 30px;
+    text-align: left;
+    border: 1px solid var(--titanium-dark);
+  }
+  
+  .hl-urgency {
+    color: var(--titanium-light);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .hl-pulsing-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--emerald-secure);
+    border-radius: 50%;
+    animation: pulse-dot-green 1.5s infinite;
+  }
+  
+  @keyframes pulse-dot-green {
+    0% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(0,166,80,0.7); }
+    70% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 10px rgba(0,166,80,0); }
+    100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(0,166,80,0); }
+  }
+</style>
+
+<div class="halo-funnel">
+
+  <!-- 1. HERO: The Ultimate Hook -->
+  <section class="hl-hero hl-section">
+    <div class="hl-container">
+      <span class="hl-hero-eyebrow mono">HALO® NEURO TECHNOLOGY</span>
+      <h1>EL BOTÓN DE APAGADO PARA <br><span style="color: var(--cyan-orbit);">TU ESTRÉS CRÓNICO.</span></h1>
+      <p style="font-size: 1.3rem; max-width: 800px; margin: 0 auto 40px; color: var(--titanium-light);">
+        Descubre la tecnología vestible que estimula tu Nervio Vago, reduciendo la ansiedad y forzando el sueño profundo en solo 10 minutos. Sin pastillas, sin adicciones.
+      </p>
+      
+      <!-- Mockup Hero - Usando imagen del visual system HALO o placeholder premium -->
+      <img src="https://motosportcl.com/cdn/shop/files/844a443bffea963e68e1994c90f278e8_c2090c20-7ad1-4e6e-91f8-6511ac7ea0db.webp?v=1785783542" alt="HALO Orbit Band" class="hl-hero-mockup" onerror="this.src='https://placehold.co/900x500/121215/00F0FF?text=HALO+Orbit+Band+Premium+Mockup'">
+      
+      <a href="#checkout" class="hl-btn-primary">DESBLOQUEAR SUEÑO PROFUNDO</a>
+      <div class="hl-urgency"><div class="hl-pulsing-dot"></div> DISPONIBLE HOY: DESPACHO EN 24HRS</div>
+    </div>
+  </section>
+
+  <!-- 2. PAIN & EMPATHY: Clavar el cuchillo -->
+  <section class="hl-section hl-pain">
+    <div class="hl-container">
+      <h2>ESTÁS EXHAUSTO PERO <span>NO PUEDES DORMIR</span>.</h2>
+      <p style="max-width: 800px; margin: 0 auto; font-size: 1.25rem;">
+        Lo sabemos. Tu cuerpo pesa una tonelada, pero apenas tocas la almohada, tu mente acelera a 100 km/h. Piensas en el trabajo, en los problemas de mañana, en cosas de hace 5 años.<br><br>
+        Has probado melatonina, tés relajantes y pastillas recetadas que te dejan como un zombi al día siguiente. <strong>El problema no es tu cama, es tu sistema nervioso simpático</strong> que está bloqueado en modo "Pelea o Huida" constante.
+      </p>
+    </div>
+  </section>
+
+  <!-- 3. & 4. THE BRIDGE & FASCINATION BULLETS: El Nuevo Mecanismo -->
+  <section class="hl-section hl-features">
+    <div class="hl-container">
+      <h2 style="text-align: center;">HACKEA TU SISTEMA NERVIOSO</h2>
+      <p style="text-align: center; max-width: 800px; margin: 0 auto;">HALO Neuro no es un smartwatch que solo "mide" lo mal que duermes. Es un dispositivo activo de estimulación que usa frecuencias infrasónicas para hackear el Nervio Vago y forzar a tu cuerpo a entrar en modo parasimpático (Descanso Absoluto).</p>
+      
+      <div class="hl-feature-grid">
+        <div class="hl-feature-card">
+          <i class="uil uil-moon"></i>
+          <h3>DUEŔMETE EN MINUTOS</h3>
+          <p><strong>Corta el insomnio de raíz.</strong> Las vibraciones patentadas envían una señal directa a tu cerebro de que "estás a salvo", apagando la rumiación mental en menos de 10 a 15 minutos.</p>
+        </div>
+        <div class="hl-feature-card">
+          <i class="uil uil-battery-empty"></i>
+          <h3>ELIMINA LA ANSIEDAD</h3>
+          <p><strong>Tranquilidad a demanda.</strong> ¿Un ataque de ansiedad o estrés antes de una reunión? Enciende el modo "Calm" por 3 minutos y siente cómo tu ritmo cardíaco se estabiliza al instante.</p>
+        </div>
+        <div class="hl-feature-card">
+          <i class="uil uil-capsule"></i>
+          <h3>CERO QUÍMICOS O PASTILLAS</h3>
+          <p><strong>Despierta con energía real.</strong> Dile adiós a la niebla mental matutina que dejan los somníferos. HALO usa física, no química, para inducir ciclos de sueño REM y Profundo naturales.</p>
+        </div>
+        <div class="hl-feature-card">
+          <i class="uil uil-analytics"></i>
+          <h3>RECUPERACIÓN NIVEL CEO</h3>
+          <p><strong>Optimiza tus horas.</strong> Incluso si duermes solo 5 o 6 horas, la calidad de ese descanso será tan profunda que rendirás como si hubieras dormido 8. Aumenta tu HRV (Variabilidad de Frecuencia Cardíaca).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. US VS THEM: The Brutal Comparison -->
+  <section class="hl-section hl-compare">
+    <div class="hl-container">
+      <h2 style="text-align: center;">LA CIENCIA ES CLARA</h2>
+      
+      <table class="hl-table">
+        <thead>
+          <tr>
+            <th>MÉTODO DE DESCANSO</th>
+            <th class="brand-us">HALO® NEURO</th>
+            <th class="brand-them">PASTILLAS / RELOJES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Tiempo para hacer efecto</td>
+            <td class="col-us hl-check">✓ 10 a 15 Minutos</td>
+            <td class="hl-cross">✗ 45+ Minutos</td>
+          </tr>
+          <tr>
+            <td>Efectos Secundarios al Despertar</td>
+            <td class="col-us hl-check">✓ Ninguno. Mente clara.</td>
+            <td class="hl-cross">✗ Niebla mental y letargo</td>
+          </tr>
+          <tr>
+            <td>Acción en el cuerpo</td>
+            <td class="col-us hl-check">✓ Activo (Induce el sueño)</td>
+            <td class="hl-cross">✗ Pasivo (Solo mide datos)</td>
+          </tr>
+          <tr>
+            <td>Suscripciones Mensuales</td>
+            <td class="col-us hl-check">✓ $0 (App Gratis)</td>
+            <td class="hl-cross">✗ Hasta $30 USD al mes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 6. SOCIAL PROOF AVALANCHE -->
+  <section class="hl-section hl-social-proof">
+    <div class="hl-container">
+      <h2>EL FINAL DEL INSOMNIO CRÓNICO</h2>
+      <p>Miles de personas ya apagaron su mente. La ciencia detrás del biohacking, validada por nuestros usuarios.</p>
+      
+      <div class="hl-review-card">
+        <div class="hl-stars">
+          <i class="uil uil-star"></i><i class="uil uil-star"></i><i class="uil uil-star"></i><i class="uil uil-star"></i><i class="uil uil-star"></i>
+        </div>
+        <h3 style="margin: 15px 0;">"Pensé que era magia negra... literal es un botón de apagado."</h3>
+        <p>"Llevaba 3 años dependiendo de la melatonina y pastillas más fuertes. Mi mente simplemente no se apagaba. Me puse el HALO la primera noche, sentí esa vibración sutil en el pecho y no recuerdo nada más hasta que sonó la alarma 8 horas después. Es la mejor compra de mi vida."</p>
+        <span style="color: var(--titanium-light); font-weight: bold;">— Ricardo M. (Empresario)</span>
+      </div>
+      
+      <div class="hl-review-card">
+        <div class="hl-stars">
+          <i class="uil uil-star"></i><i class="uil uil-star"></i><i class="uil uil-star"></i><i class="uil uil-star"></i><i class="uil uil-star"></i>
+        </div>
+        <h3 style="margin: 15px 0;">"Me detuvo un ataque de pánico en minutos."</h3>
+        <p>"No solo lo uso para dormir. Cuando siento que la ansiedad me va a superar en el trabajo, activo el modo calm en el cuello o pecho. Bajar el ritmo cardíaco de forma física funciona muchísimo más rápido que intentar 'respirar profundo'."</p>
+        <span style="color: var(--titanium-light); font-weight: bold;">— Andrea C. (Abogada)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. HOW IT WORKS -->
+  <section class="hl-section hl-steps">
+    <div class="hl-container">
+      <h2>BIOHACKING SIN FRICCIÓN</h2>
+      <p style="color: var(--text-muted); text-align: center;">Nada de rituales complejos de 2 horas. Solo ciencia práctica.</p>
+      
+      <div class="hl-step-grid">
+        <div class="hl-step">
+          <div class="hl-step-number">01</div>
+          <h3 style="font-family: 'Outfit'; margin-bottom: 15px;">POSICIÓN</h3>
+          <p>Coloca tu dispositivo HALO cerca de tu esternón (pecho) o en la base del cuello antes de dormir o durante picos de ansiedad.</p>
+        </div>
+        <div class="hl-step">
+          <div class="hl-step-number">02</div>
+          <h3 style="font-family: 'Outfit'; margin-bottom: 15px;">ACTIVACIÓN</h3>
+          <p>Presiona el botón. Las frecuencias infrasónicas de baja onda comenzarán a resonar suavemente a través de tu sistema nervioso.</p>
+        </div>
+        <div class="hl-step">
+          <div class="hl-step-number">03</div>
+          <h3 style="font-family: 'Outfit'; margin-bottom: 15px;">DESCANSO</h3>
+          <p>Tu Nervio Vago se estimula, forzando fisiológicamente a tu cuerpo a bajar la frecuencia cardíaca y entrar en sueño profundo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FAQ OBJECTION KILLER -->
+  <section class="hl-section hl-faq">
+    <div class="hl-container" style="max-width: 800px;">
+      <h2 style="text-align: center;">EVIDENCIA & CIENCIA (FAQ)</h2>
+      
+      <div class="hl-faq-item">
+        <div class="hl-faq-question" onclick="this.parentElement.classList.toggle('active')">
+          ¿Tiene algún efecto secundario? <i class="uil uil-plus"></i>
+        </div>
+        <div class="hl-faq-answer">
+          Absolutamente ninguno. HALO no introduce químicos en tu cuerpo. Funciona puramente a través de física (vibración acústica/háptica de baja frecuencia) que imita señales naturales de relajación de tu cuerpo.
+        </div>
+      </div>
+      
+      <div class="hl-faq-item">
+        <div class="hl-faq-question" onclick="this.parentElement.classList.toggle('active')">
+          ¿Necesito tenerlo conectado al Bluetooth o WiFi para dormir? <i class="uil uil-plus"></i>
+        </div>
+        <div class="hl-faq-answer">
+          No. Sabemos que las emisiones electromagnéticas preocupan a muchos biohackers. Puedes configurar tu programa de sueño en la App, desconectar el Bluetooth de tu teléfono y el HALO funcionará 100% offline durante la noche.
+        </div>
+      </div>
+      
+      <div class="hl-faq-item">
+        <div class="hl-faq-question" onclick="this.parentElement.classList.toggle('active')">
+          ¿En cuánto tiempo notaré la diferencia? <i class="uil uil-plus"></i>
+        </div>
+        <div class="hl-faq-answer">
+          La inmensa mayoría de nuestros usuarios reportan una disminución del tiempo para quedarse dormidos (latencia de sueño) en la PRIMERA noche. Los beneficios sobre la ansiedad diurna y aumento de HRV (recuperación) se consolidan tras 7 a 10 días de uso.
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- 9 & 10. GRAND SLAM OFFER & RISK REVERSAL -->
+  <section id="checkout" class="hl-section hl-offer">
+    <div class="hl-container">
+      <h2>TU ECOSISTEMA DE RECUPERACIÓN</h2>
+      
+      <div class="hl-offer-stack">
+        <h3 style="margin-bottom: 30px; font-size: 1.8rem; font-family: 'Outfit'; letter-spacing: 1px;">OFERTA DE LANZAMIENTO (STOCK LIMITADO)</h3>
+        
+        <div class="hl-offer-stack-item">
+          <span><i class="uil uil-asterisk" style="color: var(--cyan-orbit); margin-right: 10px;"></i> 1x Dispositivo HALO® Neuro</span>
+          <span class="value mono">$180.000</span>
+        </div>
+        <div class="hl-offer-stack-item">
+          <span><i class="uil uil-book-alt" style="color: var(--cyan-orbit); margin-right: 10px;"></i> [BONO] E-Book "Protocolo de Sueño de Élite"</span>
+          <span class="value mono">$29.990</span>
+        </div>
+        <div class="hl-offer-stack-item">
+          <span><i class="uil uil-music" style="color: var(--cyan-orbit); margin-right: 10px;"></i> [BONO] Playlist Frecuencias Infrasónicas</span>
+          <span class="value mono">$19.990</span>
+        </div>
+        
+        <div class="hl-offer-total">
+          <p class="mono" style="font-size: 0.9rem; margin-bottom: 5px;">VALOR REAL TOTAL: <span style="text-decoration: line-through; color: #666;">$229.980 CLP</span></p>
+          <div style="font-size: 1.2rem; font-weight: 500; margin-bottom: 5px; margin-top: 15px;">OBTÉN TODO HOY POR SOLO:</div>
+          <div class="hl-price-sale">$149.990 CLP</div>
+          <div style="color: var(--cyan-orbit); font-size: 1rem; font-weight: bold;">(Ahorras $79.990. Pago Único. Cero Suscripciones).</div>
+        </div>
+        
+        <!-- Formulario nativo de Shopify -->
+        {%- assign product = all_products['halo-band'] -%}
+        {%- if product == empty -%}
+           {%- assign target_product = product -%}
+        {%- else -%}
+           {%- assign target_product = product -%}
+        {%- endif -%}
+        
+        <form method="post" action="/cart/add" class="add-to-cart-form" style="margin-top: 30px;">
+          <!-- Fallback ID para evitar fallos si el handle no existe -->
+          <input type="hidden" name="id" value="{{ target_product.variants.first.id | default: 44026369507443 }}" />
+          <button type="submit" class="hl-btn-primary hl-btn-secure">
+            RECLAMAR MI HALO NEURO AHORA
+          </button>
+        </form>
+        
+        <!-- RISK REVERSAL: 30 Nights -->
+        <div class="hl-guarantee-box">
+          <i class="uil uil-moon-eclipse" style="font-size: 3.5rem; color: var(--cyan-orbit);"></i>
+          <div>
+            <strong style="color: #fff; font-size: 1.1rem; text-transform: uppercase; font-family: 'Outfit';">Garantía Zero-Risk: 30 Noches de Sueño Profundo</strong><br>
+            <span style="color: var(--text-muted); font-size: 0.95rem;">Úsalo durante 30 noches. Si no experimentas el sueño más profundo e ininterrumpido de los últimos 10 años, devuélvelo. Te reembolsaremos el 100% de tu dinero inmediatamente, y te quedas con los Bonos digitales como regalo.</span>
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
+  </section>
+
+</div>

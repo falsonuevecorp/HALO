@@ -39,13 +39,15 @@
   /* Typography */
   .halo-funnel .h-display {
     font-family: 'Inter', sans-serif; font-weight: 900;
-    font-size: clamp(2.6rem, 7vw, 5rem); line-height: 1.04; letter-spacing: -0.03em;
+    font-size: clamp(2rem, 8vw, 5rem); line-height: 1.04; letter-spacing: -0.03em;
     color: var(--text-white) !important;
+    overflow-wrap: break-word; word-wrap: break-word; hyphens: auto;
   }
   .halo-funnel .h-title {
     font-family: 'Inter', sans-serif; font-weight: 900;
-    font-size: clamp(1.9rem, 5vw, 3.4rem); line-height: 1.1; letter-spacing: -0.025em;
+    font-size: clamp(1.6rem, 6vw, 3.4rem); line-height: 1.1; letter-spacing: -0.025em;
     color: var(--text-white) !important;
+    overflow-wrap: break-word; word-wrap: break-word;
   }
   .halo-funnel .h-sub {
     font-family: 'Inter', sans-serif; font-weight: 700;
@@ -61,8 +63,8 @@
   .halo-funnel .body-md { font-size: 1rem; color: var(--text-muted) !important; line-height: 1.65; }
 
   /* Layout */
-  .hl-wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
-  .hl-wrap--narrow { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  .hl-wrap { max-width: 1160px; margin: 0 auto; padding: 0 20px; overflow-x: hidden; }
+  .hl-wrap--narrow { max-width: 760px; margin: 0 auto; padding: 0 20px; overflow-x: hidden; }
   .hl-section { padding: 100px 0; }
   .hl-section--sm { padding: 64px 0; }
   .hl-divider { border: none; border-top: 1px solid var(--border-subtle); margin: 0; }

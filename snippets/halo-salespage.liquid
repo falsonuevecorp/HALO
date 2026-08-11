@@ -1,5 +1,5 @@
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;600;700;900&family=JetBrains+Mono:wght@500;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@500;600&display=swap');
 
   /* ===================================================
      HALO® NEURO — LONG-FORM SALESPAGE v2.0 "IM8 Protocol"
@@ -38,17 +38,17 @@
 
   /* Typography */
   .halo-funnel .h-display {
-    font-family: 'Outfit', sans-serif; font-weight: 900;
+    font-family: 'Inter', sans-serif; font-weight: 900;
     font-size: clamp(2.6rem, 7vw, 5rem); line-height: 1.04; letter-spacing: -0.03em;
     color: var(--text-white) !important;
   }
   .halo-funnel .h-title {
-    font-family: 'Outfit', sans-serif; font-weight: 900;
+    font-family: 'Inter', sans-serif; font-weight: 900;
     font-size: clamp(1.9rem, 5vw, 3.4rem); line-height: 1.1; letter-spacing: -0.025em;
     color: var(--text-white) !important;
   }
   .halo-funnel .h-sub {
-    font-family: 'Outfit', sans-serif; font-weight: 700;
+    font-family: 'Inter', sans-serif; font-weight: 700;
     font-size: clamp(1.2rem, 3vw, 1.8rem); line-height: 1.25; letter-spacing: -0.015em;
     color: var(--text-white) !important;
   }
@@ -71,7 +71,7 @@
   .hl-announcement {
     background: var(--cyan-orbit); color: var(--space-black);
     text-align: center; padding: 10px 20px;
-    font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.85rem;
+    font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.85rem;
     letter-spacing: 0.04em;
     position: sticky; top: 0; z-index: 100;
   }
@@ -84,9 +84,12 @@
     border-bottom: 1px solid var(--border-subtle);
   }
   .hl-hero__grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    display: grid; grid-template-columns: 1fr; gap: 30px; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px;
   }
-  .hl-hero__pretag { display: flex; align-items: center; gap: 10px; margin-bottom: 24px; }
+  @media(min-width: 900px){
+    .hl-hero__grid { grid-template-columns: 1fr 1fr; gap: 60px; }
+  }
+  .hl-hero__left { max-width: 540px; }
   .hl-hero__dot {
     width: 8px; height: 8px; border-radius: 50%; background: var(--green-signal);
     box-shadow: 0 0 8px var(--green-signal); animation: pulse-dot 2s ease infinite;
@@ -112,15 +115,15 @@
     margin-bottom: 20px;
   }
   .hl-hero__toggle-btn {
-    padding: 10px; text-align: center; border-radius: 10px;
-    font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.2s;
-    color: var(--text-muted) !important; border: none; background: transparent;
+    flex: 1; padding: 12px; font-size: 0.85rem; font-weight: 700;
+    color: var(--text-muted) !important; border: none; background: transparent !important;
+    border-radius: 100px; cursor: pointer; transition: 0.3s;
   }
   .hl-hero__toggle-btn.active {
-    background: var(--cyan-orbit); color: var(--space-black);
+    background: var(--titanium-mid) !important; color: var(--text-white) !important;
   }
   .hl-price-row { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
-  .hl-price-main { font-family: 'Outfit',sans-serif; font-weight: 900; font-size: 2.6rem; color: var(--text-white) !important; }
+  .hl-price-main { font-family: 'Inter',sans-serif; font-weight: 900; font-size: 2.6rem; color: var(--text-white) !important; }
   .hl-price-compare { font-size: 1.1rem; color: var(--text-subtle); text-decoration: line-through; }
   .hl-price-badge {
     background: var(--green-signal); color: #fff; font-size: 0.72rem; font-weight: 700;
@@ -130,14 +133,14 @@
 
   /* CTA Button */
   .hl-btn-cta {
-    display: block; width: 100%; padding: 18px 24px; border-radius: var(--radius-md);
-    background: var(--cyan-orbit); color: var(--space-black);
-    font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 1.05rem;
-    letter-spacing: 0.02em; text-align: center; border: none; cursor: pointer;
-    animation: pulse-cta 2.5s ease-in-out infinite; transition: transform 0.2s, box-shadow 0.2s;
-    text-transform: uppercase;
+    display: inline-block; width: 100%; text-align: center;
+    background: #000000 !important; color: #FFFFFF !important;
+    font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.1rem;
+    padding: 20px 24px; border-radius: 100px; text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   }
-  .hl-btn-cta:hover { transform: translateY(-2px); box-shadow: var(--cyan-glow); animation: none; }
+  .hl-btn-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); animation: none; }
   @keyframes pulse-cta {
     0%,100%{ box-shadow: 0 0 0 0 rgba(0,184,204,0.3) }
     50%{ box-shadow: 0 0 0 10px rgba(0,184,204,0) }
@@ -189,7 +192,7 @@
   }
   .hl-proof-stat { text-align: center; }
   .hl-proof-stat__num {
-    font-family: 'Outfit', sans-serif; font-weight: 900;
+    font-family: 'Inter', sans-serif; font-weight: 900;
     font-size: 1.5rem; color: var(--text-white) !important;
   }
   .hl-proof-stat__label { font-size: 0.78rem; color: var(--text-subtle); margin-top: 2px; }
@@ -216,7 +219,7 @@
   .hl-pain__card-label.good { color: var(--cyan-orbit); }
   .hl-pain__vs-center {
     display: flex; align-items: center; justify-content: center;
-    font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 0.9rem;
+    font-family: 'Inter', sans-serif; font-weight: 900; font-size: 0.9rem;
     color: var(--text-subtle);
   }
   .hl-pain__item {
@@ -234,7 +237,7 @@
     background: var(--obsidian); padding: 32px 24px; text-align: center;
   }
   .hl-cred__icon { font-size: 2rem; margin-bottom: 12px; }
-  .hl-cred__title { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 6px; color: var(--text-white) !important; }
+  .hl-cred__title { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 6px; color: var(--text-white) !important; }
   .hl-cred__desc { font-size: 0.82rem; color: var(--text-subtle); line-height: 1.5; }
 
   /* ===== STEP 6: A-HA MOMENT ===== */
@@ -271,7 +274,7 @@
   }
   .hl-bullet-card:hover { border-color: rgba(0,184,204,0.3); transform: translateY(-4px); }
   .hl-bullet-card__icon { font-size: 2rem; margin-bottom: 16px; }
-  .hl-bullet-card__title { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.05rem; margin-bottom: 8px; color: var(--text-white) !important; }
+  .hl-bullet-card__title { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.05rem; margin-bottom: 8px; color: var(--text-white) !important; }
   .hl-bullet-card__desc { font-size: 0.88rem; color: var(--text-muted) !important; line-height: 1.6; }
 
   /* ===== STEP 8: US VS THEM ===== */
@@ -346,7 +349,7 @@
     position: relative;
   }
   .hl-ugc-msg::before {
-    content: '"'; font-family: 'Outfit', sans-serif; font-size: 3rem; font-weight: 900;
+    content: '"'; font-family: 'Inter', sans-serif; font-size: 3rem; font-weight: 900;
     color: var(--cyan-dim); position: absolute; top: 8px; left: 16px; line-height: 1;
   }
   .hl-ugc-msg__body { padding-top: 20px; }
@@ -363,12 +366,12 @@
     width: 48px; height: 48px; border-radius: 50%;
     border: 2px solid var(--cyan-orbit); background: rgba(0,184,204,0.08);
     display: flex; align-items: center; justify-content: center;
-    font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 1.1rem;
+    font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.1rem;
     color: var(--cyan-orbit); margin: 0 auto 20px;
     box-shadow: var(--cyan-glow);
   }
   .hl-how__step-icon { font-size: 2.5rem; margin-bottom: 16px; }
-  .hl-how__step-title { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 10px; color: var(--text-white) !important; }
+  .hl-how__step-title { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 10px; color: var(--text-white) !important; }
   .hl-how__step-desc { font-size: 0.9rem; color: var(--text-muted) !important; line-height: 1.65; }
 
   /* ===== STEP 12: SUBSCRIPTION MILESTONE JOURNEY ===== */
@@ -394,7 +397,7 @@
     font-size: 0.75rem; color: var(--cyan-orbit); letter-spacing: 0.1em;
     margin-bottom: 6px; text-transform: uppercase;
   }
-  .hl-journey__title { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.05rem; margin-bottom: 6px; color: var(--text-white) !important; }
+  .hl-journey__title { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.05rem; margin-bottom: 6px; color: var(--text-white) !important; }
   .hl-journey__desc { font-size: 0.9rem; color: var(--text-muted) !important; }
   .hl-journey__tag {
     display: inline-block; padding: 3px 10px; border-radius: 4px;
@@ -432,7 +435,7 @@
     padding: 20px 0 0;
   }
   .hl-offer__total-label { font-size: 0.88rem; color: var(--text-muted) !important; }
-  .hl-offer__total-price { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 1.5rem; }
+  .hl-offer__total-price { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; }
   .hl-offer__total-orig { font-size: 0.82rem; color: var(--text-subtle); text-decoration: line-through; }
 
   .hl-guarantee {
@@ -441,7 +444,7 @@
     max-width: 700px; margin: 40px auto 0;
   }
   .hl-guarantee__icon { font-size: 3rem; margin-bottom: 16px; }
-  .hl-guarantee__title { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 1.5rem; margin-bottom: 12px; color: var(--green-signal); }
+  .hl-guarantee__title { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; margin-bottom: 12px; color: var(--green-signal); }
   .hl-guarantee__text { font-size: 0.95rem; color: var(--text-muted) !important; line-height: 1.7; max-width: 540px; margin: 0 auto; }
 
   .hl-final-cta {
@@ -463,12 +466,12 @@
   }
   .hl-sticky-bar.visible { transform: translateY(0); }
   .hl-sticky-bar__inner { max-width: 1160px; margin: 0 auto; display: flex; align-items: center; gap: 20px; }
-  .hl-sticky-bar__name { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.95rem; flex-shrink: 0; }
-  .hl-sticky-bar__price { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 1.2rem; color: var(--cyan-orbit); flex-shrink: 0; }
+  .hl-sticky-bar__name { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.95rem; flex-shrink: 0; }
+  .hl-sticky-bar__price { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.2rem; color: var(--cyan-orbit); flex-shrink: 0; }
   .hl-sticky-bar__cta {
     margin-left: auto; flex-shrink: 0;
     background: var(--cyan-orbit); color: var(--space-black);
-    font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 0.9rem;
+    font-family: 'Inter', sans-serif; font-weight: 900; font-size: 0.9rem;
     padding: 12px 28px; border-radius: var(--radius-sm); border: none; cursor: pointer;
     text-transform: uppercase; letter-spacing: 0.04em;
   }
@@ -525,7 +528,7 @@
     <span>|</span>
     🚚 Despacho Express GRATIS sobre $79.990
     <span>|</span>
-    🛡️ Garantía 30 Noches Sin Preguntas
+    🛡️ Garantía por Defectos de Fábrica
   </div>
 
   <!-- =============================================
@@ -535,7 +538,7 @@
     <div class="hl-wrap">
       <div class="hl-hero__grid">
         <!-- COPY -->
-        <div class="hl-hero__copy">
+        <div class="hl-hero__copy hl-hero__left">
           <div class="hl-hero__pretag">
             <div class="hl-hero__dot"></div>
             <span class="mono-tag">HALO® Neuro &nbsp;·&nbsp; Dispositivo de Biohacking</span>
@@ -626,7 +629,7 @@
         <div class="hl-proof-divider"></div>
         <div class="hl-proof-stat">
           <div class="hl-proof-stat__num">30 Noches</div>
-          <div class="hl-proof-stat__label">Garantía sin preguntas</div>
+          <div class="hl-proof-stat__label">Garantía por Defectos de Fábrica</div>
         </div>
         <div class="hl-proof-divider"></div>
         <div class="hl-proof-stat">
@@ -711,8 +714,8 @@
         </div>
         <div class="hl-cred__item">
           <div class="hl-cred__icon">🛡️</div>
-          <div class="hl-cred__title">100% Seguro y Certificado</div>
-          <div class="hl-cred__desc">Libre de químicos, sin frecuencias electromagnéticas dañinas. Compatible con marcapasos y dispositivos médicos (consultar médico).</div>
+          <div class="hl-cred__title">Garantía por Defectos de Fábrica</div>
+          <div class="hl-cred__desc">Dispositivos fabricados bajo controles de calidad premium. Si falla, lo reemplazamos. Tu inversión está protegida.</div>
         </div>
       </div>
     </div>
@@ -847,8 +850,8 @@
               <td class="cross">✗ App de $X/mes</td>
             </tr>
             <tr>
-              <td class="feature-label">Garantía de resultados</td>
-              <td class="col-halo check">✓ 30 noches</td>
+              <td class="feature-label">Garantía por Defectos de Fábrica</td>
+              <td class="col-halo check">✓ SÍ</td>
               <td class="cross">✗ Sin garantía</td>
               <td class="cross">✗ Sin garantía</td>
             </tr>
@@ -1102,7 +1105,7 @@
         <h2 class="h-title">Todo lo que necesitas saber.</h2>
       </div>
       <div class="hl-faq__list">
-        {% assign faqs = "¿Cuánto tiempo tarda en verse resultados?|La mayoría de los usuarios reporta mejoras en el tiempo de conciliar el sueño desde la primera semana. Los cambios más profundos en calidad de sueño y ansiedad se observan entre los días 7 y 21 de uso consistente.,¿Tiene efectos secundarios?|No. HALO Neuro no emite campos electromagnéticos. Las micro-vibraciones son puramente mecánicas y no tienen contraindicaciones conocidas. No genera tolerancia ni dependencia.,¿Funciona si tengo insomnio severo?|HALO ayuda a calmar el sistema nervioso, lo que es la causa raíz de la mayoría de los insomnios de tipo ansiogénico. Para insomnios de origen clínico, recomendamos usarlo como complemento a tu tratamiento médico.,¿Necesito el teléfono encendido?|No. HALO funciona de forma completamente autónoma. No requiere Bluetooth activo ni la app abierta para funcionar durante la noche.,¿Cómo funciona la garantía de 30 noches?|Si en 30 noches de uso consistente no estás completamente satisfecho con la calidad de tu sueño, nos escribes al chat, devuelves el dispositivo y te reembolsamos el 100% del valor. Te quedas con los bonos digitales como agradecimiento.,¿Puedo usarlo si tomo medicamentos para dormir?|Sí. HALO no interactúa químicamente con medicamentos. Sin embargo, si estás bajo tratamiento psiquiátrico, te recomendamos comentarlo con tu médico antes de reducir cualquier medicación." | split: "," %}
+        {% assign faqs = "¿Cuánto tiempo tarda en verse resultados?|La mayoría de los usuarios reporta mejoras en el tiempo de conciliar el sueño desde la primera semana. Los cambios más profundos en calidad de sueño y ansiedad se observan entre los días 7 y 21 de uso consistente.,¿Tiene efectos secundarios?|No. HALO Neuro no emite campos electromagnéticos. Las micro-vibraciones son puramente mecánicas y no tienen contraindicaciones conocidas. No genera tolerancia ni dependencia.,¿Funciona si tengo insomnio severo?|HALO ayuda a calmar el sistema nervioso, lo que es la causa raíz de la mayoría de los insomnios de tipo ansiogénico. Para insomnios de origen clínico, recomendamos usarlo como complemento a tu tratamiento médico.,¿Necesito el teléfono encendido?|No. HALO funciona de forma completamente autónoma. No requiere Bluetooth activo ni la app abierta para funcionar durante la noche.,¿Cómo funciona la Garantía por Defectos de Fábrica?|Todos nuestros dispositivos están fabricados bajo estrictos controles de calidad. Si tu HALO presenta algún defecto de fabricación o falla técnica, te lo reemplazamos de inmediato. Tu inversión está protegida.,¿Puedo usarlo si tomo medicamentos para dormir?|Sí. HALO no interactúa químicamente con medicamentos. Sin embargo, si estás bajo tratamiento psiquiátrico, te recomendamos comentarlo con tu médico antes de reducir cualquier medicación." | split: "," %}
         {% for faq_item in faqs %}
           {% assign faq_parts = faq_item | split: "|" %}
           <div class="hl-faq__item">
@@ -1199,7 +1202,7 @@
           {% endif %}
           <div class="hl-trust-micro" style="margin-top:14px; justify-content:center;">
             <span>🔒 Pago 100% Seguro</span>
-            <span>🛡️ Garantía 30 Noches</span>
+            <span>🛡️ Garantía por Defectos de Fábrica</span>
             <span>📦 Despacho Gratis</span>
           </div>
         </div>
@@ -1230,7 +1233,7 @@
     {% endif %}
     <div class="hl-final-cta__urgency">
       <div class="dot"></div>
-      <span>Disponible hoy · Despacho en 24hrs · Garantía 30 noches sin preguntas</span>
+      <span>Disponible hoy · Despacho en 24hrs · Garantía de Fábrica</span>
     </div>
   </div>
 

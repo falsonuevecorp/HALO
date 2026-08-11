@@ -475,22 +475,29 @@
   /* STICKY BAR */
   .hl-sticky-bar {
     position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
-    background: var(--obsidian); border-top: 1px solid rgba(0,184,204,0.25);
-    padding: 12px 24px; transform: translateY(100%); transition: transform 0.4s ease;
-    box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(0,0,0,0.08);
+    padding: 12px 24px; transform: translateY(100%); transition: transform 0.4s ease, opacity 0.3s ease;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+    opacity: 0; pointer-events: none;
   }
-  .hl-sticky-bar.visible { transform: translateY(0); }
-  .hl-sticky-bar__inner { max-width: 1160px; margin: 0 auto; display: flex; align-items: center; gap: 20px; }
-  .hl-sticky-bar__name { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.95rem; flex-shrink: 0; }
-  .hl-sticky-bar__price { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.2rem; color: var(--cyan-orbit); flex-shrink: 0; }
-  .hl-sticky-bar__cta {
-    margin-left: auto; flex-shrink: 0;
-    background: var(--green-signal) !important; color: #FFFFFF !important;
-    font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.95rem;
-    padding: 12px 28px; border-radius: 100px; border: none; cursor: pointer;
-    letter-spacing: 0.02em; text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-    box-shadow: 0 4px 15px rgba(0, 201, 123, 0.3);
+  .hl-sticky-bar.visible { transform: translateY(0); opacity: 1; pointer-events: auto; }
+  .hl-sticky-bar__inner { max-width: 600px; margin: 0 auto; width: 100%; }
+
+  .wb-sticky-direct-btn {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    width: 100%; background: linear-gradient(135deg, #00b67a 0%, #009966 100%); 
+    color: #ffffff !important; text-decoration: none; padding: 12px 20px;
+    border-radius: 8px; border: none; cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 182, 122, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    animation: wb-pulse 2s infinite; box-sizing: border-box;
   }
+  .wb-sticky-direct-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 182, 122, 0.6); }
+  .wb-sticky-btn-title { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 800; line-height: 1.2; margin: 0; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .wb-sticky-btn-subtitle { font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 500; opacity: 0.95; margin-top: 3px; margin-bottom: 0; text-align: center; }
+  @keyframes wb-pulse { 0% { transform: scale(1); } 50% { transform: scale(1.015); } 100% { transform: scale(1); } }
 
   /* FAQ */
   .hl-faq { background: var(--obsidian); }
@@ -529,8 +536,9 @@
     .hl-pain__vs-center { display: none; }
     .hl-compare__table { font-size: 0.78rem; }
     .hl-compare__table th, .hl-compare__table td { padding: 10px 8px; }
-    .hl-sticky-bar__name, .hl-sticky-bar__price { display: none; }
-    .hl-sticky-bar__cta { width: 100%; }
+    .hl-sticky-bar { padding: 10px 16px; }
+    .wb-sticky-btn-title { font-size: 14px; }
+    .wb-sticky-btn-subtitle { font-size: 10.5px; }
   }
 </style>
 
@@ -554,18 +562,16 @@
         <!-- COPY -->
         <div class="hl-hero__copy hl-hero__left">
           <div class="hl-hero__pretag">
-            <div class="hl-hero__dot"></div>
-            <span class="mono-tag">LOOP BAND® &nbsp;·&nbsp; Monitor de Rendimiento Inmersivo</span>
+            <div class="hl-hero__dot" style="background:var(--cyan-orbit); box-shadow: 0 0 8px var(--cyan-orbit);"></div>
+            <span class="mono-tag" style="color:var(--cyan-orbit);">BIOMETRÍA PURA. CERO DISTRACCIONES.</span>
           </div>
 
           <h1 class="h-display">
-            Desbloquea el 100% de tu rendimiento, <em style="color:var(--cyan-orbit);">descanso</em> y recuperación.
+            Deja de adivinar tu recuperación y empieza a <em style="color:var(--cyan-orbit);">dominarla.</em>
           </h1>
 
           <p class="body-lg" style="color:#A0AAB5; margin-top:20px; margin-bottom:0;">
-            Banda inteligente sin pantalla con métricas de alta precisión. 
-            Mide tu sueño y actividad <strong style="color: var(--text-white) !important;">sin distracciones.</strong> 
-            Batería de larga duración para que nunca dejes de trackear.
+            Tu smartwatch es un juguete de $500. La Loop Band® es el monitor biométrico <strong style="color: var(--text-white) !important;">invisible</strong> diseñado para atletas de alto rendimiento. Mide tu sueño, estrés (HRV) y fatiga con precisión de grado médico.
           </p>
 
           <div class="hl-hero__badge-row">
@@ -695,40 +701,38 @@
     <div class="hl-wrap">
       <div class="hl-pain__grid">
         <div>
-          <span class="mono-tag" style="display:block;margin-bottom:12px;">LA TRAMPA TECNOLÓGICA</span>
-          <h2 class="h-title">Tu smartwatch está saboteando tu <em style="color:var(--cyan-orbit);">descanso</em>.</h2>
+          <span class="mono-tag" style="display:block;margin-bottom:12px; color:#FF6B6B;">EL ENEMIGO DE LA OPTIMIZACIÓN</span>
+          <h2 class="h-title">Tu smartwatch es un juguete, no una <em style="color:#FF6B6B;">herramienta clínica</em>.</h2>
           <p class="body-lg" style="margin-top:20px;">
-            Te vas a dormir exhausto, pero una pantalla brillante ilumina tu cara y una vibración en la muñeca arruina tu ciclo REM.
+            Entrenas duro, comes limpio y haces el trabajo. Pero sigues tomando decisiones de recuperación basándote en cómo "sientes" que dormiste.
           </p>
           <p class="body-md">
-            Los relojes de $400 dólares no fueron diseñados para dormir. Son <strong style="color:#FF6B6B;">pantallas invasivas</strong> disfrazadas de salud.
+            Estás compitiendo a ciegas. Tienes un reloj excelente para leer correos, pero que te entrega <strong style="color:#FF6B6B;">gráficos inútiles</strong> cuando se trata de tu salud metabólica real.
           </p>
           <p class="body-md">
-            Cargarlos cada 24 horas es un trabajo más. Adivinar por qué amaneces cansado es frustrante. Tú no necesitas otra pantalla, necesitas biometría pura.
+            Los atletas de élite no adivinan su HRV ni dejan su ciclo REM al azar. Entrenar sin conocer tu estado de recuperación interno es garantizar una sobrecarga nerviosa.
           </p>
-          <p style="color: var(--text-white) !important; font-weight:700; font-size:1rem; margin-top:24px;">Extraemos los datos que importan, sin las distracciones que te matan.</p>
+          <p style="color: var(--text-white) !important; font-weight:700; font-size:1rem; margin-top:24px;">Ya es hora de medirte con la misma precisión que exiges en tu vida.</p>
         </div>
 
         <!-- PATTERN INTERRUPT: Antes vs. Después -->
         <div class="hl-pain__vs">
           <div class="hl-pain__card hl-pain__card--bad">
-            <div class="hl-pain__card-label bad">❌ Smartwatch Genérico</div>
-            <div class="hl-pain__item"><span class="icon-bad">✗</span> Luz azul que inhibe tu melatonina</div>
-            <div class="hl-pain__item"><span class="icon-bad">✗</span> Batería que muere en 18 horas</div>
-            <div class="hl-pain__item"><span class="icon-bad">✗</span> Notificaciones a las 3 AM</div>
-            <div class="hl-pain__item"><span class="icon-bad">✗</span> Bulky, pesado e incómodo en la cama</div>
-            <div class="hl-pain__item"><span class="icon-bad">✗</span> Obsoleto y frágil en pocos meses</div>
-            <div class="hl-pain__item"><span class="icon-bad">✗</span> Datos básicos, cero actionable insights</div>
+            <div class="hl-pain__card-label bad">❌ Juguetes Tecnológicos</div>
+            <div class="hl-pain__item"><span class="icon-bad">✗</span> Datos vagos y cero correlación clínica.</div>
+            <div class="hl-pain__item"><span class="icon-bad">✗</span> Suscripciones absurdas por ver TUS propios datos.</div>
+            <div class="hl-pain__item"><span class="icon-bad">✗</span> Notificaciones constantes que destruyen tu focus.</div>
+            <div class="hl-pain__item"><span class="icon-bad">✗</span> Luz azul y vibraciones que arruinan tu fase REM.</div>
+            <div class="hl-pain__item"><span class="icon-bad">✗</span> Batería que no dura ni para un viaje de fin de semana.</div>
           </div>
           <div class="hl-pain__vs-center">VS</div>
           <div class="hl-pain__card hl-pain__card--good">
             <div class="hl-pain__card-label good">✓ LOOP BAND®</div>
-            <div class="hl-pain__item"><span class="icon-good">✓</span> 100% Sin pantalla, cero distracciones</div>
-            <div class="hl-pain__item"><span class="icon-good">✓</span> Batería que dura días enteros</div>
-            <div class="hl-pain__item"><span class="icon-good">✓</span> Métricas clínicas de HRV y fases del sueño</div>
-            <div class="hl-pain__item"><span class="icon-good">✓</span> Diseño ultra-ligero y minimalista</div>
-            <div class="hl-pain__item"><span class="icon-good">✓</span> A prueba de todo (sudor y agua)</div>
-            <div class="hl-pain__item"><span class="icon-good">✓</span> Sincronización inteligente post-descanso</div>
+            <div class="hl-pain__item"><span class="icon-good">✓</span> Precisión médica: HRV, SpO2 y Fases de Sueño.</div>
+            <div class="hl-pain__item"><span class="icon-good">✓</span> Cero suscripciones. Todos los datos 100% gratis.</div>
+            <div class="hl-pain__item"><span class="icon-good">✓</span> 100% Sin pantalla. Privacidad y paz mental absoluta.</div>
+            <div class="hl-pain__item"><span class="icon-good">✓</span> Diseño invisible. Te olvidas que la llevas puesta.</div>
+            <div class="hl-pain__item"><span class="icon-good">✓</span> Score de Recuperación Diario: Sabes cuándo apretar.</div>
           </div>
         </div>
       </div>
@@ -818,39 +822,39 @@
   <section class="hl-section hl-bullets">
     <div class="hl-wrap">
       <div style="text-align:center;">
-        <span class="mono-tag" style="display:block;margin-bottom:12px;">Las 6 Ventajas de LOOP BAND®</span>
-        <h2 class="h-title">Lo que pasa cuando mides lo que <em style="color:var(--cyan-orbit);">importa</em>.</h2>
+        <span class="mono-tag" style="display:block;margin-bottom:12px;">LA VENTAJA INJUSTA</span>
+        <h2 class="h-title">Lo que pasa cuando dejas de <em style="color:var(--cyan-orbit);">adivinar</em>.</h2>
       </div>
       <div class="hl-bullets__grid">
         <div class="hl-bullet-card">
           <div class="hl-bullet-card__icon">💤</div>
-          <div class="hl-bullet-card__title">Fases del Sueño Exactas</div>
-          <div class="hl-bullet-card__desc">Descubre cuánto tiempo pasas en sueño ligero, profundo y REM. Entiende por qué te despiertas cansado.</div>
+          <div class="hl-bullet-card__title">Despierta Como Nuevo</div>
+          <div class="hl-bullet-card__desc">Descubre exactamente qué te está robando el sueño profundo (REM) y corrígelo esta misma noche. No más mañanas de arrastrarte.</div>
         </div>
         <div class="hl-bullet-card">
           <div class="hl-bullet-card__icon">❤️</div>
-          <div class="hl-bullet-card__title">HRV (Variabilidad Cardíaca)</div>
-          <div class="hl-bullet-card__desc">El indicador supremo de estrés y recuperación. Loop Band lo mide mientras duermes para decirte qué tan duro puedes entrenar hoy.</div>
+          <div class="hl-bullet-card__title">Tu Semáforo de Energía (HRV)</div>
+          <div class="hl-bullet-card__desc">Deja de sobre-entrenar y quemarte. Te decimos matemáticamente si hoy debes romper tus límites o quedarte descansando.</div>
         </div>
         <div class="hl-bullet-card">
           <div class="hl-bullet-card__icon">📵</div>
-          <div class="hl-bullet-card__title">100% Libre de Pantallas</div>
-          <div class="hl-bullet-card__desc">Sin luz azul, sin notificaciones vibrando en tu muñeca a las 2 AM. Recuperas el control de tu atención.</div>
+          <div class="hl-bullet-card__title">Recupera Tu Paz Mental</div>
+          <div class="hl-bullet-card__desc">Cero pantallas, cero notificaciones estúpidas. El primer dispositivo de rendimiento que de verdad respeta tu salud mental.</div>
         </div>
         <div class="hl-bullet-card">
           <div class="hl-bullet-card__icon">⚡</div>
-          <div class="hl-bullet-card__title">Batería Prolongada</div>
-          <div class="hl-bullet-card__desc">Hasta 7 días con una sola carga. Un smartwatch promedio dura 18 horas. Nosotros no te damos un trabajo extra.</div>
+          <div class="hl-bullet-card__title">Batería Inagotable</div>
+          <div class="hl-bullet-card__desc">Hasta 7 días con una sola carga. Nosotros no te damos un trabajo extra, te damos libertad para vivir y entrenar.</div>
         </div>
         <div class="hl-bullet-card">
           <div class="hl-bullet-card__icon">🪶</div>
-          <div class="hl-bullet-card__title">Comodidad Ultra-Ligera</div>
-          <div class="hl-bullet-card__desc">Diseñada con tela transpirable. Es tan ligera y plana que olvidarás que la llevas puesta al dormir.</div>
+          <div class="hl-bullet-card__title">Comodidad Invisible</div>
+          <div class="hl-bullet-card__desc">Tela hipoalergénica y ultra-suave. Es tan ridículamente cómoda que olvidarás que la llevas puesta incluso al sudar.</div>
         </div>
         <div class="hl-bullet-card">
           <div class="hl-bullet-card__icon">📱</div>
-          <div class="hl-bullet-card__title">Insights Accionables</div>
-          <div class="hl-bullet-card__desc">Nuestra app no te tira datos al azar. Te da un "Score de Recuperación" simple para que sepas exactamente cómo está tu cuerpo.</div>
+          <div class="hl-bullet-card__title">Tu Entrenador de Bolsillo</div>
+          <div class="hl-bullet-card__desc">Nada de datos médicos inútiles. Te damos un Score diario del 1 al 100 para que sepas qué tan indestructible está tu cuerpo hoy.</div>
         </div>
       </div>
     </div>
@@ -862,58 +866,58 @@
   <section class="hl-section hl-compare">
     <div class="hl-wrap">
       <div style="text-align:center;">
-        <span class="mono-tag" style="display:block;margin-bottom:12px;">La Comparativa Brutal</span>
-        <h2 class="h-title">LOOP BAND vs. El <em style="color:var(--cyan-orbit);">Status Quo</em>.</h2>
+        <span class="mono-tag" style="display:block;margin-bottom:12px; color:#FF6B6B;">LA CRUDA REALIDAD</span>
+        <h2 class="h-title">LOOP BAND vs. Las <em style="color:#FF6B6B;">"Joyas" Caras</em>.</h2>
         <p class="body-md" style="max-width:560px; margin:16px auto 0;">
-          No todos los dispositivos están diseñados para el rendimiento real. Aquí están los datos.
+          Los números no mienten. Deja de pagar por pantallas que no necesitas y suscripciones que te roban.
         </p>
       </div>
       <div style="overflow-x:auto; margin-top:0;">
         <table class="hl-compare__table">
           <thead>
             <tr>
-              <th style="text-align:left; width:30%;">Característica</th>
+              <th style="text-align:left; width:30%;">¿Por qué seguimos ganando?</th>
               <th class="col-halo">➰ LOOP BAND®</th>
-              <th class="col-rival">⌚ Smartwatch ($400+)</th>
+              <th class="col-rival">⌚ Smartwatch ($500)</th>
               <th class="col-rival">💍 Anillo Inteligente</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td class="feature-label">100% Libre de Pantallas</td>
-              <td class="col-halo check">✓ SÍ</td>
-              <td class="cross">✗ NO</td>
+              <td class="col-halo check">✓ SÍ (Cero distracciones)</td>
+              <td class="cross">✗ NO (Un celular en tu muñeca)</td>
               <td class="check" style="color:var(--green-signal)">✓ SÍ</td>
             </tr>
             <tr>
-              <td class="feature-label">Cero notificaciones invasivas</td>
-              <td class="col-halo check">✓ SÍ</td>
-              <td class="cross">✗ Imposible de apagar del todo</td>
+              <td class="feature-label">Notificaciones Invasivas</td>
+              <td class="col-halo check">✓ 0 (Paz mental absoluta)</td>
+              <td class="cross">✗ Imposible apagarlas del todo</td>
               <td class="check" style="color:var(--green-signal)">✓ SÍ</td>
             </tr>
             <tr>
-              <td class="feature-label">Batería de larga duración (5+ días)</td>
-              <td class="col-halo check">✓ SÍ</td>
-              <td class="cross">✗ 18-36 horas</td>
-              <td class="check" style="color:var(--green-signal)">✓ SÍ</td>
+              <td class="feature-label">Batería de larga duración</td>
+              <td class="col-halo check">✓ 5 a 7 días</td>
+              <td class="cross">✗ Patéticas 18 horas</td>
+              <td class="check" style="color:var(--green-signal)">✓ 4 a 7 días</td>
             </tr>
             <tr>
               <td class="feature-label">Comodidad total para dormir</td>
-              <td class="col-halo check">✓ Banda suave plana</td>
-              <td class="cross">✗ Bloque de metal pesado</td>
-              <td class="cross">✗ Metal duro en los dedos</td>
+              <td class="col-halo check">✓ Banda elástica invisible</td>
+              <td class="cross">✗ Ladrillo de metal incómodo</td>
+              <td class="cross">✗ Metal duro que asfixia el dedo</td>
             </tr>
             <tr>
-              <td class="feature-label">Sin suscripciones mensuales por la App</td>
-              <td class="col-halo check">✓ SÍ</td>
-              <td class="cross">✗ Te cobran extra por datos</td>
-              <td class="cross">✗ Te cobran extra por datos</td>
+              <td class="feature-label">App Completa y GRATUITA</td>
+              <td class="col-halo check">✓ SÍ (Para siempre)</td>
+              <td class="cross">✗ $10/mes por tus propios datos</td>
+              <td class="cross">✗ $10/mes por tus propios datos</td>
             </tr>
             <tr>
-              <td class="feature-label">Precio accesible</td>
-              <td class="col-halo check">✓ 100% Asequible</td>
-              <td class="cross">✗ $400 - $800 USD</td>
-              <td class="cross">✗ $300 - $500 USD</td>
+              <td class="feature-label">Precio Justo</td>
+              <td class="col-halo check">✓ Inversión Accesible</td>
+              <td class="cross">✗ $500 - $1,000 USD (Robo)</td>
+              <td class="cross">✗ $350 - $550 USD</td>
             </tr>
           </tbody>
         </table>
@@ -1277,24 +1281,46 @@
   <!-- STICKY BAR -->
   <div class="hl-sticky-bar" id="sticky-bar">
     <div class="hl-sticky-bar__inner">
-      <div class="hl-sticky-bar__name">LOOP BAND®</div>
-      <div class="hl-sticky-bar__price">{{ product.price | money }}</div>
-      <a href="#oferta" class="hl-sticky-bar__cta">Obtener Ahora</a>
+      <a href="#oferta" class="wb-sticky-direct-btn">
+        <span class="wb-sticky-btn-title">
+          <span>Obtener Descuento</span>
+          <span style="opacity:0.7; font-size:0.85em; text-decoration:line-through;">{{ product.compare_at_price | money }}</span>
+          <span>{{ product.price | money }}</span>
+        </span>
+        <span class="wb-sticky-btn-subtitle" id="sticky-timer-wrap">La promo termina en <span id="sticky-timer">05:00</span> ⏱️</span>
+      </a>
     </div>
   </div>
 
 </div><!-- /halo-funnel -->
 
 <script>
-  // ---- STICKY BAR ----
+  // ---- STICKY BAR & TIMER ----
   (function(){
     var bar = document.getElementById('sticky-bar');
     var hero = document.querySelector('.hl-hero');
-    if(!bar || !hero) return;
-    window.addEventListener('scroll', function(){
-      var heroBottom = hero.getBoundingClientRect().bottom;
-      bar.classList.toggle('visible', heroBottom < 0);
-    }, {passive:true});
+    if(bar && hero){
+      window.addEventListener('scroll', function(){
+        var heroBottom = hero.getBoundingClientRect().bottom;
+        bar.classList.toggle('visible', heroBottom < 0);
+      }, {passive:true});
+    }
+
+    var timerDisplay = document.getElementById('sticky-timer');
+    if(timerDisplay) {
+      var duration = 5 * 60; // 5 minutos
+      var timer = setInterval(function() {
+        var m = parseInt(duration / 60, 10);
+        var s = parseInt(duration % 60, 10);
+        m = m < 10 ? "0" + m : m;
+        s = s < 10 ? "0" + s : s;
+        timerDisplay.textContent = m + ":" + s;
+        if (--duration < 0) {
+          clearInterval(timer);
+          document.getElementById('sticky-timer-wrap').style.display = 'none';
+        }
+      }, 1000);
+    }
   })();
 
   // JS de suscripción removido

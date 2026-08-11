@@ -38,14 +38,14 @@
 
   /* Typography */
   .halo-funnel .h-display {
-    font-family: 'Inter', sans-serif; font-weight: 900;
-    font-size: clamp(2rem, 8vw, 5rem); line-height: 1.04; letter-spacing: -0.03em;
+    font-family: 'Inter', sans-serif; font-weight: 800;
+    font-size: clamp(2rem, 8vw, 5rem); line-height: 1.04; letter-spacing: -0.04em;
     color: var(--text-white) !important;
     overflow-wrap: break-word; word-wrap: break-word; hyphens: auto;
   }
   .halo-funnel .h-title {
-    font-family: 'Inter', sans-serif; font-weight: 900;
-    font-size: clamp(1.6rem, 6vw, 3.4rem); line-height: 1.1; letter-spacing: -0.025em;
+    font-family: 'Inter', sans-serif; font-weight: 800;
+    font-size: clamp(1.6rem, 6vw, 3.4rem); line-height: 1.1; letter-spacing: -0.03em;
     color: var(--text-white) !important;
     overflow-wrap: break-word; word-wrap: break-word;
   }
@@ -72,12 +72,22 @@
   /* ===== STEP 1: ANNOUNCEMENT BAR ===== */
   .hl-announcement {
     background: var(--cyan-orbit); color: var(--space-black);
-    text-align: center; padding: 10px 20px;
+    padding: 10px 0;
     font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.85rem;
     letter-spacing: 0.04em;
     position: sticky; top: 0; z-index: 100;
+    overflow: hidden; white-space: nowrap;
   }
-  .hl-announcement span { opacity: 0.75; margin: 0 12px; }
+  .hl-announcement__marquee {
+    display: inline-block;
+    padding-left: 100%;
+    animation: hl-marquee 15s linear infinite;
+  }
+  @keyframes hl-marquee {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+  }
+  .hl-announcement__marquee span { opacity: 0.85; margin: 0 12px; }
 
   /* ===== STEP 2: HERO ===== */
   .hl-hero {
@@ -88,8 +98,10 @@
   .hl-hero__grid {
     display: grid; grid-template-columns: 1fr; gap: 30px; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px;
   }
+  .hl-hero__img-wrap { order: -1; }
   @media(min-width: 900px){
     .hl-hero__grid { grid-template-columns: 1fr 1fr; gap: 60px; }
+    .hl-hero__img-wrap { order: 0; }
   }
   .hl-hero__left { max-width: 540px; }
   .hl-hero__dot {
@@ -473,10 +485,11 @@
   .hl-sticky-bar__price { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.2rem; color: var(--cyan-orbit); flex-shrink: 0; }
   .hl-sticky-bar__cta {
     margin-left: auto; flex-shrink: 0;
-    background: var(--cyan-orbit); color: var(--space-black);
+    background: var(--green-signal) !important; color: #FFFFFF !important;
     font-family: 'Inter', sans-serif; font-weight: 900; font-size: 0.9rem;
     padding: 12px 28px; border-radius: var(--radius-sm); border: none; cursor: pointer;
     text-transform: uppercase; letter-spacing: 0.04em;
+    box-shadow: 0 4px 15px rgba(0, 201, 123, 0.3);
   }
 
   /* FAQ */
@@ -527,11 +540,9 @@
        PASO 1: ANNOUNCEMENT BAR
   ============================================== -->
   <div class="hl-announcement">
-    🔥 LANZAMIENTO: 30% OFF en tu primer pedido
-    <span>|</span>
-    🚚 Despacho Express GRATIS sobre $79.990
-    <span>|</span>
-    🛡️ Garantía por Defectos de Fábrica
+    <div class="hl-announcement__marquee">
+      🔥 LANZAMIENTO: 30% OFF en tu primer pedido <span>|</span> 🚚 Despacho Express GRATIS sobre $79.990 <span>|</span> 🛡️ Garantía por Defectos de Fábrica
+    </div>
   </div>
 
   <!-- =============================================

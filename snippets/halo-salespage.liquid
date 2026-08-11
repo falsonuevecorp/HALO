@@ -134,13 +134,14 @@
   /* CTA Button */
   .hl-btn-cta {
     display: inline-block; width: 100%; text-align: center;
-    background: #000000 !important; color: #FFFFFF !important;
+    background: var(--green-signal) !important; color: #FFFFFF !important;
     font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.1rem;
     padding: 20px 24px; border-radius: 100px; text-decoration: none;
     transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0, 201, 123, 0.3);
   }
-  .hl-btn-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); animation: none; }
+  .hl-btn-cta span { color: #FFFFFF !important; }
+  .hl-btn-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 201, 123, 0.4); animation: none; }
   @keyframes pulse-cta {
     0%,100%{ box-shadow: 0 0 0 0 rgba(0,184,204,0.3) }
     50%{ box-shadow: 0 0 0 10px rgba(0,184,204,0) }
@@ -581,17 +582,11 @@
               </div>
             </div>
 
-            <!-- 2. Toggle -->
-            <div class="hl-hero__toggle">
-              <button class="hl-hero__toggle-btn active" id="btn-sub">Suscripción — 30% OFF</button>
-              <button class="hl-hero__toggle-btn" id="btn-once">Compra Única</button>
-            </div>
-
             <!-- Precios -->
             <div class="hl-price-row">
               <span class="hl-price-main" id="price-display">$104.993</span>
-              <span class="hl-price-compare" id="price-compare">$149.990</span>
-              <span class="hl-price-badge" id="price-badge" style="background:#E53935; color:#fff;">30% OFF</span>
+              <span class="hl-price-compare" id="price-compare" style="text-decoration: line-through; opacity: 0.6; font-size:1.2rem;">$149.990</span>
+              <span class="hl-price-badge" id="price-badge" style="background:#E53935; color:#fff; padding: 2px 8px; border-radius: 4px; font-weight:bold; font-size:0.8rem;">30% OFF</span>
             </div>
             
             <!-- 3. Escasez -->
@@ -606,9 +601,9 @@
             </div>
 
             <!-- 5. CTA Doble -->
-            <a href="#oferta" class="hl-btn-cta" id="hero-cta" style="padding: 16px 20px; line-height:1.2;">
+            <a href="/cart/add?id={{ product.variants.first.id }}&quantity=1" class="hl-btn-cta" id="hero-cta" style="padding: 16px 20px; line-height:1.2; display:block;">
               <span style="display:block; font-size:1.1rem; font-weight:900; margin-bottom:4px;">PIDE AHORA Y APROVECHA EL DESCUENTO 🎁</span>
-              <span style="display:block; font-size:0.75rem; font-weight:500; opacity:0.8;">ANTES DE QUE SE AGOTE LA PROMO 🚀</span>
+              <span style="display:block; font-size:0.75rem; font-weight:500; opacity:0.9;">ANTES DE QUE SE AGOTE LA PROMO 🚀</span>
             </a>
 
             <!-- 6. Trustpilot -->

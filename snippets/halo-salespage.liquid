@@ -39,7 +39,7 @@
   /* Typography */
   .halo-funnel .h-display {
     font-family: 'Inter', sans-serif; font-weight: 700;
-    font-size: clamp(2rem, 8vw, 5rem); line-height: 1.04; letter-spacing: -0.02em;
+    font-size: clamp(2rem, 4.5vw, 4.2rem); line-height: 1.04; letter-spacing: -0.02em;
     color: var(--text-white) !important;
     overflow-wrap: break-word; word-wrap: break-word; hyphens: auto;
   }
@@ -599,8 +599,8 @@
 
             <!-- Precios -->
             <div class="hl-price-row">
-              <span class="hl-price-main" id="price-display">$104.993</span>
-              <span class="hl-price-compare" id="price-compare" style="text-decoration: line-through; opacity: 0.6; font-size:1.2rem;">$149.990</span>
+              <span class="hl-price-main" id="price-display">{{ product.price | money }}</span>
+              <span class="hl-price-compare" id="price-compare" style="text-decoration: line-through; opacity: 0.6; font-size:1.2rem;">{{ product.compare_at_price | money }}</span>
               <span class="hl-price-badge" id="price-badge" style="background:#E53935; color:#fff; padding: 2px 8px; border-radius: 4px; font-weight:bold; font-size:0.8rem;">30% OFF</span>
             </div>
             
@@ -1232,18 +1232,18 @@
           <div class="hl-offer__total">
             <div>
               <div class="hl-offer__total-label">Valor Total</div>
-              <div class="hl-offer__total-orig">$234.970</div>
+              <div class="hl-offer__total-orig">{{ product.compare_at_price | money }}</div>
             </div>
             <div style="text-align:right;">
               <div class="hl-offer__total-label">Precio de Lanzamiento</div>
-              <div class="hl-offer__total-price" style="color:var(--cyan-orbit);">$149.990</div>
+              <div class="hl-offer__total-price" style="color:var(--cyan-orbit);">{{ product.price | money }}</div>
             </div>
           </div>
         </div>
         <div style="padding:0 40px 32px;">
           {% if product.available %}
             <a href="/cart/add?id={{ product.variants.first.id }}&quantity=1" class="hl-btn-cta">
-              🌙 Sí, Quiero Dormir Como Nunca — $149.990
+              🌙 Sí, Quiero Dormir Como Nunca — {{ product.price | money }}
             </a>
           {% else %}
             <div class="hl-btn-cta" style="opacity:0.5; cursor:not-allowed; animation:none;">Agotado Temporalmente</div>
@@ -1289,7 +1289,7 @@
   <div class="hl-sticky-bar" id="sticky-bar">
     <div class="hl-sticky-bar__inner">
       <div class="hl-sticky-bar__name">HALO® Neuro</div>
-      <div class="hl-sticky-bar__price">$149.990</div>
+      <div class="hl-sticky-bar__price">{{ product.price | money }}</div>
       <a href="#oferta" class="hl-sticky-bar__cta">Obtener Ahora</a>
     </div>
   </div>
@@ -1308,34 +1308,7 @@
     }, {passive:true});
   })();
 
-  // ---- HERO PRICE TOGGLE ----
-  (function(){
-    var btnSub = document.getElementById('btn-sub');
-    var btnOnce = document.getElementById('btn-once');
-    var priceEl = document.getElementById('price-display');
-    var compareEl = document.getElementById('price-compare');
-    var badgeEl = document.getElementById('price-badge');
-    var cuotasEl = document.getElementById('cuotas-text');
-    var ctaEl = document.getElementById('hero-cta');
-    if(!btnSub) return;
-    btnSub.addEventListener('click', function(){
-      btnSub.classList.add('active'); btnOnce.classList.remove('active');
-      priceEl.textContent = '$104.993';
-      compareEl.textContent = '$149.990';
-      badgeEl.textContent = '30% OFF';
-      badgeEl.style.display = 'inline-block';
-      cuotasEl.innerHTML = 'o 3 cuotas de <strong>$34.998</strong> sin interés · Despacho GRATIS';
-      if(ctaEl) ctaEl.textContent = '🌙 Comenzar Mis 30 Noches de Sueño Profundo';
-    });
-    btnOnce.addEventListener('click', function(){
-      btnOnce.classList.add('active'); btnSub.classList.remove('active');
-      priceEl.textContent = '$149.990';
-      compareEl.textContent = '$234.970';
-      badgeEl.textContent = 'Pago Único';
-      cuotasEl.innerHTML = 'o 3 cuotas de <strong>$49.997</strong> sin interés · Despacho GRATIS';
-      if(ctaEl) ctaEl.textContent = '🌙 Obtener HALO Neuro Ahora';
-    });
-  })();
+  // JS de suscripción removido
 
   // ---- TECH ACCORDION ----
   function toggleAccordion(btn) {

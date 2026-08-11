@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "main": {
+      "type": "atacama-salespage-section"
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

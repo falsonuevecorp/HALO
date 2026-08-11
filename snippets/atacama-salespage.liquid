@@ -1,0 +1,410 @@
+<style>
+  /* RESET & CORE VARIABLES */
+  .atacama-funnel {
+    --bg-dark: #000000;
+    --bg-surface: #111111;
+    --bg-surface-light: #1A1A1A;
+    --accent-red: #D51A1A;
+    --accent-red-glow: rgba(213, 26, 26, 0.4);
+    --accent-yellow: #FFC000;
+    --text-main: #FFFFFF;
+    --text-muted: #999999;
+    
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.4;
+    overflow-x: hidden;
+  }
+  
+  .atacama-funnel * {
+    box-sizing: border-box;
+  }
+
+  /* TYPOGRAPHY */
+  .atacama-funnel h1, .atacama-funnel h2, .atacama-funnel h3 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .atacama-funnel h1 {
+    font-size: clamp(2rem, 8vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .atacama-funnel h2 {
+    font-size: clamp(1.5rem, 6vw, 3rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .atacama-funnel p {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  /* LAYOUT HELPERS */
+  .af-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .af-section {
+    padding: 80px 0;
+  }
+
+  /* BUTTONS */
+  .af-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-red);
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    padding: 20px 40px;
+    border-radius: 4px;
+    text-decoration: none;
+    box-shadow: 0 0 20px var(--accent-red-glow);
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+    max-width: 400px;
+    border: 2px solid transparent;
+    cursor: pointer;
+  }
+
+  .af-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px var(--accent-red-glow);
+    background: #FF1A1A;
+  }
+
+  /* 1. HERO SECTION */
+  .af-hero {
+    position: relative;
+    padding: 60px 0 100px;
+    background: radial-gradient(circle at 50% 0%, #2a0808 0%, #000000 70%);
+    text-align: center;
+  }
+
+  .af-hero-eyebrow {
+    color: var(--accent-yellow);
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .af-hero-mockup {
+    width: 100%;
+    max-width: 600px;
+    margin: 40px auto;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.8));
+    border-radius: 12px;
+  }
+
+  /* 2. PAIN SECTION */
+  .af-pain {
+    background-color: var(--bg-surface);
+    text-align: center;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+  }
+
+  .af-pain h2 {
+    color: var(--accent-red);
+  }
+
+  /* 3. BRIDGE / FEATURES */
+  .af-features {
+    background: var(--bg-dark);
+  }
+
+  .af-feature-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-top: 40px;
+  }
+  
+  @media (min-width: 768px) {
+    .af-feature-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .af-feature-card {
+    background: var(--bg-surface);
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid #222;
+    text-align: left;
+  }
+
+  .af-feature-card h3 {
+    color: var(--text-main);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  .af-feature-card i {
+    font-size: 2.5rem;
+    color: var(--accent-yellow);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  /* 4. US VS THEM */
+  .af-compare {
+    background: var(--bg-surface-light);
+  }
+
+  .af-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 40px;
+    background: var(--bg-dark);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .af-table th, .af-table td {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #222;
+  }
+
+  .af-table th:first-child, .af-table td:first-child {
+    text-align: left;
+  }
+
+  .af-table th {
+    font-weight: 900;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+  }
+
+  .af-table th.brand-us {
+    background: var(--accent-red);
+    color: white;
+  }
+
+  .af-table th.brand-them {
+    background: #333;
+    color: #999;
+  }
+
+  .af-check {
+    color: #36BA20;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  .af-cross {
+    color: #666;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  /* 6. OFFER / CHECKOUT */
+  .af-offer {
+    text-align: center;
+    background: radial-gradient(circle at 50% 100%, #2a0808 0%, #000000 70%);
+  }
+
+  .af-price-box {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--accent-red);
+    border-radius: 12px;
+    padding: 40px 20px;
+    max-width: 600px;
+    margin: 0 auto 40px;
+  }
+
+  .af-price-original {
+    text-decoration: line-through;
+    color: #666;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .af-price-sale {
+    color: var(--accent-yellow);
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1;
+    margin: 10px 0;
+  }
+
+  .af-guarantee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    color: #ccc;
+    font-size: 0.9rem;
+  }
+</style>
+
+<div class="atacama-funnel">
+
+  <!-- 1. HERO: The Hook & Big Promise -->
+  <section class="af-hero af-section">
+    <div class="af-container">
+      <span class="af-hero-eyebrow">Edición Limitada MotoSport</span>
+      <h1>Desbloquea el 100% de tu Rendimiento.<br><span style="color: var(--accent-red);">Sin Pantallas. Sin Distracciones.</span></h1>
+      <p style="font-size: 1.25rem; max-width: 800px; margin: 0 auto 30px; color: #ddd;">
+        La única banda inteligente indestructible diseñada para soportar el Enduro más duro y decirte exactamente cuándo acelerar y cuándo recuperarte.
+      </p>
+      
+      <!-- Mockup Placeholder: Debe reemplazarse con imagen real de Atacama Band con barro/sudor -->
+      <img src="https://motosportcl.com/cdn/shop/files/844a443bffea963e68e1994c90f278e8_c2090c20-7ad1-4e6e-91f8-6511ac7ea0db.webp?v=1785783542" alt="Atacama Band en acción" class="af-hero-mockup" onerror="this.src='https://placehold.co/800x500/111/444?text=Atacama+Band+Hero+Mockup'">
+      
+      <a href="#checkout" class="af-btn-primary">COMPRAR AHORA - $59.990</a>
+    </div>
+  </section>
+
+  <!-- 2. PAIN: Agitar la herida -->
+  <section class="af-section af-pain">
+    <div class="af-container">
+      <h2>CORRER FATIGADO ES LA RECETA PERFECTA PARA ROMPERTE UN HUESO.</h2>
+      <p style="max-width: 700px; margin: 0 auto; font-size: 1.2rem;">
+        Y tu smartwatch de $500 dólares no sobrevivirá a la primera caída en las rocas. Las pantallas se quiebran. Las notificaciones te distraen en la pista. La batería se muere a mitad de la ruta. Necesitas telemetría de piloto, no un juguete de oficina.
+      </p>
+    </div>
+  </section>
+
+  <!-- 3. BRIDGE & SOLUTION -->
+  <section class="af-section af-features">
+    <div class="af-container">
+      <h2 style="text-align: center;">PRECISIÓN MÉDICA BAJO EL TRAJE</h2>
+      <p style="text-align: center; max-width: 800px; margin: 0 auto;">Atacama Band® es el nuevo estándar. Mide tu Strain (Esfuerzo) y tu Recovery (Recuperación) de forma invisible.</p>
+      
+      <div class="af-feature-grid">
+        <div class="af-feature-card">
+          <i class="uil uil-battery-bolt"></i>
+          <h3>7 DÍAS DE BATERÍA</h3>
+          <p>No más cables diarios. Cárgala el domingo y olvídate hasta el próximo fin de semana de carreras.</p>
+        </div>
+        <div class="af-feature-card">
+          <i class="uil uil-shield-check"></i>
+          <h3>INDESTRUCTIBLE</h3>
+          <p>Sin pantalla de cristal frágil. Resistente al barro, agua, rocas y caídas a alta velocidad.</p>
+        </div>
+        <div class="af-feature-card">
+          <i class="uil uil-heart-rate"></i>
+          <h3>HRV & RECOVERY</h3>
+          <p>La app te dirá en la mañana si tu cuerpo está listo para romper el cronómetro o si necesitas descansar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. US VS THEM -->
+  <section class="af-section af-compare">
+    <div class="af-container">
+      <h2 style="text-align: center;">LA VERDAD CRUDA</h2>
+      
+      <table class="af-table">
+        <thead>
+          <tr>
+            <th>Características</th>
+            <th class="brand-us">ATACAMA BAND®</th>
+            <th class="brand-them">SMARTWATCH NORMAL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Resistencia a Impactos Extremos</td>
+            <td class="af-check">✓ Máxima</td>
+            <td class="af-cross">✗ Pantalla Rota</td>
+          </tr>
+          <tr>
+            <td>Duración de Batería</td>
+            <td class="af-check">✓ 7 a 10 Días</td>
+            <td class="af-cross">✗ 1 Día</td>
+          </tr>
+          <tr>
+            <td>Distracciones en la Moto</td>
+            <td class="af-check">✓ Cero. Sin Pantalla.</td>
+            <td class="af-cross">✗ Notificaciones constantes</td>
+          </tr>
+          <tr>
+            <td>Precio</td>
+            <td class="af-check">✓ $59.990 CLP</td>
+            <td class="af-cross">✗ +$300.000 CLP</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 5. SOCIAL PROOF (Trustpilot style mockup) -->
+  <section class="af-section" style="background: var(--bg-dark); border-top: 1px solid #222;">
+    <div class="af-container" style="text-align: center;">
+      <h2>LO USAN LOS MEJORES DEL DAKAR</h2>
+      <p>Miles de pilotos ya no corren ciegos. Se preparan con Atacama Band.</p>
+      
+      <!-- Usando Liquid nativo o HTML crudo para el Marquee -->
+      <div style="padding: 20px; background: var(--bg-surface); border-radius: 8px; border: 1px solid #333; margin-top: 30px; display: inline-block; max-width: 600px;">
+        <i class="uil uil-star" style="color: #00B67A; font-size: 1.5rem;"></i>
+        <i class="uil uil-star" style="color: #00B67A; font-size: 1.5rem;"></i>
+        <i class="uil uil-star" style="color: #00B67A; font-size: 1.5rem;"></i>
+        <i class="uil uil-star" style="color: #00B67A; font-size: 1.5rem;"></i>
+        <i class="uil uil-star" style="color: #00B67A; font-size: 1.5rem;"></i>
+        <p style="color: #fff; font-weight: bold; margin: 10px 0;">"Se me cayó la moto encima en rocas, el manillar doblado pero la banda ni un rasguño. El análisis de HRV es idéntico a mi WHOOP."</p>
+        <span style="color: #999;">- Tomás De Gavardo (Piloto Rally)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. GRAND SLAM OFFER -->
+  <section id="checkout" class="af-section af-offer">
+    <div class="af-container">
+      <h2>ASEGURA TU VENTAJA COMPETITIVA</h2>
+      
+      <div class="af-price-box">
+        <div class="af-price-original">$120.000 CLP</div>
+        <div class="af-price-sale">$59.990 CLP</div>
+        <p style="color: #fff; font-weight: bold; margin-bottom: 30px;">(50% DE DESCUENTO - STOCK LIMITADO)</p>
+        
+        <!-- Formulario nativo de Shopify para agregar el producto actual al carrito -->
+        {%- assign product = all_products['atacama-band'] -%}
+        {%- if product == empty -%}
+           <!-- Fallback a producto global si 'atacama-band' handle es diferente -->
+           {%- assign target_product = product -%}
+        {%- else -%}
+           {%- assign target_product = product -%}
+        {%- endif -%}
+        
+        <form method="post" action="/cart/add" class="add-to-cart-form">
+          <!-- Tomamos el ID de la primera variante (o variante seleccionada por defecto en PDP) -->
+          <input type="hidden" name="id" value="{{ target_product.variants.first.id | default: 44026369507443 }}" />
+          <button type="submit" class="af-btn-primary" style="width: 100%;">
+            AGREGAR AL CARRITO
+          </button>
+        </form>
+        
+        <div class="af-guarantee">
+          <i class="uil uil-shield-check" style="font-size: 2.5rem; color: var(--accent-yellow);"></i>
+          <div style="text-align: left;">
+            <strong style="color: #fff; font-size: 1.1rem;">GARANTÍA INDESTRUCTIBLE DE 30 DÍAS</strong><br>
+            Si se rompe en tu primera carrera o no te gusta, te devolvemos el dinero sin hacer preguntas.
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+</div>

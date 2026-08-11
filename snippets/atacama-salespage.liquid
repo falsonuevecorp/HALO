@@ -22,7 +22,7 @@
   }
 
   /* TYPOGRAPHY */
-  .atacama-funnel h1, .atacama-funnel h2, .atacama-funnel h3 {
+  .atacama-funnel h1, .atacama-funnel h2, .atacama-funnel h3, .atacama-funnel h4 {
     font-family: 'Inter', sans-serif;
     font-weight: 900;
     text-transform: uppercase;
@@ -30,14 +30,14 @@
   }
 
   .atacama-funnel h1 {
-    font-size: clamp(2rem, 8vw, 4rem);
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
     line-height: 1.05;
     letter-spacing: -0.02em;
     margin-bottom: 1rem;
   }
 
   .atacama-funnel h2 {
-    font-size: clamp(1.5rem, 6vw, 3rem);
+    font-size: clamp(1.8rem, 6vw, 3.5rem);
     line-height: 1.1;
     margin-bottom: 1.5rem;
   }
@@ -66,7 +66,7 @@
     justify-content: center;
     background: var(--accent-red);
     color: #fff;
-    font-weight: 800;
+    font-weight: 900;
     font-size: 1.25rem;
     text-transform: uppercase;
     padding: 20px 40px;
@@ -75,15 +75,23 @@
     box-shadow: 0 0 20px var(--accent-red-glow);
     transition: all 0.2s ease-in-out;
     width: 100%;
-    max-width: 400px;
+    max-width: 450px;
     border: 2px solid transparent;
     cursor: pointer;
+    letter-spacing: 1px;
+    animation: af-pulse 2s infinite;
   }
 
   .af-btn-primary:hover {
     transform: translateY(-2px);
     box-shadow: 0 0 30px var(--accent-red-glow);
     background: #FF1A1A;
+  }
+
+  @keyframes af-pulse {
+    0% { box-shadow: 0 0 0 0 var(--accent-red-glow); }
+    70% { box-shadow: 0 0 0 15px rgba(213, 26, 26, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(213, 26, 26, 0); }
   }
 
   /* 1. HERO SECTION */
@@ -101,14 +109,18 @@
     text-transform: uppercase;
     font-size: 0.9rem;
     margin-bottom: 1rem;
-    display: block;
+    display: inline-block;
+    background: rgba(255, 192, 0, 0.1);
+    padding: 5px 15px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 192, 0, 0.3);
   }
 
   .af-hero-mockup {
     width: 100%;
-    max-width: 600px;
+    max-width: 700px;
     margin: 40px auto;
-    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.8));
+    filter: drop-shadow(0 20px 50px rgba(213,26,26,0.3));
     border-radius: 12px;
   }
 
@@ -121,10 +133,13 @@
   }
 
   .af-pain h2 {
+    color: var(--text-main);
+  }
+  .af-pain h2 span {
     color: var(--accent-red);
   }
 
-  /* 3. BRIDGE / FEATURES */
+  /* 3 & 4. BRIDGE / FEATURES */
   .af-features {
     background: var(--bg-dark);
   }
@@ -132,22 +147,37 @@
   .af-feature-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 40px;
-    margin-top: 40px;
+    gap: 30px;
+    margin-top: 60px;
   }
   
   @media (min-width: 768px) {
     .af-feature-grid {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
   .af-feature-card {
     background: var(--bg-surface);
-    padding: 30px;
+    padding: 40px;
     border-radius: 8px;
     border: 1px solid #222;
     text-align: left;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .af-feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 4px;
+    background: var(--accent-red);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .af-feature-card:hover::before {
+    opacity: 1;
   }
 
   .af-feature-card h3 {
@@ -157,13 +187,13 @@
   }
 
   .af-feature-card i {
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: var(--accent-yellow);
     margin-bottom: 20px;
     display: block;
   }
 
-  /* 4. US VS THEM */
+  /* 5. US VS THEM */
   .af-compare {
     background: var(--bg-surface-light);
   }
@@ -175,16 +205,19 @@
     background: var(--bg-dark);
     border-radius: 8px;
     overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   }
 
   .af-table th, .af-table td {
     padding: 20px;
     text-align: center;
     border-bottom: 1px solid #222;
+    font-size: 1.1rem;
   }
 
   .af-table th:first-child, .af-table td:first-child {
     text-align: left;
+    color: #ccc;
   }
 
   .af-table th {
@@ -196,121 +229,270 @@
   .af-table th.brand-us {
     background: var(--accent-red);
     color: white;
+    width: 30%;
   }
 
   .af-table th.brand-them {
     background: #333;
     color: #999;
+    width: 30%;
   }
 
   .af-check {
     color: #36BA20;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
 
   .af-cross {
     color: #666;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 
-  /* 6. OFFER / CHECKOUT */
+  /* 6. SOCIAL PROOF (Trustpilot style) */
+  .af-social-proof {
+    background: var(--bg-dark);
+    border-top: 1px solid #222;
+    text-align: center;
+  }
+
+  .af-review-card {
+    background: var(--bg-surface);
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: left;
+  }
+
+  .af-stars i {
+    color: #00B67A;
+    font-size: 1.5rem;
+  }
+
+  /* 7. HOW IT WORKS */
+  .af-steps {
+    background: var(--bg-surface);
+    text-align: center;
+  }
+  
+  .af-step-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-top: 50px;
+  }
+
+  @media (min-width: 768px) {
+    .af-step-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .af-step {
+    text-align: center;
+  }
+
+  .af-step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: var(--accent-red);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 900;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+
+  /* 8. FAQ ACCORDION */
+  .af-faq {
+    background: var(--bg-dark);
+  }
+  
+  .af-faq-item {
+    border-bottom: 1px solid #333;
+    padding: 20px 0;
+  }
+
+  .af-faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    cursor: pointer;
+    color: var(--text-main);
+  }
+
+  .af-faq-answer {
+    padding-top: 15px;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    display: none;
+  }
+  
+  .af-faq-item.active .af-faq-answer {
+    display: block;
+  }
+
+  .af-faq-item.active .af-faq-question i {
+    transform: rotate(45deg);
+    color: var(--accent-red);
+  }
+  
+  /* 9 & 10. GRAND SLAM OFFER & GUARANTEE */
   .af-offer {
     text-align: center;
     background: radial-gradient(circle at 50% 100%, #2a0808 0%, #000000 70%);
+    border-top: 1px solid #333;
   }
 
-  .af-price-box {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid var(--accent-red);
+  .af-offer-stack {
+    background: rgba(255,255,255,0.02);
+    border: 2px solid #333;
     border-radius: 12px;
-    padding: 40px 20px;
-    max-width: 600px;
+    padding: 50px 30px;
+    max-width: 700px;
     margin: 0 auto 40px;
   }
-
-  .af-price-original {
+  
+  .af-offer-stack-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    border-bottom: 1px dashed #333;
+    padding: 15px 0;
+  }
+  
+  .af-offer-stack-item:last-of-type {
+    border-bottom: none;
+    margin-bottom: 20px;
+  }
+  
+  .af-offer-stack-item .value {
+    color: #999;
     text-decoration: line-through;
-    color: #666;
-    font-size: 1.5rem;
-    font-weight: 700;
+  }
+  
+  .af-offer-total {
+    background: rgba(213,26,26,0.1);
+    border: 1px solid var(--accent-red);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 30px 0;
   }
 
   .af-price-sale {
     color: var(--accent-yellow);
-    font-size: 4rem;
+    font-size: clamp(3rem, 6vw, 4.5rem);
     font-weight: 900;
     line-height: 1;
     margin: 10px 0;
   }
 
-  .af-guarantee {
+  .af-guarantee-box {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 30px;
+    text-align: left;
+    border-left: 4px solid var(--accent-yellow);
+  }
+  
+  .af-urgency {
+    color: var(--accent-red);
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin: 15px 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
-    color: #ccc;
-    font-size: 0.9rem;
+    gap: 10px;
+  }
+  
+  .af-pulsing-dot {
+    width: 12px;
+    height: 12px;
+    background: var(--accent-red);
+    border-radius: 50%;
+    animation: pulse-dot 1.5s infinite;
+  }
+  
+  @keyframes pulse-dot {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(2.5); opacity: 0; }
   }
 </style>
 
 <div class="atacama-funnel">
 
-  <!-- 1. HERO: The Hook & Big Promise -->
+  <!-- 1. HERO: The Ultimate Hook -->
   <section class="af-hero af-section">
     <div class="af-container">
-      <span class="af-hero-eyebrow">Edición Limitada MotoSport</span>
-      <h1>Desbloquea el 100% de tu Rendimiento.<br><span style="color: var(--accent-red);">Sin Pantallas. Sin Distracciones.</span></h1>
-      <p style="font-size: 1.25rem; max-width: 800px; margin: 0 auto 30px; color: #ddd;">
-        La única banda inteligente indestructible diseñada para soportar el Enduro más duro y decirte exactamente cuándo acelerar y cuándo recuperarte.
+      <span class="af-hero-eyebrow"><i class="uil uil-fire"></i> Edición Limitada MotoSport</span>
+      <h1>Desbloquea el 100% de tu Rendimiento.<br><span style="color: var(--accent-red);">Sin Romper tu Reloj (Ni un hueso).</span></h1>
+      <p style="font-size: 1.3rem; max-width: 800px; margin: 0 auto 30px; color: #ccc;">
+        La primera banda inteligente biométrica indestructible diseñada exclusivamente para pilotos de Enduro y Rally. Entiende tu fatiga oculta antes de cometer un error fatal.
       </p>
       
-      <!-- Mockup Placeholder: Debe reemplazarse con imagen real de Atacama Band con barro/sudor -->
-      <img src="https://motosportcl.com/cdn/shop/files/844a443bffea963e68e1994c90f278e8_c2090c20-7ad1-4e6e-91f8-6511ac7ea0db.webp?v=1785783542" alt="Atacama Band en acción" class="af-hero-mockup" onerror="this.src='https://placehold.co/800x500/111/444?text=Atacama+Band+Hero+Mockup'">
+      <!-- Mockup Hero -->
+      <img src="https://motosportcl.com/cdn/shop/files/844a443bffea963e68e1994c90f278e8_c2090c20-7ad1-4e6e-91f8-6511ac7ea0db.webp?v=1785783542" alt="Atacama Band Hero" class="af-hero-mockup" onerror="this.src='https://placehold.co/800x500/111/444?text=Atacama+Band+Hero'">
       
-      <a href="#checkout" class="af-btn-primary">COMPRAR AHORA - $59.990</a>
+      <a href="#checkout" class="af-btn-primary">ASEGURAR MI BANDA AHORA</a>
+      <div class="af-urgency"><div class="af-pulsing-dot"></div> STOCK CRÍTICO: SOLO 14 UNIDADES DISPONIBLES</div>
     </div>
   </section>
 
-  <!-- 2. PAIN: Agitar la herida -->
+  <!-- 2. PAIN & EMPATHY: Clavar el cuchillo -->
   <section class="af-section af-pain">
     <div class="af-container">
-      <h2>CORRER FATIGADO ES LA RECETA PERFECTA PARA ROMPERTE UN HUESO.</h2>
-      <p style="max-width: 700px; margin: 0 auto; font-size: 1.2rem;">
-        Y tu smartwatch de $500 dólares no sobrevivirá a la primera caída en las rocas. Las pantallas se quiebran. Las notificaciones te distraen en la pista. La batería se muere a mitad de la ruta. Necesitas telemetría de piloto, no un juguete de oficina.
+      <h2>CORRER FATIGADO ES LA RECETA PERFECTA PARA <span>ROMPERTE UN HUESO</span>.</h2>
+      <p style="max-width: 750px; margin: 0 auto; font-size: 1.25rem;">
+        Lo sabemos. Entras a la pista sintiéndote invencible, pero a la tercera vuelta tus antebrazos están ardiendo, tu concentración cae y ahí es cuando ocurre el accidente. <br><br>
+        Y para empeorarlo todo, estás usando un smartwatch de $500 dólares que <strong>se va a quebrar en tu primera caída</strong> contra las rocas. Pantallas rotas, notificaciones que te distraen en pleno salto, y una batería que muere antes de que termines la ruta. 
+        <br><br>Necesitas telemetría de piloto, no un juguete de oficina.
       </p>
     </div>
   </section>
 
-  <!-- 3. BRIDGE & SOLUTION -->
+  <!-- 3. & 4. THE BRIDGE & FASCINATION BULLETS: El Nuevo Mecanismo -->
   <section class="af-section af-features">
     <div class="af-container">
-      <h2 style="text-align: center;">PRECISIÓN MÉDICA BAJO EL TRAJE</h2>
-      <p style="text-align: center; max-width: 800px; margin: 0 auto;">Atacama Band® es el nuevo estándar. Mide tu Strain (Esfuerzo) y tu Recovery (Recuperación) de forma invisible.</p>
+      <h2 style="text-align: center;">TELEMETRÍA MÉDICA BAJO EL TRAJE</h2>
+      <p style="text-align: center; max-width: 800px; margin: 0 auto;">Atacama Band® no compite con Apple o Garmin. Es otra categoría. Es un dispositivo de telemetría pasiva (sin pantalla) que mide tu Strain (Esfuerzo) y tu Recovery (Recuperación) de forma invisible.</p>
       
       <div class="af-feature-grid">
         <div class="af-feature-card">
           <i class="uil uil-battery-bolt"></i>
-          <h3>7 DÍAS DE BATERÍA</h3>
-          <p>No más cables diarios. Cárgala el domingo y olvídate hasta el próximo fin de semana de carreras.</p>
+          <h3>ENERGÍA DE LARGA DISTANCIA</h3>
+          <p><strong>De 7 a 10 días de batería real.</strong> Cárgala el domingo mientras lavas la moto, y olvídate hasta el próximo fin de semana. Nunca más te quedarás sin registrar una ruta.</p>
         </div>
         <div class="af-feature-card">
           <i class="uil uil-shield-check"></i>
-          <h3>INDESTRUCTIBLE</h3>
-          <p>Sin pantalla de cristal frágil. Resistente al barro, agua, rocas y caídas a alta velocidad.</p>
+          <h3>BLINDAJE OFF-ROAD</h3>
+          <p><strong>Cero pantallas de cristal frágil.</strong> Diseñada con polímeros de grado militar. Resistente al barro denso, agua, rocas sueltas y caídas a alta velocidad. Es literalmente indestructible.</p>
         </div>
         <div class="af-feature-card">
           <i class="uil uil-heart-rate"></i>
-          <h3>HRV & RECOVERY</h3>
-          <p>La app te dirá en la mañana si tu cuerpo está listo para romper el cronómetro o si necesitas descansar.</p>
+          <h3>MONITOR DE "RECOVERY" VITAL</h3>
+          <p><strong>Prevención de accidentes por fatiga.</strong> Mide tu VFC (Variabilidad de Frecuencia Cardíaca) mientras duermes. La app te dirá en la mañana si estás listo para dar el 100% o si tus reflejos estarán lentos.</p>
+        </div>
+        <div class="af-feature-card">
+          <i class="uil uil-eye-slash"></i>
+          <h3>CERO DISTRACCIONES</h3>
+          <p><strong>Enfoque absoluto en la pista.</strong> Sin vibraciones inútiles, sin correos del jefe, sin WhatsApps de tu ex. Solo tú, el motor y la ruta. Los datos se sincronizan al terminar.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 4. US VS THEM -->
+  <!-- 5. US VS THEM: The Brutal Comparison -->
   <section class="af-section af-compare">
     <div class="af-container">
       <h2 style="text-align: center;">LA VERDAD CRUDA</h2>
@@ -318,29 +500,34 @@
       <table class="af-table">
         <thead>
           <tr>
-            <th>Características</th>
+            <th>CARACTERÍSTICAS</th>
             <th class="brand-us">ATACAMA BAND®</th>
-            <th class="brand-them">SMARTWATCH NORMAL</th>
+            <th class="brand-them">SMARTWATCH CARO</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Resistencia a Impactos Extremos</td>
-            <td class="af-check">✓ Máxima</td>
-            <td class="af-cross">✗ Pantalla Rota</td>
+            <td>Resistencia a Impactos y Rocas</td>
+            <td class="af-check">✓ Máxima (Sin pantalla)</td>
+            <td class="af-cross">✗ Pantalla Rota Fácilmente</td>
           </tr>
           <tr>
-            <td>Duración de Batería</td>
+            <td>Duración de Batería (Uso GPS/Track)</td>
             <td class="af-check">✓ 7 a 10 Días</td>
-            <td class="af-cross">✗ 1 Día</td>
+            <td class="af-cross">✗ Menos de 1 Día</td>
           </tr>
           <tr>
-            <td>Distracciones en la Moto</td>
-            <td class="af-check">✓ Cero. Sin Pantalla.</td>
-            <td class="af-cross">✗ Notificaciones constantes</td>
+            <td>Distracciones en Conducción</td>
+            <td class="af-check">✓ Cero. Invisible.</td>
+            <td class="af-cross">✗ Vibraciones e interrupciones</td>
           </tr>
           <tr>
-            <td>Precio</td>
+            <td>Costo de Suscripción a la App</td>
+            <td class="af-check">✓ $0 (GRATIS DE POR VIDA)</td>
+            <td class="af-cross">✗ $30 USD / Mes (Whoop)</td>
+          </tr>
+          <tr>
+            <td>Precio del Dispositivo</td>
             <td class="af-check">✓ $59.990 CLP</td>
             <td class="af-cross">✗ +$300.000 CLP</td>
           </tr>
@@ -349,59 +536,147 @@
     </div>
   </section>
 
-  <!-- 5. SOCIAL PROOF (Trustpilot style mockup) -->
-  <section class="af-section" style="background: var(--bg-dark); border-top: 1px solid #222;">
-    <div class="af-container" style="text-align: center;">
-      <h2>LO USAN LOS MEJORES DEL DAKAR</h2>
-      <p>Miles de pilotos ya no corren ciegos. Se preparan con Atacama Band.</p>
+  <!-- 6. SOCIAL PROOF AVALANCHE -->
+  <section class="af-section af-social-proof">
+    <div class="af-container">
+      <h2>LO USAN LOS PILOTOS QUE VAN EN SERIO</h2>
+      <p>Miles de riders ya dejaron de gastar $500 en relojes que se rompen al mes.</p>
       
-      <!-- Usando Liquid nativo o HTML crudo para el Marquee -->
-      <div style="padding: 20px; background: var(--bg-surface); border-radius: 8px; border: 1px solid #333; margin-top: 30px; display: inline-block; max-width: 600px;">
-        <i class="uil uil-star" style="color: #00B67A; font-size: 1.5rem;"></i>
-        <i class="uil uil-star" style="color: #00B67A; font-size: 1.5rem;"></i>
-        <i class="uil uil-star" style="color: #00B67A; font-size: 1.5rem;"></i>
-        <i class="uil uil-star" style="color: #00B67A; font-size: 1.5rem;"></i>
-        <i class="uil uil-star" style="color: #00B67A; font-size: 1.5rem;"></i>
-        <p style="color: #fff; font-weight: bold; margin: 10px 0;">"Se me cayó la moto encima en rocas, el manillar doblado pero la banda ni un rasguño. El análisis de HRV es idéntico a mi WHOOP."</p>
-        <span style="color: #999;">- Tomás De Gavardo (Piloto Rally)</span>
+      <div class="af-review-card">
+        <div class="af-stars">
+          <i class="uil uil-star"></i><i class="uil uil-star"></i><i class="uil uil-star"></i><i class="uil uil-star"></i><i class="uil uil-star"></i>
+        </div>
+        <h3 style="margin: 15px 0;">"Idéntico a un WHOOP, pero sin la suscripción de mierda mensual"</h3>
+        <p>"Llevo usándola 2 meses. Se me cayó la moto encima en una zona de rocas, el manillar quedó doblado pero la banda ni un rasguño. El análisis de sueño y recuperación es sorprendentemente exacto. Por el precio es un regalo absoluto."</p>
+        <span style="color: #999; font-weight: bold;">— Tomás D. (Piloto Enduro Amateur)</span>
+      </div>
+      
+      <div class="af-review-card">
+        <div class="af-stars">
+          <i class="uil uil-star"></i><i class="uil uil-star"></i><i class="uil uil-star"></i><i class="uil uil-star"></i><i class="uil uil-star"></i>
+        </div>
+        <h3 style="margin: 15px 0;">"La mejor inversión de equipo este año"</h3>
+        <p>"Destrocé 2 Apple Watches antes de entender que no sirven para este deporte. La Atacama Band es ridículamente cómoda bajo las protecciones y el guante. La batería me dura 9 días sin problemas."</p>
+        <span style="color: #999; font-weight: bold;">— Javier C. (Motocross)</span>
       </div>
     </div>
   </section>
 
-  <!-- 6. GRAND SLAM OFFER -->
+  <!-- 7. HOW IT WORKS -->
+  <section class="af-section af-steps">
+    <div class="af-container">
+      <h2>MÁS FÁCIL QUE PONERSE EL CASCO</h2>
+      
+      <div class="af-step-grid">
+        <div class="af-step">
+          <div class="af-step-number">1</div>
+          <h3>PÓNTELA Y OLVÍDATE</h3>
+          <p>Ajuste ultra-ergonómico. Pesa tan poco que olvidarás que la llevas puesta bajo tu equipamiento.</p>
+        </div>
+        <div class="af-step">
+          <div class="af-step-number">2</div>
+          <h3>ACELERA A FONDO</h3>
+          <p>Disfruta tu ruta. La banda recopilará frecuencia cardíaca, esfuerzo, temperatura y movimiento a nivel clínico.</p>
+        </div>
+        <div class="af-step">
+          <div class="af-step-number">3</div>
+          <h3>SINCRONIZA Y MEJORA</h3>
+          <p>Abre la App al final del día (iOS/Android). Revisa tus picos de estrés físico y planifica tu recuperación.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FAQ OBJECTION KILLER -->
+  <section class="af-section af-faq">
+    <div class="af-container" style="max-width: 800px;">
+      <h2 style="text-align: center;">¿DUDAS ANTES DE ACELERAR?</h2>
+      <p style="text-align: center; margin-bottom: 40px;">Resolvemos las preguntas más comunes de nuestros pilotos.</p>
+      
+      <div class="af-faq-item">
+        <div class="af-faq-question" onclick="this.parentElement.classList.toggle('active')">
+          ¿La App tiene algún costo mensual como otras marcas? <i class="uil uil-plus"></i>
+        </div>
+        <div class="af-faq-answer">
+          No. A diferencia de WHOOP o Oura, no cobramos suscripciones mensuales. Compras la banda y la App (disponible en iOS y Android) es tuya completamente GRATIS de por vida.
+        </div>
+      </div>
+      
+      <div class="af-faq-item">
+        <div class="af-faq-question" onclick="this.parentElement.classList.toggle('active')">
+          ¿Es realmente contra el agua y el barro? <i class="uil uil-plus"></i>
+        </div>
+        <div class="af-faq-answer">
+          Absolutamente. Tiene certificación IP68. Puedes sumergirla, llenarla de barro en una ruta de Enduro de invierno, y luego lavarla directo con la manguera a presión (bueno, mejor con agua normal, pero entiendes el punto).
+        </div>
+      </div>
+      
+      <div class="af-faq-item">
+        <div class="af-faq-question" onclick="this.parentElement.classList.toggle('active')">
+          ¿Sirve para otros deportes o solo motos? <i class="uil uil-plus"></i>
+        </div>
+        <div class="af-faq-answer">
+          Fue diseñada con la brutalidad del MotoSport en mente, pero nuestros clientes la usan para Downhill, MTB, CrossFit, Boxeo y running. Si soporta el Enduro, soporta cualquier cosa.
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- 9 & 10. GRAND SLAM OFFER & RISK REVERSAL -->
   <section id="checkout" class="af-section af-offer">
     <div class="af-container">
-      <h2>ASEGURA TU VENTAJA COMPETITIVA</h2>
+      <h2>TU ARMA SECRETA ESTÁ LISTA</h2>
       
-      <div class="af-price-box">
-        <div class="af-price-original">$120.000 CLP</div>
-        <div class="af-price-sale">$59.990 CLP</div>
-        <p style="color: #fff; font-weight: bold; margin-bottom: 30px;">(50% DE DESCUENTO - STOCK LIMITADO)</p>
+      <div class="af-offer-stack">
+        <h3 style="margin-bottom: 30px; font-size: 1.8rem; color: var(--accent-yellow);">LO QUE TE LLEVAS HOY:</h3>
         
-        <!-- Formulario nativo de Shopify para agregar el producto actual al carrito -->
+        <div class="af-offer-stack-item">
+          <span><i class="uil uil-check-circle" style="color: #36BA20;"></i> 1x Atacama Band® Indestructible</span>
+          <span class="value">$120.000</span>
+        </div>
+        <div class="af-offer-stack-item">
+          <span><i class="uil uil-check-circle" style="color: #36BA20;"></i> Cable Cargador Magnético</span>
+          <span class="value">$15.000</span>
+        </div>
+        <div class="af-offer-stack-item">
+          <span><i class="uil uil-check-circle" style="color: #36BA20;"></i> App Pro de Telemetría (iOS/Android)</span>
+          <span class="value">$30.000 / Año</span>
+        </div>
+        
+        <div class="af-offer-total">
+          <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; margin-bottom: 5px;">Precio Normal Total: <span style="text-decoration: line-through; color: #999;">$165.000 CLP</span></p>
+          <div style="font-size: 1.5rem; font-weight: bold; margin-bottom: 10px;">HOY TE LLEVAS TODO POR:</div>
+          <div class="af-price-sale">$59.990 CLP</div>
+          <div style="color: #ccc; font-size: 0.9rem;">(Ahorras más de $100.000. Sin costos ocultos).</div>
+        </div>
+        
+        <!-- Formulario nativo de Shopify -->
         {%- assign product = all_products['atacama-band'] -%}
         {%- if product == empty -%}
-           <!-- Fallback a producto global si 'atacama-band' handle es diferente -->
            {%- assign target_product = product -%}
         {%- else -%}
            {%- assign target_product = product -%}
         {%- endif -%}
         
         <form method="post" action="/cart/add" class="add-to-cart-form">
-          <!-- Tomamos el ID de la primera variante (o variante seleccionada por defecto en PDP) -->
           <input type="hidden" name="id" value="{{ target_product.variants.first.id | default: 44026369507443 }}" />
-          <button type="submit" class="af-btn-primary" style="width: 100%;">
-            AGREGAR AL CARRITO
+          <button type="submit" class="af-btn-primary">
+            SÍ, QUIERO MI ATACAMA BAND
           </button>
         </form>
         
-        <div class="af-guarantee">
-          <i class="uil uil-shield-check" style="font-size: 2.5rem; color: var(--accent-yellow);"></i>
-          <div style="text-align: left;">
-            <strong style="color: #fff; font-size: 1.1rem;">GARANTÍA INDESTRUCTIBLE DE 30 DÍAS</strong><br>
-            Si se rompe en tu primera carrera o no te gusta, te devolvemos el dinero sin hacer preguntas.
+        <div class="af-urgency" style="margin-top: 20px;"><div class="af-pulsing-dot"></div> ALERTA DE STOCK: QUEDAN 14 UNIDADES</div>
+        
+        <!-- RISK REVERSAL: Godfather Guarantee -->
+        <div class="af-guarantee-box">
+          <i class="uil uil-shield-check" style="font-size: 3rem; color: var(--accent-yellow);"></i>
+          <div>
+            <strong style="color: #fff; font-size: 1.1rem; text-transform: uppercase;">Garantía de Hierro: 30 Días "Pruébala en la Tierra"</strong><br>
+            <span style="color: #ccc; font-size: 0.95rem;">Llévala a tu próxima carrera. Llénala de barro. Si no es el mejor tracker que has usado o simplemente no te gusta, envíanosla de vuelta y te reembolsamos cada centavo sin preguntas. El riesgo es 100% nuestro.</span>
           </div>
         </div>
+        
       </div>
       
     </div>

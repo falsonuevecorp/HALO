@@ -1,0 +1,22 @@
+{% render 'yoyo-landing-page', target_product: section.settings.target_product %}
+
+{% schema %}
+{
+  "name": "Yoyo Sales Funnel",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "product",
+      "id": "target_product",
+      "label": "Producto Vinculado",
+      "info": "Selecciona el Yoyo Watch para que el botón de compra funcione en páginas externas."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Yoyo Sales Funnel"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,67 @@
+<style>
+/* =========================================================
+   MOTO SPORT CL - BOUTIQUE UI & CONVERSION CSS
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  /* COLORS */
+  --ms-bg-dark: #000000;
+  --ms-text-light: #ffffff;
+  --ms-accent-red: #e41616;
+  --ms-accent-neon: #d6ee01;
+  --ms-blue-accent: #1a639b;
+
+  /* TYPOGRAPHY OVERRIDES */
+  --base-font-family: 'Nunito', sans-serif !important;
+  --heading-font-family: 'Fredoka', sans-serif !important;
+  --heading-font-weight: 700 !important;
+  --button-font-family: 'Fredoka', sans-serif !important;
+  --button-font-weight: 700 !important;
+}
+
+body {
+  background-color: var(--ms-bg-dark) !important;
+  color: var(--ms-text-light) !important;
+  font-family: var(--base-font-family);
+}
+
+h1, h2, h3, h4, h5, h6, .heading {
+  font-family: var(--heading-font-family);
+  color: var(--ms-text-light) !important;
+}
+
+/* BUTTONS */
+.button, .btn, button, .yoyo-main-atc-btn {
+  background-color: var(--ms-accent-red) !important;
+  color: var(--ms-text-light) !important;
+  border-radius: 8px !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none !important;
+  transition: all 0.3s ease !important;
+}
+.button:hover, .btn:hover, button:hover, .yoyo-main-atc-btn:hover {
+  background-color: var(--ms-accent-neon) !important;
+  color: #000000 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(214, 238, 1, 0.4) !important;
+}
+
+/* HEADER & FOOTER */
+header, footer, .top-info-bar, .bottom-info-bar {
+  background-color: #121212 !important;
+  color: var(--ms-text-light) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* REMOVE DEFAULT BOOSTER UGLY BANNERS IF NEEDED */
+.booster__popup--holder { display: none !important; }
+
+/* FIX FOR ANY WHITE BACKGROUND SECTIONS */
+.shopify-section, .wrapper, .container {
+  background-color: var(--ms-bg-dark) !important;
+}
+
+</style>

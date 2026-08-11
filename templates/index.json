@@ -1,0 +1,81 @@
+{
+  "sections": {
+    "1648057201732524d7": {
+      "type": "slideshow",
+      "blocks": {
+        "1648057201732524d7-0": {
+          "type": "image",
+          "settings": {
+            "title": "TU MOTO AL 100% DE RENDIMIENTO",
+            "content": "Desempeño, seguridad y durabilidad. Sin pagar de más.",
+            "button": "VER CATÁLOGO",
+            "buttonUrl": "shopify:\/\/collections\/all",
+            "textPosition": "center center",
+            "contentColor": "#ffffff",
+            "overlayOpacity": 40
+          }
+        }
+      },
+      "block_order": [
+        "1648057201732524d7-0"
+      ],
+      "settings": {
+        "layout": "full",
+        "height": "75",
+        "autoplay": false,
+        "autoplay_speed": 5
+      }
+    },
+    "1648057501a354c0b4": {
+      "type": "title",
+      "settings": {
+        "title": "NUESTRO RESPALDO",
+        "layout": "full",
+        "bcolor": "rgba(0,0,0,0)",
+        "align": "center",
+        "mtop": 2,
+        "mbottom": 2
+      }
+    },
+    "1648057431e779a557": {
+      "type": "icon-text",
+      "blocks": {
+        "1648057431e779a557-0": {
+          "type": "column",
+          "settings": {
+            "icon": "star",
+            "title": "Calidad Garantizada",
+            "content": "Probados en las rutas más exigentes."
+          }
+        },
+        "1648057431e779a557-1": {
+          "type": "column",
+          "settings": {
+            "icon": "truck",
+            "title": "Envíos Ultra-Rápidos",
+            "content": "A todo el territorio nacional."
+          }
+        },
+        "1648057431e779a557-2": {
+          "type": "column",
+          "settings": {
+            "icon": "shield",
+            "title": "Compra Segura",
+            "content": "Transacciones blindadas 100%."
+          }
+        }
+      },
+      "block_order": [
+        "1648057431e779a557-0",
+        "1648057431e779a557-1",
+        "1648057431e779a557-2"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "1648057201732524d7",
+    "1648057501a354c0b4",
+    "1648057431e779a557"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "yoyo-funnel": {
+      "type": "yoyo-sales-funnel",
+      "settings": {}
+    }
+  },
+  "order": [
+    "yoyo-funnel"
+  ]
+}

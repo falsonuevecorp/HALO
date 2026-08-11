@@ -104,20 +104,29 @@
     .hl-hero__img-wrap { order: 0; }
   }
   .hl-hero__left { max-width: 540px; }
+  .hl-hero__pretag { 
+    display: inline-flex; align-items: center; gap: 8px; 
+    padding: 6px 14px; background: rgba(0,236,255,0.06); 
+    border-radius: 100px; border: 1px solid rgba(0,236,255,0.2); 
+    margin-bottom: 24px; box-shadow: 0 4px 12px rgba(0,236,255,0.05);
+  }
+  .hl-hero__pretag .mono-tag { color: var(--cyan-orbit) !important; font-weight: 700; letter-spacing: 0.05em; font-size: 0.72rem; margin:0; line-height:1;}
   .hl-hero__dot {
-    width: 8px; height: 8px; border-radius: 50%; background: var(--green-signal);
-    box-shadow: 0 0 8px var(--green-signal); animation: pulse-dot 2s ease infinite;
+    width: 8px; height: 8px; border-radius: 50%; background: var(--cyan-orbit);
+    box-shadow: 0 0 8px var(--cyan-orbit); animation: pulse-dot 2s ease infinite;
   }
   @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.4} }
 
-  .hl-hero__badge-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+  .hl-hero__badge-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 32px; }
   .hl-hero__badge {
-    display: flex; align-items: center; gap: 6px; padding: 6px 12px;
-    border: 1px solid var(--border-subtle); border-radius: 100px;
-    font-size: 0.78rem; font-weight: 600; color: var(--text-muted) !important;
-    background: var(--obsidian);
+    display: flex; align-items: center; gap: 8px; padding: 8px 14px;
+    border: 1px solid rgba(0,0,0,0.06); border-radius: 100px;
+    font-size: 0.8rem; font-weight: 700; color: #1a1a1a !important;
+    background: #f8f9fa; box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    transition: transform 0.2s, box-shadow 0.2s; cursor: default;
   }
-  .hl-hero__badge svg { width: 14px; height: 14px; flex-shrink: 0; }
+  .hl-hero__badge:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+  .hl-hero__badge svg { width: 16px; height: 16px; flex-shrink: 0; }
 
   .hl-hero__cta-box {
     background: var(--titanium-dark) !important; border: 1px solid var(--border-subtle);
@@ -147,10 +156,11 @@
 
   /* CTA Button */
   .hl-btn-cta {
-    display: inline-block; width: 100%; text-align: center;
+    display: flex; align-items: center; justify-content: center;
+    width: 100%; max-width: 380px; margin: 0 auto; text-align: center;
     background: var(--green-signal) !important; color: #FFFFFF !important;
-    font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.1rem;
-    padding: 20px 24px; border-radius: 100px; text-decoration: none;
+    font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.05rem;
+    padding: 14px 20px; border-radius: 12px; text-decoration: none;
     transition: transform 0.2s, box-shadow 0.2s;
     box-shadow: 0 4px 15px rgba(0, 201, 123, 0.3);
   }
@@ -495,8 +505,9 @@
     animation: wb-pulse 2s infinite; box-sizing: border-box;
   }
   .wb-sticky-direct-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 182, 122, 0.6); }
-  .wb-sticky-btn-title { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 800; line-height: 1.2; margin: 0; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; }
-  .wb-sticky-btn-subtitle { font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 500; opacity: 0.95; margin-top: 3px; margin-bottom: 0; text-align: center; }
+  .wb-sticky-btn-title { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 800; line-height: 1.2; margin: 0; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; color: #ffffff !important; }
+  .wb-sticky-btn-title span { color: #ffffff !important; }
+  .wb-sticky-btn-subtitle { font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 500; opacity: 0.95; margin-top: 3px; margin-bottom: 0; text-align: center; color: #ffffff !important; }
   @keyframes wb-pulse { 0% { transform: scale(1); } 50% { transform: scale(1.015); } 100% { transform: scale(1); } }
 
   /* FAQ */
@@ -562,8 +573,8 @@
         <!-- COPY -->
         <div class="hl-hero__copy hl-hero__left">
           <div class="hl-hero__pretag">
-            <div class="hl-hero__dot" style="background:var(--cyan-orbit); box-shadow: 0 0 8px var(--cyan-orbit);"></div>
-            <span class="mono-tag" style="color:var(--cyan-orbit);">BIOMETRÍA PURA. CERO DISTRACCIONES.</span>
+            <div class="hl-hero__dot"></div>
+            <span class="mono-tag">BIOMETRÍA PURA. CERO DISTRACCIONES.</span>
           </div>
 
           <h1 class="h-display">

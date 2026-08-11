@@ -1,9 +1,17 @@
-{% render 'motosport-landing-page' %}
+{% render 'motosport-landing-page', target_product: section.settings.target_product %}
 
 {% schema %}
 {
   "name": "Moto Sport Landing",
-  "settings": [],
+  "tag": "section",
+  "settings": [
+    {
+      "type": "product",
+      "id": "target_product",
+      "label": "Producto Vinculado",
+      "info": "Selecciona el producto maestro para que el carrito funcione en páginas independientes."
+    }
+  ],
   "presets": [
     {
       "name": "Moto Sport Landing"

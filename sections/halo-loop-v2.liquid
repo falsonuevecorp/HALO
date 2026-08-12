@@ -113,14 +113,13 @@
     border-color: #FFFFFF !important;
   }
 
-  /* ====== BLOCK 1: HERO ====== */
+  /* ====== BLOCK 1: HERO (SPLIT LAYOUT) ====== */
   .hl2-hero {
     position: relative;
-    padding: 200px 0 140px;
-    min-height: 100vh;
+    padding: 160px 0 100px;
+    min-height: 90vh;
     display: flex;
     align-items: center;
-    text-align: center;
     overflow: hidden;
     background: var(--h2-bg-0);
   }
@@ -128,30 +127,129 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 50% 10%, rgba(0, 236, 255, 0.08) 0%, transparent 60%);
+    background: radial-gradient(circle at 70% 30%, rgba(0, 236, 255, 0.06) 0%, transparent 50%);
     pointer-events: none;
   }
   .hl2-hero__content {
     position: relative;
     z-index: 10;
-    max-width: 950px;
-    margin: 0 auto;
+    width: 100%;
+  }
+  .hl2-hero__grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .hl2-hero__text {
+    text-align: left;
   }
   .hl2-hero h1 {
-    font-size: clamp(3.5rem, 8vw, 6rem);
+    font-size: clamp(3rem, 5vw, 4.5rem);
     font-weight: 800;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     background: linear-gradient(180deg, #FFFFFF 20%, #71717a 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   .hl2-hero p {
-    font-size: 1.4rem;
+    font-size: 1.25rem;
     color: var(--h2-text-muted) !important; /* HARDCODED CONTRAST */
-    max-width: 760px;
-    margin: 0 auto 50px;
+    margin: 0 0 40px 0;
     line-height: 1.6;
     font-weight: 400;
+    max-width: 90%;
+  }
+  .hl2-hero__price {
+    display: flex;
+    align-items: baseline;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  .hl2-hero__price .price-current {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #FFFFFF !important;
+  }
+  .hl2-hero__price .price-compare {
+    font-size: 1.2rem;
+    color: var(--h2-text-muted) !important;
+    text-decoration: line-through;
+  }
+  .hl2-hero__micro-proof {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    color: #FFFFFF !important;
+    margin-bottom: 30px;
+  }
+  .stock-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--h2-green);
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 10px var(--h2-green);
+  }
+  .hl2-hero__badges {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    padding-top: 25px;
+    border-top: 1px solid var(--h2-border);
+    max-width: 90%;
+  }
+  .hl2-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--h2-text-muted) !important;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  .hl2-badge svg {
+    color: #FFFFFF;
+  }
+  .hl2-hero__visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hl2-hero__image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    animation: floatImage 6s ease-in-out infinite;
+  }
+  .hl2-hero-img {
+    width: 100%;
+    height: auto;
+    border-radius: 24px;
+    filter: drop-shadow(0 30px 40px rgba(0,0,0,0.4));
+  }
+  .hl2-hero-placeholder {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background: var(--h2-bg-1);
+    border: 1px solid var(--h2-border);
+    border-radius: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+  }
+  .hl2-hero-placeholder span {
+    color: #FFFFFF !important;
+    font-weight: 600;
+    margin-top: 20px;
+    letter-spacing: 0.05em;
+  }
+  @keyframes floatImage {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
   }
   .hl2-stars {
     display: inline-flex;
@@ -670,7 +768,14 @@
   }
 
   @media (max-width: 768px) {
-    .hl2-hero h1 { font-size: 3rem; }
+    .hl2-hero { padding: 120px 0 60px; }
+    .hl2-hero h1 { font-size: 2.5rem; }
+    .hl2-hero__grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+    .hl2-hero__text { text-align: center; }
+    .hl2-hero p { max-width: 100%; margin: 0 auto 30px; }
+    .hl2-hero__price { justify-content: center; }
+    .hl2-hero__micro-proof { justify-content: center; }
+    .hl2-hero__badges { justify-content: center; max-width: 100%; }
     .hl2-pivot__grid, .hl2-pitch-box, .hl2-card, .hl2-data-grid, .hl2-cases-grid, .hl2-box-list { grid-template-columns: 1fr; }
     .hl2-card, .hl2-pitch-box, .hl2-box-container { padding: 40px; }
     .hl2-table-wrapper { overflow-x: auto; }
@@ -679,25 +784,83 @@
 
 <div class="halo-loop-v2">
 
-  <!-- BLOCK 1: GANCHO CLÍNICO -->
+  <!-- BLOCK 1: GANCHO CLÍNICO Y CONVERSIÓN (SPLIT LAYOUT) -->
   <section class="hl2-hero">
-    <div class="hl2-wrap hl2-hero__content hl2-fade">
-      <div class="hl2-stars">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <span>4.9/5 de más de 12,000 atletas</span>
+    <div class="hl2-wrap hl2-hero__content">
+      <div class="hl2-hero__grid">
+        <!-- IZQUIERDA: COPY & SESGOS TRANSACCIONALES -->
+        <div class="hl2-hero__text hl2-fade">
+          <div class="hl2-stars">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <span>4.9/5 de más de 12,000 atletas</span>
+          </div>
+          <h1 style="margin-top: 15px;">Te despiertas agotado porque no mides tu biología real.</h1>
+          <p>Dormir 8 horas no significa recuperar 8 horas. Desbloquea tu potencial diario midiendo tu sueño profundo y HRV con precisión clínica, sin pantallas molestas.</p>
+          
+          <div class="hl2-hero__price">
+            {% if product %}
+              <span class="price-current">{{ product.price | money }}</span>
+              {% if product.compare_at_price > product.price %}
+                <span class="price-compare">{{ product.compare_at_price | money }}</span>
+              {% endif %}
+            {% else %}
+              <span class="price-current">$149.00</span>
+            {% endif %}
+          </div>
+          
+          <div style="margin-bottom: 20px;">
+            {% if product %}
+            <form method="post" action="/cart/add" class="hl2-hero-form">
+              <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+              <button type="submit" class="hl2-btn">
+                <span>ADQUIRIR LOOP BAND</span>
+              </button>
+            </form>
+            {% else %}
+            <a href="#comprar-v2" class="hl2-btn">
+              <span>ADQUIRIR LOOP BAND</span>
+            </a>
+            {% endif %}
+          </div>
+
+          <div class="hl2-hero__micro-proof">
+            <span class="stock-dot"></span> En stock. Envío exprés disponible.
+          </div>
+
+          <div class="hl2-hero__badges">
+            <div class="hl2-badge">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <span>Pago 100% Seguro</span>
+            </div>
+            <div class="hl2-badge">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              <span>Envío Internacional</span>
+            </div>
+            <div class="hl2-badge">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              <span>Garantía Hardware</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DERECHA: IMAGEN DE PRODUCTO PREMIUM -->
+        <div class="hl2-hero__visual hl2-fade">
+          <div class="hl2-hero__image-wrapper">
+            {% if product.featured_image %}
+              <img src="{{ product.featured_image | img_url: '800x' }}" alt="{{ product.title }}" class="hl2-hero-img">
+            {% else %}
+              <div class="hl2-hero-placeholder">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                <span>FOTO PRODUCTO</span>
+              </div>
+            {% endif %}
+          </div>
+        </div>
       </div>
-      <br>
-      <span class="hl2-tag">El Estándar Biométrico V2</span>
-      <h1>Te despiertas agotado porque no mides tu biología real.</h1>
-      <p>Dormir 8 horas no significa recuperar 8 horas. Desbloquea tu potencial diario midiendo tu sueño profundo y HRV con precisión clínica, sin pantallas molestas.</p>
-      
-      <a href="#comprar-v2" class="hl2-btn">
-        <span>ADQUIRIR LOOP BAND</span>
-      </a>
     </div>
   </section>
 

@@ -854,18 +854,37 @@
             <form method="post" action="/cart/add" class="hl2-hero-form">
               <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
               <button type="submit" class="hl2-btn">
-                <span>RECUPERAR MI ENERGÍA AHORA</span>
+                <span>LIBERAR MIS DATOS AHORA</span>
               </button>
             </form>
             {% else %}
             <a href="#comprar-v2" class="hl2-btn">
-              <span>RECUPERAR MI ENERGÍA AHORA</span>
+              <span>LIBERAR MIS DATOS AHORA</span>
             </a>
             {% endif %}
           </div>
 
           <div class="hl2-hero__micro-proof">
             <span class="stock-dot"></span> En stock. Envío exprés disponible.
+          </div>
+
+          <div class="hl2-hero__ecosystem" style="display:flex; gap: 15px; margin-bottom: 25px; align-items: center; flex-wrap: wrap;">
+            <div style="display:flex; align-items:center; gap:6px; color:rgba(255,255,255,0.7) !important; font-size:0.8rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              <span>Apple Health</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:6px; color:rgba(255,255,255,0.7) !important; font-size:0.8rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FC4C02" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15.38 17.65L12 11.23l-3.38 6.42h-3L12 5.8l6.38 11.85h-3zm-6.76-6.42l3.38-6.43 3.38 6.43H8.62z"/></svg>
+              <span>Strava</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:6px; color:rgba(255,255,255,0.7) !important; font-size:0.8rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
+              <span>Oura Import</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:6px; color:rgba(255,255,255,0.7) !important; font-size:0.8rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              <span>iOS & Android</span>
+            </div>
           </div>
 
           <div class="hl2-hero__badges">
@@ -924,13 +943,13 @@
   <section class="hl2-pivot">
     <div class="hl2-wrap hl2-pivot__grid hl2-fade">
       <div>
-        <span class="hl2-tag" style="color:#FFFFFF !important;">EL PROBLEMA INVISIBLE</span>
-        <h2>Los smartwatches son juguetes de notificaciones.</h2>
-        <p>Te acuestas a dormir con una pantalla brillante en la muñeca. Las notificaciones te disparan el cortisol y luego un algoritmo intenta "adivinar" tu calidad de sueño.</p>
+        <span class="hl2-tag" style="color:#FFFFFF !important;">FASE REM BLINDADA</span>
+        <h2>Cero distracciones. Foco 100% clínico.</h2>
+        <p>Una pantalla en tu muñeca solo dispara tu cortisol cuando más necesitas paz. Diseñamos un hardware quirúrgico, invisible durante la noche, que recopila tus datos biométricos en silencio absoluto.</p>
       </div>
       <div class="hl2-pivot__visual">
-        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-        <span>DISEÑO STEALTH SIN PANTALLAS</span>
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--h2-cyan)" stroke-width="1.5"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="8" fill="rgba(0,236,255,0.1)"/></svg>
+        <span>SENSOR CLÍNICO INVISIBLE</span>
       </div>
     </div>
   </section>
@@ -995,6 +1014,12 @@
               <td class="highlight-col"><strong>Cero. $0/mes.</strong></td>
               <td>Depende de apps 3ras</td>
               <td>$30 / mes (Obligatorio)</td>
+            </tr>
+            <tr>
+              <td>Propiedad de los Datos</td>
+              <td class="highlight-col"><strong>100% Tuyos</strong></td>
+              <td>App de terceros</td>
+              <td>Rehenes de la suscripción</td>
             </tr>
             <tr>
               <td>Diseño Anti-Insomnio</td>

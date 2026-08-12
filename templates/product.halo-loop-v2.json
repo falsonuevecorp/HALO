@@ -2,8 +2,7 @@
   "sections": {
     "main": {
       "type": "halo-loop-v2",
-      "settings": {
-      }
+      "settings": {}
     }
   },
   "order": [

@@ -303,6 +303,30 @@
       opacity: 0;
     }
   }
+
+  /* MERCADOPAGO HIGH-CONTRAST CARD & ANTI-INVISIBILIDAD REGLA 19 */
+  .hl2-mp-card {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  }
+  .hl2-mp-card,
+  .hl2-mp-card span,
+  .hl2-mp-card div,
+  .hl2-mp-card .money,
+  .hl2-mp-card * {
+    color: #FFFFFF !important;
+  }
+  .hl2-mp-card .hl2-mp-highlight {
+    color: #009EE3 !important;
+  }
+  .hl2-mp-card .hl2-mp-green {
+    color: var(--h2-green) !important;
+  }
+  .hl2-mp-card .hl2-mp-muted {
+    color: var(--h2-text-muted) !important;
+  }
+
   .hl2-stars {
     display: inline-flex;
     align-items: center;
@@ -920,21 +944,21 @@
             {% endif %}
           </div>
           
-          <!-- MERCADOPAGO PREMIUM BANNER -->
-          <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 16px; display: flex; align-items: center; gap: 15px; margin-bottom: 25px;">
+          <!-- MERCADOPAGO PREMIUM BANNER (HIGH CONTRAST) -->
+          <div class="hl2-mp-card" style="border-radius: 16px; padding: 16px; display: flex; align-items: center; gap: 15px; margin-bottom: 25px;">
             <div style="background: #FFFFFF; border-radius: 8px; padding: 6px; display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; flex-shrink: 0;">
               <img src="https://http2.mlstatic.com/frontend-assets/mp-web-navigation/ui-navigation/5.19.1/mercadopago/logo__small@2x.png" alt="Mercado Pago" style="max-width: 100%; object-fit: contain;">
             </div>
             <div style="display:flex; flex-direction:column; gap:4px;">
-              <div style="color: #FFFFFF; font-size: 0.95rem; font-weight: 600;">
-                Paga en <span style="color: #009EE3;">3 cuotas</span> de <span style="font-weight: 800;">{% if product %}{{ product.price | divided_by: 3 | money }}{% else %}$49.66{% endif %}</span>
+              <div style="color: #FFFFFF !important; font-size: 0.95rem; font-weight: 600;">
+                Paga en <span class="hl2-mp-highlight" style="color: #009EE3 !important;">3 cuotas</span> de <span style="font-weight: 800; color: #FFFFFF !important;" class="hl2-mp-amount">{% if product %}{{ product.price | divided_by: 3 | money }}{% else %}$49.66{% endif %}</span>
               </div>
               <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="color: var(--h2-green) !important; font-size: 0.85rem; font-weight: 700; display:flex; align-items:center; gap:4px;">
+                <span class="hl2-mp-green" style="color: var(--h2-green) !important; font-size: 0.85rem; font-weight: 700; display:flex; align-items:center; gap:4px;">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
                   Sin interés
                 </span>
-                <span style="color: var(--h2-text-muted) !important; font-size: 0.85rem; display:flex; align-items:center; gap:4px;">
+                <span class="hl2-mp-muted" style="color: var(--h2-text-muted) !important; font-size: 0.85rem; display:flex; align-items:center; gap:4px;">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                   100% Seguro
                 </span>

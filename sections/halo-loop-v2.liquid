@@ -1,0 +1,748 @@
+{% schema %}
+{
+  "name": "HALO Loop V2",
+  "settings": [],
+  "presets": [
+    {
+      "name": "HALO Loop V2",
+      "category": "HALO"
+    }
+  ]
+}
+{% endschema %}
+
+<!-- GOOGLE FONTS: Inter (Official HALO Tech Typography) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+{%- assign product = all_products['loop-band'] -%}
+
+<style>
+  :root {
+    --h2-bg-0: #030303;
+    --h2-bg-1: #0A0A0A;
+    --h2-bg-2: #141414;
+    --h2-bg-3: #1F1F1F;
+    --h2-cyan: #00ECFF;
+    --h2-green: #00C97B;
+    --h2-text-main: #FFFFFF;
+    --h2-text-muted: #94a3b8;
+    --h2-border: rgba(255, 255, 255, 0.08);
+    --font-family: -apple-system, BlinkMacSystemFont, "Inter", "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  /* RESET & BASE */
+  .halo-loop-v2 {
+    background: var(--h2-bg-0);
+    color: var(--h2-text-main);
+    font-family: var(--font-family);
+    overflow-x: hidden;
+  }
+  
+  .halo-loop-v2 h1, .halo-loop-v2 h2, .halo-loop-v2 h3, .halo-loop-v2 h4 {
+    font-family: var(--font-family);
+    margin: 0;
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+  }
+
+  .hl2-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* KINETIC VANGUARD UTILS */
+  .hl2-fade {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hl2-fade.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .hl2-tag {
+    display: inline-block;
+    font-family: var(--font-family);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--h2-cyan) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 24px;
+  }
+
+  /* BUTTONS: ZERO RED, APPLE STEALTH AESTHETIC */
+  .hl2-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF !important;
+    border: 1px solid #FFFFFF !important;
+    color: #000000 !important; /* HARDCODED CONTRAST */
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 18px 42px;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+  }
+  .hl2-btn span {
+    color: inherit !important;
+  }
+  .hl2-btn:hover {
+    background: #000000 !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+  }
+
+  .hl2-btn--outline {
+    background: transparent !important;
+    border: 1px solid var(--h2-border) !important;
+    color: #FFFFFF !important;
+    box-shadow: none;
+  }
+  .hl2-btn--outline:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: #FFFFFF !important;
+  }
+
+  /* ====== BLOCK 1: HERO ====== */
+  .hl2-hero {
+    position: relative;
+    padding: 200px 0 140px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    background: var(--h2-bg-0);
+  }
+  .hl2-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 10%, rgba(0, 236, 255, 0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hl2-hero__content {
+    position: relative;
+    z-index: 10;
+    max-width: 950px;
+    margin: 0 auto;
+  }
+  .hl2-hero h1 {
+    font-size: clamp(3.5rem, 8vw, 6rem);
+    font-weight: 800;
+    margin-bottom: 30px;
+    background: linear-gradient(180deg, #FFFFFF 20%, #71717a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hl2-hero p {
+    font-size: 1.4rem;
+    color: var(--h2-text-muted) !important; /* HARDCODED CONTRAST */
+    max-width: 760px;
+    margin: 0 auto 50px;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+  .hl2-stars {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 30px;
+    background: rgba(255,255,255,0.04);
+    padding: 8px 20px;
+    border-radius: 9999px;
+    border: 1px solid var(--h2-border);
+  }
+  /* REGLA 19 ANTI-INVISIBILIDAD */
+  .hl2-stars span, .hl2-stars div {
+    color: #FFFFFF !important; 
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+  .hl2-stars svg {
+    color: #FFC107;
+  }
+
+  /* ====== BLOCK 2: LOGO BAR (TRANSITION 1) ====== */
+  .hl2-logos {
+    padding: 70px 0;
+    background: var(--h2-bg-1); /* Transition to slightly lighter black */
+    border-top: 1px solid var(--h2-border);
+    border-bottom: 1px solid var(--h2-border);
+  }
+  .hl2-logos__grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    opacity: 0.4;
+  }
+  .hl2-logos__item {
+    font-size: 1.2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: #FFFFFF !important; /* HARDCODED */
+  }
+
+  /* ====== BLOCK 3: EL PIVOTE (TRANSITION 2) ====== */
+  .hl2-pivot {
+    padding: 160px 0;
+    background: var(--h2-bg-2); /* Transition to #141414 */
+    position: relative;
+  }
+  .hl2-pivot__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .hl2-pivot h2 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+  }
+  .hl2-pivot p {
+    font-size: 1.2rem;
+    color: var(--h2-text-muted) !important;
+    line-height: 1.7;
+    margin-bottom: 30px;
+  }
+  .hl2-pivot__visual {
+    height: 500px;
+    background: var(--h2-bg-1);
+    border: 1px solid var(--h2-border);
+    border-radius: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+  }
+  .hl2-pivot__visual span {
+    color: #FFFFFF !important;
+    font-weight: 600;
+    margin-top: 20px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ====== BLOCK 4: STICKY STACKING ====== */
+  .hl2-sticky-section {
+    background: var(--h2-bg-3); /* Transition to #1F1F1F */
+    padding: 100px 0 200px;
+    position: relative;
+    border-top: 1px solid var(--h2-border);
+  }
+  .hl2-sticky-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .hl2-sticky-header {
+    text-align: center;
+    margin-bottom: 100px;
+  }
+  .hl2-sticky-header h2 {
+    font-size: 3.8rem;
+    font-weight: 800;
+  }
+  
+  .hl2-card {
+    background: var(--h2-bg-1);
+    border: 1px solid var(--h2-border);
+    border-radius: 32px;
+    padding: 60px;
+    margin-bottom: 40px;
+    position: sticky;
+    top: 120px;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+  }
+  /* Card variations to simulate stacking depth */
+  .hl2-card:nth-child(2) { top: 140px; transform: scale(0.98); }
+  .hl2-card:nth-child(3) { top: 160px; transform: scale(0.96); }
+  .hl2-card:nth-child(4) { top: 180px; transform: scale(0.94); }
+
+  .hl2-card h3 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    font-weight: 800;
+  }
+  .hl2-card p {
+    font-size: 1.15rem;
+    color: var(--h2-text-muted) !important;
+    line-height: 1.6;
+  }
+  .hl2-card__icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background: rgba(0, 236, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+
+  /* ====== BLOCK 5: EL PITCH ====== */
+  .hl2-pitch {
+    padding: 160px 0;
+    background: var(--h2-bg-1); /* Transition back to #0A0A0A */
+    border-top: 1px solid var(--h2-border);
+    text-align: center;
+  }
+  .hl2-pitch-box {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: var(--h2-bg-2);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 40px;
+    padding: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+  }
+  .hl2-pitch-box::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(0, 236, 255, 0.08) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .hl2-pitch-img {
+    background: var(--h2-bg-0);
+    border-radius: 24px;
+    border: 1px solid var(--h2-border);
+    height: 100%;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hl2-pitch-content h2 {
+    font-size: 2.8rem;
+    margin-bottom: 16px;
+  }
+  .hl2-pitch-price {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--h2-cyan) !important;
+    margin: 24px 0;
+  }
+  .hl2-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 30px 0 40px;
+  }
+  .hl2-checklist li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    font-size: 1.05rem;
+  }
+  .hl2-checklist li span {
+    color: #FFFFFF !important; /* HARDCODED CONTRAST */
+    font-weight: 500;
+  }
+  .hl2-checklist li svg {
+    color: var(--h2-cyan);
+  }
+
+  /* ====== BLOCK 6: TRUSTPILOT MARQUEE ====== */
+  .hl2-marquee-section {
+    padding: 100px 0;
+    background: var(--h2-bg-3); /* Transition to #1F1F1F */
+    border-top: 1px solid var(--h2-border);
+    border-bottom: 1px solid var(--h2-border);
+    overflow: hidden;
+  }
+  .hl2-marquee-section h2 {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 60px;
+  }
+  .hl2-marquee-track {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+    animation: hl2-scroll 35s linear infinite;
+  }
+  .hl2-marquee-track:hover {
+    animation-play-state: paused;
+  }
+  .hl2-review {
+    width: 420px;
+    background: var(--h2-bg-1);
+    border: 1px solid var(--h2-border);
+    border-radius: 24px;
+    padding: 40px;
+  }
+  .hl2-review h4 {
+    font-size: 1.25rem;
+    margin: 16px 0;
+  }
+  .hl2-review p {
+    color: var(--h2-text-muted) !important;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  .hl2-review span {
+    color: #FFFFFF !important;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+
+  /* ====== BLOCK 7: FAQS & GARANTÍA CLÍNICA ====== */
+  .hl2-closure {
+    padding: 160px 0;
+    background: var(--h2-bg-0); /* Deep back to #030303 */
+  }
+  .hl2-faq {
+    max-width: 800px;
+    margin: 0 auto 120px;
+  }
+  .hl2-faq h2 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 60px;
+  }
+  .hl2-faq-item {
+    border-bottom: 1px solid var(--h2-border);
+    padding: 30px 0;
+  }
+  .hl2-faq-q {
+    font-size: 1.3rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    color: #FFFFFF !important; /* HARDCODED CONTRAST */
+  }
+  .hl2-faq-a {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    color: var(--h2-text-muted) !important;
+    line-height: 1.7;
+    display: none;
+  }
+  .hl2-faq-item[open] .hl2-faq-a {
+    display: block;
+  }
+
+  .hl2-guarantee {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--h2-bg-2);
+    border: 1px solid rgba(0, 236, 255, 0.2);
+    border-radius: 32px;
+    padding: 70px 50px;
+    text-align: center;
+  }
+  .hl2-guarantee h3 {
+    font-size: 2.5rem;
+    margin-bottom: 24px;
+  }
+  .hl2-guarantee p {
+    color: #FFFFFF !important; /* HARDCODED CONTRAST REGLA 19 */
+    font-size: 1.2rem;
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 0 auto 40px;
+  }
+  .hl2-guarantee-badges {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+  }
+  .hl2-guarantee-badges span {
+    color: #FFFFFF !important;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  @keyframes hl2-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @media (max-width: 768px) {
+    .hl2-hero h1 { font-size: 3rem; }
+    .hl2-pivot__grid, .hl2-pitch-box, .hl2-card { grid-template-columns: 1fr; }
+    .hl2-card { padding: 40px; }
+    .hl2-pitch-box { padding: 40px; gap: 40px; }
+  }
+</style>
+
+<div class="halo-loop-v2">
+
+  <!-- BLOCK 1: GANCHO CLÍNICO -->
+  <section class="hl2-hero">
+    <div class="hl2-wrap hl2-hero__content hl2-fade">
+      <div class="hl2-stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <span>4.9/5 de más de 12,000 atletas</span>
+      </div>
+      <br>
+      <span class="hl2-tag">El Estándar Biométrico V2</span>
+      <h1>Te despiertas agotado porque no mides tu biología real.</h1>
+      <p>Dormir 8 horas no significa recuperar 8 horas. Desbloquea tu potencial diario midiendo tu sueño profundo y HRV con precisión clínica, sin pantallas molestas.</p>
+      
+      <a href="#comprar-v2" class="hl2-btn">
+        <span>ADQUIRIR LOOP BAND</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- BLOCK 2: CONFIANZA ASIMÉTRICA -->
+  <section class="hl2-logos">
+    <div class="hl2-wrap hl2-logos__grid hl2-fade">
+      <div class="hl2-logos__item">GQ</div>
+      <div class="hl2-logos__item">Forbes</div>
+      <div class="hl2-logos__item">Wired</div>
+      <div class="hl2-logos__item">Men's Health</div>
+    </div>
+  </section>
+
+  <!-- BLOCK 3: PIVOTE (ENEMIGO COMÚN) -->
+  <section class="hl2-pivot">
+    <div class="hl2-wrap hl2-pivot__grid hl2-fade">
+      <div>
+        <span class="hl2-tag" style="color:#FFFFFF !important;">EL PROBLEMA INVISIBLE</span>
+        <h2>Los smartwatches son juguetes de notificaciones.</h2>
+        <p>Te acuestas a dormir con una pantalla brillante en la muñeca. Las notificaciones te disparan el cortisol y luego un algoritmo intenta "adivinar" tu calidad de sueño.</p>
+        <p>Los atletas de élite no usan relojes genéricos para medir su recuperación cardiaca, porque las correas sueltas y los sensores diseñados para medir pasos no pueden leer tu biología molecular en el descanso profundo.</p>
+      </div>
+      <div class="hl2-pivot__visual">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+        <span>DISEÑO STEALTH SIN PANTALLAS</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCK 4: STICKY STACKING (MECÁNICA V2) -->
+  <section class="hl2-sticky-section">
+    <div class="hl2-wrap hl2-sticky-container">
+      <div class="hl2-sticky-header hl2-fade">
+        <span class="hl2-tag">LA VENTAJA CLÍNICA</span>
+        <h2>Por qué HALO rompe el molde.</h2>
+      </div>
+
+      <div class="hl2-card hl2-fade">
+        <div>
+          <div class="hl2-card__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--h2-cyan)" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+          </div>
+          <h3>La Estafa de la Suscripción Terminó.</h3>
+          <p>Otras marcas te cobran el dispositivo y luego $30 dólares al mes para ver tus propios datos. Nosotros te damos hardware médico y retienes tus datos para siempre. Sin cuotas recurrentes.</p>
+        </div>
+        <div class="hl2-pivot__visual" style="height: 300px; background: var(--h2-bg-2);">
+          <span>DATOS LIBERADOS</span>
+        </div>
+      </div>
+
+      <div class="hl2-card hl2-fade">
+        <div>
+          <div class="hl2-card__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--h2-cyan)" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </div>
+          <h3>Sensores de Grado Médico.</h3>
+          <p>Mide tu variabilidad de frecuencia cardíaca (HRV), oxígeno en sangre y fluctuaciones térmicas exactas para entender si tu cuerpo requiere descanso o está listo para rendir.</p>
+        </div>
+        <div class="hl2-pivot__visual" style="height: 300px; background: var(--h2-bg-2);">
+          <span>HRV CLÍNICO</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BLOCK 5: EL PITCH DIRECTO -->
+  <section class="hl2-pitch" id="comprar-v2">
+    <div class="hl2-wrap hl2-fade">
+      <div class="hl2-pitch-box">
+        <div class="hl2-pitch-img">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+        </div>
+        <div class="hl2-pitch-content">
+          <h2>LOOP Band® Pro</h2>
+          <p style="color: var(--h2-text-muted) !important; font-size: 1.15rem; line-height: 1.6;">Incluye sensor de grado médico, banda ultra transpirable y acceso de por vida a la app analítica de HALO.</p>
+          
+          <div class="hl2-pitch-price">{% if product %}{{ product.price | money }}{% else %}$149.00{% endif %}</div>
+
+          <ul class="hl2-checklist">
+            <li>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>App Gratuita de por Vida</span>
+            </li>
+            <li>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Sin suscripciones mensuales</span>
+            </li>
+            <li>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Envío Internacional Exprés</span>
+            </li>
+          </ul>
+
+          {% if product %}
+            <form method="post" action="/cart/add">
+              <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+              <button type="submit" class="hl2-btn" style="width: 100%;">
+                <span>AÑADIR AL CARRITO DIRECTO</span>
+              </button>
+            </form>
+          {% else %}
+            <a href="/products/loop-band" class="hl2-btn" style="width: 100%;">
+              <span>ADQUIRIR AHORA</span>
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCK 6: TRUSTPILOT INFINITO -->
+  <section class="hl2-marquee-section">
+    <div class="hl2-wrap hl2-fade">
+      <h2>Avalado por Expertos</h2>
+    </div>
+    <div class="hl2-marquee-track">
+      <div class="hl2-review">
+        <div style="color: #00B67A; font-size: 1.2rem;">★★★★★</div>
+        <h4>Por fin sin suscripciones</h4>
+        <p>"El Oura me costó un dineral y encima tenía que pagar mensual. Halo tiene las mismas métricas exactas y es de pago único. Espectacular diseño invisible."</p>
+        <span>— Miguel R. (Atleta de Alto Rendimiento)</span>
+      </div>
+      <div class="hl2-review">
+        <div style="color: #00B67A; font-size: 1.2rem;">★★★★★</div>
+        <h4>HRV Impecable</h4>
+        <p>"Mi Apple Watch me volvía loco con las notificaciones antes de dormir. Esto es una banda suave que ni sientes, pero me da un desglose de mi sueño profundo perfecto."</p>
+        <span>— Sofía L. (Biohacker)</span>
+      </div>
+      <div class="hl2-review">
+        <div style="color: #00B67A; font-size: 1.2rem;">★★★★★</div>
+        <h4>Mejor inversión del año</h4>
+        <p>"No imaginé que la recuperación se sintiera tan tangible. Al poder ver qué días mi cuerpo requiere descanso, dejé de lesionarme entrenando. El soporte es A1."</p>
+        <span>— David C. (Crossfit)</span>
+      </div>
+      <!-- DUPLICATES FOR INFINITE SCROLL -->
+      <div class="hl2-review">
+        <div style="color: #00B67A; font-size: 1.2rem;">★★★★★</div>
+        <h4>Por fin sin suscripciones</h4>
+        <p>"El Oura me costó un dineral y encima tenía que pagar mensual. Halo tiene las mismas métricas exactas y es de pago único. Espectacular diseño invisible."</p>
+        <span>— Miguel R. (Atleta de Alto Rendimiento)</span>
+      </div>
+      <div class="hl2-review">
+        <div style="color: #00B67A; font-size: 1.2rem;">★★★★★</div>
+        <h4>HRV Impecable</h4>
+        <p>"Mi Apple Watch me volvía loco con las notificaciones antes de dormir. Esto es una banda suave que ni sientes, pero me da un desglose de mi sueño profundo perfecto."</p>
+        <span>— Sofía L. (Biohacker)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCK 7: CIERRE Y GARANTÍA CLÍNICA -->
+  <section class="hl2-closure">
+    <div class="hl2-wrap">
+      
+      <div class="hl2-faq hl2-fade">
+        <h2>Preguntas Clínicas Frecuentes</h2>
+        
+        <div class="hl2-faq-item">
+          <div class="hl2-faq-q" onclick="this.parentElement.toggleAttribute('open')">
+            <span>¿Es compatible con Apple Health o Google Fit?</span>
+            <span>+</span>
+          </div>
+          <div class="hl2-faq-a">
+            Sí. LOOP Band se sincroniza de forma nativa con los ecosistemas de salud para unificar tus métricas sin fricción.
+          </div>
+        </div>
+
+        <div class="hl2-faq-item">
+          <div class="hl2-faq-q" onclick="this.parentElement.toggleAttribute('open')">
+            <span>¿Tiene batería suficiente para rastrear múltiples días?</span>
+            <span>+</span>
+          </div>
+          <div class="hl2-faq-a">
+            Por supuesto. Al eliminar pantallas consumidoras de energía, nuestra batería de alto rendimiento soporta mediciones continuas sin preocuparte de recargas diarias.
+          </div>
+        </div>
+      </div>
+
+      <div class="hl2-guarantee hl2-fade">
+        <h3>Garantía por Defectos de Fábrica</h3>
+        <p>Tu hardware está respaldado por nuestra política clínica de calidad. Si tu dispositivo presenta cualquier defecto de funcionamiento o ensamble, lo reemplazaremos sin costo alguno. Tu inversión está protegida.</p>
+        <a href="#comprar-v2" class="hl2-btn">
+          <span>ASEGURA TU LOOP BAND AHORA</span>
+        </a>
+        <div class="hl2-guarantee-badges">
+          <span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            Soporte 24/7
+          </span>
+          <span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            Garantía de Hardware
+          </span>
+          <span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            Cifrado Clínico
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<script>
+  // Clinical Fades Logic
+  document.addEventListener('DOMContentLoaded', function() {
+    const fadeEls = document.querySelectorAll('.hl2-fade');
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { root: null, threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    fadeEls.forEach(el => observer.observe(el));
+    
+    // Quick load for hero
+    setTimeout(() => {
+      const hero = document.querySelector('.hl2-hero__content');
+      if (hero) hero.classList.add('is-visible');
+    }, 150);
+  });
+</script>

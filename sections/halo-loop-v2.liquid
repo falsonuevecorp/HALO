@@ -138,9 +138,30 @@
   }
   .hl2-hero__grid {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: 1fr 0.9fr;
     gap: 60px;
     align-items: center;
+  }
+  .hl2-hero__buybox {
+    background: var(--h2-bg-1);
+    border: 1px solid var(--h2-border);
+    border-radius: 32px;
+    padding: 45px;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+  }
+  .hl2-hero__buybox h1 {
+    font-size: clamp(2.5rem, 4vw, 3.2rem);
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+    color: #FFFFFF;
+  }
+  .hl2-hero__specs-box {
+    background: var(--h2-bg-0);
+    border: 1px solid var(--h2-border);
+    border-radius: 20px;
+    padding: 24px;
+    margin-top: 25px;
   }
   .hl2-hero__text {
     text-align: left;
@@ -825,24 +846,40 @@
   <section class="hl2-hero">
     <div class="hl2-wrap hl2-hero__content">
       <div class="hl2-hero__grid">
-        <!-- IZQUIERDA: COPY & SESGOS TRANSACCIONALES -->
-        <div class="hl2-hero__text hl2-fade">
-          <div class="hl2-stars">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <span>4.9/5 de más de 12,000 atletas</span>
+        <!-- IZQUIERDA: IMAGEN DE PRODUCTO PREMIUM -->
+        <div class="hl2-hero__visual hl2-fade">
+          <div class="hl2-hero__image-wrapper" style="max-width: 100%;">
+            {% if product.featured_image %}
+              <img src="{{ product.featured_image | img_url: '1000x' }}" alt="{{ product.title }}" class="hl2-hero-img" style="border-radius: 32px;">
+            {% else %}
+              <div class="hl2-hero-placeholder" style="aspect-ratio: 4/5;">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                <span>FOTO PRODUCTO ALTA DEFINICIÓN</span>
+              </div>
+            {% endif %}
           </div>
-          <h1 style="margin-top: 15px;">Te despiertas agotado porque no mides tu biología real.</h1>
-          <p>Dormir 8 horas no significa recuperar 8 horas. Desbloquea tu potencial diario midiendo tu sueño profundo y HRV con precisión clínica, sin pantallas molestas.</p>
+        </div>
+
+        <!-- DERECHA: BUY BOX TRANSACCIONAL (ESTILO E-COMMERCE) -->
+        <div class="hl2-hero__text hl2-hero__buybox hl2-fade">
+          <div class="hl2-stars" style="margin-bottom: 15px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <span style="font-size:0.85rem;">4.9/5 (12,000+ Atletas)</span>
+          </div>
+          
+          <h1>HALO Loop Band</h1>
+          <p style="font-size: 1.1rem; margin-bottom: 25px; color: var(--h2-text-muted) !important;">Te despiertas agotado porque no mides tu biología real. Mide tu sueño profundo y HRV con precisión clínica.</p>
           
           <div class="hl2-hero__price">
             {% if product %}
               <span class="price-current">{{ product.price | money }}</span>
               {% if product.compare_at_price > product.price %}
                 <span class="price-compare">{{ product.compare_at_price | money }}</span>
+                <span class="hl2-tag" style="background:rgba(0,236,255,0.1); padding:4px 8px; border-radius:4px; margin:0 0 0 10px;">- AHORRAS</span>
               {% endif %}
             {% else %}
               <span class="price-current">$149.00</span>
@@ -851,69 +888,65 @@
           
           <div style="margin-bottom: 20px;">
             {% if product %}
-            <form method="post" action="/cart/add" class="hl2-hero-form">
+            <form method="post" action="/cart/add" class="hl2-hero-form" style="display:flex; flex-direction:column;">
               <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
-              <button type="submit" class="hl2-btn">
+              <button type="submit" class="hl2-btn" style="width: 100%;">
                 <span>LIBERAR MIS DATOS AHORA</span>
               </button>
             </form>
             {% else %}
-            <a href="#comprar-v2" class="hl2-btn">
+            <a href="#comprar-v2" class="hl2-btn" style="width: 100%; text-align:center;">
               <span>LIBERAR MIS DATOS AHORA</span>
             </a>
             {% endif %}
           </div>
 
-          <div class="hl2-hero__micro-proof">
-            <span class="stock-dot"></span> En stock. Envío exprés disponible.
+          <div class="hl2-hero__micro-proof" style="justify-content:center; margin-bottom: 20px;">
+            <span class="stock-dot"></span> En stock. Envío exprés a todo el mundo.
           </div>
 
-          <div class="hl2-hero__ecosystem" style="display:flex; gap: 15px; margin-bottom: 25px; align-items: center; flex-wrap: wrap;">
-            <div style="display:flex; align-items:center; gap:6px; color:rgba(255,255,255,0.7) !important; font-size:0.8rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-              <span>Apple Health</span>
+          <div class="hl2-hero__badges" style="border-top:none; padding-top:0; justify-content:space-between; flex-wrap:nowrap; gap:10px; margin-bottom:20px;">
+            <div class="hl2-badge" style="font-size:0.8rem; flex-direction:column; gap:4px; text-align:center;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <span>Pago Seguro</span>
             </div>
-            <div style="display:flex; align-items:center; gap:6px; color:rgba(255,255,255,0.7) !important; font-size:0.8rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FC4C02" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15.38 17.65L12 11.23l-3.38 6.42h-3L12 5.8l6.38 11.85h-3zm-6.76-6.42l3.38-6.43 3.38 6.43H8.62z"/></svg>
-              <span>Strava</span>
+            <div class="hl2-badge" style="font-size:0.8rem; flex-direction:column; gap:4px; text-align:center;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+              <span>Envío Rápido</span>
             </div>
-            <div style="display:flex; align-items:center; gap:6px; color:rgba(255,255,255,0.7) !important; font-size:0.8rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
-              <span>Oura Import</span>
-            </div>
-            <div style="display:flex; align-items:center; gap:6px; color:rgba(255,255,255,0.7) !important; font-size:0.8rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-              <span>iOS & Android</span>
-            </div>
-          </div>
-
-          <div class="hl2-hero__badges">
-            <div class="hl2-badge">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-              <span>Pago 100% Seguro</span>
-            </div>
-            <div class="hl2-badge">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
-              <span>Envío Internacional</span>
-            </div>
-            <div class="hl2-badge">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <div class="hl2-badge" style="font-size:0.8rem; flex-direction:column; gap:4px; text-align:center;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               <span>Garantía Hardware</span>
             </div>
           </div>
-        </div>
 
-        <!-- DERECHA: IMAGEN DE PRODUCTO PREMIUM -->
-        <div class="hl2-hero__visual hl2-fade">
-          <div class="hl2-hero__image-wrapper">
-            {% if product.featured_image %}
-              <img src="{{ product.featured_image | img_url: '800x' }}" alt="{{ product.title }}" class="hl2-hero-img">
-            {% else %}
-              <div class="hl2-hero-placeholder">
-                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-                <span>FOTO PRODUCTO</span>
+          <div class="hl2-hero__specs-box">
+            <div style="font-size:0.8rem; color:var(--h2-cyan) !important; text-transform:uppercase; letter-spacing:0.1em; font-weight:700; margin-bottom:10px;">INTEGRACIÓN NATIVA (GRATIS)</div>
+            <div class="hl2-hero__ecosystem" style="display:flex; gap: 15px; margin-bottom: 20px; align-items: center; flex-wrap: wrap;">
+              <div style="display:flex; align-items:center; gap:6px; color:rgba(255,255,255,0.7) !important; font-size:0.8rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                <span>Apple Health</span>
               </div>
-            {% endif %}
+              <div style="display:flex; align-items:center; gap:6px; color:rgba(255,255,255,0.7) !important; font-size:0.8rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FC4C02" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15.38 17.65L12 11.23l-3.38 6.42h-3L12 5.8l6.38 11.85h-3zm-6.76-6.42l3.38-6.43 3.38 6.43H8.62z"/></svg>
+                <span>Strava</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:6px; color:rgba(255,255,255,0.7) !important; font-size:0.8rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
+                <span>Oura</span>
+              </div>
+            </div>
+            
+            <div style="display:flex; flex-direction:column; gap:8px; padding-top:15px; border-top:1px solid var(--h2-border);">
+              <div style="display:flex; align-items:center; gap:8px; font-size:0.9rem; color:#FFFFFF !important; font-weight:500;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--h2-green)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Cero Suscripciones. Datos 100% tuyos.
+              </div>
+              <div style="display:flex; align-items:center; gap:8px; font-size:0.9rem; color:#FFFFFF !important; font-weight:500;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--h2-green)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Batería de larga duración (Hasta 20 días).
+              </div>
+            </div>
           </div>
         </div>
       </div>

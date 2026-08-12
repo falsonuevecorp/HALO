@@ -468,18 +468,24 @@
     border-collapse: collapse;
     text-align: left;
   }
+  .hl2-table tr {
+    background-color: transparent !important;
+  }
+  .hl2-table tbody tr:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.02) !important;
+  }
+  .hl2-table tbody tr:nth-child(even) {
+    background-color: transparent !important;
+  }
   .hl2-table th, .hl2-table td {
     padding: 30px;
-    border-bottom: 1px solid var(--h2-border);
+    border-bottom: 1px solid var(--h2-border) !important;
     font-size: 1.1rem;
+    color: #FFFFFF !important;
   }
   .hl2-table th {
-    background: rgba(255,255,255,0.02);
+    background-color: rgba(255,255,255,0.04) !important;
     font-weight: 700;
-    color: #FFFFFF !important; /* HARDCODED CONTRAST */
-  }
-  .hl2-table td {
-    color: #FFFFFF !important; /* HARDCODED CONTRAST */
   }
   .hl2-table td span, .hl2-table td p {
     color: #FFFFFF !important;
@@ -488,11 +494,12 @@
     color: var(--h2-green) !important;
     font-weight: 700;
   }
-  .hl2-table tr:last-child td { border-bottom: none; }
-  .hl2-table .highlight-col {
-    background: rgba(0, 201, 123, 0.05);
-    border-left: 1px solid rgba(0, 201, 123, 0.2);
-    border-right: 1px solid rgba(0, 201, 123, 0.2);
+  .hl2-table tr:last-child td { border-bottom: none !important; }
+  
+  .hl2-table td.highlight-col, .hl2-table th.highlight-col {
+    background-color: rgba(0, 201, 123, 0.08) !important;
+    border-left: 1px solid rgba(0, 201, 123, 0.3) !important;
+    border-right: 1px solid rgba(0, 201, 123, 0.3) !important;
   }
   .hl2-table .highlight-col strong {
     color: var(--h2-green) !important;

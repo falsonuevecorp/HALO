@@ -1292,20 +1292,71 @@
   <section class="hl2-pitch" id="comprar-v2">
     <div class="hl2-wrap hl2-fade">
       <div class="hl2-pitch-box">
-        <div class="hl2-pitch-img" style="overflow: hidden; border-radius: 24px; position: relative;">
-          {% if product.images.size > 1 %}
-            <img src="{{ product.images[1] | img_url: '800x' }}" alt="{{ product.title }}" style="width:100%; height:100%; object-fit:cover; border-radius: 24px;">
-          {% elsif product.featured_image %}
-            <img src="{{ product.featured_image | img_url: '800x' }}" alt="{{ product.title }}" style="width:100%; height:100%; object-fit:cover; border-radius: 24px;">
-          {% else %}
-            <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; background:var(--h2-bg-2);">
-              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+        <div class="hl2-pitch-img" style="overflow: hidden; border-radius: 24px; position: relative; min-height: 420px; background: #0A0A0A; border: 1px solid var(--h2-border);">
+          <!-- SPLIT-SCREEN CONTAINER -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; width: 100%; height: 100%; position: absolute; inset: 0;">
+            
+            <!-- LADO IZQUIERDO: PERSONA EN CAMA (SCENE UGC MINIMALISTA) -->
+            <div style="position: relative; overflow: hidden; background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(0,0,0,0.95)); border-right: 1px solid rgba(255,255,255,0.1); padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
+              <div style="position: absolute; inset: 0; background: radial-gradient(circle at 30% 30%, rgba(0,236,255,0.08), transparent 70%); pointer-events: none;"></div>
+              
+              <!-- Tag Minimalista -->
+              <span style="background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; border-radius: 99px; color: #FFFFFF !important; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; align-self: flex-start; z-index: 2;">
+                06:30 AM — DESPERTAR
+              </span>
+
+              <!-- Vector Ilustrativo de Escena en Cama & Mirando Muñeca -->
+              <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 2; margin: auto 0; text-align: center; gap: 12px;">
+                {% if product.featured_image %}
+                  <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}" style="width: 130px; height: 130px; object-fit: cover; border-radius: 20px; border: 2px solid var(--h2-cyan); box-shadow: 0 0 30px rgba(0,236,255,0.2);">
+                {% else %}
+                  <div style="width: 100px; height: 100px; background: rgba(0,236,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid var(--h2-cyan);">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--h2-cyan)" stroke-width="1.5"><path d="M2 20h20M4 20v-6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6M6 12V9a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v3"/></svg>
+                  </div>
+                {% endif %}
+                <div style="color: #FFFFFF !important; font-size: 0.85rem; font-weight: 700; line-height: 1.3;">Cero Alarma Cortisol. Lectura Invisible de Biometría.</div>
+              </div>
+
+              <div style="z-index: 2; color: var(--h2-text-muted) !important; font-size: 0.7rem; text-transform: uppercase; font-weight: 700;">UGC Real — Sin Pantallas</div>
             </div>
-          {% endif %}
-          <!-- UGC VERIFIED BADGE -->
-          <div style="position: absolute; bottom: 15px; left: 15px; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); border: 1px solid rgba(0,236,255,0.3); padding: 8px 14px; border-radius: 12px; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--h2-cyan)" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-            <span style="color: #FFFFFF !important; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.05em;">FOTO REAL EN USO (UGC VERIFICADO)</span>
+
+            <!-- LADO DERECHO: INTERFAZ APP HALO (NIVEL DE ESTRÉS Y SUEÑO) -->
+            <div style="background: #050505; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; border-left: 1px solid rgba(0,236,255,0.15);">
+              
+              <!-- Header App -->
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span style="color: var(--h2-cyan) !important; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em;">HALO APP v4.2</span>
+                <span style="width: 8px; height: 8px; background: var(--h2-green); border-radius: 50%;"></span>
+              </div>
+
+              <!-- Dashboard Score -->
+              <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 15px 0;">
+                <div style="position: relative; display: flex; align-items: center; justify-content: center; width: 110px; height: 110px;">
+                  <svg width="110" height="110" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="42" stroke="rgba(255,255,255,0.08)" stroke-width="8" fill="none"/>
+                    <circle cx="50" cy="50" r="42" stroke="#00ECFF" stroke-width="8" fill="none" stroke-dasharray="264" stroke-dashoffset="40" stroke-linecap="round"/>
+                  </svg>
+                  <div style="position: absolute; display: flex; flex-direction: column; align-items: center;">
+                    <span style="font-size: 2rem; font-weight: 900; color: #FFFFFF !important; line-height: 1;">96%</span>
+                    <span style="font-size: 0.6rem; color: var(--h2-cyan) !important; font-weight: 800; text-transform: uppercase;">RECOVERY</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Metrics Widget -->
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                <div style="background: rgba(255,255,255,0.04); border-radius: 10px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center;">
+                  <span style="color: rgba(255,255,255,0.7) !important; font-size: 0.75rem;">Fase Sueño REM:</span>
+                  <span style="color: #FFFFFF !important; font-weight: 800; font-size: 0.8rem;">2h 45m</span>
+                </div>
+                <div style="background: rgba(0,201,123,0.1); border: 1px solid rgba(0,201,123,0.25); border-radius: 10px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center;">
+                  <span style="color: var(--h2-green) !important; font-size: 0.75rem; font-weight: 700;">Nivel de Estrés:</span>
+                  <span style="color: var(--h2-green) !important; font-weight: 800; font-size: 0.8rem;">BAJO (12/100)</span>
+                </div>
+              </div>
+
+            </div>
+
           </div>
         </div>
         <div class="hl2-pitch-content">

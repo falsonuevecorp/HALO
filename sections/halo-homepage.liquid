@@ -63,8 +63,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: var(--h-green);
-    color: #000;
+    background: rgba(0,236,255,0.05);
+    border: 1px solid rgba(0,236,255,0.3);
+    color: #FFFFFF;
     font-family: 'Inter', sans-serif;
     font-weight: 800;
     font-size: 1.1rem;
@@ -72,13 +73,15 @@
     border-radius: 12px;
     text-decoration: none;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 20px rgba(0, 201, 123, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 236, 255, 0.1);
   }
   .hh-btn:hover {
+    background: rgba(0,236,255,0.15);
+    border-color: rgba(0,236,255,0.8);
     transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(0, 201, 123, 0.5);
+    box-shadow: 0 6px 25px rgba(0, 236, 255, 0.25);
   }
-  .hh-btn span { color: #000 !important; }
+  .hh-btn span { color: #FFFFFF !important; letter-spacing: 0.05em; }
 
   /* ===== HERO SECTION ===== */
   .hh-hero {
@@ -426,7 +429,7 @@
       <a href="/products/loop-band" class="hh-btn" style="padding: 20px 40px; font-size: 1.2rem;">
         <span>CONSIGUE TU LOOP BAND</span>
       </a>
-      <div style="margin-top: 24px; font-size: 0.85rem; color: var(--h-text-muted); display: flex; justify-content: center; gap: 20px;">
+      <div style="margin-top: 24px; font-size: 0.9rem; color: #FFFFFF; opacity: 0.7; display: flex; justify-content: center; gap: 20px; font-weight: 500;">
         <span>🚚 Envío Gratis</span>
         <span>🛡️ 30 Días de Garantía</span>
         <span>🔒 Pagos Seguros</span>

@@ -11,10 +11,10 @@
 }
 {% endschema %}
 
-<!-- GOOGLE FONTS: Fredoka (Headings) & Nunito (Body) -->
+<!-- GOOGLE FONTS: Inter (Official HALO Tech Typography) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 {%- assign product = all_products['loop-band'] -%}
 
@@ -28,14 +28,13 @@
     --h-text-main: #FFFFFF;
     --h-text-muted: #94a3b8;
     --h-border: rgba(255,255,255,0.08);
-    --font-heading: 'Fredoka', sans-serif;
-    --font-body: 'Nunito', sans-serif;
+    --font-family: 'Inter', sans-serif;
   }
 
   .halo-home {
     background: var(--h-bg);
     color: var(--h-text-main);
-    font-family: var(--font-body);
+    font-family: var(--font-family);
     overflow-x: hidden;
   }
 
@@ -51,7 +50,7 @@
   }
 
   .halo-home h1, .halo-home h2, .halo-home h3, .halo-home h4 {
-    font-family: var(--font-heading);
+    font-family: var(--font-family);
     margin: 0;
     line-height: 1.08;
     letter-spacing: -0.04em;
@@ -65,7 +64,7 @@
 
   .hh-tag {
     display: inline-block;
-    font-family: var(--font-heading);
+    font-family: var(--font-family);
     font-size: 0.75rem;
     font-weight: 700;
     color: var(--h-cyan);
@@ -82,7 +81,7 @@
     background: #FFFFFF !important;
     border: 1px solid #FFFFFF !important;
     color: #000000 !important;
-    font-family: var(--font-heading);
+    font-family: var(--font-family);
     font-weight: 600;
     font-size: 1rem;
     padding: 16px 36px;
@@ -168,6 +167,9 @@
     padding: 6px 16px;
     border-radius: 9999px;
     border: 1px solid var(--h-border);
+  }
+  .hh-hero__stars span {
+    color: #FFFFFF !important;
   }
   .hh-stars {
     color: #FFC107;

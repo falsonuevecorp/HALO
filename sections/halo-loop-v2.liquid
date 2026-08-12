@@ -176,7 +176,7 @@
   /* ====== BLOCK 2: LOGO BAR (TRANSITION 1) ====== */
   .hl2-logos {
     padding: 70px 0;
-    background: var(--h2-bg-1); /* Transition to slightly lighter black */
+    background: var(--h2-bg-1);
     border-top: 1px solid var(--h2-border);
     border-bottom: 1px solid var(--h2-border);
   }
@@ -196,10 +196,10 @@
     color: #FFFFFF !important; /* HARDCODED */
   }
 
-  /* ====== BLOCK 3: EL PIVOTE (TRANSITION 2) ====== */
+  /* ====== BLOCK 3: EL PIVOTE (ENEMIGO COMÚN) ====== */
   .hl2-pivot {
     padding: 160px 0;
-    background: var(--h2-bg-2); /* Transition to #141414 */
+    background: var(--h2-bg-2);
     position: relative;
   }
   .hl2-pivot__grid {
@@ -241,7 +241,7 @@
 
   /* ====== BLOCK 4: STICKY STACKING ====== */
   .hl2-sticky-section {
-    background: var(--h2-bg-3); /* Transition to #1F1F1F */
+    background: var(--h2-bg-3);
     padding: 100px 0 200px;
     position: relative;
     border-top: 1px solid var(--h2-border);
@@ -273,10 +273,8 @@
     gap: 50px;
     align-items: center;
   }
-  /* Card variations to simulate stacking depth */
   .hl2-card:nth-child(2) { top: 140px; transform: scale(0.98); }
   .hl2-card:nth-child(3) { top: 160px; transform: scale(0.96); }
-  .hl2-card:nth-child(4) { top: 180px; transform: scale(0.94); }
 
   .hl2-card h3 {
     font-size: 2.2rem;
@@ -299,17 +297,107 @@
     margin-bottom: 30px;
   }
 
+  /* ====== BLOCK 4.1: COMPARATIVE TABLE (NEW) ====== */
+  .hl2-compare-section {
+    background: var(--h2-bg-1);
+    padding: 160px 0;
+    border-top: 1px solid var(--h2-border);
+  }
+  .hl2-compare-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+  .hl2-compare-header h2 {
+    font-size: 3rem;
+  }
+  .hl2-table-wrapper {
+    background: var(--h2-bg-2);
+    border: 1px solid var(--h2-border);
+    border-radius: 32px;
+    overflow: hidden;
+  }
+  .hl2-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+  }
+  .hl2-table th, .hl2-table td {
+    padding: 30px;
+    border-bottom: 1px solid var(--h2-border);
+    font-size: 1.1rem;
+  }
+  .hl2-table th {
+    background: rgba(255,255,255,0.02);
+    font-weight: 700;
+    color: #FFFFFF !important; /* HARDCODED CONTRAST */
+  }
+  .hl2-table td {
+    color: var(--h2-text-muted) !important;
+  }
+  .hl2-table td strong {
+    color: #FFFFFF !important;
+    font-weight: 600;
+  }
+  .hl2-table tr:last-child td { border-bottom: none; }
+  .hl2-table .highlight-col {
+    background: rgba(0, 236, 255, 0.05);
+    border-left: 1px solid var(--h2-border);
+    border-right: 1px solid var(--h2-border);
+  }
+  .hl2-table .highlight-col strong {
+    color: var(--h2-cyan) !important;
+  }
+
+  /* ====== BLOCK 4.2: DEEP DATA (NEW) ====== */
+  .hl2-data-section {
+    background: var(--h2-bg-0);
+    padding: 160px 0;
+  }
+  .hl2-data-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 80px;
+  }
+  .hl2-data-card {
+    background: var(--h2-bg-1);
+    border: 1px solid var(--h2-border);
+    border-radius: 24px;
+    padding: 50px;
+    transition: transform 0.4s ease;
+  }
+  .hl2-data-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 236, 255, 0.3);
+  }
+  .hl2-data-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #FFFFFF !important;
+  }
+  .hl2-data-card p {
+    font-size: 1.1rem;
+    color: var(--h2-text-muted) !important;
+    line-height: 1.6;
+  }
+  .hl2-data-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--h2-cyan) !important;
+    margin-bottom: 20px;
+  }
+
   /* ====== BLOCK 5: EL PITCH ====== */
   .hl2-pitch {
     padding: 160px 0;
-    background: var(--h2-bg-1); /* Transition back to #0A0A0A */
+    background: var(--h2-bg-2);
     border-top: 1px solid var(--h2-border);
     text-align: center;
   }
   .hl2-pitch-box {
     max-width: 1000px;
     margin: 0 auto;
-    background: var(--h2-bg-2);
+    background: var(--h2-bg-1);
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 40px;
     padding: 80px;
@@ -369,10 +457,64 @@
     color: var(--h2-cyan);
   }
 
+  /* ====== BLOCK 5.1: CASOS DE ESTUDIO (NEW) ====== */
+  .hl2-cases-section {
+    padding: 160px 0;
+    background: var(--h2-bg-1);
+    border-top: 1px solid var(--h2-border);
+  }
+  .hl2-cases-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin-top: 80px;
+  }
+  .hl2-case-card {
+    background: var(--h2-bg-2);
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid var(--h2-border);
+  }
+  .hl2-case-img {
+    height: 250px;
+    background: var(--h2-bg-0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--h2-border);
+  }
+  .hl2-case-img span {
+    color: #FFFFFF !important;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+  .hl2-case-body {
+    padding: 40px;
+  }
+  .hl2-case-body h4 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #FFFFFF !important;
+  }
+  .hl2-case-quote {
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--h2-text-muted) !important;
+    margin-bottom: 25px;
+    line-height: 1.6;
+  }
+  .hl2-case-result {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    color: var(--h2-green) !important;
+  }
+
   /* ====== BLOCK 6: TRUSTPILOT MARQUEE ====== */
   .hl2-marquee-section {
     padding: 100px 0;
-    background: var(--h2-bg-3); /* Transition to #1F1F1F */
+    background: var(--h2-bg-3);
     border-top: 1px solid var(--h2-border);
     border-bottom: 1px solid var(--h2-border);
     overflow: hidden;
@@ -414,10 +556,46 @@
     font-size: 0.9rem;
   }
 
+  /* ====== BLOCK 6.1: WHAT'S IN THE BOX (NEW) ====== */
+  .hl2-box-section {
+    padding: 160px 0;
+    background: var(--h2-bg-2);
+  }
+  .hl2-box-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--h2-bg-1);
+    border: 1px solid var(--h2-border);
+    border-radius: 32px;
+    padding: 80px;
+    text-align: center;
+  }
+  .hl2-box-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 50px;
+    text-align: left;
+  }
+  .hl2-box-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.15rem;
+  }
+  .hl2-box-item span {
+    color: #FFFFFF !important; /* HARDCODED CONTRAST */
+    font-weight: 500;
+  }
+  .hl2-box-item svg {
+    color: var(--h2-cyan);
+    flex-shrink: 0;
+  }
+
   /* ====== BLOCK 7: FAQS & GARANTÍA CLÍNICA ====== */
   .hl2-closure {
     padding: 160px 0;
-    background: var(--h2-bg-0); /* Deep back to #030303 */
+    background: var(--h2-bg-0);
   }
   .hl2-faq {
     max-width: 800px;
@@ -476,6 +654,7 @@
     justify-content: center;
     gap: 40px;
     margin-top: 40px;
+    flex-wrap: wrap;
   }
   .hl2-guarantee-badges span {
     color: #FFFFFF !important;
@@ -492,9 +671,9 @@
 
   @media (max-width: 768px) {
     .hl2-hero h1 { font-size: 3rem; }
-    .hl2-pivot__grid, .hl2-pitch-box, .hl2-card { grid-template-columns: 1fr; }
-    .hl2-card { padding: 40px; }
-    .hl2-pitch-box { padding: 40px; gap: 40px; }
+    .hl2-pivot__grid, .hl2-pitch-box, .hl2-card, .hl2-data-grid, .hl2-cases-grid, .hl2-box-list { grid-template-columns: 1fr; }
+    .hl2-card, .hl2-pitch-box, .hl2-box-container { padding: 40px; }
+    .hl2-table-wrapper { overflow-x: auto; }
   }
 </style>
 
@@ -548,7 +727,7 @@
     </div>
   </section>
 
-  <!-- BLOCK 4: STICKY STACKING (MECÁNICA V2) -->
+  <!-- BLOCK 4: STICKY STACKING -->
   <section class="hl2-sticky-section">
     <div class="hl2-wrap hl2-sticky-container">
       <div class="hl2-sticky-header hl2-fade">
@@ -582,6 +761,86 @@
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- BLOCK 4.1: COMPARATIVE TABLE -->
+  <section class="hl2-compare-section">
+    <div class="hl2-wrap hl2-fade">
+      <div class="hl2-compare-header">
+        <span class="hl2-tag">MATEMÁTICA FRÍA</span>
+        <h2>Deja de pagar por adivinanzas.</h2>
+      </div>
+      <div class="hl2-table-wrapper">
+        <table class="hl2-table">
+          <thead>
+            <tr>
+              <th>Característica</th>
+              <th class="highlight-col">HALO Loop Band</th>
+              <th>Smartwatches (Apple)</th>
+              <th>Anillos (Oura)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Suscripción Mensual</td>
+              <td class="highlight-col"><strong>Cero. $0/mes.</strong></td>
+              <td>Depende de apps 3ras</td>
+              <td>$30 / mes (Obligatorio)</td>
+            </tr>
+            <tr>
+              <td>Diseño Anti-Insomnio</td>
+              <td class="highlight-col"><strong>100% Invisible (Sin pantalla)</strong></td>
+              <td>Pantallas y vibraciones</td>
+              <td>Invisible</td>
+            </tr>
+            <tr>
+              <td>Precisión Nocturna (HRV/SpO2)</td>
+              <td class="highlight-col"><strong>Nivel Clínico</strong></td>
+              <td>Estimada (Sensor de muñeca)</td>
+              <td>Nivel Clínico</td>
+            </tr>
+            <tr>
+              <td>Batería Extendida</td>
+              <td class="highlight-col"><strong>Hasta 7 Días</strong></td>
+              <td>1-2 Días</td>
+              <td>5 Días</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCK 4.2: DEEP DATA -->
+  <section class="hl2-data-section">
+    <div class="hl2-wrap hl2-fade">
+      <div class="hl2-compare-header" style="margin-bottom: 40px;">
+        <span class="hl2-tag">BIOMETRÍA MOLECULAR</span>
+        <h2>¿Qué miden los sensores de grado médico?</h2>
+      </div>
+      <div class="hl2-data-grid">
+        <div class="hl2-data-card">
+          <div class="hl2-data-value">HRV</div>
+          <h3>Variabilidad Cardíaca</h3>
+          <p>Mide la fluctuación en milisegundos entre latidos. Un HRV alto indica que tu sistema nervioso parasimpático (descanso) está dominando. Sabrás exactamente cuándo entrenar duro y cuándo parar.</p>
+        </div>
+        <div class="hl2-data-card">
+          <div class="hl2-data-value">SpO2</div>
+          <h3>Oxígeno en Sangre</h3>
+          <p>Sensores ópticos rojos e infrarrojos miden la eficiencia de tu respiración durante la fase REM. Crucial para detectar apneas leves o fatiga por mala oxigenación celular.</p>
+        </div>
+        <div class="hl2-data-card">
+          <div class="hl2-data-value">±0.1°C</div>
+          <h3>Temperatura Cutánea</h3>
+          <p>Monitoriza micro-variaciones térmicas de tu piel mientras duermes. El algoritmo predice si estás incubando una enfermedad (o tu ciclo hormonal) antes de que sientas el primer síntoma.</p>
+        </div>
+        <div class="hl2-data-card">
+          <div class="hl2-data-value">100%</div>
+          <h3>Fases de Sueño Reales</h3>
+          <p>No adivinamos por tu movimiento. Combinamos pulso, oxígeno y temperatura para mapear exactamente cuántos minutos estuviste en sueño profundo, ligero o REM.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -630,6 +889,44 @@
     </div>
   </section>
 
+  <!-- BLOCK 5.1: CASOS DE ESTUDIO (ARQUETIPOS) -->
+  <section class="hl2-cases-section">
+    <div class="hl2-wrap hl2-fade">
+      <div class="hl2-compare-header">
+        <span class="hl2-tag">INGENIERÍA HUMANA</span>
+        <h2>Cómo cambia tu biología.</h2>
+      </div>
+      <div class="hl2-cases-grid">
+        <div class="hl2-case-card">
+          <div class="hl2-case-img">
+            <span>[EL ATLETA]</span>
+          </div>
+          <div class="hl2-case-body">
+            <h4>"Dejé de sobreentrenarme."</h4>
+            <p class="hl2-case-quote">"Entrenaba 6 días a la semana y estaba estancado. Empecé a usar LOOP y descubrí que mi HRV estaba por el piso. Al adaptar mis días de descanso según mi biología real, rompí mis récords personales en un mes."</p>
+            <div class="hl2-case-result">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
+              +32% Recuperación Muscular
+            </div>
+          </div>
+        </div>
+        <div class="hl2-case-card">
+          <div class="hl2-case-img">
+            <span>[EL EJECUTIVO]</span>
+          </div>
+          <div class="hl2-case-body">
+            <h4>"Dormir volvió a ser fácil."</h4>
+            <p class="hl2-case-quote">"Mi reloj inteligente me vibraba a las 11 PM con correos, disparando mi estrés. Cambiar a una banda invisible (LOOP) apagó las distracciones. Ahora solo me enfoco en los datos de mis fases profundas al despertar."</p>
+            <div class="hl2-case-result">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              +1.5 Hrs Sueño Profundo
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- BLOCK 6: TRUSTPILOT INFINITO -->
   <section class="hl2-marquee-section">
     <div class="hl2-wrap hl2-fade">
@@ -670,7 +967,36 @@
     </div>
   </section>
 
-  <!-- BLOCK 7: CIERRE Y GARANTÍA CLÍNICA -->
+  <!-- BLOCK 6.1: WHAT'S IN THE BOX -->
+  <section class="hl2-box-section">
+    <div class="hl2-wrap hl2-fade">
+      <div class="hl2-box-container">
+        <h2>Qué recibes hoy.</h2>
+        <p style="color: var(--h2-text-muted) !important; font-size: 1.2rem; margin-top: 15px;">Hardware clínico. Software vitalicio. Cero complicaciones.</p>
+        
+        <div class="hl2-box-list">
+          <div class="hl2-box-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>1x Sensor Biométrico LOOP (Núcleo)</span>
+          </div>
+          <div class="hl2-box-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>1x Banda ultra-transpirable intercambiable</span>
+          </div>
+          <div class="hl2-box-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>1x Cable de carga rápida magnética</span>
+          </div>
+          <div class="hl2-box-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Acceso Vitalicio a la App HALO Health</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCK 7: FAQS & GARANTÍA CLÍNICA -->
   <section class="hl2-closure">
     <div class="hl2-wrap">
       

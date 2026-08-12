@@ -80,26 +80,27 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: #FFFFFF !important;
-    border: 1px solid #FFFFFF !important;
-    color: #000000 !important; /* HARDCODED CONTRAST */
+    background: var(--h2-green) !important;
+    border: 1px solid var(--h2-green) !important;
+    color: #FFFFFF !important; /* HARDCODED CONTRAST */
     font-family: var(--font-family);
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1.05rem;
     padding: 18px 42px;
     border-radius: 9999px;
     text-decoration: none;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 201, 123, 0.3);
     cursor: pointer;
   }
   .hl2-btn span {
     color: inherit !important;
   }
   .hl2-btn:hover {
-    background: #000000 !important;
+    background: #00A865 !important;
+    border-color: #00A865 !important;
     color: #FFFFFF !important;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 30px rgba(0, 201, 123, 0.5);
   }
 
   .hl2-btn--outline {
@@ -116,8 +117,8 @@
   /* ====== BLOCK 1: HERO (SPLIT LAYOUT) ====== */
   .hl2-hero {
     position: relative;
-    padding: 160px 0 100px;
-    min-height: 90vh;
+    padding: 60px 0 100px;
+    min-height: 80vh;
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -271,45 +272,69 @@
     color: #FFC107;
   }
 
-  /* ====== BLOCK 2: LOGO BAR (TRANSITION 1) ====== */
+  /* ====== BLOCK 2: LOGO BAR MARQUEE ====== */
   .hl2-logos {
-    padding: 70px 0;
+    padding: 20px 0;
     background: var(--h2-bg-1);
     border-top: 1px solid var(--h2-border);
     border-bottom: 1px solid var(--h2-border);
+    overflow: hidden;
+    position: relative;
   }
-  .hl2-logos__grid {
+  .hl2-logos::after, .hl2-logos::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 60px;
+    height: 100%;
+    z-index: 2;
+  }
+  .hl2-logos::before {
+    left: 0;
+    background: linear-gradient(to right, var(--h2-bg-1), transparent);
+  }
+  .hl2-logos::after {
+    right: 0;
+    background: linear-gradient(to left, var(--h2-bg-1), transparent);
+  }
+  .hl2-logos__track {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    flex-wrap: wrap;
+    gap: 80px;
+    width: max-content;
+    animation: hl2-scroll-logos 20s linear infinite;
     opacity: 0.4;
+    align-items: center;
   }
   .hl2-logos__item {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.25em;
-    color: #FFFFFF !important; /* HARDCODED */
+    letter-spacing: 0.2em;
+    color: #FFFFFF !important;
+    white-space: nowrap;
+  }
+  @keyframes hl2-scroll-logos {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
 
   /* ====== BLOCK 3: EL PIVOTE (ENEMIGO COMÚN) ====== */
   .hl2-pivot {
-    padding: 160px 0;
+    padding: 80px 0;
     background: var(--h2-bg-2);
     position: relative;
   }
   .hl2-pivot__grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    gap: 40px;
     align-items: center;
   }
   .hl2-pivot h2 {
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: 800;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    line-height: 1.1;
   }
   .hl2-pivot p {
     font-size: 1.2rem;
@@ -318,7 +343,7 @@
     margin-bottom: 30px;
   }
   .hl2-pivot__visual {
-    height: 500px;
+    height: 350px;
     background: var(--h2-bg-1);
     border: 1px solid var(--h2-border);
     border-radius: 32px;
@@ -340,7 +365,7 @@
   /* ====== BLOCK 4: STICKY STACKING ====== */
   .hl2-sticky-section {
     background: var(--h2-bg-3);
-    padding: 100px 0 200px;
+    padding: 80px 0 150px;
     position: relative;
     border-top: 1px solid var(--h2-border);
   }
@@ -350,7 +375,7 @@
   }
   .hl2-sticky-header {
     text-align: center;
-    margin-bottom: 100px;
+    margin-bottom: 60px;
   }
   .hl2-sticky-header h2 {
     font-size: 3.8rem;
@@ -768,7 +793,7 @@
   }
 
   @media (max-width: 768px) {
-    .hl2-hero { padding: 120px 0 60px; }
+    .hl2-hero { padding: 40px 0 60px; }
     .hl2-hero h1 { font-size: 2.5rem; }
     .hl2-hero__grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
     .hl2-hero__text { text-align: center; }
@@ -778,6 +803,8 @@
     .hl2-hero__badges { justify-content: center; max-width: 100%; }
     .hl2-pivot__grid, .hl2-pitch-box, .hl2-card, .hl2-data-grid, .hl2-cases-grid, .hl2-box-list { grid-template-columns: 1fr; }
     .hl2-card, .hl2-pitch-box, .hl2-box-container { padding: 40px; }
+    .hl2-pivot { padding: 50px 0; }
+    .hl2-sticky-section { padding: 50px 0 100px; }
     .hl2-table-wrapper { overflow-x: auto; }
   }
 </style>
@@ -817,12 +844,12 @@
             <form method="post" action="/cart/add" class="hl2-hero-form">
               <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
               <button type="submit" class="hl2-btn">
-                <span>ADQUIRIR LOOP BAND</span>
+                <span>RECUPERAR MI ENERGÍA AHORA</span>
               </button>
             </form>
             {% else %}
             <a href="#comprar-v2" class="hl2-btn">
-              <span>ADQUIRIR LOOP BAND</span>
+              <span>RECUPERAR MI ENERGÍA AHORA</span>
             </a>
             {% endif %}
           </div>
@@ -866,11 +893,20 @@
 
   <!-- BLOCK 2: CONFIANZA ASIMÉTRICA -->
   <section class="hl2-logos">
-    <div class="hl2-wrap hl2-logos__grid hl2-fade">
+    <div class="hl2-logos__track hl2-fade">
       <div class="hl2-logos__item">GQ</div>
       <div class="hl2-logos__item">Forbes</div>
       <div class="hl2-logos__item">Wired</div>
       <div class="hl2-logos__item">Men's Health</div>
+      <div class="hl2-logos__item">The Verge</div>
+      <div class="hl2-logos__item">Bloomberg</div>
+      <!-- DUPLICATES FOR INFINITE SCROLL -->
+      <div class="hl2-logos__item">GQ</div>
+      <div class="hl2-logos__item">Forbes</div>
+      <div class="hl2-logos__item">Wired</div>
+      <div class="hl2-logos__item">Men's Health</div>
+      <div class="hl2-logos__item">The Verge</div>
+      <div class="hl2-logos__item">Bloomberg</div>
     </div>
   </section>
 
@@ -881,7 +917,6 @@
         <span class="hl2-tag" style="color:#FFFFFF !important;">EL PROBLEMA INVISIBLE</span>
         <h2>Los smartwatches son juguetes de notificaciones.</h2>
         <p>Te acuestas a dormir con una pantalla brillante en la muñeca. Las notificaciones te disparan el cortisol y luego un algoritmo intenta "adivinar" tu calidad de sueño.</p>
-        <p>Los atletas de élite no usan relojes genéricos para medir su recuperación cardiaca, porque las correas sueltas y los sensores diseñados para medir pasos no pueden leer tu biología molecular en el descanso profundo.</p>
       </div>
       <div class="hl2-pivot__visual">
         <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
@@ -895,7 +930,7 @@
     <div class="hl2-wrap hl2-sticky-container">
       <div class="hl2-sticky-header hl2-fade">
         <span class="hl2-tag">LA VENTAJA CLÍNICA</span>
-        <h2>Por qué HALO rompe el molde.</h2>
+        <h2>Pagar $30/mes por ver tus propios datos es un robo.</h2>
       </div>
 
       <div class="hl2-card hl2-fade">
@@ -1039,12 +1074,12 @@
             <form method="post" action="/cart/add">
               <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
               <button type="submit" class="hl2-btn" style="width: 100%;">
-                <span>AÑADIR AL CARRITO DIRECTO</span>
+                <span>PROTEGER MI DESCANSO AHORA</span>
               </button>
             </form>
           {% else %}
             <a href="/products/loop-band" class="hl2-btn" style="width: 100%;">
-              <span>ADQUIRIR AHORA</span>
+              <span>PROTEGER MI DESCANSO AHORA</span>
             </a>
           {% endif %}
         </div>
@@ -1191,7 +1226,7 @@
         <h3>Garantía por Defectos de Fábrica</h3>
         <p>Tu hardware está respaldado por nuestra política clínica de calidad. Si tu dispositivo presenta cualquier defecto de funcionamiento o ensamble, lo reemplazaremos sin costo alguno. Tu inversión está protegida.</p>
         <a href="#comprar-v2" class="hl2-btn">
-          <span>ASEGURA TU LOOP BAND AHORA</span>
+          <span>ASEGURA TU DESCANSO AHORA</span>
         </a>
         <div class="hl2-guarantee-badges">
           <span>

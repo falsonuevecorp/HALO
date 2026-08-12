@@ -11,10 +11,10 @@
 }
 {% endschema %}
 
-<!-- GOOGLE FONTS: Inter (Official HALO Tech Typography) -->
+<!-- GOOGLE FONTS: Fredoka (Headings) & Nunito (Body) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 {%- assign product = all_products['loop-band'] -%}
 
@@ -28,13 +28,14 @@
     --h-text-main: #FFFFFF;
     --h-text-muted: #94a3b8;
     --h-border: rgba(255,255,255,0.08);
-    --font-family: 'Inter', sans-serif;
+    --font-heading: 'Fredoka', sans-serif;
+    --font-body: 'Nunito', sans-serif;
   }
 
   .halo-home {
     background: var(--h-bg);
     color: var(--h-text-main);
-    font-family: var(--font-family);
+    font-family: var(--font-body);
     overflow-x: hidden;
   }
 
@@ -50,7 +51,7 @@
   }
 
   .halo-home h1, .halo-home h2, .halo-home h3, .halo-home h4 {
-    font-family: var(--font-family);
+    font-family: var(--font-heading);
     margin: 0;
     line-height: 1.08;
     letter-spacing: -0.04em;
@@ -64,7 +65,7 @@
 
   .hh-tag {
     display: inline-block;
-    font-family: var(--font-family);
+    font-family: var(--font-heading);
     font-size: 0.75rem;
     font-weight: 700;
     color: var(--h-cyan);
@@ -78,10 +79,10 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: #FFFFFF;
-    border: 1px solid #FFFFFF;
+    background: #FFFFFF !important;
+    border: 1px solid #FFFFFF !important;
     color: #000000 !important;
-    font-family: var(--font-family);
+    font-family: var(--font-heading);
     font-weight: 600;
     font-size: 1rem;
     padding: 16px 36px;
@@ -92,7 +93,7 @@
     cursor: pointer;
   }
   .hh-btn:hover {
-    background: transparent;
+    background: #000000 !important;
     color: #FFFFFF !important;
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
   }
@@ -209,7 +210,7 @@
     padding: 60px 0;
     border-top: 1px solid var(--h-border);
     border-bottom: 1px solid var(--h-border);
-    background: #050505;
+    background: #0A0A0A;
     position: relative;
   }
   .hh-logobar::after {
@@ -240,11 +241,11 @@
   /* ===== BLOCK 3: PIVOTE (PROBLEM vs SOLUTION) ===== */
   .hh-split {
     padding: 140px 0;
-    background: var(--h-bg);
+    background: #141414;
     position: relative;
   }
   .hh-split--alt {
-    background: #060608;
+    background: #1F1F1F;
     border-top: 1px solid var(--h-border);
     border-bottom: 1px solid var(--h-border);
   }
@@ -284,7 +285,7 @@
   /* ===== BLOCK 4: PITCH (SHOPPING GRID DIRECT) ===== */
   .hh-pitch {
     padding: 140px 0;
-    background: #08080a;
+    background: #0A0A0A;
     border-bottom: 1px solid var(--h-border);
     text-align: center;
     position: relative;
@@ -361,7 +362,7 @@
   /* ===== BLOCK 5: LA CONEXIÓN (MANIFESTO) ===== */
   .hh-manifesto {
     padding: 160px 0;
-    background: var(--h-bg);
+    background: #141414;
     text-align: center;
     position: relative;
   }
@@ -393,7 +394,7 @@
   /* ===== BLOCK 6: TRUSTPILOT MARQUEE ===== */
   .hh-trust {
     padding: 120px 0;
-    background: #060608;
+    background: #1F1F1F;
     overflow: hidden;
     border-top: 1px solid var(--h-border);
     border-bottom: 1px solid var(--h-border);
@@ -429,7 +430,7 @@
   /* ===== BLOCK 7: FAQS & CLOSING ===== */
   .hh-closing {
     padding: 140px 0;
-    background: var(--h-bg);
+    background: #0A0A0A;
   }
   .hh-faq-grid {
     max-width: 850px;
@@ -454,7 +455,7 @@
   .hh-faq-answer {
     margin-top: 20px;
     font-size: 1.05rem;
-    color: var(--h-text-muted);
+    color: #FFFFFF !important;
     line-height: 1.7;
     display: none;
   }
@@ -561,7 +562,7 @@
   <section class="hh-split">
     <div class="hh-wrap hh-split__grid hh-fade-in">
       <div>
-        <span class="hh-tag" style="color: #FF6B6B;">El Problema Actual</span>
+        <span class="hh-tag" style="color: #FFFFFF;">El Problema Actual</span>
         <h2>Tu smartwatch es un juguete de notificaciones, no un sensor clínico.</h2>
         <p>Te despiertas, miras el reloj y dejas que un algoritmo adivine tu cansancio. Pero sigues tomando decisiones basándote en sensaciones vagas.</p>
         <p>Los atletas de élite no adivinan su variabilidad de la frecuencia cardíaca (HRV) ni dejan su ciclo de sueño profundo al azar. Entrenar y vivir sin conocer tu estado de recuperación es garantizar un desgaste continuo.</p>
@@ -569,8 +570,8 @@
           <span>Ver Diferencia</span>
         </a>
       </div>
-      <div class="hh-split__img" style="border-color: rgba(255,107,107,0.12);">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,107,107,0.3)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+      <div class="hh-split__img" style="border-color: rgba(255,255,255,0.12);">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
         <span style="font-size:1.1rem; color:rgba(255,255,255,0.7); margin-top:16px; font-weight: 600;">DISEÑO SIN PANTALLA NI DISTRACCIONES</span>
       </div>
     </div>
@@ -639,7 +640,7 @@
 
           <div style="margin-top: 24px; font-size: 0.9rem; color: var(--h-text-muted); display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-weight: 500;">
             <div>✓ Envío gratuito exprés</div>
-            <div>✓ Garantía de 60 noches</div>
+            <div>✓ Garantía contra defectos</div>
             <div>✓ App incluida de por vida</div>
             <div>✓ Soporte prioritario 24/7</div>
           </div>
@@ -745,16 +746,16 @@
       </div>
 
       <div class="hh-guarantee-box hh-fade-in">
-        <h3>Garantía Blindada de 60 Noches</h3>
-        <p style="color: var(--h-text-muted); font-size: 1.15rem; line-height: 1.7; max-width: 700px; margin: 0 auto 36px; font-weight: 300;">
-          Pruébala, suda en ella, duerme en ella. Si tras 60 noches no notas una mejora en tu rendimiento matutino, te devolvemos el 100% de tu dinero. El riesgo es completamente nuestro.
+        <h3>Garantía por Defectos de Fábrica</h3>
+        <p style="color: #FFFFFF !important; font-size: 1.15rem; line-height: 1.7; max-width: 700px; margin: 0 auto 36px; font-weight: 400;">
+          Tu dispositivo está respaldado por nuestra política estricta de calidad. Si tu LOOP Band presenta cualquier defecto de funcionamiento de fábrica en los primeros 12 meses, la reemplazaremos sin costo. Calidad asegurada.
         </p>
         <a href="#comprar" class="hh-btn">
           <span>CONSIGUE TU LOOP BAND AHORA</span>
         </a>
         <div class="hh-features-row">
           <span>🚚 Envío Exprés Gratis</span>
-          <span>🛡️ Garantía de 60 Noches</span>
+          <span>🛡️ Garantía por Defectos</span>
           <span>🔒 Pagos Encriptados</span>
         </div>
       </div>

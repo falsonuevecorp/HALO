@@ -904,15 +904,36 @@
   <section class="hl2-hero">
     <div class="hl2-wrap hl2-hero__content">
       <div class="hl2-hero__grid">
-        <!-- IZQUIERDA: IMAGEN DE PRODUCTO PREMIUM -->
+        <!-- IZQUIERDA: GALERÍA Y FOTO DE PRODUCTO EN USO (UGC LIFESTYLE) -->
         <div class="hl2-hero__visual hl2-fade">
-          <div class="hl2-hero__image-wrapper" style="max-width: 100%;">
-            {% if product.featured_image %}
-              <img src="{{ product.featured_image | img_url: '1000x' }}" alt="{{ product.title }}" class="hl2-hero-img" style="border-radius: 32px;">
+          <div class="hl2-hero__image-wrapper" style="max-width: 100%; position: relative;">
+            {% if product.images.size > 1 %}
+              <!-- PRODUCT GALLERY SLIDER IF SHOPIFY HAS MULTIPLE IMAGES -->
+              <div class="hl2-hero-gallery" style="display: flex; flex-direction: column; gap: 15px;">
+                <img src="{{ product.featured_image | img_url: '1000x' }}" alt="{{ product.title }}" class="hl2-hero-img" style="border-radius: 28px; width: 100%; object-fit: cover; aspect-ratio: 4/5;">
+                <div style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px;">
+                  {% for image in product.images limit: 4 %}
+                    <img src="{{ image | img_url: '300x' }}" alt="{{ product.title }}" style="width: 70px; height: 70px; border-radius: 12px; object-fit: cover; border: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
+                  {% endfor %}
+                </div>
+              </div>
+            {% elsif product.featured_image %}
+              <div style="position: relative; overflow: hidden; border-radius: 28px;">
+                <img src="{{ product.featured_image | img_url: '1000x' }}" alt="{{ product.title }}" class="hl2-hero-img" style="border-radius: 28px; width: 100%; object-fit: cover; aspect-ratio: 4/5;">
+                
+                <!-- OVERLAY UGC IN-USE BADGE -->
+                <div style="position: absolute; bottom: 20px; left: 20px; background: rgba(0,0,0,0.75); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); padding: 10px 16px; border-radius: 16px; display: flex; align-items: center; gap: 10px;">
+                  <span style="width: 10px; height: 10px; background: var(--h2-green); border-radius: 50%; display: inline-block;"></span>
+                  <div>
+                    <div style="color: #FFFFFF !important; font-size: 0.8rem; font-weight: 800;">EN USO REAL: RECUPERACIÓN BIOMÉTRICA</div>
+                    <div style="color: var(--h2-text-muted) !important; font-size: 0.7rem;">Fotografía de uso cotidiano sin distracciones</div>
+                  </div>
+                </div>
+              </div>
             {% else %}
-              <div class="hl2-hero-placeholder" style="aspect-ratio: 4/5;">
+              <div class="hl2-hero-placeholder" style="aspect-ratio: 4/5; border-radius: 28px;">
                 <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-                <span>FOTO PRODUCTO ALTA DEFINICIÓN</span>
+                <span>FOTO PRODUCTO EN USO (UGC REAL)</span>
               </div>
             {% endif %}
           </div>

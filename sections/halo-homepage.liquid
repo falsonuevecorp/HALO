@@ -11,39 +11,49 @@
 }
 {% endschema %}
 
-<!-- GOOGLE FONTS: Fredoka (Headings) & Nunito (Body) -->
+<!-- GOOGLE FONTS: Inter (Official HALO Tech Typography) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 {%- assign product = all_products['loop-band'] -%}
 
 <style>
   :root {
     --h-bg: #030303;
-    --h-surface: #0A0A0A;
-    --h-surface-light: #141414;
+    --h-surface: #09090b;
+    --h-surface-light: #18181b;
     --h-cyan: #00ECFF;
     --h-green: #00C97B;
     --h-text-main: #FFFFFF;
-    --h-text-muted: #A0AAB5;
-    --h-border: rgba(255,255,255,0.06);
-    --font-heading: 'Fredoka', sans-serif;
-    --font-body: 'Nunito', sans-serif;
+    --h-text-muted: #94a3b8;
+    --h-border: rgba(255,255,255,0.08);
+    --font-family: 'Inter', sans-serif;
   }
 
   .halo-home {
     background: var(--h-bg);
     color: var(--h-text-main);
-    font-family: var(--font-body);
+    font-family: var(--font-family);
     overflow-x: hidden;
   }
 
+  /* Fade-In Scroll Animation Utility */
+  .hh-fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hh-fade-in.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   .halo-home h1, .halo-home h2, .halo-home h3, .halo-home h4 {
-    font-family: var(--font-heading);
+    font-family: var(--font-family);
     margin: 0;
-    line-height: 1.1;
-    letter-spacing: -0.01em;
+    line-height: 1.08;
+    letter-spacing: -0.04em;
   }
 
   .hh-wrap {
@@ -54,62 +64,61 @@
 
   .hh-tag {
     display: inline-block;
-    font-family: var(--font-heading);
-    font-size: 0.85rem;
+    font-family: var(--font-family);
+    font-size: 0.75rem;
     font-weight: 700;
     color: var(--h-cyan);
     text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-bottom: 16px;
+    letter-spacing: 0.15em;
+    margin-bottom: 20px;
   }
 
-  /* PREMIUM BUTTONS */
+  /* PREMIUM BUTTONS (Apple / Vercel Aesthetic) */
   .hh-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     background: #FFFFFF;
-    border: none;
+    border: 1px solid #FFFFFF;
     color: #000000 !important;
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 1.1rem;
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 1rem;
     padding: 16px 36px;
-    border-radius: 14px;
+    border-radius: 9999px;
     text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
     cursor: pointer;
   }
   .hh-btn:hover {
-    background: #FFFFFF;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.25);
+    background: transparent;
+    color: #FFFFFF !important;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
   }
   .hh-btn span {
-    color: #000000 !important;
-    letter-spacing: 0.02em;
+    color: inherit !important;
+    letter-spacing: -0.01em;
   }
 
   .hh-btn--secondary {
-    background: rgba(0, 236, 255, 0.05);
-    border: 1px solid rgba(0, 236, 255, 0.25);
-    color: var(--h-cyan) !important;
+    background: transparent;
+    border: 1px solid var(--h-border);
+    color: #FFFFFF !important;
     box-shadow: none;
   }
   .hh-btn--secondary:hover {
-    background: rgba(0, 236, 255, 0.1);
-    border-color: var(--h-cyan);
-    box-shadow: 0 4px 15px rgba(0, 236, 255, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: #FFFFFF;
   }
   .hh-btn--secondary span {
-    color: var(--h-cyan) !important;
+    color: inherit !important;
   }
 
-  /* ===== BLOCK 1: HERO ===== */
+  /* ===== BLOCK 1: HERO (Glow Dynamic Transition) ===== */
   .hh-hero {
     position: relative;
-    padding: 140px 0 100px;
+    padding: 180px 0 120px;
     min-height: 95vh;
     display: flex;
     align-items: center;
@@ -119,77 +128,99 @@
   .hh-hero__bg {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center 15%, rgba(0,236,255,0.06) 0%, rgba(0,201,123,0.02) 40%, var(--h-bg) 75%);
+    background: 
+      radial-gradient(circle at 50% 20%, rgba(0, 236, 255, 0.12) 0%, transparent 50%),
+      radial-gradient(circle at 20% 50%, rgba(0, 201, 123, 0.04) 0%, transparent 40%),
+      var(--h-bg);
     z-index: 0;
   }
   .hh-hero__content {
     position: relative;
     z-index: 1;
-    max-width: 850px;
+    max-width: 900px;
     margin: 0 auto;
   }
   .hh-hero h1 {
-    font-size: clamp(2.8rem, 6vw, 4.5rem);
-    font-weight: 700;
-    margin-bottom: 24px;
-    background: linear-gradient(180deg, #FFFFFF 0%, #A0AAB5 100%);
+    font-size: clamp(3rem, 7vw, 5.2rem);
+    font-weight: 800;
+    margin-bottom: 28px;
+    background: linear-gradient(180deg, #FFFFFF 30%, #a1a1aa 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   .hh-hero p {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     color: var(--h-text-muted);
-    max-width: 680px;
-    margin: 0 auto 36px;
+    max-width: 720px;
+    margin: 0 auto 44px;
     line-height: 1.6;
+    font-weight: 400;
   }
 
   .hh-hero__stars {
-    display: flex;
-    justify-content: center;
+    display: inline-flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 20px;
-    font-family: var(--font-heading);
-    font-size: 0.95rem;
+    margin-bottom: 24px;
+    font-size: 0.9rem;
+    background: rgba(255,255,255,0.03);
+    padding: 6px 16px;
+    border-radius: 9999px;
+    border: 1px solid var(--h-border);
   }
   .hh-stars {
     color: #FFC107;
   }
 
-  /* PLACEHOLDER / SHOWCASE RENDER */
+  /* SHOWCASE RENDER */
   .hh-showcase {
-    margin-top: 60px;
-    height: 420px;
+    margin-top: 80px;
+    height: 480px;
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
-    border-radius: 28px;
-    background: linear-gradient(145deg, #0d0d0d 0%, #050505 100%);
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(24,24,27,0.8) 0%, rgba(9,9,11,0.9) 100%);
     border: 1px solid var(--h-border);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.8);
     overflow: hidden;
+    backdrop-filter: blur(20px);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hh-showcase:hover {
+    transform: scale(1.01);
   }
   .hh-showcase::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.02), transparent);
+    background: linear-gradient(90deg, transparent, rgba(0,236,255,0.05), transparent);
     transform: skewX(-20deg) translateX(-150%);
-    animation: hh-shimmer 5s infinite;
+    animation: hh-shimmer 6s infinite;
   }
 
   /* ===== BLOCK 2: LOGO BAR ===== */
   .hh-logobar {
-    padding: 45px 0;
+    padding: 60px 0;
     border-top: 1px solid var(--h-border);
     border-bottom: 1px solid var(--h-border);
-    background: #060606;
+    background: #050505;
+    position: relative;
+  }
+  .hh-logobar::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--h-cyan), transparent);
+    opacity: 0.3;
   }
   .hh-logobar__inner {
     display: flex;
@@ -197,147 +228,177 @@
     align-items: center;
     gap: 30px;
     flex-wrap: wrap;
-    opacity: 0.45;
+    opacity: 0.4;
   }
   .hh-logobar__logo {
-    font-family: var(--font-heading);
-    font-size: 1.15rem;
-    font-weight: 700;
+    font-size: 1.1rem;
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.2em;
   }
 
   /* ===== BLOCK 3: PIVOTE (PROBLEM vs SOLUTION) ===== */
   .hh-split {
-    padding: 120px 0;
+    padding: 140px 0;
     background: var(--h-bg);
+    position: relative;
   }
   .hh-split--alt {
-    background: var(--h-surface);
+    background: #060608;
     border-top: 1px solid var(--h-border);
     border-bottom: 1px solid var(--h-border);
   }
   .hh-split__grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    gap: 100px;
     align-items: center;
   }
   .hh-split h2 {
-    font-size: 2.6rem;
-    margin-bottom: 24px;
-    font-weight: 700;
+    font-size: 3.2rem;
+    margin-bottom: 28px;
+    font-weight: 800;
   }
   .hh-split p {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     color: var(--h-text-muted);
-    margin-bottom: 24px;
+    margin-bottom: 28px;
     line-height: 1.7;
   }
   .hh-split__img {
-    height: 480px;
+    height: 520px;
     border-radius: 24px;
     border: 1px solid var(--h-border);
-    background: #070707;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.02) 0%, #09090b 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    transition: border-color 0.4s ease;
+  }
+  .hh-split__img:hover {
+    border-color: rgba(0, 236, 255, 0.3);
   }
 
   /* ===== BLOCK 4: PITCH (SHOPPING GRID DIRECT) ===== */
   .hh-pitch {
-    padding: 120px 0;
-    background: var(--h-surface-light);
+    padding: 140px 0;
+    background: #08080a;
     border-bottom: 1px solid var(--h-border);
     text-align: center;
+    position: relative;
+  }
+  .hh-pitch::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(0, 236, 255, 0.03) 0%, transparent 70%);
+    pointer-events: none;
   }
   .hh-pitch h2 {
-    font-size: 2.8rem;
-    margin-bottom: 16px;
+    font-size: 3.4rem;
+    margin-bottom: 18px;
+    font-weight: 800;
   }
   .hh-pitch__sub {
     color: var(--h-text-muted);
-    font-size: 1.2rem;
-    margin-bottom: 50px;
+    font-size: 1.25rem;
+    margin-bottom: 60px;
   }
   .hh-product-card {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
-    background: var(--h-surface);
+    background: rgba(24, 24, 27, 0.4);
     border: 1px solid var(--h-border);
-    border-radius: 28px;
-    padding: 40px;
+    border-radius: 32px;
+    padding: 50px;
     text-align: left;
     display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 40px;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 60px;
     align-items: center;
+    backdrop-filter: blur(10px);
   }
   .hh-product-gallery {
     background: #030303;
     border-radius: 20px;
-    height: 320px;
+    height: 360px;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 1px solid var(--h-border);
+    position: relative;
+    overflow: hidden;
+  }
+  .hh-product-gallery::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(0, 236, 255, 0.1) 0%, transparent 60%);
   }
   .hh-price-stack {
-    margin: 15px 0 25px;
+    margin: 20px 0 30px;
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
   }
   .hh-price-current {
-    font-size: 2.2rem;
-    font-weight: 700;
-    font-family: var(--font-heading);
-    color: var(--h-green);
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--h-cyan);
   }
   .hh-price-compare {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     text-decoration: line-through;
     color: var(--h-text-muted);
   }
 
   /* ===== BLOCK 5: LA CONEXIÓN (MANIFESTO) ===== */
   .hh-manifesto {
-    padding: 140px 0;
+    padding: 160px 0;
     background: var(--h-bg);
     text-align: center;
+    position: relative;
   }
   .hh-manifesto__inner {
-    max-width: 800px;
+    max-width: 850px;
     margin: 0 auto;
   }
   .hh-manifesto h2 {
-    font-size: 3rem;
-    margin-bottom: 40px;
+    font-size: 3.6rem;
+    margin-bottom: 44px;
+    font-weight: 800;
   }
   .hh-manifesto p {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     line-height: 1.8;
     color: var(--h-text-muted);
-    margin-bottom: 30px;
+    margin-bottom: 36px;
+    font-weight: 300;
   }
   .hh-signature {
-    margin-top: 50px;
-    font-family: var(--font-heading);
-    font-size: 1.1rem;
+    margin-top: 60px;
+    font-size: 1rem;
+    font-weight: 700;
     color: var(--h-cyan);
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
 
   /* ===== BLOCK 6: TRUSTPILOT MARQUEE ===== */
   .hh-trust {
-    padding: 100px 0;
-    background: var(--h-surface);
+    padding: 120px 0;
+    background: #060608;
     overflow: hidden;
     border-top: 1px solid var(--h-border);
     border-bottom: 1px solid var(--h-border);
   }
-  .hh-trust h2 { text-align: center; font-size: 2.5rem; margin-bottom: 50px; }
+  .hh-trust h2 { text-align: center; font-size: 2.8rem; margin-bottom: 60px; font-weight: 800; }
   .hh-marquee-wrapper {
     display: flex;
     overflow: hidden;
@@ -349,48 +410,52 @@
     display: flex;
     gap: 24px;
     width: max-content;
-    animation: hh-scroll 35s linear infinite;
+    animation: hh-scroll 40s linear infinite;
   }
   .hh-marquee:hover { animation-play-state: paused; }
   .hh-review {
-    width: 380px;
-    background: var(--h-surface-light);
+    width: 400px;
+    background: rgba(24, 24, 27, 0.6);
     border: 1px solid var(--h-border);
-    border-radius: 20px;
-    padding: 30px;
+    border-radius: 24px;
+    padding: 36px;
+    backdrop-filter: blur(10px);
   }
-  .hh-review__stars { color: #00B67A; font-size: 1.25rem; margin-bottom: 16px; }
-  .hh-review__title { font-weight: 700; font-size: 1.15rem; margin-bottom: 10px; font-family: var(--font-heading); }
-  .hh-review__body { font-size: 0.95rem; color: var(--h-text-muted); margin-bottom: 20px; line-height: 1.6; }
+  .hh-review__stars { color: #00B67A; font-size: 1.2rem; margin-bottom: 18px; }
+  .hh-review__title { font-weight: 800; font-size: 1.2rem; margin-bottom: 12px; }
+  .hh-review__body { font-size: 1rem; color: var(--h-text-muted); margin-bottom: 24px; line-height: 1.6; }
   .hh-review__author { font-size: 0.85rem; font-weight: 700; color: #fff; }
 
   /* ===== BLOCK 7: FAQS & CLOSING ===== */
   .hh-closing {
-    padding: 120px 0;
+    padding: 140px 0;
     background: var(--h-bg);
   }
   .hh-faq-grid {
-    max-width: 800px;
-    margin: 0 auto 80px;
+    max-width: 850px;
+    margin: 0 auto 100px;
   }
   .hh-faq-item {
     border-bottom: 1px solid var(--h-border);
-    padding: 24px 0;
+    padding: 28px 0;
   }
   .hh-faq-question {
-    font-family: var(--font-heading);
-    font-size: 1.25rem;
-    font-weight: 600;
+    font-size: 1.35rem;
+    font-weight: 700;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: color 0.3s ease;
+  }
+  .hh-faq-question:hover {
+    color: var(--h-cyan);
   }
   .hh-faq-answer {
-    margin-top: 15px;
-    font-size: 1rem;
+    margin-top: 20px;
+    font-size: 1.05rem;
     color: var(--h-text-muted);
-    line-height: 1.6;
+    line-height: 1.7;
     display: none;
   }
   .hh-faq-item[open] .hh-faq-answer {
@@ -398,52 +463,41 @@
   }
   .hh-faq-toggle::after {
     content: '+';
-    font-size: 1.4rem;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
   }
   .hh-faq-item[open] .hh-faq-toggle::after {
     content: '−';
   }
 
   .hh-guarantee-box {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
-    background: linear-gradient(135deg, rgba(0, 236, 255, 0.02) 0%, rgba(0, 201, 123, 0.02) 100%);
-    border: 1px solid rgba(0, 236, 255, 0.15);
-    border-radius: 28px;
-    padding: 50px;
+    background: radial-gradient(circle at top left, rgba(0, 236, 255, 0.03) 0%, rgba(9, 9, 11, 0.8) 100%);
+    border: 1px solid rgba(0, 236, 255, 0.2);
+    border-radius: 32px;
+    padding: 60px 40px;
     text-align: center;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.6);
   }
   .hh-guarantee-box h3 {
-    font-size: 2rem;
-    color: var(--h-cyan);
-    margin-bottom: 20px;
+    font-size: 2.4rem;
+    color: #FFFFFF;
+    margin-bottom: 24px;
+    font-weight: 800;
   }
 
   .hh-features-row {
     margin-top: 40px;
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 40px;
     flex-wrap: wrap;
     font-size: 0.95rem;
     color: #FFFFFF !important;
     font-weight: 600;
   }
   .hh-features-row span {
-    color: #FFFFFF !important;
-  }
-
-  /* GLOBAL OVERRIDES */
-  #shopify-section-footer, #shopify-section-subfooter, .footer, .subfooter {
-    background-color: #0A0A0A !important;
-    color: #A0AAB5 !important;
-    border-top: 1px solid rgba(255,255,255,0.08) !important;
-  }
-  #shopify-section-footer a, #shopify-section-subfooter a, .footer a, .subfooter a {
-    color: #FFFFFF !important;
-  }
-  .footer__block h4, .footer h4, .subfooter h4 {
     color: #FFFFFF !important;
   }
 
@@ -458,10 +512,10 @@
   }
 
   @media (max-width: 768px) {
-    .hh-split__grid, .hh-product-card { grid-template-columns: 1fr; gap: 40px; }
-    .hh-hero h1 { font-size: 2.4rem; }
-    .hh-split__img, .hh-product-gallery { height: 320px; }
-    .hh-manifesto h2 { font-size: 2.2rem; }
+    .hh-split__grid, .hh-product-card { grid-template-columns: 1fr; gap: 50px; }
+    .hh-hero h1 { font-size: 2.8rem; }
+    .hh-split__img, .hh-product-gallery { height: 340px; }
+    .hh-manifesto h2 { font-size: 2.6rem; }
   }
 </style>
 
@@ -470,11 +524,12 @@
   <!-- BLOQUE 1: GANCHO (HERO) -->
   <section class="hh-hero">
     <div class="hh-hero__bg"></div>
-    <div class="hh-wrap hh-hero__content">
+    <div class="hh-wrap hh-hero__content hh-fade-in" id="hero-content">
       <div class="hh-hero__stars">
         <span class="hh-stars">★★★★★</span>
         <span>4.9/5 de más de 12,000 atletas</span>
       </div>
+      <br>
       <span class="hh-tag">El Estándar Biométrico</span>
       <h1>Te despiertas cansado porque no has sabido leer tu descanso profundo.</h1>
       <p>Dormir no es lo mismo que descansar. Optimiza tu recuperación y descansa mejor desde la primera noche con LOOP.</p>
@@ -485,7 +540,7 @@
 
       <div class="hh-showcase hh-hero-visual">
         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(0,236,255,0.4)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-        <span style="font-family:var(--font-heading); font-size:1.1rem; color:rgba(255,255,255,0.7); margin-top:16px;">RENDER: LOOP BAND (TECNOLOGÍA INVISIBLE)</span>
+        <span style="font-size:1.1rem; color:rgba(255,255,255,0.7); margin-top:16px; font-weight: 600;">RENDER: LOOP BAND (TECNOLOGÍA INVISIBLE)</span>
       </div>
     </div>
   </section>
@@ -504,7 +559,7 @@
 
   <!-- BLOQUE 3: EL PIVOTE (PROBLEMA VS SOLUCIÓN) -->
   <section class="hh-split">
-    <div class="hh-wrap hh-split__grid">
+    <div class="hh-wrap hh-split__grid hh-fade-in">
       <div>
         <span class="hh-tag" style="color: #FF6B6B;">El Problema Actual</span>
         <h2>Tu smartwatch es un juguete de notificaciones, no un sensor clínico.</h2>
@@ -516,16 +571,16 @@
       </div>
       <div class="hh-split__img" style="border-color: rgba(255,107,107,0.12);">
         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,107,107,0.3)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-        <span style="font-family:var(--font-heading); font-size:1.1rem; color:rgba(255,255,255,0.7); margin-top:16px;">DISEÑO SIN PANTALLA NI DISTRACCIONES</span>
+        <span style="font-size:1.1rem; color:rgba(255,255,255,0.7); margin-top:16px; font-weight: 600;">DISEÑO SIN PANTALLA NI DISTRACCIONES</span>
       </div>
     </div>
   </section>
 
   <section class="hh-split hh-split--alt">
-    <div class="hh-wrap hh-split__grid">
+    <div class="hh-wrap hh-split__grid hh-fade-in">
       <div class="hh-split__img">
         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(0,201,123,0.3)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-        <span style="font-family:var(--font-heading); font-size:1.1rem; color:rgba(255,255,255,0.7); margin-top:16px;">ECOSISTEMA DE ANÁLISIS CLÍNICO</span>
+        <span style="font-size:1.1rem; color:rgba(255,255,255,0.7); margin-top:16px; font-weight: 600;">ECOSISTEMA DE ANÁLISIS CLÍNICO</span>
       </div>
       <div>
         <span class="hh-tag">La Solución HALO</span>
@@ -551,7 +606,7 @@
 
   <!-- BLOQUE 4: EL PITCH (COMPRA DIRECTA) -->
   <section class="hh-pitch" id="comprar">
-    <div class="hh-wrap">
+    <div class="hh-wrap hh-fade-in">
       <span class="hh-tag">Oferta Exclusiva</span>
       <h2>Adquiere tu LOOP Band</h2>
       <p class="hh-pitch__sub">Desbloquea tu potencial biométrico con un solo pago. Sin suscripciones.</p>
@@ -561,8 +616,8 @@
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
         </div>
         <div>
-          <h3 style="font-size: 1.8rem; margin-bottom: 8px;">LOOP Band® Classic</h3>
-          <p style="color: var(--h-text-muted); font-size: 0.95rem;">Incluye sensor de grado médico, banda textil de alta resistencia y cargador inalámbrico.</p>
+          <h3 style="font-size: 2rem; margin-bottom: 12px; font-weight: 800;">LOOP Band® Classic</h3>
+          <p style="color: var(--h-text-muted); font-size: 1rem; line-height: 1.5;">Incluye sensor de grado médico, banda textil de alta resistencia y cargador inalámbrico.</p>
           
           <div class="hh-price-stack">
             <span class="hh-price-current">{% if product %}{{ product.price | money }}{% else %}$149.00{% endif %}</span>
@@ -582,7 +637,7 @@
             </a>
           {% endif %}
 
-          <div style="margin-top: 20px; font-size: 0.85rem; color: var(--h-text-muted); display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+          <div style="margin-top: 24px; font-size: 0.9rem; color: var(--h-text-muted); display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-weight: 500;">
             <div>✓ Envío gratuito exprés</div>
             <div>✓ Garantía de 60 noches</div>
             <div>✓ App incluida de por vida</div>
@@ -595,7 +650,7 @@
 
   <!-- BLOQUE 5: LA CONEXIÓN (MANIFIESTO) -->
   <section class="hh-manifesto">
-    <div class="hh-wrap hh-manifesto__inner">
+    <div class="hh-wrap hh-manifesto__inner hh-fade-in">
       <span class="hh-tag">Manifiesto HALO</span>
       <h2>El secuestro de tus propios datos de salud.</h2>
       <p>Nos negamos a aceptar que las corporaciones te cobren una renta mensual por decirte cómo latió tu corazón anoche. Pagas por el sensor, pagas por el diseño y luego te obligan a pagar para ver tu propio HRV.</p>
@@ -655,8 +710,8 @@
   <!-- BLOQUE 7: CIERRE & FAQS -->
   <section class="hh-closing">
     <div class="hh-wrap">
-      <div class="hh-faq-grid">
-        <h2 style="font-size: 2.2rem; text-align: center; margin-bottom: 40px;">Preguntas Frecuentes</h2>
+      <div class="hh-faq-grid hh-fade-in">
+        <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 50px; font-weight: 800;">Preguntas Frecuentes</h2>
         
         <div class="hh-faq-item">
           <div class="hh-faq-question" onclick="this.parentElement.toggleAttribute('open')">
@@ -689,9 +744,9 @@
         </div>
       </div>
 
-      <div class="hh-guarantee-box">
+      <div class="hh-guarantee-box hh-fade-in">
         <h3>Garantía Blindada de 60 Noches</h3>
-        <p style="color: var(--h-text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 650px; margin: 0 auto 30px;">
+        <p style="color: var(--h-text-muted); font-size: 1.15rem; line-height: 1.7; max-width: 700px; margin: 0 auto 36px; font-weight: 300;">
           Pruébala, suda en ella, duerme en ella. Si tras 60 noches no notas una mejora en tu rendimiento matutino, te devolvemos el 100% de tu dinero. El riesgo es completamente nuestro.
         </p>
         <a href="#comprar" class="hh-btn">
@@ -707,3 +762,33 @@
   </section>
 
 </div>
+
+<script>
+  // Intersection Observer for Smooth Clinical Fade transitions (IM8 Benchmark)
+  document.addEventListener('DOMContentLoaded', function() {
+    const fadeElements = document.querySelectorAll('.hh-fade-in');
+    
+    const observerOptions = {
+      root: null,
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    fadeElements.forEach(el => observer.observe(el));
+    
+    // Trigger hero fade immediately
+    const heroContent = document.getElementById('hero-content');
+    if (heroContent) {
+      setTimeout(() => heroContent.classList.add('is-visible'), 100);
+    }
+  });
+</script>

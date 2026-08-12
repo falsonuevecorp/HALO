@@ -660,14 +660,21 @@
         </div>
 
         <!-- PRODUCTO IMAGE -->
-        <div class="hl-hero__img-wrap" style="border: none; background: transparent !important;">
-          <!-- PLACEHOLDER PREMIUM 1: Precisión Biométrica -->
-          <div class="hl-placeholder-premium" style="width:100%; height:100%; min-height:500px; display:flex; flex-direction:column; align-items:center; justify-content:center; background: radial-gradient(circle at center, #1A1A1A 0%, #050505 100%); border: 1px solid rgba(0,236,255,0.15); border-radius: 20px; position:relative; overflow:hidden;">
-            <div style="position:absolute; inset:0; background: linear-gradient(135deg, rgba(0,236,255,0.08) 0%, transparent 60%); pointer-events:none;"></div>
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(0,236,255,0.5)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:16px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-            <span style="font-family:'Inter', sans-serif; font-size:0.9rem; font-weight:700; color:rgba(255,255,255,0.7); text-transform:uppercase; letter-spacing:0.1em; z-index:2;">ASSET VISUAL PENDIENTE</span>
-            <span style="font-size:0.8rem; color:rgba(255,255,255,0.4); margin-top:8px; z-index:2;">1. Precisión Biométrica (16:9)</span>
-          </div>
+        <div class="hl-hero__img-wrap" style="border: none; background: transparent !important; position: relative;">
+          {% if product.featured_image %}
+            <!-- Shopify Native Product Image -->
+            <img src="{{ product.featured_image | img_url: '1000x1000', crop: 'center' }}"
+                 alt="{{ product.title }}"
+                 style="width:100%;height:100%;object-fit:cover; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
+          {% else %}
+            <!-- PLACEHOLDER PREMIUM 1 (Fallback si no subes imagen en Shopify) -->
+            <div class="hl-placeholder-premium" style="width:100%; height:100%; min-height:500px; display:flex; flex-direction:column; align-items:center; justify-content:center; background: radial-gradient(circle at center, #1A1A1A 0%, #050505 100%); border: 1px solid rgba(0,236,255,0.15); border-radius: 20px; position:relative; overflow:hidden;">
+              <div style="position:absolute; inset:0; background: linear-gradient(135deg, rgba(0,236,255,0.08) 0%, transparent 60%); pointer-events:none;"></div>
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(0,236,255,0.5)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:16px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+              <span style="font-family:'Inter', sans-serif; font-size:0.9rem; font-weight:700; color:rgba(255,255,255,0.7); text-transform:uppercase; letter-spacing:0.1em; z-index:2;">SIN IMAGEN EN SHOPIFY</span>
+              <span style="font-size:0.8rem; color:rgba(255,255,255,0.4); margin-top:8px; z-index:2;">Sube una imagen al producto</span>
+            </div>
+          {% endif %}
         </div>
       </div>
     </div>

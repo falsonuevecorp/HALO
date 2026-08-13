@@ -896,7 +896,9 @@
     .hl2-sticky-section { padding: 50px 0 100px; }
     .hl2-table-wrapper { overflow-x: auto; }
   }
-</style>
+{% if product.handle contains 'smartpaine' or product.title contains 'Atacama Vision' or product.title contains 'Vision PRO' or product.handle contains 'traduccion' %}
+  {% render 'atacama-vision-pro' %}
+{% else %}
 
 <div class="halo-loop-v2">
 
@@ -1658,3 +1660,4 @@
     }, 150);
   });
 </script>
+{% endif %}

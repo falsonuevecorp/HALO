@@ -1,5 +1,5 @@
 {% comment %}
-  Atacama Vision PRO® - Disruptive Broad Salespage Snippet
+  Atacama Vision PRO® - Long-Form Disruptive Broad Salespage Snippet
   Theme: Boutique UI Dark Mode (Apple / HALO Aesthetic)
   Rule 19: Strict Hardcoded Contrast Protection (!important)
   Rule 27: Hyper-Dense Buy Box (MercadoPago + Stock Pulse + Dual-CTA + Trustpilot)
@@ -33,6 +33,17 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px;
+  }
+
+  /* CLINICAL FADES ANIMATIONS */
+  .avp-fade {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .avp-fade.is-visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .avp-tag {
@@ -217,7 +228,7 @@
     100% { transform: translateX(-50%); }
   }
 
-  /* ====== BLOCK 3: AGITACIÓN DEL DOLOR ====== */
+  /* ====== BLOCK 3 & 4: AGITACIÓN DEL DOLOR & MECANISMO ====== */
   .avp-pivot {
     padding: 120px 0;
     background: var(--avp-bg-0);
@@ -240,7 +251,7 @@
     line-height: 1.7;
   }
 
-  /* ====== BLOCK 4 & 5: BENEFICIOS EGOÍSTAS (GRID ASIMÉTRICO) ====== */
+  /* ====== BLOCK 5: BENEFICIOS EGOÍSTAS (GRID ASIMÉTRICO) ====== */
   .avp-features {
     padding: 120px 0;
     background: var(--avp-bg-1);
@@ -320,8 +331,96 @@
     border-right: 2px solid var(--avp-cyan);
   }
 
+  /* ====== BLOCK 7: ARQUETIPOS DE USO (CASOS DE ESTUDIO) ====== */
+  .avp-cases {
+    padding: 120px 0;
+    background: var(--avp-bg-1);
+  }
+  .avp-cases__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 50px;
+  }
+  .avp-case-card {
+    background: var(--avp-bg-2);
+    border: 1px solid var(--avp-border);
+    border-radius: 32px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ====== BLOCK 8: SIMULADOR ÓPTICO Y TRADUCTOR IA ====== */
+  .avp-sim-section {
+    padding: 120px 0;
+    background: var(--avp-bg-0);
+  }
+  .avp-sim-box {
+    background: var(--avp-bg-2);
+    border: 1px solid var(--avp-cyan);
+    border-radius: 36px;
+    padding: 50px;
+    box-shadow: 0 0 50px rgba(0,236,255,0.15);
+  }
+
+  /* ====== BLOCK 11: FAQS COLLAPSIBLE ACCORDION ====== */
+  .avp-faq {
+    padding: 120px 0;
+    background: var(--avp-bg-1);
+  }
+  .avp-faq-item {
+    border-bottom: 1px solid var(--avp-border);
+    padding: 24px 0;
+  }
+  .avp-faq-question {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #FFFFFF !important;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .avp-faq-answer {
+    display: none;
+    padding-top: 15px;
+    color: var(--avp-text-muted) !important;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+  .avp-faq-item.active .avp-faq-answer {
+    display: block;
+  }
+  .avp-faq-item.active .faq-icon {
+    transform: rotate(180deg);
+  }
+
+  /* ====== BLOCK 12: STICKY MOBILE CHECKOUT FOOTER ====== */
+  .avp-sticky-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(15px);
+    border-top: 1px solid var(--avp-cyan);
+    padding: 14px 24px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.9);
+  }
+  .avp-sticky-bar.is-visible {
+    transform: translateY(0);
+  }
+
+  /* ====== RESPONSIVE ====== */
   @media (max-width: 768px) {
-    .avp-hero__grid, .avp-pivot__grid, .avp-grid-4 {
+    .avp-hero__grid, .avp-pivot__grid, .avp-grid-4, .avp-cases__grid {
       grid-template-columns: 1fr;
     }
     .avp-hero h1, .avp-pivot h2 {
@@ -331,6 +430,9 @@
       position: relative;
       top: 0;
     }
+    .avp-sim-box {
+      padding: 24px;
+    }
   }
 </style>
 
@@ -338,13 +440,23 @@
 
   <!-- BLOCK 1: GANCHO ÓPTICO Y BUY BOX HIPER-DENSO -->
   <section class="avp-hero">
-    <div class="avp-wrap">
+    <div class="avp-wrap avp-fade">
       <div class="avp-hero__grid">
         
-        <!-- LADO IZQUIERDO: VISUAL DEL PRODUCTO -->
+        <!-- LADO IZQUIERDO: VISUAL DEL PRODUCTO CON BADGE DE USO REAL -->
         <div class="avp-hero__visual">
           {% if product.featured_image %}
-            <img src="{{ product.featured_image | img_url: '1000x' }}" alt="{{ product.title }}" class="avp-hero-img">
+            <div style="position: relative; overflow: hidden; border-radius: 32px;">
+              <img src="{{ product.featured_image | img_url: '1000x' }}" alt="{{ product.title }}" class="avp-hero-img">
+              
+              <div style="position: absolute; bottom: 20px; left: 20px; background: rgba(0,0,0,0.85); backdrop-filter: blur(12px); border: 1px solid rgba(0,236,255,0.4); padding: 12px 18px; border-radius: 18px; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.8);">
+                <span style="width: 10px; height: 10px; background: var(--avp-cyan); border-radius: 50%; display: inline-block; box-shadow: 0 0 10px var(--avp-cyan);"></span>
+                <div>
+                  <div style="color: #FFFFFF !important; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.05em;">USO REAL: FOTOCROMÍA Y AUDIO EN RUTA</div>
+                  <div style="color: var(--avp-text-muted) !important; font-size: 0.7rem;">Cero pantallas desvelantes • Alerta 100% al tráfico</div>
+                </div>
+              </div>
+            </div>
           {% else %}
             <div class="avp-hero-placeholder">
               <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
@@ -372,6 +484,7 @@
               <span class="price-current">{{ product.price | money }}</span>
               {% if product.compare_at_price > product.price %}
                 <span class="price-compare">{{ product.compare_at_price | money }}</span>
+                <span style="background:rgba(0,236,255,0.12); color:var(--avp-cyan) !important; font-size:0.75rem; font-weight:800; padding:4px 10px; border-radius:6px; border:1px solid rgba(0,236,255,0.3);">OFICIAL - 57% OFF</span>
               {% endif %}
             {% else %}
               <span class="price-current">$59,990 CLP</span>
@@ -400,7 +513,7 @@
               <span style="width:8px; height:8px; background:#EF4444; border-radius:50%;"></span>
             </div>
             <span style="color:#FFFFFF !important; font-size:0.95rem;">
-              Solo quedan <strong style="color:#EF4444 !important;">{{ 'now' | date: '%S' | modulo: 5 | plus: 3 }} unidades</strong> con descuento
+              Solo quedan <strong style="color:#EF4444 !important;">{{ 'now' | date: '%S' | modulo: 5 | plus: 3 }} unidades</strong> en oferta
             </span>
           </div>
 
@@ -441,9 +554,9 @@
     </div>
   </section>
 
-  <!-- BLOCK 2: MARQUEE INFINITO -->
+  <!-- BLOCK 2: MARQUEE INFINITO DE PRENSA -->
   <section class="avp-logos">
-    <div class="avp-logos__track">
+    <div class="avp-logos__track avp-fade">
       <div class="avp-logos__item">WIRED</div>
       <div class="avp-logos__item">FORBES</div>
       <div class="avp-logos__item">GQ</div>
@@ -459,52 +572,62 @@
     </div>
   </section>
 
-  <!-- BLOCK 3: AGITACIÓN DEL DOLOR -->
+  <!-- BLOCK 3: AGITACIÓN DEL DOLOR (EL ENEMIGO COMÚN) -->
   <section class="avp-pivot">
-    <div class="avp-wrap">
+    <div class="avp-wrap avp-fade">
       <div class="avp-pivot__grid">
         <div>
-          <span class="avp-tag">SEGURIDAD Y VISIÓN BIÓNICA</span>
+          <span class="avp-tag">SEGURIDAD VIAL Y SALUD AUDITIVA</span>
           <h2>Andar sordo en el tráfico con audífonos in-ear es una ruleta rusa.</h2>
-          <p>Manejar moto, auto o bicicleta con audífonos encajados en el oído te aisla del peligro de la calle. Diseñamos altavoces direccionales Open-Ear que proyectan sonido HD directo a tus oídos manteniendo tu atención 100% alerta al entorno.</p>
+          <p>Manejar moto, auto o bicicleta con audífonos encajados en el oído te aísla del peligro de la calle. Además, los lentes de sol convencionales son tecnología inerte del siglo pasado: te cobran $200 USD por un plástico oscuro que tienes que quitarte cada vez que entras a la sombra o cae la noche.</p>
+          <p style="margin-top:15px;">Diseñamos Atacama Vision PRO® con altavoces direccionales Open-Ear que proyectan sonido HD a tus oídos manteniendo tu atención 100% alerta al entorno, junto a fotocromía inteligente de tinte instantáneo.</p>
         </div>
 
-        <div style="background:var(--avp-bg-2); border:1px solid var(--avp-border); border-radius:32px; padding:40px; text-align:center; position:relative; overflow:hidden;">
-          <div style="font-size:0.8rem; color:var(--avp-cyan) !important; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:15px;">FOTOCROMÍA ELECTRÓNICA INSTANTÁNEA</div>
-          <div style="width:140px; height:140px; margin:0 auto 20px; border-radius:50%; border:3px solid var(--avp-cyan); background:radial-gradient(circle, rgba(0,236,255,0.2) 0%, #000 80%); display:flex; align-items:center; justify-content:center; box-shadow:0 0 40px rgba(0,236,255,0.3);">
+        <!-- HUD SIMULADOR INTERACTIVO -->
+        <div style="background:var(--avp-bg-2); border:1px solid var(--avp-cyan); border-radius:32px; padding:40px; text-align:center; position:relative; overflow:hidden; box-shadow: 0 0 40px rgba(0,236,255,0.15);">
+          <div style="font-size:0.8rem; color:var(--avp-cyan) !important; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:15px;">FOTOCROMÍA Y AUDIO BIÓNICO</div>
+          
+          <div id="avp-lens-preview" style="width:160px; height:160px; margin:0 auto 20px; border-radius:50%; border:3px solid var(--avp-cyan); background:radial-gradient(circle, rgba(0,236,255,0.2) 0%, #000 80%); display:flex; align-items:center; justify-content:center; box-shadow:0 0 40px rgba(0,236,255,0.3); transition: all 0.5s ease;">
             <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--avp-cyan)" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
           </div>
-          <div style="color:#FFFFFF !important; font-size:1.1rem; font-weight:800;">Cambio de Tinte en 0.1 Segundos</div>
-          <div style="color:var(--avp-text-muted) !important; font-size:0.85rem; margin-top:6px;">De claro transparente de noche a sol oscuro de día.</div>
+          
+          <div style="color:#FFFFFF !important; font-size:1.2rem; font-weight:800; margin-bottom:6px;">Cambio de Tinte en 0.1s</div>
+          <div style="color:var(--avp-text-muted) !important; font-size:0.9rem;">De transparente nocturno a polarizado oscuro bajo el sol.</div>
+
+          <div style="display:flex; justify-content:center; gap:10px; margin-top:20px;">
+            <button onclick="setLensMode('day')" style="background:rgba(0,236,255,0.2); border:1px solid var(--avp-cyan); color:#FFF !important; padding:8px 16px; border-radius:99px; font-weight:700; cursor:pointer;"> MODO DÍA (SOL)</button>
+            <button onclick="setLensMode('night')" style="background:rgba(255,255,255,0.08); border:1px solid var(--avp-border); color:#FFF !important; padding:8px 16px; border-radius:99px; font-weight:700; cursor:pointer;"> MODO NOCHE (CLARO)</button>
+          </div>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- BLOCK 4 & 5: BENEFICIOS EGOÍSTAS -->
+  <!-- BLOCK 4 & 5: BENEFICIOS EGOÍSTAS (GRID ASIMÉTRICO 4 TARJETAS ORION GLOW) -->
   <section class="avp-features">
-    <div class="avp-wrap">
-      <div style="text-align:center; max-width:700px; margin:0 auto;">
-        <span class="avp-tag">TECNOLOGÍA DE VANGUARDIA</span>
-        <h2 style="font-size:2.8rem; font-weight:900; color:#FFFFFF !important;">Un laboratorio óptico y auditivo en tu rostro.</h2>
+    <div class="avp-wrap avp-fade">
+      <div style="text-align:center; max-width:750px; margin:0 auto;">
+        <span class="avp-tag">INGENIERÍA ÓPTICA & IA</span>
+        <h2 style="font-size:2.8rem; font-weight:900; color:#FFFFFF !important;">Un laboratorio de visión y sonido asistido por IA en tu rostro.</h2>
       </div>
 
       <div class="avp-grid-4">
+        
         <div class="avp-card">
           <div class="avp-card__icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--avp-cyan)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
           </div>
-          <h3>Fotocromía a un Clic</h3>
-          <p>Toca el marco o deja que la luz UV regule el tinte automáticamente. Cero necesidad de cambiar de lentes al entrar a túneles o sombras.</p>
+          <h3>Fotocromía Instantánea 0.1s</h3>
+          <p>Los cristales de regulación electrocrómica adaptan su tinte al instante según los rayos UV. Entra a túneles o sombras sin tener que quitártelos jamás.</p>
         </div>
 
         <div class="avp-card">
           <div class="avp-card__icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--avp-cyan)" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
           </div>
-          <h3>Traducción Inteligente IA</h3>
-          <p>Traduce conversaciones simultáneamente en más de 50 idiomas directamente en tu oído mientras viajas o haces negocios internacionales.</p>
+          <h3>Traductor Simultáneo IA</h3>
+          <p>Conéctate al motor multilingüe con IA para escuchar traducciones en tiempo real en más de 50 idiomas directamente en tu oído durante reuniones o viajes.</p>
         </div>
 
         <div class="avp-card">
@@ -512,23 +635,24 @@
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--avp-cyan)" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
           </div>
           <h3>Audio HD Open-Ear</h3>
-          <p>Altavoces de conducción de aire acústico. Disfruta de llamadas crystal-clear y tu música favorita sin tapar tus oídos jamás.</p>
+          <p>Microparlantes direccionales de conducción de aire. Escucha tus canciones favoritas, podcasts y llamadas de voz en alta definición sin tapar tus oídos.</p>
         </div>
 
         <div class="avp-card">
           <div class="avp-card__icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--avp-cyan)" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           </div>
-          <h3>Batería de Larga Duración & IPX5</h3>
-          <p>Hasta 8 horas continuas de música y llamadas. Resistencia al agua y al sudor IPX5 para entrenamientos exigentes.</p>
+          <h3>Batería 8H Continua & IPX5</h3>
+          <p>Hasta 8 horas ininterrumpidas de audio y llamadas. Construidos con polímero ultraligero resistente al agua, sudor y lluvia intensa.</p>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- BLOCK 6: TABLA COMPARATIVA -->
+  <!-- BLOCK 6: TABLA COMPARATIVA "MATEMÁTICA FRÍA" -->
   <section class="avp-table-section">
-    <div class="avp-wrap">
+    <div class="avp-wrap avp-fade">
       <div style="text-align:center; max-width:700px; margin:0 auto;">
         <span class="avp-tag">MATEMÁTICA FRÍA</span>
         <h2 style="font-size:2.8rem; font-weight:900; color:#FFFFFF !important;">¿Por qué Atacama Vision PRO® destruye lo convencional?</h2>
@@ -548,7 +672,7 @@
             <td>Traducción Simultánea IA</td>
             <td class="highlight-col"><strong>✔ 50+ Idiomas en Vivo</strong></td>
             <td>✘ No Posee</td>
-            <td>✘ Limitado/Incómodo</td>
+            <td>✘ Incómodo / Limitado</td>
           </tr>
           <tr>
             <td>Fotocromía a un Clic</td>
@@ -568,43 +692,228 @@
             <td>✘ No Posee</td>
             <td>✔ Básico</td>
           </tr>
+          <tr>
+            <td>Costo por Suscripciones</td>
+            <td class="highlight-col"><strong>✔ $0 Mensual</strong></td>
+            <td>✔ $0 Mensual</td>
+            <td>✘ In-App Pagado</td>
+          </tr>
         </tbody>
       </table>
     </div>
   </section>
 
-  <!-- BLOCK 9: PITCH BOX DE CIERRE -->
-  <section id="comprar-avp" style="padding:100px 0; background:var(--avp-bg-1);">
-    <div class="avp-wrap">
-      <div style="background:var(--avp-bg-2); border:1px solid var(--avp-cyan); border-radius:32px; padding:60px; text-align:center; max-width:800px; margin:0 auto; box-shadow:0 0 50px rgba(0,236,255,0.15);">
-        <span class="avp-tag">OFERTA DE LANZAMIENTO</span>
-        <h2 style="font-size:3rem; font-weight:900; margin-bottom:15px; color:#FFFFFF !important;">Atacama Vision PRO® Kit Completo</h2>
-        <p style="color:var(--avp-text-muted) !important; font-size:1.15rem; margin-bottom:25px;">Incluye Lentes Fotocromáticos IA, Estuche Rígido Deportivo, Cable Magnético HD y Licencia App Traductora.</p>
+  <!-- BLOCK 7: ARQUETIPOS DE USO (CASOS DE ESTUDIO BIOMÉTRICOS) -->
+  <section class="avp-cases">
+    <div class="avp-wrap avp-fade">
+      <div style="text-align:center; max-width:700px; margin:0 auto;">
+        <span class="avp-tag">ARQUETIPOS DE ALTO RENDIMIENTO</span>
+        <h2 style="font-size:2.8rem; font-weight:900; color:#FFFFFF !important;">Diseñado para quienes no aceptan distracciones.</h2>
+      </div>
 
-        <div style="font-size:3.2rem; font-weight:900; color:#FFFFFF !important; margin-bottom:20px;">
-          {% if product %}{{ product.price | money }}{% else %}$59,990 CLP{% endif %}
+      <div class="avp-cases__grid">
+        
+        <!-- ARQUETIPO 1: MOTOCICLISTA / CICLISTA -->
+        <div class="avp-case-card">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px;">
+            <div>
+              <div style="color:var(--avp-cyan) !important; font-size:0.75rem; font-weight:800; text-transform:uppercase;">CASO 01 — EN RUTA Y TRÁFICO</div>
+              <h3 style="font-size:1.6rem; font-weight:900; margin-top:4px; color:#FFFFFF !important;">El Motociclista & Atleta Urbano</h3>
+            </div>
+            <span style="background:rgba(0,236,255,0.12); color:var(--avp-cyan) !important; padding:4px 12px; border-radius:99px; font-size:0.75rem; font-weight:800;">ALERTA 100%</span>
+          </div>
+          <p style="color:var(--avp-text-muted) !important; font-size:1.05rem; line-height:1.6;">"Manejar moto en Santiago con audífonos encajados era suicida. Con Atacama Vision PRO escucho el GPS y mis llamadas cristalinas a 100km/h mientras escucho perfectamente los bocinazos y los autos alrededor."</p>
+          <div style="margin-top:20px; padding-top:15px; border-top:1px solid var(--avp-border); display:flex; justify-content:space-between; font-size:0.85rem; color:#FFFFFF !important; font-weight:700;">
+            <span>✔ GPS & Llamadas Manos Libres</span>
+            <span>✔ 0.1s Protección UV</span>
+          </div>
         </div>
 
-        <div style="max-width:480px; margin:0 auto 30px;">
-          {% if product %}
-            <form method="post" action="/cart/add">
-              <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
-              <button type="submit" class="avp-btn" style="width:100%;">
-                <span style="font-size:1.2rem; font-weight:800;">Pide tus Atacama Vision PRO® 🎁</span>
-                <span style="font-size:0.8rem; font-weight:700; opacity:0.75; text-transform:uppercase;">ANTES DE QUE SE AGOTE EL STOCK 🔥</span>
-              </button>
-            </form>
-          {% else %}
-            <a href="#comprar-avp" class="avp-btn" style="width:100%; text-align:center;">
-              <span style="font-size:1.2rem; font-weight:800;">Pide tus Atacama Vision PRO® 🎁</span>
-              <span style="font-size:0.8rem; font-weight:700; opacity:0.75; text-transform:uppercase;">ANTES DE QUE SE AGOTE EL STOCK 🔥</span>
-            </a>
-          {% endif %}
+        <!-- ARQUETIPO 2: EJECUTIVO BILINGÜE / VIAJERO -->
+        <div class="avp-case-card">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px;">
+            <div>
+              <div style="color:var(--avp-green) !important; font-size:0.75rem; font-weight:800; text-transform:uppercase;">CASO 02 — GLOBAL & NEGOCIOS</div>
+              <h3 style="font-size:1.6rem; font-weight:900; margin-top:4px; color:#FFFFFF !important;">El Ejecutivo & Viajero Frecuente</h3>
+            </div>
+            <span style="background:rgba(0,201,123,0.12); color:var(--avp-green) !important; padding:4px 12px; border-radius:99px; font-size:0.75rem; font-weight:800;">TRADUCCIÓN IA</span>
+          </div>
+          <p style="color:var(--avp-text-muted) !important; font-size:1.05rem; line-height:1.6;">"Viajo a ferias comerciales en Asia y EE.UU. La función de traducción simultánea por voz en mi oído elimina toda la barrera del idioma en reuniones y aeropuertos sin tener que sacar el teléfono."</p>
+          <div style="margin-top:20px; padding-top:15px; border-top:1px solid var(--avp-border); display:flex; justify-content:space-between; font-size:0.85rem; color:#FFFFFF !important; font-weight:700;">
+            <span>✔ 50+ Idiomas en Vivo</span>
+            <span>✔ Integración ChatGPT</span>
+          </div>
         </div>
 
-        <div style="color:var(--avp-text-muted) !important; font-size:0.85rem;">🔒 Pago Seguro vía MercadoPago (3 cuotas sin interés) | 🚚 Envío Gratis el Mismo Día</div>
       </div>
     </div>
   </section>
 
+  <!-- BLOCK 11: PREGUNTAS FRECUENTES (FAQS COLLAPSIBLE ACCORDION) -->
+  <section class="avp-faq">
+    <div class="avp-wrap avp-fade">
+      <div style="text-align:center; max-width:700px; margin:0 auto; margin-bottom:50px;">
+        <span class="avp-tag">RESOLUCIÓN DE DUDAS</span>
+        <h2 style="font-size:2.8rem; font-weight:900; color:#FFFFFF !important;">Preguntas Frecuentes</h2>
+      </div>
+
+      <div style="max-width:850px; margin:0 auto;">
+        
+        <div class="avp-faq-item" onclick="toggleFaq(this)">
+          <div class="avp-faq-question">
+            <span>¿Es seguro y legal manejar moto o vehículo usando Atacama Vision PRO®?</span>
+            <span class="faq-icon" style="transition:transform 0.3s ease;">▼</span>
+          </div>
+          <div class="avp-faq-answer">
+            Sí, 100%. A diferencia de los audífonos in-ear que bloquean el canal auditivo, los altavoces Open-Ear de Atacama Vision PRO® utilizan conducción de aire direccional. Esto te permite escuchar tu GPS o llamadas mientras tus oídos quedan totalmente libres para escuchar sirenas, bocinas y el motor de otros vehículos.
+          </div>
+        </div>
+
+        <div class="avp-faq-item" onclick="toggleFaq(this)">
+          <div class="avp-faq-question">
+            <span>¿Cómo funciona la traducción simultánea con Inteligencia Artificial?</span>
+            <span class="faq-icon" style="transition:transform 0.3s ease;">▼</span>
+          </div>
+          <div class="avp-faq-answer">
+            Los lentes se vinculan mediante Bluetooth 5.3 a tu smartphone Android o iPhone. Al activar el modo traducción en la App gratuita, los micrófonos direccionales captan la voz de tu interlocutor y traducen en tiempo real directamente en tu oído en más de 50 idiomas.
+          </div>
+        </div>
+
+        <div class="avp-faq-item" onclick="toggleFaq(this)">
+          <div class="avp-faq-question">
+            <span>¿Son resistentes al agua, sudor o lluvia en motocicleta?</span>
+            <span class="faq-icon" style="transition:transform 0.3s ease;">▼</span>
+          </div>
+          <div class="avp-faq-answer">
+            Poseen certificación de resistencia IPX5. Están herméticamente sellados contra sudor intenso, salpicaduras y lluvia moderada a fuerte mientras manejas o entrenas.
+          </div>
+        </div>
+
+        <div class="avp-faq-item" onclick="toggleFaq(this)">
+          <div class="avp-faq-question">
+            <span>¿Cómo funciona la fotocromía instantánea al cambiar la luz?</span>
+            <span class="faq-icon" style="transition:transform 0.3s ease;">▼</span>
+          </div>
+          <div class="avp-faq-answer">
+            Los cristales electrocrómicos responden a la radiación UV en menos de 0.1 segundos. Bajo el sol brillante se oscurecen para proteger tus ojos con UV400, y al entrar a un túnel, estacionamiento subterráneo o de noche, se vuelven completamente transparentes de inmediato.
+          </div>
+        </div>
+
+        <div class="avp-faq-item" onclick="toggleFaq(this)">
+          <div class="avp-faq-question">
+            <span>¿Cómo se realiza el pago en 3 cuotas sin interés con MercadoPago?</span>
+            <span class="faq-icon" style="transition:transform 0.3s ease;">▼</span>
+          </div>
+          <div class="avp-faq-answer">
+            Al hacer clic en el botón de compra, serás derivado a la pasarela cifrada de MercadoPago. Puedes seleccionar cualquier tarjeta de crédito chilena y diferir tu pago en 3 cuotas de $19.997 CLP con $0 de interés o recargo.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCK 9: GRAND SLAM PITCH BOX FINAL -->
+  <section id="comprar-avp" style="padding:100px 0; background:var(--avp-bg-1);">
+    <div class="avp-wrap avp-fade">
+      <div style="background:var(--avp-bg-2); border:1px solid var(--avp-cyan); border-radius:36px; padding:60px; text-align:center; max-width:800px; margin:0 auto; box-shadow:0 0 60px rgba(0,236,255,0.2);">
+        <span class="avp-tag">OFERTA DE LANZAMIENTO EXCLUSIVA</span>
+        <h2 style="font-size:3rem; font-weight:900; margin-bottom:15px; color:#FFFFFF !important;">Atacama Vision PRO® Kit Completo</h2>
+        <p style="color:var(--avp-text-muted) !important; font-size:1.15rem; margin-bottom:25px;">Incluye Lentes Fotocromáticos IA + Estuche Rígido Deportivo + Cable Magnético Carga Rápida + Licencia App Traducción Gratuita de por vida.</p>
+
+        <div style="font-size:3.5rem; font-weight:900; color:#FFFFFF !important; margin-bottom:20px;">
+          {% if product %}{{ product.price | money }}{% else %}$59,990 CLP{% endif %}
+        </div>
+
+        <div style="max-width:500px; margin:0 auto 30px;">
+          {% if product %}
+            <form method="post" action="/cart/add">
+              <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+              <button type="submit" class="avp-btn" style="width:100%;">
+                <span style="font-size:1.25rem; font-weight:800;">Pide tus Atacama Vision PRO® 🎁</span>
+                <span style="font-size:0.85rem; font-weight:700; opacity:0.8; text-transform:uppercase;">ANTES DE QUE SE AGOTE EL STOCK 🔥</span>
+              </button>
+            </form>
+          {% else %}
+            <a href="#comprar-avp" class="avp-btn" style="width:100%; text-align:center;">
+              <span style="font-size:1.25rem; font-weight:800;">Pide tus Atacama Vision PRO® 🎁</span>
+              <span style="font-size:0.85rem; font-weight:700; opacity:0.8; text-transform:uppercase;">ANTES DE QUE SE AGOTE EL STOCK 🔥</span>
+            </a>
+          {% endif %}
+        </div>
+
+        <div style="color:var(--avp-text-muted) !important; font-size:0.9rem; display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
+          <span>🔒 MercadoPago 3 Cuotas Sin Interés</span>
+          <span>🚚 Envío Gratis Mismo Día</span>
+          <span>🛡️ Garantía 30 Días</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCK 12: STICKY MOBILE CHECKOUT BAR -->
+  <div id="avp-sticky-footer" class="avp-sticky-bar">
+    <div>
+      <div style="font-size:0.75rem; color:var(--avp-cyan) !important; font-weight:800; text-transform:uppercase;">ATACAMA VISION PRO®</div>
+      <div style="font-size:1.1rem; font-weight:900; color:#FFFFFF !important;">{% if product %}{{ product.price | money }}{% else %}$59,990 CLP{% endif %}</div>
+    </div>
+    {% if product %}
+      <form method="post" action="/cart/add" style="margin:0;">
+        <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+        <button type="submit" class="avp-btn" style="padding:10px 20px; font-size:0.9rem;">
+          <span>Comprar Ahora 🎁</span>
+        </button>
+      </form>
+    {% else %}
+      <a href="#comprar-avp" class="avp-btn" style="padding:10px 20px; font-size:0.9rem;">
+        <span>Comprar Ahora 🎁</span>
+      </a>
+    {% endif %}
+  </div>
+
 </div>
+
+<script>
+  // FADE IN ON SCROLL
+  document.addEventListener('DOMContentLoaded', function() {
+    const fadeEls = document.querySelectorAll('.avp-fade');
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { root: null, threshold: 0.1 });
+    fadeEls.forEach(el => observer.observe(el));
+
+    // STICKY FOOTER ON SCROLL (>350px)
+    const stickyFooter = document.getElementById('avp-sticky-footer');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 350) {
+        stickyFooter.classList.add('is-visible');
+      } else {
+        stickyFooter.classList.remove('is-visible');
+      }
+    });
+  });
+
+  // SIMULATOR MODE TOGGLE
+  function setLensMode(mode) {
+    const preview = document.getElementById('avp-lens-preview');
+    if (mode === 'day') {
+      preview.style.background = 'radial-gradient(circle, rgba(0,0,0,0.9) 0%, #000 100%)';
+      preview.style.borderColor = 'var(--avp-cyan)';
+      preview.style.boxShadow = '0 0 50px rgba(0,236,255,0.5)';
+    } else {
+      preview.style.background = 'radial-gradient(circle, rgba(0,236,255,0.2) 0%, rgba(255,255,255,0.05) 100%)';
+      preview.style.borderColor = 'rgba(255,255,255,0.4)';
+      preview.style.boxShadow = '0 0 20px rgba(255,255,255,0.2)';
+    }
+  }
+
+  // ACCORDION TOGGLE
+  function toggleFaq(element) {
+    element.classList.toggle('active');
+  }
+</script>

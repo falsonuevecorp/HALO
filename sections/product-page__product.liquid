@@ -25,6 +25,12 @@
 }
 </script>
 
+{% if product.handle contains 'smartpaine' or product.title contains 'Atacama Vision' or product.title contains 'Vision PRO' or product.handle contains 'traduccion' %}
+  {% section 'atacama-vision-pro' %}
+{% elsif product.handle contains 'loop' or product.title contains 'Loop Band' %}
+  {% section 'halo-loop-v2' %}
+{% else %}
+
 {% assign current_variant = product.selected_or_first_available_variant %}
 {% assign featured_image = product.featured_image %}
 {% assign isAutoZoom = section.settings.autoZoom %}

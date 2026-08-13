@@ -896,9 +896,7 @@
     .hl2-sticky-section { padding: 50px 0 100px; }
     .hl2-table-wrapper { overflow-x: auto; }
   }
-{% if product.handle contains 'smartpaine' or product.title contains 'Atacama Vision' or product.title contains 'Vision PRO' or product.handle contains 'traduccion' %}
-  {% render 'atacama-vision-pro' %}
-{% else %}
+</style>
 
 <div class="halo-loop-v2">
 
@@ -1298,21 +1296,28 @@
           <!-- SPLIT-SCREEN CONTAINER -->
           <div style="display: grid; grid-template-columns: 1fr 1fr; width: 100%; height: 100%; position: absolute; inset: 0;">
             
-            <!-- LADO IZQUIERDO: PERSONA EN CAMA (FOTO REALISTA UGC EN DESPERTAR) -->
-            <div style="position: relative; overflow: hidden; background: url('https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=800&q=80') center/cover no-repeat; border-right: 1px solid rgba(255,255,255,0.1); padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
-              <!-- Gradient Overlay for Contrast -->
-              <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.85) 100%); pointer-events: none;"></div>
+            <!-- LADO IZQUIERDO: PERSONA EN CAMA (SCENE UGC MINIMALISTA) -->
+            <div style="position: relative; overflow: hidden; background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(0,0,0,0.95)); border-right: 1px solid rgba(255,255,255,0.1); padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
+              <div style="position: absolute; inset: 0; background: radial-gradient(circle at 30% 30%, rgba(0,236,255,0.08), transparent 70%); pointer-events: none;"></div>
               
               <!-- Tag Minimalista -->
-              <span style="background: rgba(0,0,0,0.6); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 99px; color: #FFFFFF !important; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; align-self: flex-start; z-index: 2;">
+              <span style="background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; border-radius: 99px; color: #FFFFFF !important; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; align-self: flex-start; z-index: 2;">
                 06:30 AM — DESPERTAR
               </span>
 
-              <!-- Bottom Glassmorphism Overlay -->
-              <div style="z-index: 2; background: rgba(0,0,0,0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.15); padding: 12px 14px; border-radius: 14px; margin-top: auto;">
-                <div style="color: #FFFFFF !important; font-size: 0.85rem; font-weight: 800; margin-bottom: 2px;">Lectura Biométrica en Silencio</div>
-                <div style="color: rgba(255,255,255,0.7) !important; font-size: 0.7rem;">Sin pantallas desvelantes. Cortisol 100% bajo al despertar.</div>
+              <!-- Vector Ilustrativo de Escena en Cama & Mirando Muñeca -->
+              <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 2; margin: auto 0; text-align: center; gap: 12px;">
+                {% if product.featured_image %}
+                  <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}" style="width: 130px; height: 130px; object-fit: cover; border-radius: 20px; border: 2px solid var(--h2-cyan); box-shadow: 0 0 30px rgba(0,236,255,0.2);">
+                {% else %}
+                  <div style="width: 100px; height: 100px; background: rgba(0,236,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid var(--h2-cyan);">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--h2-cyan)" stroke-width="1.5"><path d="M2 20h20M4 20v-6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6M6 12V9a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v3"/></svg>
+                  </div>
+                {% endif %}
+                <div style="color: #FFFFFF !important; font-size: 0.85rem; font-weight: 700; line-height: 1.3;">Cero Alarma Cortisol. Lectura Invisible de Biometría.</div>
               </div>
+
+              <div style="z-index: 2; color: var(--h2-text-muted) !important; font-size: 0.7rem; text-transform: uppercase; font-weight: 700;">UGC Real — Sin Pantallas</div>
             </div>
 
             <!-- LADO DERECHO: INTERFAZ APP HALO (NIVEL DE ESTRÉS Y SUEÑO) -->
@@ -1660,4 +1665,3 @@
     }, 150);
   });
 </script>
-{% endif %}

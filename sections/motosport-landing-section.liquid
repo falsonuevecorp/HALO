@@ -1,8 +1,4 @@
-{% if product.handle contains 'smartpaine' or product.title contains 'Atacama Vision' or product.title contains 'Vision PRO' or product.handle contains 'traduccion' %}
-  {% render 'atacama-vision-pro' %}
-{% else %}
-  {% render 'motosport-landing-page', target_product: section.settings.target_product %}
-{% endif %}
+{% render 'motosport-landing-page', target_product: section.settings.target_product %}
 
 {% schema %}
 {

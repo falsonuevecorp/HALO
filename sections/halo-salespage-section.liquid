@@ -1,8 +1,4 @@
-{% if product.handle contains 'smartpaine' or product.title contains 'Atacama Vision' or product.title contains 'Vision PRO' or product.handle contains 'traduccion' %}
-  {% render 'atacama-vision-pro' %}
-{% else %}
-  {% render 'halo-salespage' %}
-{% endif %}
+{% render 'halo-salespage' %}
 
 {% schema %}
 {

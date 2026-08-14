@@ -896,6 +896,271 @@
     .hl2-sticky-section { padding: 50px 0 100px; }
     .hl2-table-wrapper { overflow-x: auto; }
   }
+
+  /* ====== NEW BLOCK: DOLOR CRUDO ====== */
+  .hl2-pain {
+    padding: 120px 0;
+    background: #000000;
+    text-align: center;
+    border-top: 1px solid var(--h2-border);
+    border-bottom: 1px solid var(--h2-border);
+  }
+  .hl2-pain h2 {
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    color: #FFFFFF !important;
+    font-weight: 900;
+    line-height: 1.1;
+    max-width: 900px;
+    margin: 0 auto 30px;
+  }
+  .hl2-pain p {
+    font-size: 1.25rem;
+    color: var(--h2-text-muted) !important;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .hl2-pain-highlight {
+    color: #EF4444 !important;
+  }
+
+  /* ====== NEW BLOCK: ULTRA-SEGMENTACION ====== */
+  .hl2-lifestyle {
+    padding: 140px 0;
+    background: var(--h2-bg-1);
+    border-top: 1px solid var(--h2-border);
+  }
+  .hl2-lifestyle-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 60px;
+  }
+  .hl2-lifestyle-card {
+    background: var(--h2-bg-2);
+    border: 1px solid var(--h2-border);
+    border-radius: 24px;
+    padding: 50px 40px;
+    text-align: center;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .hl2-lifestyle-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(0, 236, 255, 0.1), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .hl2-lifestyle-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(0, 236, 255, 0.5);
+  }
+  .hl2-lifestyle-card:hover::before {
+    opacity: 1;
+  }
+  .hl2-lifestyle-icon {
+    width: 60px; height: 60px;
+    margin: 0 auto 25px;
+    background: rgba(0,236,255,0.05);
+    border: 1px solid rgba(0,236,255,0.2);
+    border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hl2-lifestyle-card h3 {
+    font-size: 1.6rem;
+    color: #FFFFFF !important;
+    margin-bottom: 15px;
+  }
+  .hl2-lifestyle-card p {
+    font-size: 1.05rem;
+    color: var(--h2-text-muted) !important;
+    line-height: 1.6;
+  }
+
+  /* ====== NEW BLOCK: ANATOMIA 3D ====== */
+  .hl2-anatomy {
+    padding: 160px 0;
+    background: var(--h2-bg-0);
+    border-top: 1px solid var(--h2-border);
+  }
+  .hl2-anatomy-box {
+    background: var(--h2-bg-1);
+    border-radius: 32px;
+    border: 1px solid var(--h2-border);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    min-height: 600px;
+  }
+  .hl2-anatomy-visual {
+    background: radial-gradient(circle at center, rgba(0, 201, 123, 0.08) 0%, var(--h2-bg-0) 80%);
+    border-right: 1px solid var(--h2-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hl2-anatomy-content {
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .hl2-anatomy-item {
+    margin-bottom: 40px;
+    position: relative;
+    padding-left: 30px;
+  }
+  .hl2-anatomy-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px;
+    width: 12px; height: 12px;
+    background: var(--h2-green);
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--h2-green);
+  }
+  .hl2-anatomy-item h4 {
+    font-size: 1.4rem;
+    color: #FFFFFF !important;
+    margin-bottom: 10px;
+  }
+  .hl2-anatomy-item p {
+    font-size: 1.05rem;
+    color: var(--h2-text-muted) !important;
+  }
+  
+  /* ====== NEW BLOCK: APP SIMULATOR ====== */
+  .hl2-app-sim {
+    padding: 160px 0;
+    background: var(--h2-bg-2);
+    border-top: 1px solid var(--h2-border);
+  }
+  .hl2-app-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .hl2-app-phone {
+    width: 320px;
+    height: 650px;
+    background: #000000;
+    border: 12px solid #1A1A1A;
+    border-radius: 45px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 0 0 2px #333;
+  }
+  .hl2-app-notch {
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 120px; height: 25px;
+    background: #1A1A1A;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    z-index: 10;
+  }
+  .hl2-app-screen {
+    position: absolute;
+    inset: 0;
+    padding: 50px 20px 20px;
+    background: #050505;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(20px);
+    pointer-events: none;
+  }
+  .hl2-app-screen.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .hl2-app-trigger {
+    padding: 40px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--h2-border);
+    border-radius: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .hl2-app-trigger.active {
+    background: rgba(0,236,255,0.08);
+    border-color: rgba(0,236,255,0.3);
+  }
+  .hl2-app-trigger h4 {
+    font-size: 1.5rem;
+    color: #FFFFFF !important;
+    margin-bottom: 10px;
+  }
+  .hl2-app-trigger p {
+    color: var(--h2-text-muted) !important;
+    font-size: 1rem;
+    margin: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .hl2-lifestyle-grid, .hl2-anatomy-box, .hl2-app-grid { grid-template-columns: 1fr; }
+    .hl2-anatomy-visual { min-height: 300px; border-right: none; border-bottom: 1px solid var(--h2-border); }
+    .hl2-anatomy-content { padding: 40px; }
+  }
+
+  /* ====== NEW BLOCK: ADVERTENCIA (LO QUE NO ES) ====== */
+  .hl2-warning {
+    padding: 120px 0;
+    background: #000000;
+    border-top: 1px solid rgba(239, 68, 68, 0.2);
+    border-bottom: 1px solid var(--h2-border);
+    position: relative;
+    overflow: hidden;
+  }
+  .hl2-warning::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 60%; height: 200px;
+    background: radial-gradient(ellipse, rgba(239, 68, 68, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hl2-warning-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 60px;
+  }
+  .hl2-warning-card {
+    background: rgba(255,255,255,0.02);
+    border-left: 3px solid #EF4444;
+    padding: 40px 30px;
+    border-radius: 0 16px 16px 0;
+    position: relative;
+  }
+  .hl2-warning-card svg {
+    margin-bottom: 20px;
+  }
+  .hl2-warning-card h3 {
+    font-size: 1.4rem;
+    color: #FFFFFF !important;
+    margin-bottom: 15px;
+    line-height: 1.3;
+  }
+  .hl2-warning-card p {
+    font-size: 1.05rem;
+    color: var(--h2-text-muted) !important;
+    line-height: 1.6;
+  }
+  @media (max-width: 768px) {
+    .hl2-warning-grid { grid-template-columns: 1fr; }
+  }
 </style>
 
 <div class="halo-loop-v2">
@@ -1136,6 +1401,51 @@
     </div>
   </section>
 
+  
+  <!-- BLOCK 2.1: DOLOR CRUDO (THE SABRI SUBY PAIN EXCAVATION) -->
+  <section class="hl2-pain">
+    <div class="hl2-wrap hl2-fade">
+      <h2>Pasar 8 horas en la cama no sirve de nada si tu <span class="hl2-pain-highlight">Fase REM</span> está fracturada.</h2>
+      <p>La mayoría de personas se despiertan agotadas porque sufren micro-apneas o picos de cortisol nocturno que jamás notan. El HALO Loop no te dice "cuánto" dormiste, te revela <strong style="color:#FFF !important;">por qué tu descanso es una mentira</strong>.</p>
+    </div>
+  </section>
+
+  <!-- BLOCK 3.1: ULTRA-SEGMENTACION (THE LOOP EARPLUGS FRAMEWORK) -->
+  <section class="hl2-lifestyle">
+    <div class="hl2-wrap hl2-fade">
+      <div class="hl2-compare-header" style="margin-bottom: 40px;">
+        <span class="hl2-tag">DISEÑADO PARA TU BIOLOGÍA</span>
+        <h2>¿Qué tipo de optimización buscas?</h2>
+      </div>
+      <div class="hl2-lifestyle-grid">
+        <!-- Card 1: Atleta -->
+        <div class="hl2-lifestyle-card">
+          <div class="hl2-lifestyle-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--h2-cyan)" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          </div>
+          <h3>Para el Atleta</h3>
+          <p>Mide tu Strain diario y HRV. El algoritmo te dirá exactamente cuándo debes empujar al máximo y cuándo tu cuerpo exige recuperación profunda.</p>
+        </div>
+        <!-- Card 2: Ejecutivo -->
+        <div class="hl2-lifestyle-card">
+          <div class="hl2-lifestyle-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--h2-cyan)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          </div>
+          <h3>Para el Ejecutivo</h3>
+          <p>Hackea tu estrés. Detecta los picos de cortisol durante el día y protege tu higiene del sueño para operar en Focus Mode al día siguiente.</p>
+        </div>
+        <!-- Card 3: Insomne -->
+        <div class="hl2-lifestyle-card">
+          <div class="hl2-lifestyle-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--h2-cyan)" stroke-width="2"><path d="M2 12h4l3-9 5 18 3-9h5"></path></svg>
+          </div>
+          <h3>Para el Insomne</h3>
+          <p>Aísla la causa de tus noches en vela. El sensor infrarrojo detecta micro-despertares y desniveles de oxígeno para curar tu insomnio de raíz.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- BLOCK 4: STICKY STACKING -->
   <section class="hl2-sticky-section">
     <div class="hl2-wrap hl2-sticky-container">
@@ -1202,6 +1512,151 @@
     </div>
   </section>
 
+  
+  <!-- BLOCK 4.1.5: APP SIMULATOR (SCROLL KINETIC UI) -->
+  <section class="hl2-app-sim" id="halo-app-simulator">
+    <div class="hl2-wrap hl2-fade">
+      <div class="hl2-compare-header" style="text-align: left; margin-bottom: 50px;">
+        <span class="hl2-tag">APP GRATUITA DE POR VIDA</span>
+        <h2>Tu biología, decodificada.</h2>
+      </div>
+      
+      <div class="hl2-app-grid">
+        <!-- Interactive Triggers (Left) -->
+        <div class="hl2-app-triggers">
+          <div class="hl2-app-trigger active" onclick="switchAppScreen(1, this)">
+            <h4>1. Dashboard de Recuperación</h4>
+            <p>Conoce tu score de 0 a 100% cada mañana. El algoritmo cruza tu HRV, sueño y temperatura para decirte si estás listo para el día.</p>
+          </div>
+          <div class="hl2-app-trigger" onclick="switchAppScreen(2, this)">
+            <h4>2. Arquitectura del Sueño</h4>
+            <p>Gráficas moleculares de tu fase REM, sueño profundo y ligero. Identifica a qué hora tu cuerpo realmente descansa.</p>
+          </div>
+          <div class="hl2-app-trigger" onclick="switchAppScreen(3, this)">
+            <h4>3. Nivel de Tensión (Strain)</h4>
+            <p>Mide tu desgaste cardiovascular acumulado. Evita el sobre-entrenamiento o el burnout ejecutivo antes de que ocurra.</p>
+          </div>
+        </div>
+
+        <!-- Phone Simulator (Right) -->
+        <div class="hl2-app-phone">
+          <div class="hl2-app-notch"></div>
+          
+          <!-- Screen 1: Recovery -->
+          <div class="hl2-app-screen active" id="screen-1">
+            <div style="text-align:center; color:var(--h2-cyan) !important; font-size:0.75rem; font-weight:800; letter-spacing:0.1em; margin-bottom:20px;">RECOVERY SCORE</div>
+            <div style="width:140px; height:140px; border-radius:50%; border:8px solid var(--h2-cyan); margin:0 auto; display:flex; align-items:center; justify-content:center; box-shadow:0 0 30px rgba(0,236,255,0.2);">
+              <span style="font-size:3rem; font-weight:900; color:#FFF !important;">96</span>
+            </div>
+            <div style="margin-top:30px; background:rgba(255,255,255,0.05); padding:15px; border-radius:12px;">
+              <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                <span style="color:#FFF !important; font-size:0.85rem;">HRV (Var. Cardíaca)</span>
+                <span style="color:var(--h2-cyan) !important; font-weight:700; font-size:0.85rem;">108 ms</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                <span style="color:#FFF !important; font-size:0.85rem;">Frecuencia Reposo</span>
+                <span style="color:var(--h2-green) !important; font-weight:700; font-size:0.85rem;">48 bpm</span>
+              </div>
+              <div style="display:flex; justify-content:space-between;">
+                <span style="color:#FFF !important; font-size:0.85rem;">Temperatura</span>
+                <span style="color:#FFF !important; font-weight:700; font-size:0.85rem;">+0.1 °C</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screen 2: Sleep -->
+          <div class="hl2-app-screen" id="screen-2">
+            <div style="text-align:center; color:#B48EAD !important; font-size:0.75rem; font-weight:800; letter-spacing:0.1em; margin-bottom:20px;">SLEEP PERFORMANCE</div>
+            <div style="font-size:2.5rem; font-weight:900; color:#FFF !important; text-align:center; margin-bottom:30px;">7h 24m</div>
+            
+            <!-- Sleep Graph Fake -->
+            <div style="display:flex; height:100px; align-items:flex-end; gap:4px; margin-bottom:20px;">
+              <div style="flex:1; background:#8FBCBB; height:30%; border-radius:4px;"></div>
+              <div style="flex:1; background:#5E81AC; height:80%; border-radius:4px;"></div>
+              <div style="flex:1; background:#B48EAD; height:50%; border-radius:4px;"></div>
+              <div style="flex:1; background:#8FBCBB; height:20%; border-radius:4px;"></div>
+              <div style="flex:1; background:#5E81AC; height:90%; border-radius:4px;"></div>
+              <div style="flex:1; background:#B48EAD; height:60%; border-radius:4px;"></div>
+              <div style="flex:1; background:#8FBCBB; height:40%; border-radius:4px;"></div>
+            </div>
+            
+            <div style="background:rgba(255,255,255,0.05); padding:15px; border-radius:12px; display:flex; justify-content:space-between; text-align:center;">
+              <div>
+                <div style="color:#B48EAD !important; font-size:0.7rem; font-weight:700; text-transform:uppercase;">REM</div>
+                <div style="color:#FFF !important; font-weight:800; font-size:1.1rem;">2h 10m</div>
+              </div>
+              <div>
+                <div style="color:#5E81AC !important; font-size:0.7rem; font-weight:700; text-transform:uppercase;">Profundo</div>
+                <div style="color:#FFF !important; font-weight:800; font-size:1.1rem;">1h 45m</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screen 3: Strain -->
+          <div class="hl2-app-screen" id="screen-3">
+            <div style="text-align:center; color:#EF4444 !important; font-size:0.75rem; font-weight:800; letter-spacing:0.1em; margin-bottom:20px;">DAY STRAIN</div>
+            
+            <div style="position:relative; width:160px; height:80px; margin:0 auto 20px; overflow:hidden;">
+              <div style="position:absolute; top:0; left:0; width:160px; height:160px; border-radius:50%; border:12px solid rgba(239,68,68,0.2); border-bottom-color:transparent; border-right-color:transparent; transform:rotate(45deg);"></div>
+              <div style="position:absolute; top:0; left:0; width:160px; height:160px; border-radius:50%; border:12px solid #EF4444; border-bottom-color:transparent; border-right-color:transparent; transform:rotate(-45deg);"></div>
+              <div style="position:absolute; bottom:0; left:0; width:100%; text-align:center; font-size:2.5rem; font-weight:900; color:#FFF !important; line-height:1;">14.2</div>
+            </div>
+            
+            <p style="color:rgba(255,255,255,0.7) !important; font-size:0.85rem; text-align:center; margin-bottom:20px; padding:0 10px;">Tu carga cardiovascular es óptima. Tienes capacidad para un entrenamiento intenso hoy.</p>
+            
+            <div style="background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); padding:15px; border-radius:12px; text-align:center;">
+              <div style="color:#EF4444 !important; font-size:0.75rem; font-weight:800; text-transform:uppercase; margin-bottom:5px;">Pico de Estrés Detectado</div>
+              <div style="color:#FFF !important; font-size:0.9rem; font-weight:600;">14:30 PM - 15:15 PM</div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function switchAppScreen(id, el) {
+      document.querySelectorAll('.hl2-app-trigger').forEach(trigger => trigger.classList.remove('active'));
+      document.querySelectorAll('.hl2-app-screen').forEach(screen => screen.classList.remove('active'));
+      
+      el.classList.add('active');
+      document.getElementById('screen-' + id).classList.add('active');
+    }
+  </script>
+
+  <!-- BLOCK 4.05: ADVERTENCIA (LO QUE NO ES) -->
+  <section class="hl2-warning">
+    <div class="hl2-wrap hl2-fade">
+      <div class="hl2-compare-header" style="margin-bottom: 40px; text-align: left;">
+        <span class="hl2-tag" style="background: rgba(239,68,68,0.1); color: #EF4444 !important; border-color: rgba(239,68,68,0.2);">⚠️ ADVERTENCIA CLÍNICA</span>
+        <h2 style="font-size: clamp(2.5rem, 4vw, 3.5rem); margin-top: 20px;">Lo que el HALO Loop <br><strong style="color: #EF4444 !important;">definitivamente NO es.</strong></h2>
+        <p style="color: var(--h2-text-muted) !important; font-size: 1.15rem; max-width: 600px; margin-top: 20px;">Antes de considerar esta inversión, debes tener claro que no construimos juguetes para contar pasos.</p>
+      </div>
+
+      <div class="hl2-warning-grid">
+        <!-- Card 1 -->
+        <div class="hl2-warning-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+          <h3>NO es "Joyería China" Desechable</h3>
+          <p>Las bandas genéricas (como las H59) mueren a la primera gota de sudor o lluvia. El HALO Loop es un tanque sellado ultrasónico. <strong style="color:#FFF !important;">Sumérgete hasta 5 metros bajo el agua (IP68/5ATM)</strong> sin dudarlo.</p>
+        </div>
+        <!-- Card 2 -->
+        <div class="hl2-warning-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          <h3>NO es un "Vampiro de Suscripciones"</h3>
+          <p>Pagar $30 USD al mes por ver tu propia frecuencia cardíaca es un insulto a tu inteligencia. Compras el hardware una vez, y <strong style="color:#FFF !important;">el algoritmo IA de decodificación es tuyo de por vida.</strong></p>
+        </div>
+        <!-- Card 3 -->
+        <div class="hl2-warning-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2"><path d="M13.73 21a2 2 0 0 1-3.46 0"></path><path d="M18.63 13A17.89 17.89 0 0 1 18 8"></path><path d="M6.26 6.26A5.86 5.86 0 0 0 6 8c0 7-3 9-3 9h14"></path><path d="M18 8a6 6 0 0 0-9.33-5"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+          <h3>NO es una "Pantalla de Estrés"</h3>
+          <p>Tu smartwatch vibra y te ciega con notificaciones a las 3 AM arruinando tu fase REM. El HALO <strong style="color:#FFF !important;">no tiene pantalla por diseño clínico</strong>. Cero luz azul. Solo datos puros fluyendo en silencio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- BLOCK 4.1: COMPARATIVE TABLE -->
   <section class="hl2-compare-section">
     <div class="hl2-wrap hl2-fade">
@@ -1214,9 +1669,24 @@
           <thead>
             <tr>
               <th>Característica</th>
-              <th class="highlight-col">HALO Loop Band</th>
-              <th>Smartwatches (Apple)</th>
-              <th>Anillos (Oura)</th>
+              <th class="highlight-col" style="text-align: center; vertical-align: bottom;">
+                <div style="width: 90px; height: 90px; border-radius: 16px; background: #000; border: 2px solid var(--h2-cyan); margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; overflow: hidden; box-shadow: 0 0 20px rgba(0,236,255,0.2);">
+                  <img src="https://cdn.shopify.com/s/files/1/0893/5886/0593/files/halo_band_placeholder.png" alt="HALO Loop" style="max-width:100%; object-fit:cover;" onerror="this.style.display='none';">
+                </div>
+                HALO Loop Band
+              </th>
+              <th style="text-align: center; vertical-align: bottom;">
+                <div style="width: 80px; height: 80px; border-radius: 16px; background: rgba(255,255,255,0.02); margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; overflow: hidden; opacity: 0.5; filter: grayscale(100%);">
+                  <img src="https://cdn.shopify.com/s/files/1/0893/5886/0593/files/h59_placeholder.png" alt="Reloj Genérico" style="max-width:100%; object-fit:cover;" onerror="this.style.display='none';">
+                </div>
+                Relojes Genéricos (h59)
+              </th>
+              <th style="text-align: center; vertical-align: bottom;">
+                <div style="width: 80px; height: 80px; border-radius: 16px; background: rgba(255,255,255,0.02); margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; overflow: hidden; opacity: 0.5; filter: grayscale(100%);">
+                  <img src="https://cdn.shopify.com/s/files/1/0893/5886/0593/files/ring_placeholder.png" alt="Anillos" style="max-width:100%; object-fit:cover;" onerror="this.style.display='none';">
+                </div>
+                Anillos de Suscripción
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -1283,6 +1753,62 @@
           <div class="hl2-data-value">100%</div>
           <h3>Fases de Sueño Reales</h3>
           <p>No adivinamos por tu movimiento. Combinamos pulso, oxígeno y temperatura para mapear exactamente cuántos minutos estuviste en sueño profundo, ligero o REM.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- BLOCK 4.3: ANATOMIA 3D (EFECTO IRON MAN) -->
+  <section class="hl2-anatomy">
+    <div class="hl2-wrap hl2-fade">
+      <div class="hl2-compare-header" style="margin-bottom: 50px;">
+        <span class="hl2-tag">INGENIERÍA INVISIBLE</span>
+        <h2>¿Qué hay dentro del HALO Loop?</h2>
+      </div>
+      
+      <div class="hl2-anatomy-box">
+        <div class="hl2-anatomy-visual">
+          <div style="position: absolute; width: 300px; height: 300px; background: rgba(0,201,123,0.1); border-radius: 50%; filter: blur(50px);"></div>
+          
+          <!-- Mockup of Band cross-section -->
+          <div style="position: relative; z-index: 2; width: 220px; height: 350px; background: #0A0A0A; border: 2px solid #333; border-radius: 110px; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 40px 80px rgba(0,0,0,0.8), inset 0 0 20px rgba(255,255,255,0.05);">
+            <!-- Optical Sensor Array -->
+            <div style="width: 80px; height: 80px; border-radius: 50%; background: #000; border: 2px solid var(--h2-green); display: flex; align-items: center; justify-content: center; position: relative; box-shadow: inset 0 0 15px rgba(0,201,123,0.5), 0 0 30px rgba(0,201,123,0.2);">
+              <div style="width: 15px; height: 15px; background: #00C97B; border-radius: 50%; box-shadow: 0 0 10px #00C97B; position: absolute; top: 15px;"></div>
+              <div style="width: 15px; height: 15px; background: #EF4444; border-radius: 50%; box-shadow: 0 0 10px #EF4444; position: absolute; bottom: 15px;"></div>
+              <div style="width: 8px; height: 8px; background: #FFF; border-radius: 50%; box-shadow: 0 0 5px #FFF;"></div>
+            </div>
+            
+            <div style="width: 1px; height: 40px; background: rgba(255,255,255,0.2); margin: 15px 0;"></div>
+            
+            <!-- Battery / Processor -->
+            <div style="width: 60px; height: 90px; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; display: flex; flex-direction: column; justify-content: space-between; padding: 8px;">
+              <div style="width: 100%; height: 2px; background: rgba(255,255,255,0.2);"></div>
+              <div style="width: 100%; height: 2px; background: rgba(255,255,255,0.2);"></div>
+              <div style="width: 100%; height: 2px; background: rgba(255,255,255,0.2);"></div>
+              <div style="text-align: center; color: var(--h2-cyan) !important; font-size: 0.5rem; font-weight: 800; letter-spacing: 0.1em; margin-top: 5px;">H2 CHIP</div>
+            </div>
+          </div>
+          
+          <!-- Connectors/Lines -->
+          <div style="position: absolute; right: -20px; top: 150px; width: 100px; height: 1px; background: var(--h2-cyan);"></div>
+          <div style="position: absolute; right: -20px; bottom: 200px; width: 100px; height: 1px; background: var(--h2-green);"></div>
+        </div>
+        
+        <div class="hl2-anatomy-content">
+          <div class="hl2-anatomy-item">
+            <h4>Arreglo Óptico PA-100</h4>
+            <p>Diodos verdes e infrarrojos penetran la dermis 100 veces por segundo para leer tu variabilidad cardíaca y oxigenación con precisión médica.</p>
+          </div>
+          <div class="hl2-anatomy-item" style="--h2-green: var(--h2-cyan);">
+            <h4>Chasis de Silicón Médico</h4>
+            <p>Hipoalergénico y transpirable. Diseñado para dormir sin sentirlo. Resiste sudor, agua (IPX5) y fricción extrema sin irritar tu piel.</p>
+          </div>
+          <div class="hl2-anatomy-item" style="--h2-green: #FFFFFF;">
+            <h4>H2 Micro-Procesador</h4>
+            <p>Procesa los algoritmos biométricos en el propio dispositivo antes de enviar la metadata encriptada a la App HALO. Batería garantizada de hasta 7 días.</p>
+          </div>
         </div>
       </div>
     </div>

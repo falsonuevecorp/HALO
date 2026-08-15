@@ -1,7 +1,13 @@
 {% schema %}
 {
   "name": "HALO Homepage",
-  "settings": [],
+  "settings": [
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Link del Producto (HALO Loop)"
+    }
+  ],
   "presets": [
     {
       "name": "HALO Homepage",
@@ -635,7 +641,7 @@
               </button>
             </form>
           {% else %}
-            <a href="/products/loop-band" class="hh-btn" style="width: 100%;">
+            <a href="{{ section.settings.cta_url | default: '#' }}" class="hh-btn" style="width: 100%;">
               <span>COMPRAR AHORA</span>
             </a>
           {% endif %}

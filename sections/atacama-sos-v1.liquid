@@ -1,0 +1,389 @@
+{% schema %}
+{
+  "name": "Atacama SOS Salespage",
+  "settings": [],
+  "presets": [{"name": "Atacama SOS Salespage","category": "Custom"}]
+}
+{% endschema %}
+
+<style>
+  :root {
+    --asos-bg: #030303;
+    --asos-bg-2: #0A0A0A;
+    --asos-bg-3: #141414;
+    --asos-red: #EF4444;
+    --asos-red-glow: rgba(239, 68, 68, 0.2);
+    --asos-green: #10B981;
+    --asos-text: #FFFFFF;
+    --asos-text-muted: rgba(255,255,255,0.7);
+    --asos-border: rgba(255,255,255,0.1);
+  }
+
+  .asos-container {
+    background-color: var(--asos-bg);
+    color: var(--asos-text);
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "SF Pro Display", sans-serif;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  .asos-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* Typography */
+  .asos-h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.04em; margin-bottom: 20px; color: #FFF !important; }
+  .asos-h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 24px; color: #FFF !important; }
+  .asos-p { font-size: 1.125rem; color: var(--asos-text-muted) !important; margin-bottom: 30px; }
+  
+  .asos-tag {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 100px;
+    background: var(--asos-red-glow);
+    color: var(--asos-red) !important;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+  }
+
+  /* Hero Section (Buy Box Layout) */
+  .asos-hero {
+    padding: 60px 0 80px;
+    background: radial-gradient(circle at center top, var(--asos-bg-3) 0%, var(--asos-bg) 100%);
+  }
+  .asos-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 450px;
+    gap: 60px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .asos-hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* Product Image Gallery */
+  .asos-gallery {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    background: var(--asos-bg-2);
+    border: 1px solid var(--asos-border);
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .asos-gallery img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* Buy Box */
+  .asos-buy-box {
+    background: var(--asos-bg-2);
+    border: 1px solid var(--asos-border);
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  }
+  .asos-reviews {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .asos-stars { color: #FFB800; font-size: 1.2rem; }
+  .asos-review-text { font-size: 0.9rem; color: var(--asos-text-muted) !important; font-weight: 500; }
+
+  .asos-price-wrap { margin-bottom: 24px; }
+  .asos-price { font-size: 2.5rem; font-weight: 800; color: #FFF !important; }
+  .asos-price-compare { font-size: 1.25rem; color: var(--asos-text-muted) !important; text-decoration: line-through; margin-left: 12px; }
+
+  /* Mercadopago Banner */
+  .asos-mp-banner {
+    background: rgba(0, 158, 227, 0.1);
+    border: 1px solid rgba(0, 158, 227, 0.3);
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .asos-mp-text { font-size: 0.9rem; color: #009EE3 !important; font-weight: 600; }
+
+  /* Stock Pulse */
+  .asos-stock {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    font-size: 0.9rem;
+    color: var(--asos-text-muted) !important;
+  }
+  .asos-pulse {
+    width: 8px; height: 8px; background: var(--asos-red); border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+    animation: pulseRed 2s infinite;
+  }
+  @keyframes pulseRed {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+  }
+
+  /* Dual CTA Button */
+  .asos-btn {
+    display: block; width: 100%;
+    background: var(--asos-green);
+    color: #000 !important;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+    margin-bottom: 16px;
+  }
+  .asos-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(16, 185, 129, 0.4); }
+  .asos-btn-title { display: block; font-size: 1.25rem; font-weight: 800; margin-bottom: 4px; }
+  .asos-btn-sub { display: block; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; opacity: 0.7; letter-spacing: 0.5px; }
+
+  /* Trustpilot */
+  .asos-tp { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 16px; }
+  .asos-tp img { height: 24px; }
+
+  /* Enemy Comparison Section */
+  .asos-enemy {
+    padding: 100px 0;
+    background: var(--asos-bg);
+  }
+  .asos-enemy-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+  }
+  @media (max-width: 900px) {
+    .asos-enemy-grid { grid-template-columns: 1fr; }
+  }
+  .asos-enemy-card {
+    background: var(--asos-bg-2);
+    border: 1px solid var(--asos-border);
+    border-radius: 24px;
+    padding: 40px 30px;
+    text-align: center;
+  }
+  .asos-enemy-card.winner {
+    background: rgba(16, 185, 129, 0.05);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    position: relative;
+  }
+  .asos-winner-badge {
+    position: absolute; top: -16px; left: 50%; transform: translateX(-50%);
+    background: var(--asos-green); color: #000 !important; font-weight: 800;
+    padding: 6px 16px; border-radius: 100px; font-size: 0.85rem; letter-spacing: 1px;
+  }
+
+  /* Features / Solutions */
+  .asos-feature {
+    padding: 100px 0;
+    border-top: 1px solid var(--asos-border);
+  }
+  .asos-feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .asos-feature-grid.reverse { direction: rtl; }
+  .asos-feature-grid.reverse > * { direction: ltr; }
+  @media (max-width: 900px) {
+    .asos-feature-grid { grid-template-columns: 1fr; gap: 40px; }
+    .asos-feature-grid.reverse { direction: ltr; }
+  }
+
+  /* Visual Checkmarks */
+  .asos-check-list { list-style: none; padding: 0; margin: 0; }
+  .asos-check-item {
+    display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px;
+  }
+  .asos-check-icon {
+    width: 28px; height: 28px; border-radius: 50%; background: rgba(16, 185, 129, 0.1);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+</style>
+
+<div class="asos-container">
+  
+  <!-- HERO SECTION (BUY BOX) -->
+  <section class="asos-hero">
+    <div class="asos-wrap asos-hero-grid">
+      <!-- Left: Image & Copy -->
+      <div class="asos-hero-content">
+        <span class="asos-tag">ALERTA MÉDICA INTELIGENTE</span>
+        <h1 class="asos-h1">Cómo protegerlos de una caída fatal, sin arrebatarles su <span style="color:var(--asos-red);">dignidad.</span></h1>
+        <p class="asos-p">El Reloj Atacama SOS es el único guardián 4G invisible. Sin smartphones complicados, sin collares humillantes y sin pagar $50/mes en suscripciones.</p>
+        
+        <div class="asos-gallery">
+          <!-- Placeholder for Watch Image -->
+          <img src="https://cdn.shopify.com/s/files/1/0893/5886/0593/files/halo_band_placeholder.png" alt="Atacama SOS Watch" onerror="this.src='https://placehold.co/800x800/141414/333333?text=Atacama+SOS+Watch'">
+        </div>
+      </div>
+
+      <!-- Right: Buy Box -->
+      <div class="asos-buy-box">
+        <div class="asos-reviews">
+          <div class="asos-stars">★★★★★</div>
+          <span class="asos-review-text">4.9/5 basado en +8,400 Hijos Tranquilos</span>
+        </div>
+
+        <h2 style="font-size: 1.5rem; color: #FFF; margin-bottom: 8px;">Reloj Atacama SOS 4G</h2>
+        <p style="color: var(--asos-text-muted); font-size: 0.95rem; margin-bottom: 24px;">Incluye detección de caídas, GPS y monitor cardíaco.</p>
+
+        <div class="asos-price-wrap">
+          <span class="asos-price">{{ 149900 | money }}</span>
+          <span class="asos-price-compare">{{ 249900 | money }}</span>
+        </div>
+
+        <div class="asos-mp-banner">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#009EE3" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          <span class="asos-mp-text">Paga en cuotas sin interés con MercadoPago</span>
+        </div>
+
+        <div class="asos-stock">
+          <div class="asos-pulse"></div>
+          <span>Solo quedan <strong>14 unidades</strong> en inventario.</span>
+        </div>
+
+        {% if product %}
+          <form method="post" action="/cart/add">
+            <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+            <button type="submit" class="asos-btn">
+              <span class="asos-btn-title">PROTEGERLOS AHORA 🛡️</span>
+              <span class="asos-btn-sub">ENVÍO GRATIS 24H · GARANTÍA 30 DÍAS</span>
+            </button>
+          </form>
+        {% else %}
+          <a href="#" class="asos-btn">
+            <span class="asos-btn-title">PROTEGERLOS AHORA 🛡️</span>
+            <span class="asos-btn-sub">ENVÍO GRATIS 24H · GARANTÍA 30 DÍAS</span>
+          </a>
+        {% endif %}
+
+        <div class="asos-tp">
+          <img src="https://cdn.trustpilot.net/brand-assets/4.1.0/logo-white.svg" alt="Trustpilot">
+          <span style="color:#FFF; font-weight:bold; font-size:0.9rem;">Excelente</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENEMY SECTION: THE COMPARISON -->
+  <section class="asos-enemy">
+    <div class="asos-wrap">
+      <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <span class="asos-tag" style="background: rgba(255,255,255,0.1); color:#FFF!important; border-color: rgba(255,255,255,0.2);">EL STATUS QUO ESTÁ ROTO</span>
+        <h2 class="asos-h2">Por qué odian las alternativas (Y por qué te estresan a ti)</h2>
+        <p class="asos-p">Hasta ahora, solo tenías dos opciones para protegerlos. Ambas eran terribles.</p>
+      </div>
+
+      <div class="asos-enemy-grid">
+        <!-- Enemy 1 -->
+        <div class="asos-enemy-card">
+          <div style="height: 120px; display:flex; align-items:center; justify-content:center; margin-bottom: 24px;">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </div>
+          <h3 style="color:#FFF; margin-bottom:12px; font-size:1.25rem;">El Collar "Life Alert"</h3>
+          <p style="color:var(--asos-text-muted); font-size:0.95rem; margin-bottom:24px;">Un botón rojo colgando del cuello grita "soy un inválido". Ataca su ego y dignidad, por lo que <strong>terminan escondiéndolo en una gaveta</strong>.</p>
+          <div style="color:var(--asos-red); font-weight:700; font-size:0.9rem;">Te cobra $50/mes para siempre.</div>
+        </div>
+
+        <!-- Winner -->
+        <div class="asos-enemy-card winner">
+          <div class="asos-winner-badge">LA SOLUCIÓN</div>
+          <div style="height: 120px; display:flex; align-items:center; justify-content:center; margin-bottom: 24px;">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--asos-green)" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><circle cx="12" cy="14" r="4"></circle><line x1="12" y1="6" x2="12" y2="6.01"></line></svg>
+          </div>
+          <h3 style="color:#FFF; margin-bottom:12px; font-size:1.25rem;">Reloj Atacama SOS</h3>
+          <p style="color:var(--asos-text-muted); font-size:0.95rem; margin-bottom:24px;">Luce como un reloj moderno normal. Protege su estatus y dignidad. Pero por dentro es un búnker de GPS, Caídas y Botón SOS 4G.</p>
+          <div style="color:var(--asos-green); font-weight:700; font-size:0.9rem;">Un solo pago. Tuyo de por vida.</div>
+        </div>
+
+        <!-- Enemy 2 -->
+        <div class="asos-enemy-card">
+          <div style="height: 120px; display:flex; align-items:center; justify-content:center; margin-bottom: 24px;">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg>
+          </div>
+          <h3 style="color:#FFF; margin-bottom:12px; font-size:1.25rem;">Smartwatch (Apple/Samsung)</h3>
+          <p style="color:var(--asos-text-muted); font-size:0.95rem; margin-bottom:24px;">Demasiado complicados. La batería solo dura 18 horas, <strong>siempre olvidan cargarlo</strong> y si se caen, a veces ni saben cómo pedir ayuda.</p>
+          <div style="color:var(--asos-red); font-weight:700; font-size:0.9rem;">Requieren iPhone/Smartphone cerca.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE 1: FALL DETECTION -->
+  <section class="asos-feature">
+    <div class="asos-wrap asos-feature-grid">
+      <div class="asos-feature-img" style="background:var(--asos-bg-2); border-radius:24px; aspect-ratio:4/3; border: 1px solid var(--asos-border); display:flex; align-items:center; justify-content:center;">
+        <span style="color:var(--asos-border); font-size:2rem;">[IMAGEN PERSONA SEGURA]</span>
+      </div>
+      <div class="asos-feature-text">
+        <h2 class="asos-h2">Si caen, tú eres el primero en saberlo. En segundos.</h2>
+        <p class="asos-p">El terror número uno de todo hijo es la ducha. Un piso resbaladizo y 14 horas de agonía en el suelo sin poder llamar a nadie. Ya no más.</p>
+        <ul class="asos-check-list">
+          <li class="asos-check-item">
+            <div class="asos-check-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--asos-green)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            <div>
+              <strong style="color:#FFF;">Algoritmo Anti-Caídas IA</strong>
+              <p style="color:var(--asos-text-muted); font-size:0.95rem; margin:4px 0 0;">Si el reloj detecta un impacto súbito seguido de inmovilidad, llama automáticamente a tu teléfono.</p>
+            </div>
+          </li>
+          <li class="asos-check-item">
+            <div class="asos-check-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--asos-green)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            <div>
+              <strong style="color:#FFF;">100% Sumergible (IP68)</strong>
+              <p style="color:var(--asos-text-muted); font-size:0.95rem; margin:4px 0 0;">Diseñado para que nunca se lo quiten, ni siquiera en la ducha (donde ocurren el 80% de los accidentes).</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE 2: 4G INDEPENDENCE -->
+  <section class="asos-feature">
+    <div class="asos-wrap asos-feature-grid reverse">
+      <div class="asos-feature-img" style="background:var(--asos-bg-2); border-radius:24px; aspect-ratio:4/3; border: 1px solid var(--asos-border); display:flex; align-items:center; justify-content:center;">
+        <span style="color:var(--asos-border); font-size:2rem;">[APP GPS MOCKUP]</span>
+      </div>
+      <div class="asos-feature-text">
+        <h2 class="asos-h2">Paz mental en tu bolsillo. 24/7.</h2>
+        <p class="asos-p">A diferencia de los relojes genéricos que dependen del Bluetooth, el Atacama SOS tiene un cerebro propio.</p>
+        <ul class="asos-check-list">
+          <li class="asos-check-item">
+            <div class="asos-check-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--asos-green)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            <div>
+              <strong style="color:#FFF;">Chip 4G Nativo</strong>
+              <p style="color:var(--asos-text-muted); font-size:0.95rem; margin:4px 0 0;">No necesitan tener un smartphone cerca. El reloj hace llamadas y manda su ubicación por sí solo.</p>
+            </div>
+          </li>
+          <li class="asos-check-item">
+            <div class="asos-check-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--asos-green)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            <div>
+              <strong style="color:#FFF;">GPS Satelital en Tiempo Real</strong>
+              <p style="color:var(--asos-text-muted); font-size:0.95rem; margin:4px 0 0;">Abre tu app en cualquier momento y ve exactamente dónde están, o crea un "Cerco Virtual" si tienen problemas de memoria.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</div>

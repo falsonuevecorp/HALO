@@ -9,9 +9,9 @@
  */
 {
   "current": {
-    "gdpr": false,
-    "defaultLogo": "shopify://shop_images/Logo_transp.webp",
+    "defaultLogo": "shopify://shop_images/halo_logo_social-removebg-preview.png",
     "baseLayout": "stretchBg",
+    "gdpr": false,
     "jQuery": true,
     "sections": {
       "top-info-bar": {
@@ -209,7 +209,7 @@
         ],
         "settings": {
           "layout": "default",
-          "fillColor": "#F8F8F8",
+          "fillColor": "#f8f8f8",
           "contentColor": "#434141",
           "spacing": 0
         }
@@ -240,7 +240,7 @@
           "fontSize": "base",
           "customFont": false,
           "fontFamily": "work_sans_n6",
-          "cartIcon": "shopping-basket",
+          "cartIcon": "shopping-cart",
           "mobileLogoPosition": "center",
           "mobileCart": true
         }

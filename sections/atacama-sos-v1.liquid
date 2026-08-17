@@ -158,24 +158,27 @@
     100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
   }
 
-  /* Dual CTA Button */
-  .asos-btn {
+  /* Dual CTA Button - MAXIMUM SPECIFICITY */
+  .asos-container button.asos-btn,
+  .asos-container a.asos-btn {
     display: block; width: 100%;
     background: var(--asos-green) !important;
     color: #000 !important;
+    border: 1px solid var(--asos-green) !important;
+    font-family: var(--asos-font-family) !important;
     border-radius: 16px;
     padding: 20px;
     text-align: center;
     text-decoration: none;
     transition: transform 0.2s, box-shadow 0.2s;
-    border: none;
     cursor: pointer;
     box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
     margin-bottom: 16px;
   }
-  .asos-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(16, 185, 129, 0.4); }
-  .asos-btn-title { display: block; font-size: 1.25rem; font-weight: 800; margin-bottom: 4px; }
-  .asos-btn-sub { display: block; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; opacity: 0.7; letter-spacing: 0.5px; }
+  .asos-container button.asos-btn:hover,
+  .asos-container a.asos-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(16, 185, 129, 0.4); }
+  .asos-container .asos-btn-title { display: block; font-family: var(--asos-font-family) !important; font-size: 1.25rem; font-weight: 900; margin-bottom: 4px; color: #000 !important; }
+  .asos-container .asos-btn-sub { display: block; font-family: var(--asos-font-family) !important; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; opacity: 0.8; letter-spacing: 0.5px; color: #000 !important; }
 
   /* Trustpilot */
   .asos-tp { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 16px; }

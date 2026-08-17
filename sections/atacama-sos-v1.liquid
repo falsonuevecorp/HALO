@@ -22,9 +22,13 @@
   .asos-container {
     background-color: var(--asos-bg);
     color: var(--asos-text);
-    font-family: -apple-system, BlinkMacSystemFont, "Inter", "SF Pro Display", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "SF Pro Display", sans-serif !important;
     line-height: 1.5;
     overflow-x: hidden;
+  }
+
+  .asos-container * {
+    font-family: inherit !important;
   }
 
   .asos-wrap {

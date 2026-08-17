@@ -59,6 +59,14 @@
   /* Typography */
   .asos-h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.04em; margin-bottom: 20px; color: var(--asos-text) !important; }
   .asos-h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 24px; color: var(--asos-text) !important; }
+  .asos-product-title { font-size: clamp(1.3rem, 4vw, 1.75rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 8px; color: var(--asos-text) !important; }
+  
+  @media (max-width: 768px) {
+    .asos-product-title { font-size: 1.35rem !important; margin-bottom: 6px !important; }
+    .asos-buy-box > div { margin-bottom: 10px !important; }
+    .asos-mp-card { padding: 12px 10px !important; }
+  }
+
   .asos-p { font-size: 1.125rem; color: var(--asos-text-muted) !important; margin-bottom: 30px; }
   
   .asos-tag {
@@ -264,7 +272,7 @@
       <!-- Right: Hyper-Dense Buy Box (Rule 27) -->
       <div class="asos-buy-box">
         
-        <h2 style="font-size: 1.75rem; font-weight: 900; color: var(--asos-text) !important; margin-bottom: 8px; letter-spacing: -0.02em;">{{ product.title }}</h2>
+        <h2 class="asos-product-title">{{ product.title }}</h2>
         
         <div style="display:flex; justify-content:flex-start; align-items:center; gap: 4px; margin-bottom: 16px;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="#00B67A" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>

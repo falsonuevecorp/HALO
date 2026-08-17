@@ -13,15 +13,15 @@
 
 <style>
   :root {
-    --asos-bg: #030303;
-    --asos-bg-2: #0A0A0A;
-    --asos-bg-3: #141414;
+    --asos-bg: #FFFFFF;
+    --asos-bg-2: #F8FAFC;
+    --asos-bg-3: #F1F5F9;
     --asos-red: #EF4444;
-    --asos-red-glow: rgba(239, 68, 68, 0.2);
+    --asos-red-glow: rgba(239, 68, 68, 0.1);
     --asos-green: #10B981;
-    --asos-text: #FFFFFF;
-    --asos-text-muted: rgba(255,255,255,0.7);
-    --asos-border: rgba(255,255,255,0.1);
+    --asos-text: #000000;
+    --asos-text-muted: rgba(0,0,0,0.6);
+    --asos-border: rgba(0,0,0,0.1);
     --asos-font-family: -apple-system, BlinkMacSystemFont, "Inter", "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
 
@@ -57,8 +57,8 @@
   }
 
   /* Typography */
-  .asos-h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.04em; margin-bottom: 20px; color: #FFF !important; }
-  .asos-h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 24px; color: #FFF !important; }
+  .asos-h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.04em; margin-bottom: 20px; color: var(--asos-text) !important; }
+  .asos-h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 24px; color: var(--asos-text) !important; }
   .asos-p { font-size: 1.125rem; color: var(--asos-text-muted) !important; margin-bottom: 30px; }
   
   .asos-tag {
@@ -122,7 +122,7 @@
   .asos-review-text { font-size: 0.9rem; color: var(--asos-text-muted) !important; font-weight: 500; }
 
   .asos-price-wrap { margin-bottom: 24px; }
-  .asos-price { font-size: 2.5rem; font-weight: 800; color: #FFF !important; }
+  .asos-price { font-size: 2.5rem; font-weight: 800; color: var(--asos-text) !important; }
   .asos-price-compare { font-size: 1.25rem; color: var(--asos-text-muted) !important; text-decoration: line-through; margin-left: 12px; }
 
   /* Mercadopago Banner */
@@ -264,7 +264,7 @@
       <!-- Right: Hyper-Dense Buy Box (Rule 27) -->
       <div class="asos-buy-box">
         
-        <h2 style="font-size: 1.75rem; font-weight: 900; color: #FFF; margin-bottom: 8px; letter-spacing: -0.02em;">Reloj Atacama SOS 4G</h2>
+        <h2 style="font-size: 1.75rem; font-weight: 900; color: var(--asos-text); margin-bottom: 8px; letter-spacing: -0.02em;">Reloj Atacama SOS 4G</h2>
         
         <div style="display:flex; justify-content:flex-start; align-items:center; gap: 4px; margin-bottom: 16px;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="#00B67A" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
@@ -272,12 +272,12 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="#00B67A" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="#00B67A" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="#00B67A" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-          <span style="color:#FFF; font-weight:800; font-size:0.9rem; margin-left:8px;">4.9/5 en Trustpilot</span>
+          <span style="color: var(--asos-text); font-weight:800; font-size:0.9rem; margin-left:8px;">4.9/5 en Trustpilot</span>
         </div>
 
         <div style="display: flex; align-items: baseline; justify-content: flex-start; gap: 12px; margin-bottom: 16px;">
           <span style="color:var(--asos-text-muted); text-decoration:line-through; font-size:1.2rem;">$199.00</span>
-          <span style="color:#FFF; font-weight:900; font-size:2.5rem; letter-spacing:-0.05em;">$129.00</span>
+          <span style="color: var(--asos-text); font-weight:900; font-size:2.5rem; letter-spacing:-0.05em;">$129.00</span>
         </div>
 
         <!-- MERCADOPAGO PREMIUM BANNER (HIGH CONTRAST) -->
@@ -286,8 +286,8 @@
             <img src="https://http2.mlstatic.com/frontend-assets/mp-web-navigation/ui-navigation/5.19.1/mercadopago/logo__small@2x.png" alt="Mercado Pago" style="max-width: 100%; object-fit: contain;">
           </div>
           <div style="display:flex; flex-direction:column; gap:4px; text-align: left;">
-            <div style="color: #FFFFFF !important; font-size: 0.95rem; font-weight: 600;">
-              Paga en <span style="color: #009EE3 !important;">3 cuotas</span> de <span style="font-weight: 800; color: #FFFFFF !important;">{% if product %}{{ product.price | divided_by: 3 | money }}{% else %}$43.00{% endif %}</span>
+            <div style="color: var(--asos-text) !important; font-size: 0.95rem; font-weight: 600;">
+              Paga en <span style="color: #009EE3 !important;">3 cuotas</span> de <span style="font-weight: 800; color: var(--asos-text) !important;">{% if product %}{{ product.price | divided_by: 3 | money }}{% else %}$43.00{% endif %}</span>
             </div>
             <div style="display: flex; gap: 10px; align-items: center;">
               <span style="color: var(--asos-green) !important; font-size: 0.85rem; font-weight: 700; display:flex; align-items:center; gap:4px;">
@@ -308,7 +308,7 @@
             <span style="position: absolute; width: 100%; height: 100%; background-color: var(--asos-red); border-radius: 50%; opacity: 0.7; animation: pulseRed 2s infinite;"></span>
             <span style="position: relative; width: 8px; height: 8px; background-color: var(--asos-red); border-radius: 50%;"></span>
           </div>
-          <span style="color: #FFFFFF !important; font-size: 0.95rem;">
+          <span style="color: var(--asos-text) !important; font-size: 0.95rem;">
             Solo quedan <strong style="color: var(--asos-red) !important;">{{ 'now' | date: '%S' | modulo: 5 | plus: 3 }} unidades</strong> en oferta
           </span>
         </div>
@@ -342,8 +342,8 @@
         <!-- TRUSTPILOT LIQUID -->
         <div style="margin-bottom: 30px; text-align: left; display: flex; flex-direction: column; align-items: flex-start;">
           <div style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 5px;">
-            <svg width="24" height="24" viewBox="0 0 31.7 31.7"><path fill="#00B67A" d="M31.7 15.8l-12.1-8.8 4.6-14.2-12.1 8.8-12.1-8.8 4.6 14.2-12.1 8.8h15z" transform="translate(9.6 14.2) scale(.38)"/><path fill="#00B67A" d="M15.8 31.7c8.8 0 15.8-7.1 15.8-15.8S24.6 0 15.8 0 0 7.1 0 15.8s7.1 15.8 15.8 15.8z"/><path fill="#fff" d="M16 23.4l-4.7 3.4 1.8-5.5-4.7-3.4h5.8l1.8-5.5 1.8 5.5h5.8l-4.7 3.4 1.8 5.5z"/></svg>
-            <span style="color: #FFFFFF !important; font-weight: 800; font-size: 1.1rem; letter-spacing: 0.02em;">Trustpilot</span>
+            <svg width="24" height="24" viewBox="0 0 31.7 31.7"><path fill="#00B67A" d="M31.7 15.8l-12.1-8.8 4.6-14.2-12.1 8.8-12.1-8.8 4.6 14.2-12.1 8.8h15z" transform="translate(9.6 14.2) scale(.38)"/><path fill="#00B67A" d="M15.8 31.7c8.8 0 15.8-7.1 15.8-15.8S24.6 0 15.8 0 0 7.1 0 15.8s7.1 15.8 15.8 15.8z"/><path fill="#FFF" d="M16 23.4l-4.7 3.4 1.8-5.5-4.7-3.4h5.8l1.8-5.5 1.8 5.5h5.8l-4.7 3.4 1.8 5.5z"/></svg>
+            <span style="color: var(--asos-text) !important; font-weight: 800; font-size: 1.1rem; letter-spacing: 0.02em;">Trustpilot</span>
             <div style="display:flex; gap: 2px;">
               <div style="background:#00B67A; padding:2px; display:flex;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFF"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
               <div style="background:#00B67A; padding:2px; display:flex;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFF"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
@@ -353,7 +353,7 @@
             </div>
           </div>
           <div style="display: flex; gap: 8px; align-items: center;">
-            <div style="color: #FFFFFF !important; font-weight: 700; font-size: 0.95rem;">Excelente 4.9/5</div>
+            <div style="color: var(--asos-text) !important; font-weight: 700; font-size: 0.95rem;">Excelente 4.9/5</div>
             <div style="color: var(--asos-text-muted) !important; font-size: 0.8rem;">Basado en +12,000 usuarios</div>
           </div>
         </div>
@@ -365,7 +365,7 @@
   <section class="asos-enemy">
     <div class="asos-wrap">
       <div style="text-align: center; max-width: 800px; margin: 0 auto;">
-        <span class="asos-tag" style="background: rgba(255,255,255,0.1); color:#FFF!important; border-color: rgba(255,255,255,0.2);">EL STATUS QUO ESTÁ ROTO</span>
+        <span class="asos-tag" style="background: var(--asos-border); color: var(--asos-text) !important; border-color: rgba(255,255,255,0.2);">EL STATUS QUO ESTÁ ROTO</span>
         <h2 class="asos-h2">Por qué odian las alternativas (Y por qué te estresan a ti)</h2>
         <p class="asos-p">Hasta ahora, solo tenías dos opciones para protegerlos. Ambas eran terribles.</p>
       </div>
@@ -376,7 +376,7 @@
           <div style="height: 120px; display:flex; align-items:center; justify-content:center; margin-bottom: 24px;">
             <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
           </div>
-          <h3 style="color:#FFF; margin-bottom:12px; font-size:1.25rem;">El Collar "Life Alert"</h3>
+          <h3 style="color: var(--asos-text); margin-bottom:12px; font-size:1.25rem;">El Collar "Life Alert"</h3>
           <p style="color:var(--asos-text-muted); font-size:0.95rem; margin-bottom:24px;">Un botón rojo colgando del cuello grita "soy un inválido". Ataca su ego y dignidad, por lo que <strong>terminan escondiéndolo en una gaveta</strong>.</p>
           <div style="color:var(--asos-red); font-weight:700; font-size:0.9rem;">Te cobra $50/mes para siempre.</div>
         </div>
@@ -387,7 +387,7 @@
           <div style="height: 120px; display:flex; align-items:center; justify-content:center; margin-bottom: 24px;">
             <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--asos-green)" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><circle cx="12" cy="14" r="4"></circle><line x1="12" y1="6" x2="12" y2="6.01"></line></svg>
           </div>
-          <h3 style="color:#FFF; margin-bottom:12px; font-size:1.25rem;">Reloj Atacama SOS</h3>
+          <h3 style="color: var(--asos-text); margin-bottom:12px; font-size:1.25rem;">Reloj Atacama SOS</h3>
           <p style="color:var(--asos-text-muted); font-size:0.95rem; margin-bottom:24px;">Luce como un reloj moderno normal. Protege su estatus y dignidad. Pero por dentro es un búnker de GPS, Caídas y Botón SOS 4G.</p>
           <div style="color:var(--asos-green); font-weight:700; font-size:0.9rem;">Un solo pago. Tuyo de por vida.</div>
         </div>
@@ -397,7 +397,7 @@
           <div style="height: 120px; display:flex; align-items:center; justify-content:center; margin-bottom: 24px;">
             <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg>
           </div>
-          <h3 style="color:#FFF; margin-bottom:12px; font-size:1.25rem;">Smartwatch (Apple/Samsung)</h3>
+          <h3 style="color: var(--asos-text); margin-bottom:12px; font-size:1.25rem;">Smartwatch (Apple/Samsung)</h3>
           <p style="color:var(--asos-text-muted); font-size:0.95rem; margin-bottom:24px;">Demasiado complicados. La batería solo dura 18 horas, <strong>siempre olvidan cargarlo</strong> y si se caen, a veces ni saben cómo pedir ayuda.</p>
           <div style="color:var(--asos-red); font-weight:700; font-size:0.9rem;">Requieren iPhone/Smartphone cerca.</div>
         </div>
@@ -418,7 +418,7 @@
           <li class="asos-check-item">
             <div class="asos-check-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--asos-green)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
             <div>
-              <strong style="color:#FFF;">Estética de Smartwatch Premium</strong>
+              <strong style="color: var(--asos-text);">Estética de Smartwatch Premium</strong>
               <p style="color:var(--asos-text-muted); font-size:0.95rem; margin:4px 0 0;">Luce exactamente como un reloj moderno. Lo usarán todos los días con orgullo, sin sentir que están perdiendo su independencia.</p>
             </div>
           </li>
@@ -440,7 +440,7 @@
           <li class="asos-check-item">
             <div class="asos-check-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--asos-green)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
             <div>
-              <strong style="color:#FFF;">Algoritmo Anti-Caídas IA + 4G Nativo</strong>
+              <strong style="color: var(--asos-text);">Algoritmo Anti-Caídas IA + 4G Nativo</strong>
               <p style="color:var(--asos-text-muted); font-size:0.95rem; margin:4px 0 0;">Si detecta un impacto seguido de inmovilidad, el reloj usa su propio chip 4G para llamar a tu celular al instante. Sin depender de Wi-Fi ni Bluetooth.</p>
             </div>
           </li>
@@ -462,7 +462,7 @@
           <li class="asos-check-item">
             <div class="asos-check-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--asos-green)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
             <div>
-              <strong style="color:#FFF;">GPS & Monitoreo Silencioso</strong>
+              <strong style="color: var(--asos-text);">GPS & Monitoreo Silencioso</strong>
               <p style="color:var(--asos-text-muted); font-size:0.95rem; margin:4px 0 0;">Abre la app y mira su ubicación satelital exacta, ritmo cardíaco y presión arterial al instante, sin molestarlos con llamadas paranoicas.</p>
             </div>
           </li>
@@ -484,7 +484,7 @@
           <li class="asos-check-item">
             <div class="asos-check-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--asos-green)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
             <div>
-              <strong style="color:#FFF;">Carga Magnética y Alerta de Batería</strong>
+              <strong style="color: var(--asos-text);">Carga Magnética y Alerta de Batería</strong>
               <p style="color:var(--asos-text-muted); font-size:0.95rem; margin:4px 0 0;">El cargador se acopla solo magnéticamente (ideal para manos con artritis). Si la batería baja del 15%, tú recibes una notificación en tu teléfono para avisarles.</p>
             </div>
           </li>
@@ -505,7 +505,7 @@
         <div style="display:flex; justify-content:space-between; align-items:center; padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.05);">
           <div style="display:flex; align-items:center; gap:12px;">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--asos-green)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <span style="color:#FFF; font-weight:700; font-size:1.1rem;">Reloj Atacama SOS 4G (Blindado)</span>
+            <span style="color: var(--asos-text); font-weight:700; font-size:1.1rem;">Reloj Atacama SOS 4G (Blindado)</span>
           </div>
           <span style="color:var(--asos-text-muted); font-weight:600;">Valor: $199.00</span>
         </div>
@@ -513,7 +513,7 @@
         <div style="display:flex; justify-content:space-between; align-items:center; padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.05);">
           <div style="display:flex; align-items:center; gap:12px;">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--asos-green)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <span style="color:#FFF; font-weight:700; font-size:1.1rem;">Acceso App Familiar (De por Vida)</span>
+            <span style="color: var(--asos-text); font-weight:700; font-size:1.1rem;">Acceso App Familiar (De por Vida)</span>
           </div>
           <span style="color:var(--asos-text-muted); font-weight:600;">Valor: $300.00</span>
         </div>
@@ -521,7 +521,7 @@
         <div style="display:flex; justify-content:space-between; align-items:center; padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.05);">
           <div style="display:flex; align-items:center; gap:12px;">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--asos-green)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <span style="color:#FFF; font-weight:700; font-size:1.1rem;">Cable Cargador Magnético Fast-Charge</span>
+            <span style="color: var(--asos-text); font-weight:700; font-size:1.1rem;">Cable Cargador Magnético Fast-Charge</span>
           </div>
           <span style="color:var(--asos-text-muted); font-weight:600;">Valor: $29.00</span>
         </div>
@@ -529,7 +529,7 @@
         <div style="display:flex; justify-content:space-between; align-items:center; padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.05);">
           <div style="display:flex; align-items:center; gap:12px;">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--asos-green)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <span style="color:#FFF; font-weight:700; font-size:1.1rem;">Envío Inmediato a todo el país</span>
+            <span style="color: var(--asos-text); font-weight:700; font-size:1.1rem;">Envío Inmediato a todo el país</span>
           </div>
           <span style="color:var(--asos-text-muted); font-weight:600;">Valor: $15.00</span>
         </div>
@@ -540,7 +540,7 @@
         </div>
         
         <div style="display:flex; justify-content:space-between; align-items:center; padding-top:12px;">
-          <span style="color:#FFF; font-weight:900; font-size:1.5rem;">Tu Precio Hoy:</span>
+          <span style="color: var(--asos-text); font-weight:900; font-size:1.5rem;">Tu Precio Hoy:</span>
           <span style="color:var(--asos-green); font-weight:900; font-size:3rem; letter-spacing:-0.05em;">$129.00</span>
         </div>
 
@@ -548,21 +548,21 @@
     </div>
   </section>
   <!-- ROI / COLD MATH SECTION -->
-  <section class="asos-roi" style="padding: 100px 20px; background: #000; border-top: 1px solid var(--asos-border);">
+  <section class="asos-roi" style="padding: 100px 20px; background: var(--asos-bg-2); border-top: 1px solid var(--asos-border);">
     <div class="asos-wrap" style="max-width: 800px; text-align: center;">
       <h2 class="asos-h2" style="font-size: 2.5rem; margin-bottom: 24px;">Pagar $50 al mes por cuidar a tus padres <span style="color:var(--asos-red);">es un robo.</span></h2>
       <p class="asos-p" style="margin-bottom: 40px; font-size: 1.1rem;">La industria de la asistencia a la tercera edad te cobra tarifas ocultas y suscripciones mensuales por usar un botón rojo de plástico que ellos mismos detestan usar.</p>
       
       <div style="background: var(--asos-bg-1); border: 1px solid var(--asos-border); border-radius: 24px; padding: 40px; text-align: left;">
-        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; margin-bottom: 20px;">
+        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--asos-border); padding-bottom: 20px; margin-bottom: 20px;">
           <div style="color:var(--asos-text-muted);">Botón Tradicional (12 meses)</div>
           <div style="color:var(--asos-red); font-weight: bold; text-decoration: line-through;">$600 USD / Año</div>
         </div>
         <div style="display: flex; justify-content: space-between; align-items: center;">
-          <div style="color:#FFF; font-weight: bold; font-size: 1.2rem;">Reloj Atacama SOS (De por vida)</div>
+          <div style="color: var(--asos-text); font-weight: bold; font-size: 1.2rem;">Reloj Atacama SOS (De por vida)</div>
           <div style="color:var(--asos-green); font-weight: 900; font-size: 1.5rem;">$129 USD</div>
         </div>
-        <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; color:var(--asos-text-muted); font-size: 0.9rem;">
+        <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--asos-border); text-align: center; color:var(--asos-text-muted); font-size: 0.9rem;">
           Se paga solo en los primeros 2 meses y medio. El resto de su vida, es gratis.
         </div>
       </div>
@@ -571,7 +571,7 @@
 
   <!-- HYPER-DENSE BUY BOX SECTION (Rule 25, 26, 27) -->
   <section class="asos-buybox-section" style="padding: 80px 20px; background: var(--asos-bg-2);">
-    <div class="asos-wrap" style="max-width: 600px; margin: 0 auto; background: var(--asos-bg-1); border: 1px solid rgba(255,255,255,0.1); border-radius: 32px; padding: 40px 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+    <div class="asos-wrap" style="max-width: 600px; margin: 0 auto; background: var(--asos-bg-1); border: 1px solid var(--asos-border); border-radius: 32px; padding: 40px 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
       
       <!-- Live Stock Indicator -->
       <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 24px; background: rgba(255,0,0,0.1); padding: 8px 16px; border-radius: 100px; width: fit-content; margin-left: auto; margin-right: auto; border: 1px solid rgba(255,0,0,0.2);">
@@ -587,23 +587,23 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="#00B67A" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="#00B67A" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="#00B67A" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-          <span style="color:#FFF; font-weight:800; font-size:0.9rem; margin-left:8px;">4.9/5</span>
+          <span style="color: var(--asos-text); font-weight:800; font-size:0.9rem; margin-left:8px;">4.9/5</span>
         </div>
         
         <div style="display: flex; align-items: baseline; justify-content: center; gap: 12px;">
           <span style="color:var(--asos-text-muted); text-decoration:line-through; font-size:1.2rem;">$199.00</span>
-          <span style="color:#FFF; font-weight:900; font-size:2.5rem; letter-spacing:-0.05em;">$129.00</span>
+          <span style="color: var(--asos-text); font-weight:900; font-size:2.5rem; letter-spacing:-0.05em;">$129.00</span>
         </div>
         
         <!-- MercadoPago Banner -->
         <div style="background: rgba(0, 158, 227, 0.1); border: 1px solid rgba(0, 158, 227, 0.3); padding: 12px; border-radius: 12px; margin-top: 16px; display: inline-block;">
           <span style="color: #009ee3; font-weight: 700; font-size: 0.9rem;">Pagos con MercadoPago disponibles</span>
-          <div style="color:#FFF; font-size:0.85rem; margin-top:4px;">Hasta 3 cuotas sin interés de <strong>$43.00</strong></div>
+          <div style="color: var(--asos-text); font-size:0.85rem; margin-top:4px;">Hasta 3 cuotas sin interés de <strong>$43.00</strong></div>
         </div>
       </div>
 
       <div style="margin-bottom: 32px; background: rgba(255,255,255,0.03); padding: 24px; border-radius: 16px;">
-        <h4 style="color:#FFF; margin-bottom:16px; font-size:1rem;">Lo que incluye hoy:</h4>
+        <h4 style="color: var(--asos-text); margin-bottom:16px; font-size:1rem;">Lo que incluye hoy:</h4>
         <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px;">
           <li style="display:flex; align-items:center; gap:12px;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--asos-green)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -647,7 +647,7 @@
 
       <!-- Trustpilot Badge (Integrated) -->
       <div style="text-align: center;">
-        <img src="https://cdn.trustpilot.net/brand-assets/4.1.0/logo-white.svg" alt="Trustpilot" style="height: 24px; margin-bottom: 8px;">
+        <img src="https://cdn.trustpilot.net/brand-assets/4.1.0/logo-black.svg" alt="Trustpilot" style="height: 24px; margin-bottom: 8px;">
         <div style="color:var(--asos-text-muted); font-size: 0.85rem;">Basado en +12,000 familias protegidas</div>
       </div>
       
@@ -671,8 +671,8 @@
   </section>
 
   <!-- GUARANTEE / RISK REVERSAL -->
-  <section class="asos-guarantee" style="padding: 60px 20px; background: #000;">
-    <div class="asos-wrap" style="max-width: 800px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 60px;">
+  <section class="asos-guarantee" style="padding: 60px 20px; background: var(--asos-bg-2);">
+    <div class="asos-wrap" style="max-width: 800px; text-align: center; border-top: 1px solid var(--asos-border); padding-top: 60px;">
       <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--asos-green)" stroke-width="1.5" style="margin-bottom: 24px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
       <h2 class="asos-h2" style="font-size: 2rem; margin-bottom: 16px;">Garantía de Protección Clínica</h2>
       <p class="asos-p" style="margin-bottom: 0;">Nuestra misión es proteger. Si el reloj presenta cualquier defecto de fábrica en los primeros 30 días, te lo cambiamos sin hacer preguntas. Tu paz mental no es negociable.</p>

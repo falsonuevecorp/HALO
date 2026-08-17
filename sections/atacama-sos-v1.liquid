@@ -6,6 +6,11 @@
 }
 {% endschema %}
 
+<!-- GOOGLE FONTS: Inter (Official HALO Tech Typography) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
 <style>
   :root {
     --asos-bg: #030303;
@@ -17,6 +22,7 @@
     --asos-text: #FFFFFF;
     --asos-text-muted: rgba(255,255,255,0.7);
     --asos-border: rgba(255,255,255,0.1);
+    --font-family: -apple-system, BlinkMacSystemFont, "Inter", "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
 
   .asos-container {
@@ -41,7 +47,7 @@
   .asos-h1,
   .asos-h2,
   .asos-p {
-    font-family: -apple-system, BlinkMacSystemFont, "Inter", "SF Pro Display", sans-serif !important;
+    font-family: var(--font-family) !important;
   }
 
   .asos-wrap {

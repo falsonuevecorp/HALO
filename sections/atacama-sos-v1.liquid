@@ -688,3 +688,135 @@
     100% { box-shadow: 0 0 0 0 rgba(255, 59, 48, 0); }
   }
 </style>
+
+<!-- STICKY CHECKOUT BUTTON -->
+<style>
+  .wb-sticky-checkout-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999999;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.12);
+    padding: 10px 16px;
+    box-sizing: border-box;
+    transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  }
+
+  .wb-sticky-checkout-wrapper.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .wb-sticky-form {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .wb-sticky-direct-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: linear-gradient(135deg, #00b67a 0%, #009966 100%); 
+    color: #ffffff !important;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px; 
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 182, 122, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    animation: wb-pulse 2s infinite;
+    box-sizing: border-box;
+  }
+
+  .wb-sticky-direct-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 182, 122, 0.6);
+  }
+
+  .wb-sticky-btn-title {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    text-transform: none;
+    letter-spacing: 0.2px;
+    line-height: 1.2;
+    margin: 0;
+    text-align: center;
+  }
+
+  .wb-sticky-btn-subtitle {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    opacity: 0.95;
+    margin-top: 3px;
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  @keyframes wb-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.015); }
+    100% { transform: scale(1); }
+  }
+
+  @media (max-width: 768px) {
+    .wb-sticky-checkout-wrapper {
+      padding: 8px 12px;
+    }
+    .wb-sticky-btn-title {
+      font-size: 14px;
+    }
+    .wb-sticky-btn-subtitle {
+      font-size: 10.5px;
+    }
+  }
+</style>
+
+<div id="wb-sticky-bar" class="wb-sticky-checkout-wrapper">
+  {% form 'product', product, id: 'wb-sticky-buy-form', class: 'wb-sticky-form' %}
+    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+    <input type="hidden" name="return_to" value="/checkout">
+    
+    <button type="submit" class="wb-sticky-direct-btn">
+      <span class="wb-sticky-btn-title">Pide ahora y aprovecha el Descuento</span>
+      <span class="wb-sticky-btn-subtitle">Antes de que se agote la promo 📦</span>
+    </button>
+  {% endform %}
+</div>
+
+<script>
+  (function() {
+    function initStickyCheckout() {
+      const stickyBar = document.getElementById('wb-sticky-bar');
+      if (!stickyBar) return;
+
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 350) {
+          stickyBar.classList.add('is-visible');
+        } else {
+          stickyBar.classList.remove('is-visible');
+        }
+      }, { passive: true });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initStickyCheckout);
+    } else {
+      initStickyCheckout();
+    }
+  })();
+</script>

@@ -1,0 +1,486 @@
+<style type="text/css">
+    #s--{{section.id}} .banner--cards {
+      {% if section.settings.height > 0 %}
+      height: {{section.settings.height}}px;
+      {% endif %} 
+    }
+
+    #s--{{section.id}} a {
+        text-decoration: none;
+    }
+
+    #s--{{section.id}} {
+        color: {% unless section.settings.contentColor contains 'rgba(0,0,0,0)'  %}{{section.settings.contentColor}}{% else %}initial{% endunless %};
+    }
+
+    {% if section.settings.nomargin %}
+    #shopify-section-{{section.id}}{
+        margin-bottom: 0px !important;
+    }
+    {% else %}
+    #shopify-section-{{section.id}}{
+        margin-bottom: {{settings.baseSectionMargin}}px;
+    }
+    {% endif %}
+
+    {% case section.settings.displayFor %}
+    {% when 'hide-desktop' %}
+    @media screen and (min-width: 768px){
+      #shopify-section-{{section.id}}{
+        display: none !important;
+      }
+    }
+    {% when 'hide-mobile' %}
+    @media screen and (max-width: 767px){
+      #shopify-section-{{section.id}}{
+        display: none !important;
+      }
+    }
+    {% endcase %}
+    
+    {% if section.settings.scopedCSS != blank %}
+    {% assign sid = '#shopify-section-' | append: section.id %}
+    {{section.settings.scopedCSS | replace: '##scoped', sid}}
+    {% endif %}
+
+    .banner--cards {
+        height: 100%;
+        padding: 12px;
+    }
+
+    .banner--section {
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: {{section.settings.columnAlignment}}
+    }
+
+    .banner--container {
+        overflow: auto!important
+    }
+    
+    .banner-card--items {
+        width: 100%;
+    }
+
+    .banner--cards::before {
+        content: "";
+        padding-bottom: 100%;
+        display: block;
+    }
+</style>
+    
+{% assign customID = section.settings.custom_id %}
+
+<div id="s--{{section.id}}" class="banner--container {% render 'common-class', section: section, class: 'slider', vAlign: false %}">
+    {% render 'block__general--heading' with section as section %}
+    <div id="{{customID}}" class="banner--section">
+    {%- for block in section.blocks %}
+        <div class="banner--cards {{section.settings.mobileColCount}} s__block {{section.settings.colCount}} " >
+            <div class="banner-card--items"> 
+                {% render 'ms-block', block: block %} 
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+
+{% schema %}
+{
+"name": {
+    "en": "Banner"
+},
+"settings": [
+    {
+        "type": "header",
+        "content": "Section ID"
+    },
+    {
+        "type": "text",
+        "id": "custom_id",
+        "label": "Add custom section ID"
+    },
+    {
+        "type": "header",
+        "content": "Section heading"
+    },
+    {
+        "type": "text",
+        "id": "heading",
+        "label": "Section heading",
+        "default": "Check out this section's heading"
+    },
+    {
+        "type": "color",
+        "id": "headingColor",
+        "default": "rgba(0,0,0,0)",
+        "label": "Heading Color"
+    },
+    {
+        "type": "text",
+        "id": "subheading",
+        "label": "Section subheading",
+        "default": "THIS IS A SUBHEADING"
+    },
+    {
+        "type": "color",
+        "id": "subheadingColor",
+        "default": "rgba(0,0,0,0)",
+        "label": "Subheading Color"
+    },
+    {
+        "type": "select",
+        "id": "subheadingPosition",
+        "label": "Subheading position",
+        "options": [
+            {"value": "above", "label": "Above heading"},
+            {"value": "below", "label": "Below heading"}
+        ],
+        "default": "above"
+    },
+    {
+        "type": "select",
+        "id": "headingAlignment",
+        "label": "Heading alignment (left to right)",
+        "options": [
+        {"value": "start", "label": "Left"},
+        {"value": "center", "label": "Center"},
+        {"value": "end", "label": "Right"}
+        ],
+        "default": "center"
+    },
+    {
+    "type": "radio",
+    "id": "displayFor",
+    "label": "Show this section on",
+    "options": [
+        {"value": "display--both", "label": "All devices"},
+        {"value": "hide-desktop", "label": "Mobile only"},
+        {"value": "hide-mobile", "label": "Desktop only"}
+    ],
+    "default": "display--both"
+    },
+    {
+    "type": "select",
+    "id": "layout",
+    "label": "Section layout",
+    "options": [
+        {"value": "default", "label": "Global default"},
+        {"value": "boxed", "label": "Boxed"},
+        {"value": "stretchBg", "label": "Full width background"},
+        {"value": "stretchContent", "label": "Full width"}
+    ],
+    "default": "default"
+    },
+    {
+    "type": "checkbox",
+    "id": "nomargin",
+    "default": false,
+    "label": "Remove section's bottom margin"
+    },
+    {
+    "type": "textarea",
+    "id": "scopedCSS",
+    "label": "Section-scoped CSS",
+    "info": "Rules beginning with ##scoped will be scoped to this section. (Example: ##scoped h1 {color: blue})"
+    },
+    {
+      "type": "range",
+      "id": "height",
+      "label": "Height",
+      "default": 300,
+      "min": 0,
+      "max": 800,
+      "step": 10,
+      "unit": "px",
+      "info": "Banner will adjust its height to the currently set image. If you need to define a minimum height, it will be used."
+    },
+    {
+        "type": "header",
+        "content": "Columns layout"
+    },
+    {
+        "type": "radio",
+        "label": "Lists per row",
+        "id": "colCount",
+        "options": [
+            {"value": "col-md-3", "label": "4"},
+            {"value": "col-md-4", "label": "3"},
+            {"value": "col-md-6", "label": "2"},
+            {"value": "col-md-12", "label": "1"}
+        ],
+        "default": "col-md-3" 
+    },
+    {
+        "type": "header",
+        "content": "Mobile Columns layout"
+    },
+    {
+        "type": "radio",
+        "label": "Lists per row",
+        "id": "mobileColCount",
+        "options": [
+            {"value": "col-6", "label": "2"},
+            {"value": "col-12", "label": "1"}
+        ],
+        "default": "col-12" 
+    },
+    {
+        "type": "select",
+        "id": "columnAlignment",
+        "label": "Column Alignment(left to right)",
+        "options": [
+            {"value": "start", "label": "Left"},
+            {"value": "center", "label": "Center"},
+            {"value": "end", "label": "Right"}
+        ],
+        "default": "center"
+    }
+
+    ],
+    "blocks": [
+    {
+    "type": "sectionBanner",
+    "name": "Section Banner",
+    "settings": [
+    {
+        "type": "select",
+        "id": "horizontalAlignment",
+        "label": "Content alignment (left to right)",
+        "options": [
+            {"value": "start", "label": "Left"},
+            {"value": "center", "label": "Center"},
+            {"value": "end", "label": "Right"}
+        ],
+        "default": "center"
+    },
+    {
+        "type": "select",
+        "id": "verticalAlignment",
+        "label": "Content alignment (top to bottom)",
+        "options": [
+            {"value": "top", "label": "Top"},
+            {"value": "middle", "label": "Middle"},
+            {"value": "bottom", "label": "Bottom"}
+        ],
+        "default": "middle"
+    },
+    {
+        "type": "range",
+        "id": "padding",
+        "min": 0,
+        "max": 50,
+        "default": 16,
+        "unit": "px",
+        "label": "Padding"
+    },
+    {
+        "type": "range",
+        "id": "contentSpacing",
+        "min": 0,
+        "max": 50,
+        "default": 12,
+        "unit": "px",
+        "label": "Space between content"
+    },
+    {
+        "type": "url",
+        "id": "cardLink",
+        "label": "Card Link",
+        "info": "redirect to the selected link when the card is clicked"
+    },
+    {
+        "type": "header",
+        "content": "Background"
+    },
+    {
+        "type": "color",
+        "id": "backgroundColor",
+        "label": "Background color",
+        "default": "rgba(0,0,0,0)"
+    },
+    {
+        "type": "image_picker",
+        "id": "backgroundImage",
+        "label": "Background image"
+    },
+    {
+        "type": "select",
+        "id": "backgroundPosition",
+        "label": "Background image position",
+        "options": [
+            {"value": "top", "label": "Top"},
+            {"value": "middle", "label": "Middle"},
+            {"value": "bottom", "label": "Bottom"}
+        ],
+        "default": "middle"
+    },
+    {
+        "type": "select",
+        "id": "imageFit",
+        "label": "Image Fit",
+        "options": [
+            {"value": "cover", "label": "Adjust ratio to fill empty space - crop image"},
+            {"value": "contain", "label": "Preserve Ratio"}
+        ],
+        "default": "cover",
+        "info": "In case your card's image doesn't fit the image ratio you've selected below, the image can either: "
+    },
+    {
+        "type": "paragraph",
+        "content": "Preserve ratio - the whole image will be shown in its original dimensions, but may cause empty/white space to appear"
+    },
+    {
+    "type": "paragraph",
+    "content": "Adjust the ratio to fill empty space - if the image doesn't fit the ratio, it will be cropped and adjusted to fill the card - no empty/white space"
+    },
+    {
+        "type": "header",
+        "content": "Overlay"
+    },
+    {
+        "type": "range",
+        "id": "overlayOpacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "label": "Overlay opacity",
+        "default": 40,
+        "unit": "%"
+    },
+    {
+        "type": "color",
+        "id": "overlayColor",
+        "label": "Overlay color",
+        "default": "#000000"
+    },
+    {
+        "type": "header",
+        "content": "Content"
+    },
+    {
+        "type": "text",
+        "label": "Heading",
+        "id": "heading",
+        "default": "Banner Content"
+    },
+    {
+        "type": "color",
+        "id": "headingColor",
+        "label": "Heading color",
+        "default": "rgba(0,0,0,0)"
+    },
+    {
+        "type": "richtext",
+        "id": "content",
+        "label": "Content",
+        "default": "<p>Tell your brand's story through images</p>"
+    },
+    {
+        "type": "color",
+        "id": "contentColor",
+        "label": "Content color",
+        "default": "rgba(0,0,0,0)"
+    },
+    {
+        "type": "header",
+        "content": "Primary button"
+    },
+    {
+        "type": "text",
+        "label": "Button text",
+        "id": "button1Text",
+        "default": "Primary button"
+    },
+    {
+        "type": "url",
+        "label": "Button link",
+        "id": "button1Link"
+    },
+    {
+        "type": "select",
+        "id": "button1Style",
+        "label": "Button style",
+        "options": [
+        {"value": "primary", "label": "Primary button"},
+        {"value": "secondary", "label": "Secondary button"}
+        ],
+        "default": "primary"
+    },
+    {
+        "id": "button1Type",
+        "type": "select",
+        "label": "Button type",
+        "options": [
+        {"value": "default", "label": "Default"},
+        {"value": "filled", "label": "Filled"},
+        {"value": "ghost", "label": "Ghost"},
+        {"value": "underlined", "label": "Underlined"},
+        {"value": "text", "label": "Text"}
+        ],
+        "default": "default"
+    },
+    {
+        "type": "header",
+        "content": "Secondary button"
+    },
+    {
+        "type": "text",
+        "label": "Button text",
+        "id": "button2Text",
+        "default": "Secondary button"
+    },
+    {
+        "type": "url",
+        "label": "Button link",
+        "id": "button2Link"
+    },
+    {
+        "type": "select",
+        "id": "button2Style",
+        "label": "Button style",
+        "options": [
+        {"value": "primary", "label": "Primary button"},
+        {"value": "secondary", "label": "Secondary button"}
+        ],
+        "default": "secondary"
+    },
+    {
+        "id": "button2Type",
+        "type": "select",
+        "label": "Button type",
+        "options": [
+        {"value": "default", "label": "Default"},
+        {"value": "filled", "label": "Filled"},
+        {"value": "ghost", "label": "Ghost"},
+        {"value": "underlined", "label": "Underlined"},
+        {"value": "text", "label": "Text"}
+        ],
+        "default": "default"
+    }
+]
+}
+    ],
+    "presets": [
+        {
+            "category": "Banner",
+            "name": "Banner",
+            "settings": {},
+            "blocks": [
+                {
+                    "type": "sectionBanner"
+                },
+                {
+                    "type": "sectionBanner"
+                },
+                {
+                    "type": "sectionBanner"
+                },
+                {
+                    "type": "sectionBanner"
+                }
+            ]
+        }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "halo_homepage": {
+      "type": "halo-homepage",
+      "settings": {}
+    }
+  },
+  "order": [
+    "halo_homepage"
+  ]
+}

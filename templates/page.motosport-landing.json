@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "motosport-landing-section",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

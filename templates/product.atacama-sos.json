@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "atacama-sos-v1",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

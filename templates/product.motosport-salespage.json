@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "atacama-vision-pro",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

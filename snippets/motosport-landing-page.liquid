@@ -1,0 +1,286 @@
+{% assign product = target_product | default: product %}
+<style>
+/* =========================================================
+   MOTOSPORT LANDING - CÓDIGO MAESTRO DE CONVERSIÓN
+========================================================= */
+.motosport-landing-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.motosport-hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.motosport-social-proof-badge {
+  background: rgba(228, 22, 22, 0.1);
+  border: 1px solid var(--ms-accent-red);
+  color: var(--ms-text-light);
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.motosport-headline {
+  font-size: 42px;
+  line-height: 1.1;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  color: var(--ms-text-light);
+}
+
+.motosport-headline span {
+  color: var(--ms-accent-red);
+}
+
+.motosport-subheadline {
+  font-size: 18px;
+  color: #a0a0a0;
+  max-width: 700px;
+  margin-bottom: 30px;
+}
+
+.motosport-scarcity-bar {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 15px;
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 30px;
+}
+
+.motosport-scarcity-text {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.motosport-scarcity-text span.stock-count {
+  color: var(--ms-accent-neon);
+}
+
+.motosport-progress-bg {
+  background: #222;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.motosport-progress-fill {
+  background: var(--ms-accent-red);
+  height: 100%;
+  width: 15%; /* Starts at 15% representing low stock */
+  transition: width 0.5s ease;
+  box-shadow: 0 0 10px var(--ms-accent-red);
+}
+
+/* CARACTERÍSTICAS Y US VS THEM */
+.motosport-features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+@media (min-width: 768px) {
+  .motosport-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.motosport-feature-card {
+  background: #0d0d0d;
+  border: 1px solid #222;
+  border-radius: 12px;
+  padding: 30px;
+  text-align: left;
+}
+
+.motosport-feature-icon {
+  font-size: 32px;
+  color: var(--ms-accent-neon);
+  margin-bottom: 15px;
+}
+
+.motosport-feature-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: var(--ms-text-light);
+}
+
+.motosport-feature-desc {
+  color: #999;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.motosport-risk-reversal {
+  background: linear-gradient(145deg, #111, #000);
+  border: 1px solid var(--ms-accent-red);
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 12px;
+  margin-bottom: 50px;
+}
+
+.motosport-risk-title {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: var(--ms-text-light);
+}
+
+.motosport-risk-desc {
+  color: #ccc;
+  max-width: 600px;
+  margin: 0 auto 20px;
+  line-height: 1.6;
+}
+
+.motosport-cta-container {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 60px;
+  position: sticky;
+  bottom: 20px;
+  z-index: 999;
+}
+
+.motosport-main-atc-btn {
+  background: var(--ms-accent-red) !important;
+  color: #ffffff !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  padding: 20px 40px !important;
+  border-radius: 8px !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 10px 30px rgba(228, 22, 22, 0.4);
+  animation: pulse-red 2s infinite;
+  border: none;
+  width: 100%;
+  max-width: 400px;
+  cursor: pointer;
+}
+
+.motosport-main-atc-btn:hover {
+  background: var(--ms-accent-neon) !important;
+  color: #000 !important;
+  box-shadow: 0 10px 30px rgba(214, 238, 1, 0.5);
+  transform: translateY(-3px);
+  animation: none;
+}
+
+@keyframes pulse-red {
+  0% { box-shadow: 0 0 0 0 rgba(228, 22, 22, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(228, 22, 22, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(228, 22, 22, 0); }
+}
+
+@media (max-width: 768px) {
+  .motosport-headline { font-size: 32px; }
+  .motosport-social-proof-badge { font-size: 12px; }
+}
+</style>
+
+<div class="motosport-landing-wrapper">
+  
+  <div class="motosport-hero-section">
+    <div class="motosport-social-proof-badge">
+      <span style="font-size:16px;">🔥</span> +5,000 MOTOCICLISTAS CHILENOS SATISFECHOS
+    </div>
+    
+    <h1 class="motosport-headline">TU MOTO AL <span>100% DE RENDIMIENTO</span>, SIN PAGAR DE MÁS.</h1>
+    
+    <p class="motosport-subheadline">
+      Piezas de alta ingeniería para asegurar la durabilidad, seguridad y potencia de tu motocicleta. Envíos ultra-rápidos a todo Chile. Lo barato sale caro cuando estás en la vía.
+    </p>
+
+    <!-- Escasez en tiempo real -->
+    <div class="motosport-scarcity-bar">
+      <div class="motosport-scarcity-text">
+        <span>⚠️ ALTA DEMANDA</span>
+        <span>SOLO QUEDAN <span class="stock-count" id="ms-stock">9</span> UNIDADES</span>
+      </div>
+      <div class="motosport-progress-bg">
+        <div class="motosport-progress-fill" id="ms-progress"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="motosport-features-grid">
+    <div class="motosport-feature-card">
+      <div class="motosport-feature-icon">🛡️</div>
+      <h3 class="motosport-feature-title">Seguridad Intransigente</h3>
+      <p class="motosport-feature-desc">No comprometas tu vida con repuestos genéricos. Cada pieza de Moto Sport CL está testeada para resistir las rutas más exigentes y no fallar bajo presión.</p>
+    </div>
+    <div class="motosport-feature-card">
+      <div class="motosport-feature-icon">⚡</div>
+      <h3 class="motosport-feature-title">Desempeño Óptimo</h3>
+      <p class="motosport-feature-desc">Recupera la potencia original de tu moto. Un reemplazo a tiempo evita daños mayores en el motor y garantiza que la aceleración sea suave y precisa.</p>
+    </div>
+    <div class="motosport-feature-card">
+      <div class="motosport-feature-icon">📦</div>
+      <h3 class="motosport-feature-title">Logística Premium</h3>
+      <p class="motosport-feature-desc">Sabemos que tener la moto parada es perder tiempo y dinero. Procesamos tu pedido en tiempo récord con despachos rápidos a todo el territorio nacional.</p>
+    </div>
+    <div class="motosport-feature-card">
+      <div class="motosport-feature-icon">💰</div>
+      <h3 class="motosport-feature-title">Cirugía de Costos</h3>
+      <p class="motosport-feature-desc">Una pieza de calidad hoy te ahorra un ajuste de motor mañana. Invierte inteligentemente en repuestos duraderos que alargan la vida útil de tu máquina.</p>
+    </div>
+  </div>
+
+  <div class="motosport-risk-reversal">
+    <h2 class="motosport-risk-title">Garantía de Calidad Blindada</h2>
+    <p class="motosport-risk-desc">
+      En Moto Sport CL respaldamos la manufactura de cada componente. Si la pieza presenta defectos de fábrica, te cubrimos la espalda. Cero fricción, 100% respaldo mecánico. Porque en la vía, no hay espacio para las dudas.
+    </p>
+    <div style="font-size: 40px;">🏅</div>
+  </div>
+
+  <div class="motosport-cta-container">
+    {% assign redirect_url = collections.all.url %}
+    {% if collections['frontpage'] != blank %}
+        {% assign redirect_url = collections['frontpage'].url %}
+    {% endif %}
+    <a href="{{ redirect_url }}" class="motosport-main-atc-btn">VER CATÁLOGO AHORA</a>
+  </div>
+
+</div>
+
+<script>
+  // Script de escasez (Micro-animación de urgencia)
+  document.addEventListener('DOMContentLoaded', function() {
+    let stockElement = document.getElementById('ms-stock');
+    let progressElement = document.getElementById('ms-progress');
+    let currentStock = 9;
+    
+    setTimeout(function() {
+      currentStock = 6;
+      if(stockElement) stockElement.innerText = currentStock;
+      if(progressElement) progressElement.style.width = '10%';
+    }, 4500);
+
+    setTimeout(function() {
+      currentStock = 3;
+      if(stockElement) stockElement.innerText = currentStock;
+      if(progressElement) progressElement.style.width = '5%';
+      if(progressElement) progressElement.style.background = '#ff0000'; // Ultra rojo
+    }, 12000);
+  });
+</script>

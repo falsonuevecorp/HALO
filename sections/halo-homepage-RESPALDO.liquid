@@ -1,0 +1,439 @@
+{% schema %}
+{
+  "name": "HALO Homepage",
+  "settings": [],
+  "presets": [
+    {
+      "name": "HALO Homepage",
+      "category": "HALO"
+    }
+  ]
+}
+{% endschema %}
+
+<!-- GOOGLE FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --h-bg: #030303;
+    --h-surface: #0A0A0A;
+    --h-surface-light: #141414;
+    --h-cyan: #00ECFF;
+    --h-green: #00C97B;
+    --h-text-main: #FFFFFF;
+    --h-text-muted: #A0AAB5;
+    --h-border: rgba(255,255,255,0.08);
+  }
+
+  .halo-home {
+    background: var(--h-bg);
+    color: var(--h-text-main);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  .halo-home h1, .halo-home h2, .halo-home h3, .halo-home h4 {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .hh-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .hh-tag {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--h-cyan);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 16px;
+  }
+
+  .hh-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF;
+    border: none;
+    color: #000000;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    padding: 16px 32px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+  }
+  .hh-btn:hover {
+    background: #E0E0E0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(255, 255, 255, 0.3);
+  }
+  .hh-btn span { color: #000000 !important; letter-spacing: 0.05em; }
+
+  /* ===== HERO SECTION ===== */
+  .hh-hero {
+    position: relative;
+    padding: 120px 0 80px;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hh-hero__bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center 20%, rgba(0,236,255,0.08) 0%, var(--h-bg) 60%);
+    z-index: 0;
+  }
+  .hh-hero__content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .hh-hero h1 {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #A0AAB5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hh-hero p {
+    font-size: 1.2rem;
+    color: var(--h-text-muted);
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+  }
+
+  /* PREMIUM PLACEHOLDER */
+  .hh-placeholder {
+    width: 100%;
+    border-radius: 24px;
+    background: linear-gradient(145deg, #111 0%, #050505 100%);
+    border: 1px solid var(--h-border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  }
+  .hh-placeholder::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+    transform: skewX(-20deg) translateX(-150%);
+    animation: hh-shimmer 4s infinite;
+  }
+  @keyframes hh-shimmer {
+    0% { transform: skewX(-20deg) translateX(-150%); }
+    50%, 100% { transform: skewX(-20deg) translateX(150%); }
+  }
+
+  .hh-hero-visual {
+    margin-top: 60px;
+    height: 400px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    border-color: rgba(0,236,255,0.15);
+  }
+
+  /* ===== LOGO BAR ===== */
+  .hh-logobar {
+    padding: 40px 0;
+    border-top: 1px solid var(--h-border);
+    border-bottom: 1px solid var(--h-border);
+    background: #0A0A0A; /* ZONA: Gris ultra oscuro */
+  }
+  .hh-logobar__inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    opacity: 0.5;
+  }
+  .hh-logobar__logo {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* ===== PAIN & SOLUTION ===== */
+  .hh-split {
+    padding: 100px 0;
+    background: #030303; /* ZONA: Negro profundo */
+  }
+  .hh-split--alt {
+    background: #0A0A0A; /* ZONA: Gris ultra oscuro */
+    border-top: 1px solid var(--h-border);
+    border-bottom: 1px solid var(--h-border);
+  }
+  .hh-split__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .hh-split h2 {
+    font-size: 2.5rem;
+    margin-bottom: 24px;
+  }
+  .hh-split p {
+    font-size: 1.1rem;
+    color: var(--h-text-muted);
+    margin-bottom: 24px;
+    line-height: 1.7;
+  }
+  .hh-split__img {
+    height: 500px;
+    border-color: rgba(0,201,123,0.15);
+  }
+
+  /* ===== TRUSTPILOT CAROUSEL ===== */
+  .hh-trust {
+    padding: 80px 0;
+    background: #141414; /* ZONA: Gris intermedio */
+    overflow: hidden;
+  }
+  .hh-trust h2 { text-align: center; font-size: 2rem; margin-bottom: 40px; }
+  .hh-marquee {
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    animation: hh-scroll 30s linear infinite;
+  }
+  .hh-marquee:hover { animation-play-state: paused; }
+  @keyframes hh-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .hh-review {
+    width: 350px;
+    background: #1F1F1F; /* Tarjetas más claras para contraste */
+    border: 1px solid var(--h-border);
+    border-radius: 16px;
+    padding: 24px;
+  }
+  .hh-review__stars { color: #00B67A; font-size: 1.2rem; margin-bottom: 12px; }
+  .hh-review__title { font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; font-family: 'Inter', sans-serif; }
+  .hh-review__body { font-size: 0.95rem; color: var(--h-text-muted); margin-bottom: 16px; line-height: 1.5; }
+  .hh-review__author { font-size: 0.85rem; font-weight: 700; color: #fff; }
+
+  /* ===== CTA FINAL ===== */
+  .hh-cta-section {
+    padding: 100px 0;
+    text-align: center;
+    background: #030303; /* ZONA: Negro profundo */
+    position: relative;
+  }
+  .hh-cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(0,201,123,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hh-cta-section h2 { font-size: 3rem; margin-bottom: 24px; position: relative; z-index: 1; }
+  .hh-cta-section p, .hh-cta-section .hh-btn, .hh-cta-section .hh-features { position: relative; z-index: 1; }
+  
+  /* ===== GLOBAL OVERRIDES FOR HOMEPAGE (CONTRAST FIX) ===== */
+  #shopify-section-footer, #shopify-section-subfooter, .footer, .subfooter {
+    background-color: #0A0A0A !important;
+    color: #A0AAB5 !important;
+    border-top: 1px solid rgba(255,255,255,0.08) !important;
+  }
+  #shopify-section-footer a, #shopify-section-subfooter a, .footer a, .subfooter a {
+    color: #FFFFFF !important;
+  }
+  .footer__block h4, .footer h4, .subfooter h4 {
+    color: #FFFFFF !important;
+  }
+
+  @media (max-width: 768px) {
+    .hh-split__grid { grid-template-columns: 1fr; gap: 40px; }
+    .hh-hero h1 { font-size: 2.5rem; }
+    .hh-split__img { height: 350px; }
+  }
+</style>
+
+<div class="halo-home">
+  
+  <!-- HERO -->
+  <section class="hh-hero">
+    <div class="hh-hero__bg"></div>
+    <div class="hh-wrap hh-hero__content">
+      <span class="hh-tag">EL ESTÁNDAR BIOMÉTRICO</span>
+      <h1>¿Sigues adivinando tu recuperación?</h1>
+      <p>Tienes un reloj excelente para leer correos, pero sigues compitiendo a ciegas. Extrae tu biometría real con precisión de grado médico. Sin pantallas. Sin distracciones. Sin suscripciones mensuales.</p>
+      
+      <a href="/products/loop-band" class="hh-btn">
+        <span>DESCUBRIR LOOP BAND</span>
+      </a>
+
+      <!-- HERO VISUAL PLACEHOLDER -->
+      <div class="hh-placeholder hh-hero-visual">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(0,236,255,0.4)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+        <span style="font-family:'Inter', sans-serif; font-size:1.2rem; color:rgba(255,255,255,0.7); margin-top:16px;">ASSET VISUAL: LOOP BAND (16:9)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGO BAR -->
+  <section class="hh-logobar">
+    <div class="hh-wrap">
+      <div class="hh-logobar__inner">
+        <div class="hh-logobar__logo">GQ</div>
+        <div class="hh-logobar__logo">MEN'S HEALTH</div>
+        <div class="hh-logobar__logo">FORBES</div>
+        <div class="hh-logobar__logo">WIRED</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIN BRIDGE -->
+  <section class="hh-split">
+    <div class="hh-wrap hh-split__grid">
+      <div>
+        <span class="hh-tag" style="color: #FF6B6B;">El Problema Actual</span>
+        <h2>Tu smartwatch es un juguete, no una herramienta clínica.</h2>
+        <p>Entrenas duro y comes limpio, pero sigues tomando decisiones basándote en cómo "sientes" que dormiste.</p>
+        <p>Los atletas de élite no adivinan su HRV ni dejan su ciclo REM al azar. Entrenar sin conocer tu estado de recuperación interno es garantizar una sobrecarga.</p>
+        <a href="/products/loop-band" class="hh-btn" style="background: transparent; border: 1px solid var(--h-cyan); color: var(--h-cyan); margin-top: 16px; padding: 12px 24px; box-shadow: none;">
+          <span style="color: var(--h-cyan) !important;">Ver Diferencia</span>
+        </a>
+      </div>
+      <div class="hh-placeholder hh-split__img" style="border-color: rgba(255,107,107,0.15);">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,107,107,0.4)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+        <span style="font-family:'Inter', sans-serif; font-size:1.2rem; color:rgba(255,255,255,0.7); margin-top:16px;">ASSET: DISEÑO SIN PANTALLA</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section class="hh-split hh-split--alt">
+    <div class="hh-wrap hh-split__grid">
+      <div class="hh-placeholder hh-split__img">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(0,201,123,0.4)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+        <span style="font-family:'Inter', sans-serif; font-size:1.2rem; color:rgba(255,255,255,0.7); margin-top:16px;">ASSET: ECOSISTEMA APP</span>
+      </div>
+      <div>
+        <span class="hh-tag">La Solución HALO</span>
+        <h2>Para medirte no tienes que distraerte.</h2>
+        <p>La tecnología debe adaptarse a ti, no tú a ella. La <strong>Loop Band®</strong> recolecta tus biomarcadores clave mientras vives y duermes en total silencio.</p>
+        <ul style="list-style: none; padding: 0; margin-top: 24px;">
+          <li style="margin-bottom: 12px; display: flex; gap: 12px; align-items: flex-start;">
+            <span style="color: var(--h-green);">✓</span>
+            <span style="color: var(--h-text-muted);">Precisión médica: HRV, SpO2 y Sueño.</span>
+          </li>
+          <li style="margin-bottom: 12px; display: flex; gap: 12px; align-items: flex-start;">
+            <span style="color: var(--h-green);">✓</span>
+            <span style="color: var(--h-text-muted);">Cero suscripciones. Datos 100% tuyos.</span>
+          </li>
+          <li style="margin-bottom: 12px; display: flex; gap: 12px; align-items: flex-start;">
+            <span style="color: var(--h-green);">✓</span>
+            <span style="color: var(--h-text-muted);">Batería de larga duración infinita.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUSTPILOT -->
+  <section class="hh-trust">
+    <h2>Nuestros Atletas Hablan</h2>
+    <div style="display:flex; overflow:hidden; position:relative; width:100vw; margin-left:calc(-50vw + 50%);">
+      <div class="hh-marquee">
+        <!-- GROUP 1 -->
+        <div class="hh-review">
+          <div class="hh-review__stars">★★★★★</div>
+          <div class="hh-review__title">Cambió mi entrenamiento</div>
+          <div class="hh-review__body">"Llevaba años usando smartwatches pesados. Esta banda ni se siente y los datos del HRV son exactos. Ya sé cuándo apretar y cuándo descansar."</div>
+          <div class="hh-review__author">Carlos M. - Crossfitter</div>
+        </div>
+        <div class="hh-review">
+          <div class="hh-review__stars">★★★★★</div>
+          <div class="hh-review__title">Al fin sin distracciones</div>
+          <div class="hh-review__body">"Dormir sin una pantalla brillante en la muñeca no tiene precio. La aplicación me da todo masticado al despertar. 10/10."</div>
+          <div class="hh-review__author">Andrea T. - Triatleta</div>
+        </div>
+        <div class="hh-review">
+          <div class="hh-review__stars">★★★★★</div>
+          <div class="hh-review__title">Adiós a las suscripciones</div>
+          <div class="hh-review__body">"Tenía un Oura y estaba harto de pagar mes a mes por mis propios datos. Halo entrega lo mismo pero con un solo pago. Increíble valor."</div>
+          <div class="hh-review__author">Diego S. - Emprendedor</div>
+        </div>
+        <div class="hh-review">
+          <div class="hh-review__stars">★★★★★</div>
+          <div class="hh-review__title">Precisión impecable</div>
+          <div class="hh-review__body">"Comparé los datos de las fases de sueño con un equipo médico que tengo en casa y la correlación es del 98%. Brutal."</div>
+          <div class="hh-review__author">Dr. Fernando R.</div>
+        </div>
+        
+        <!-- DUPLICATE FOR SEAMLESS SCROLL -->
+        <div class="hh-review">
+          <div class="hh-review__stars">★★★★★</div>
+          <div class="hh-review__title">Cambió mi entrenamiento</div>
+          <div class="hh-review__body">"Llevaba años usando smartwatches pesados. Esta banda ni se siente y los datos del HRV son exactos. Ya sé cuándo apretar y cuándo descansar."</div>
+          <div class="hh-review__author">Carlos M. - Crossfitter</div>
+        </div>
+        <div class="hh-review">
+          <div class="hh-review__stars">★★★★★</div>
+          <div class="hh-review__title">Al fin sin distracciones</div>
+          <div class="hh-review__body">"Dormir sin una pantalla brillante en la muñeca no tiene precio. La aplicación me da todo masticado al despertar. 10/10."</div>
+          <div class="hh-review__author">Andrea T. - Triatleta</div>
+        </div>
+        <div class="hh-review">
+          <div class="hh-review__stars">★★★★★</div>
+          <div class="hh-review__title">Adiós a las suscripciones</div>
+          <div class="hh-review__body">"Tenía un Oura y estaba harto de pagar mes a mes por mis propios datos. Halo entrega lo mismo pero con un solo pago. Increíble valor."</div>
+          <div class="hh-review__author">Diego S. - Emprendedor</div>
+        </div>
+        <div class="hh-review">
+          <div class="hh-review__stars">★★★★★</div>
+          <div class="hh-review__title">Precisión impecable</div>
+          <div class="hh-review__body">"Comparé los datos de las fases de sueño con un equipo médico que tengo en casa y la correlación es del 98%. Brutal."</div>
+          <div class="hh-review__author">Dr. Fernando R.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="hh-cta-section">
+    <div class="hh-wrap">
+      <h2>¿Listo para desbloquear tu 100%?</h2>
+      <p style="color: var(--h-text-muted); font-size: 1.1rem; margin-bottom: 32px;">Únete a miles de atletas que ya dominan su recuperación.</p>
+      <a href="/products/loop-band" class="hh-btn" style="padding: 20px 40px; font-size: 1.2rem;">
+        <span>CONSIGUE TU LOOP BAND</span>
+      </a>
+      <div style="margin-top: 24px; font-size: 0.9rem; color: #FFFFFF !important; display: flex; justify-content: center; gap: 20px; font-weight: 500;">
+        <span style="color: #FFFFFF !important;">🚚 Envío Gratis</span>
+        <span style="color: #FFFFFF !important;">🛡️ 30 Días de Garantía</span>
+        <span style="color: #FFFFFF !important;">🔒 Pagos Seguros</span>
+      </div>
+    </div>
+  </section>
+
+</div>

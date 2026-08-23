@@ -254,8 +254,14 @@
         "settings": {
           "defaultCollection": ""
         }
+      },
+      "halo_brand_homepage": {
+        "type": "halo-brand-homepage",
+        "settings": {}
       }
     },
-    "content_for_index": []
+    "content_for_index": [
+      "halo_brand_homepage"
+    ]
   }
 }

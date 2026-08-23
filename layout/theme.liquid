@@ -109,11 +109,7 @@
       {% render 'layout__template--specific' %}
 
       <main role="main">
-        {% if template == 'index' %}
-          {% section 'halo-brand-homepage' %}
-        {% else %}
-          {{ content_for_layout }}
-        {% endif %}
+        {{ content_for_layout }}
 
         <div class="wrapper--bottom">
           {% section 'info-badges' %}

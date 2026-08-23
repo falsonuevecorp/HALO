@@ -1,0 +1,1145 @@
+{% schema %}
+{
+  "name": "🎒 HALO Homepage",
+  "tag": "section",
+  "class": "halo-homepage-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Título Principal del Hero",
+      "default": "El Estándar Táctico del Viaje Moderno"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtitle",
+      "label": "Subtítulo del Hero",
+      "default": "Ingeniería balística calibrada milimétricamente para cabina. Viaja con 10 días de ropa en un solo artículo personal pagando tarifa zero."
+    },
+    {
+      "type": "url",
+      "id": "featured_product_url",
+      "label": "URL del Producto Estrella (Compress Bag®)",
+      "default": "/products/compress-bag"
+    }
+  ],
+  "presets": [
+    {
+      "name": "🎒 HALO Homepage"
+    }
+  ]
+}
+{% endschema %}
+
+<!-- GOOGLE FONTS: Inter -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --hh-black: #0A0A0A;
+    --hh-black-card: #121214;
+    --hh-black-surface: #18181B;
+    --hh-white: #FFFFFF;
+    --hh-cream: #FAF9F6;
+    --hh-slate: #F4F4F5;
+    --hh-gray-light: #ECECEE;
+    --hh-gray-mid: #71717A;
+    --hh-green: #00C97B;
+    --hh-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  .halo-homepage-wrap {
+    font-family: var(--hh-font) !important;
+    background: var(--hh-white);
+    color: var(--hh-black);
+    overflow-x: hidden;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .halo-homepage-wrap * {
+    box-sizing: border-box;
+  }
+
+  .hh-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* BUTTONS */
+  .hh-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--hh-green) !important;
+    color: #FFFFFF !important;
+    font-family: var(--hh-font) !important;
+    font-size: 15px;
+    font-weight: 800;
+    padding: 16px 28px;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 8px 24px rgba(0,201,123,0.35);
+    border: none;
+    cursor: pointer;
+  }
+
+  .hh-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0,201,123,0.45);
+  }
+
+  .hh-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--hh-black) !important;
+    font-family: var(--hh-font) !important;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 16px 28px;
+    border-radius: 9999px;
+    text-decoration: none;
+    border: 1px solid rgba(0,0,0,0.15);
+    transition: all 0.2s;
+  }
+
+  .hh-btn-secondary:hover {
+    background: var(--hh-slate);
+    border-color: var(--hh-black);
+  }
+
+  /* ════════════════════════════════════════════════
+     1. HERO BRAND STATEMENT
+     ════════════════════════════════════════════════ */
+  .hh-hero {
+    padding: 80px 0 60px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FAF9F6 100%);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .hh-hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .hh-hero-pretitle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,201,123,0.10);
+    border: 1px solid rgba(0,201,123,0.25);
+    border-radius: 9999px;
+    padding: 6px 14px;
+    margin-bottom: 20px;
+  }
+
+  .hh-hero-pretitle-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--hh-green);
+    border-radius: 50%;
+  }
+
+  .hh-hero-pretitle-text {
+    font-family: var(--hh-font) !important;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--hh-black) !important;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .hh-hero-title {
+    font-size: clamp(2.4rem, 4.5vw, 3.8rem) !important;
+    font-weight: 900 !important;
+    color: var(--hh-black) !important;
+    letter-spacing: -0.035em;
+    line-height: 1.08;
+    margin: 0 0 20px;
+  }
+
+  .hh-hero-subtitle {
+    font-family: var(--hh-font) !important;
+    font-size: 17px;
+    color: var(--hh-gray-mid) !important;
+    line-height: 1.6;
+    margin: 0 0 32px;
+    max-width: 540px;
+  }
+
+  .hh-hero-cta-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+  }
+
+  .hh-hero-trust-strip {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .hh-hero-tp-logo {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--hh-black);
+  }
+
+  .hh-hero-tp-stars {
+    color: #00B67A;
+    font-size: 14px;
+  }
+
+  .hh-hero-tp-text {
+    font-size: 12px;
+    color: var(--hh-gray-mid);
+    font-weight: 500;
+  }
+
+  /* HERO VISUAL CARD */
+  .hh-hero-card {
+    background: #FFFFFF;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 28px;
+    padding: 24px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.06);
+    position: relative;
+  }
+
+  .hh-hero-card-img-wrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+  }
+
+  .hh-hero-card-img {
+    width: 100%;
+    max-height: 420px;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.08));
+  }
+
+  .hh-hero-card-footer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    background: var(--hh-slate);
+    border-radius: 14px;
+    padding: 12px;
+    text-align: center;
+    margin-top: 12px;
+  }
+
+  .hh-hero-card-footer-item {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--hh-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  /* ════════════════════════════════════════════════
+     2. AIRLINE COMPATIBILITY & SOCIAL PROOF STRIP
+     ════════════════════════════════════════════════ */
+  .hh-social-strip {
+    background: var(--hh-white);
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .hh-social-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .hh-social-title {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--hh-gray-mid);
+    margin: 0;
+  }
+
+  .hh-airlines-logos {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+
+  .hh-airline-badge {
+    font-family: var(--hh-font) !important;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--hh-black) !important;
+    background: var(--hh-slate);
+    padding: 6px 14px;
+    border-radius: 8px;
+    letter-spacing: 0.02em;
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+
+  /* ════════════════════════════════════════════════
+     3. PRODUCT SHOWCASE / BOUTIQUE GRID
+     ════════════════════════════════════════════════ */
+  .hh-products {
+    padding: 100px 0;
+    background: var(--hh-white);
+  }
+
+  .hh-section-header {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 60px;
+  }
+
+  .hh-section-tag {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--hh-green) !important;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .hh-section-title {
+    font-size: clamp(2rem, 3.8vw, 3rem) !important;
+    font-weight: 900 !important;
+    color: var(--hh-black) !important;
+    letter-spacing: -0.03em;
+    margin: 0 0 16px;
+  }
+
+  .hh-section-subtitle {
+    font-size: 16px;
+    color: var(--hh-gray-mid);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .hh-products-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 28px;
+    align-items: stretch;
+  }
+
+  .hh-product-card {
+    background: var(--hh-slate);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 24px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    position: relative;
+  }
+
+  .hh-product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    border-color: rgba(0,201,123,0.3);
+  }
+
+  .hh-product-card.featured {
+    background: var(--hh-black);
+    color: #FFFFFF !important;
+    border-color: rgba(255,255,255,0.12);
+  }
+
+  .hh-product-card.featured .hh-product-title {
+    color: #FFFFFF !important;
+  }
+
+  .hh-product-card.featured .hh-product-desc {
+    color: rgba(255,255,255,0.65) !important;
+  }
+
+  .hh-product-badge-float {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--hh-green);
+    color: #FFFFFF;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .hh-product-img-wrap {
+    width: 100%;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .hh-product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.4s;
+  }
+
+  .hh-product-card:hover .hh-product-img {
+    transform: scale(1.04);
+  }
+
+  .hh-product-info {
+    margin-bottom: 24px;
+  }
+
+  .hh-product-title {
+    font-size: 18px !important;
+    font-weight: 800 !important;
+    color: var(--hh-black);
+    margin: 0 0 6px;
+  }
+
+  .hh-product-desc {
+    font-size: 13px;
+    color: var(--hh-gray-mid);
+    line-height: 1.45;
+    margin: 0 0 16px;
+  }
+
+  .hh-product-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .hh-product-price {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--hh-black);
+  }
+
+  .hh-product-card.featured .hh-product-price {
+    color: #FFFFFF;
+  }
+
+  .hh-product-price-old {
+    font-size: 13px;
+    color: var(--hh-gray-mid);
+    text-decoration: line-through;
+  }
+
+  /* ════════════════════════════════════════════════
+     4. BRAND MANIFESTO (BLACK SECTION)
+     ════════════════════════════════════════════════ */
+  .hh-manifesto {
+    background: var(--hh-black);
+    color: #FFFFFF;
+    padding: 120px 0;
+    position: relative;
+  }
+
+  .hh-manifesto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .hh-manifesto-tag {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--hh-green);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .hh-manifesto-title {
+    font-size: clamp(2.2rem, 4vw, 3.4rem) !important;
+    font-weight: 900 !important;
+    color: #FFFFFF !important;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    margin: 0 0 24px;
+  }
+
+  .hh-manifesto-body {
+    font-size: 17px;
+    color: rgba(255,255,255,0.70);
+    line-height: 1.7;
+    margin: 0 0 36px;
+  }
+
+  .hh-manifesto-visual {
+    background: var(--hh-black-card);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+  }
+
+  .hh-manifesto-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* ════════════════════════════════════════════════
+     5. 3 ENGINEERING PILLARS (BENTO GRID)
+     ════════════════════════════════════════════════ */
+  .hh-pillars {
+    background: var(--hh-cream);
+    padding: 100px 0;
+  }
+
+  .hh-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .hh-pillar-card {
+    background: #FFFFFF;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 24px;
+    padding: 32px 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .hh-pillar-icon-box {
+    width: 52px;
+    height: 52px;
+    background: var(--hh-slate);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .hh-pillar-title {
+    font-size: 18px !important;
+    font-weight: 800 !important;
+    color: var(--hh-black) !important;
+    margin: 0 0 10px;
+    line-height: 1.3;
+  }
+
+  .hh-pillar-desc {
+    font-size: 14px;
+    color: var(--hh-gray-mid);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ════════════════════════════════════════════════
+     6. UGC & CUSTOMER REVIEWS
+     ════════════════════════════════════════════════ */
+  .hh-reviews {
+    padding: 100px 0;
+    background: var(--hh-white);
+  }
+
+  .hh-reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .hh-review-card {
+    background: var(--hh-slate);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 20px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .hh-review-stars {
+    color: #00B67A;
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .hh-review-quote {
+    font-size: 14px;
+    color: var(--hh-black);
+    font-weight: 500;
+    line-height: 1.6;
+    margin: 0 0 20px;
+  }
+
+  .hh-review-author-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    padding-top: 14px;
+  }
+
+  .hh-review-avatar {
+    width: 36px;
+    height: 36px;
+    background: var(--hh-black);
+    color: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .hh-review-name {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--hh-black);
+    margin: 0;
+  }
+
+  .hh-review-sub {
+    font-size: 11px;
+    color: var(--hh-gray-mid);
+    margin: 0;
+  }
+
+  /* ════════════════════════════════════════════════
+     7. BRAND FAQS
+     ════════════════════════════════════════════════ */
+  .hh-faq {
+    padding: 90px 0;
+    background: var(--hh-cream);
+  }
+
+  .hh-faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .hh-faq-item {
+    background: #FFFFFF;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .hh-faq-q {
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .hh-faq-q h3 {
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    color: var(--hh-black) !important;
+    margin: 0;
+  }
+
+  .hh-faq-icon {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--hh-black);
+    transition: transform 0.3s;
+  }
+
+  .hh-faq-item.active .hh-faq-icon {
+    transform: rotate(45deg);
+    color: var(--hh-green);
+  }
+
+  .hh-faq-a {
+    padding: 0 24px 20px;
+    display: none;
+  }
+
+  .hh-faq-item.active .hh-faq-a {
+    display: block;
+  }
+
+  .hh-faq-a p {
+    font-size: 14px;
+    color: var(--hh-gray-mid);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ════════════════════════════════════════════════
+     8. BRAND TRUST & NEWSLETTER
+     ════════════════════════════════════════════════ */
+  .hh-trust-banner {
+    background: var(--hh-black);
+    color: #FFFFFF;
+    padding: 80px 0;
+    text-align: center;
+  }
+
+  .hh-trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+
+  .hh-trust-item-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .hh-trust-item-title {
+    font-size: 14px;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin: 0 0 4px;
+  }
+
+  .hh-trust-item-desc {
+    font-size: 12px;
+    color: rgba(255,255,255,0.60);
+    margin: 0;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 960px) {
+    .hh-hero-grid,
+    .hh-manifesto-grid,
+    .hh-products-grid,
+    .hh-pillars-grid,
+    .hh-reviews-grid,
+    .hh-trust-grid {
+      grid-template-columns: 1fr !important;
+      gap: 32px !important;
+    }
+
+    .hh-hero {
+      padding: 40px 0 !important;
+      text-align: center;
+    }
+
+    .hh-hero-subtitle {
+      margin: 0 auto 28px !important;
+    }
+
+    .hh-hero-cta-row {
+      justify-content: center;
+    }
+
+    .hh-hero-trust-strip {
+      justify-content: center;
+    }
+  }
+</style>
+
+<div class="halo-homepage-wrap">
+
+  <!-- ════════════════════════════════════════════════
+       1. HERO SECTION
+       ════════════════════════════════════════════════ -->
+  <section class="hh-hero">
+    <div class="hh-container">
+      <div class="hh-hero-grid">
+
+        <!-- TEXT LEFT -->
+        <div>
+          <div class="hh-hero-pretitle">
+            <span class="hh-hero-pretitle-dot"></span>
+            <span class="hh-hero-pretitle-text">Ingeniería Táctica de Viaje</span>
+          </div>
+
+          <h1 class="hh-hero-title">
+            {{ section.settings.hero_title | default: "El Estándar Táctico del Viaje Moderno" }}
+          </h1>
+
+          <p class="hh-hero-subtitle">
+            {{ section.settings.hero_subtitle | default: "Ingeniería balística calibrada milimétricamente para cabina. Viaja con 10 días de ropa en un solo artículo personal pagando tarifa zero." }}
+          </p>
+
+          <div class="hh-hero-cta-row">
+            <a href="{{ section.settings.featured_product_url | default: '/products/compress-bag' }}" class="hh-btn-primary">
+              <span>Ver Compress Bag® Pro →</span>
+            </a>
+            <a href="#hh-coleccion" class="hh-btn-secondary">
+              <span>Explorar Catálogo</span>
+            </a>
+          </div>
+
+          <div class="hh-hero-trust-strip">
+            <span class="hh-hero-tp-logo">★ Trustpilot</span>
+            <div class="hh-hero-tp-stars">★★★★★</div>
+            <span class="hh-hero-tp-text"><strong>Excelente 4.9/5</strong> (+4.800 viajeros en Chile)</span>
+          </div>
+        </div>
+
+        <!-- VISUAL RIGHT -->
+        <div class="hh-hero-card">
+          <div class="hh-hero-card-img-wrap">
+            <img
+              src="{{ 'halo-hero-rich.png' | asset_url }}?v=2"
+              alt="Mochila Compress Bag Pro con Turbo-Pump"
+              class="hh-hero-card-img"
+              loading="eager"
+              width="800"
+            >
+          </div>
+          <div class="hh-hero-card-footer">
+            <div class="hh-hero-card-footer-item">
+              <span>✈️ Tarifa $0</span>
+            </div>
+            <div class="hh-hero-card-footer-item">
+              <span>⚡ Vacío en 30s</span>
+            </div>
+            <div class="hh-hero-card-footer-item">
+              <span>🔋 Carga USB</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════
+       2. AIRLINE COMPATIBILITY & SOCIAL PROOF STRIP
+       ════════════════════════════════════════════════ -->
+  <section class="hh-social-strip">
+    <div class="hh-container">
+      <div class="hh-social-inner">
+        <p class="hh-social-title">100% Calibrada para Cabina en:</p>
+        <div class="hh-airlines-logos">
+          <span class="hh-airline-badge">SKY AIRLINE</span>
+          <span class="hh-airline-badge">JETSMART</span>
+          <span class="hh-airline-badge">LATAM AIRLINES</span>
+          <span class="hh-airline-badge">AVIANCA</span>
+          <span class="hh-airline-badge">COPA AIRLINES</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════
+       3. PRODUCT SHOWCASE / BOUTIQUE GRID
+       ════════════════════════════════════════════════ -->
+  <section class="hh-products" id="hh-coleccion">
+    <div class="hh-container">
+      
+      <div class="hh-section-header">
+        <span class="hh-section-tag">Colección Táctica 2026</span>
+        <h2 class="hh-section-title">Diseñados para Eliminar el Exceso</h2>
+        <p class="hh-section-subtitle">Cada pieza del ecosistema HALO está construida con materiales balísticos de grado militar y optimizada para máxima capacidad sin pagar multas.</p>
+      </div>
+
+      <div class="hh-products-grid">
+
+        <!-- PRODUCTO 1 (ESTRELLA) -->
+        <div class="hh-product-card featured">
+          <span class="hh-product-badge-float">MÁS VENDIDO 🔥</span>
+          <div class="hh-product-img-wrap">
+            <img src="{{ 'halo-hero-clean.png' | asset_url }}" alt="Compress Bag Pro" class="hh-product-img" loading="lazy" width="600">
+          </div>
+          <div class="hh-product-info">
+            <h3 class="hh-product-title">Compress Bag® Pro</h3>
+            <p class="hh-product-desc">La mochila definitiva de compresión al vacío. Lleva 10 días de ropa en 45x35cm con Turbo-Pump y Powerbank incluidos.</p>
+            <div class="hh-product-price-row">
+              <span class="hh-product-price">$89.990</span>
+              <span class="hh-product-price-old">$140.000</span>
+            </div>
+          </div>
+          <a href="{{ section.settings.featured_product_url | default: '/products/compress-bag' }}" class="hh-btn-primary" style="width:100%;">
+            <span>Ver Producto Estrella →</span>
+          </a>
+        </div>
+
+        <!-- PRODUCTO 2 -->
+        <div class="hh-product-card">
+          <div class="hh-product-img-wrap">
+            <img src="{{ 'halo-solution-pump.png' | asset_url }}" alt="Turbo-Pump 100W" class="hh-product-img" loading="lazy" width="600">
+          </div>
+          <div class="hh-product-info">
+            <h3 class="hh-product-title">Turbo-Pump 100W Inalámbrica</h3>
+            <p class="hh-product-desc">Mini-turbina de vacío recargable por USB-C. Extrae el 100% del aire en 30 segundos con batería de larga duración.</p>
+            <div class="hh-product-price-row">
+              <span class="hh-product-price">$29.990</span>
+              <span class="hh-product-price-old">$45.000</span>
+            </div>
+          </div>
+          <a href="{{ section.settings.featured_product_url | default: '/products/compress-bag' }}" class="hh-btn-secondary" style="width:100%;">
+            <span>Incluido en Bundle</span>
+          </a>
+        </div>
+
+        <!-- PRODUCTO 3 -->
+        <div class="hh-product-card">
+          <div class="hh-product-img-wrap">
+            <img src="{{ 'halo-anatomy-clean.png' | asset_url }}" alt="Set Bolsas Militares" class="hh-product-img" loading="lazy" width="600">
+          </div>
+          <div class="hh-product-info">
+            <h3 class="hh-product-title">Set 3x Bolsas Herméticas</h3>
+            <p class="hh-product-desc">Polímero militar reforzado con válvula de silicona antifugas. Reutilizables de por vida para cualquier viaje.</p>
+            <div class="hh-product-price-row">
+              <span class="hh-product-price">$14.990</span>
+              <span class="hh-product-price-old">$25.000</span>
+            </div>
+          </div>
+          <a href="{{ section.settings.featured_product_url | default: '/products/compress-bag' }}" class="hh-btn-secondary" style="width:100%;">
+            <span>Incluido en Bundle</span>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════
+       4. BRAND MANIFESTO (BLACK SECTION)
+       ════════════════════════════════════════════════ -->
+  <section class="hh-manifesto">
+    <div class="hh-container">
+      <div class="hh-manifesto-grid">
+
+        <div>
+          <span class="hh-manifesto-tag">Nuestra Filosofía</span>
+          <h2 class="hh-manifesto-title">Nacimos para terminar con la trampa del equipaje low-cost.</h2>
+          <p class="hh-manifesto-body">
+            Las aerolíneas crearon un modelo de negocio abusivo: te venden pasajes baratos para luego emboscarte en la puerta de embarque y cobrarte el doble por llevar tu propia ropa.
+            <br><br>
+            En <strong>HALO</strong> aplicamos ingeniería balística de precisión para que nunca más tengas que abrir tu ropa en el suelo ni pagar un solo peso extra.
+          </p>
+          <a href="{{ section.settings.featured_product_url | default: '/products/compress-bag' }}" class="hh-btn-primary">
+            <span>Conoce la Compress Bag® →</span>
+          </a>
+        </div>
+
+        <div class="hh-manifesto-visual">
+          <img src="{{ 'halo-enemy-trap.png' | asset_url }}" alt="Manifiesto Anti-Multas HALO" class="hh-manifesto-img" loading="lazy" width="800">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════
+       5. 3 ENGINEERING PILLARS (BENTO GRID)
+       ════════════════════════════════════════════════ -->
+  <section class="hh-pillars">
+    <div class="hh-container">
+      
+      <div class="hh-section-header">
+        <span class="hh-section-tag">Ingeniería sin Concesiones</span>
+        <h2 class="hh-section-title">Los 3 Estándares de Calidad HALO</h2>
+        <p class="hh-section-subtitle">No fabricamos mochilas comunes. Desarrollamos herramientas de transporte táctico construidas para durar más de 10 años.</p>
+      </div>
+
+      <div class="hh-pillars-grid">
+
+        <div class="hh-pillar-card">
+          <div class="hh-pillar-icon-box">🛡️</div>
+          <div>
+            <h3 class="hh-pillar-title">Cordura 1000D & Cierres YKK-R</h3>
+            <p class="hh-pillar-desc">Tela impermeable ultra resistente a cortes y abrasión con cremalleras blindadas que soportan más de 45 kg de presión sin abrirse jamás.</p>
+          </div>
+        </div>
+
+        <div class="hh-pillar-card">
+          <div class="hh-pillar-icon-box">⚡</div>
+          <div>
+            <h3 class="hh-pillar-title">Compresión Eléctrica en 30s</h3>
+            <p class="hh-pillar-desc">Motor Turbo-Pump de 100W que extrae el 100% del aire sin bombas manuales inútiles ni esfuerzo físico en el piso del hotel.</p>
+          </div>
+        </div>
+
+        <div class="hh-pillar-card">
+          <div class="hh-pillar-icon-box">💻</div>
+          <div>
+            <h3 class="hh-pillar-title">Apertura 180° TSA & Carga USB</h3>
+            <p class="hh-pillar-desc">Pasa los controles de seguridad del aeropuerto en 5 segundos y carga tu teléfono caminando gracias al módulo USB integrado.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════
+       6. UGC & CUSTOMER REVIEWS
+       ════════════════════════════════════════════════ -->
+  <section class="hh-reviews">
+    <div class="hh-container">
+
+      <div class="hh-section-header">
+        <span class="hh-section-tag">Prueba Social Verificada</span>
+        <h2 class="hh-section-title">+4.800 Viajeros Ya No Pagan Multas</h2>
+        <p class="hh-section-subtitle">Historias reales de personas en Chile que transformaron su forma de viajar con HALO.</p>
+      </div>
+
+      <div class="hh-reviews-grid">
+
+        <div class="hh-review-card">
+          <div class="hh-review-stars">★★★★★</div>
+          <p class="hh-review-quote">"Viajé a Calama por Sky. Metí 8 días de ropa y la mochila pasó suave bajo el asiento. Me ahorré $58.000 solo en ese vuelo. Calidad atómica."</p>
+          <div class="hh-review-author-row">
+            <div class="hh-review-avatar">FR</div>
+            <div>
+              <p class="hh-review-name">Felipe R.</p>
+              <p class="hh-review-sub">Comprador verificado · Santiago</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hh-review-card">
+          <div class="hh-review-stars">★★★★★</div>
+          <p class="hh-review-quote">"La bomba de vacío es ridículamente rápida. En 30 segundos la ropa queda como una tabla. Los cierres se sienten indestructibles."</p>
+          <div class="hh-review-author-row">
+            <div class="hh-review-avatar">CM</div>
+            <div>
+              <p class="hh-review-name">Camila M.</p>
+              <p class="hh-review-sub">Comprador verificado · Viña del Mar</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hh-review-card">
+          <div class="hh-review-stars">★★★★★</div>
+          <p class="hh-review-quote">"Pasé por el control del aeropuerto de Santiago sin abrir la maleta gracias al bolsillo de la laptop. El mejor dinero invertido en equipaje."</p>
+          <div class="hh-review-author-row">
+            <div class="hh-review-avatar">MG</div>
+            <div>
+              <p class="hh-review-name">Matías G.</p>
+              <p class="hh-review-sub">Comprador verificado · Concepción</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════
+       7. BRAND FAQS
+       ════════════════════════════════════════════════ -->
+  <section class="hh-faq">
+    <div class="hh-container">
+
+      <div class="hh-section-header">
+        <span class="hh-section-tag">Dudas Frecuentes</span>
+        <h2 class="hh-section-title">Preguntas sobre HALO</h2>
+        <p class="hh-section-subtitle">Todo lo que necesitas saber sobre garantías, despachos en Chile y aerolíneas.</p>
+      </div>
+
+      <div class="hh-faq-list">
+
+        <div class="hh-faq-item active">
+          <div class="hh-faq-q" onclick="this.parentElement.classList.toggle('active')">
+            <h3>¿Cómo opera la Garantía Legal de 90 Días en Chile?</h3>
+            <span class="hh-faq-icon">+</span>
+          </div>
+          <div class="hh-faq-a">
+            <p>Cumplimos estrictamente con la Ley del Consumidor (SERNAC). Tienes 90 días corridos de garantía ante cualquier defecto de fabricación, falla en cremalleras o problemas en la Turbo-Pump con reposición inmediata.</p>
+          </div>
+        </div>
+
+        <div class="hh-faq-item">
+          <div class="hh-faq-q" onclick="this.parentElement.classList.toggle('active')">
+            <h3>¿Cuáles son los tiempos de despacho?</h3>
+            <span class="hh-faq-icon">+</span>
+          </div>
+          <div class="hh-faq-a">
+            <p>Despachamos el mismo día hábil para compras antes de las 14:00 hrs. En Santiago entregamos en 24 a 48 horas. A regiones de todo Chile de 2 a 4 días hábiles vía Blue Express o Starken con tracking en tiempo real.</p>
+          </div>
+        </div>
+
+        <div class="hh-faq-item">
+          <div class="hh-faq-q" onclick="this.parentElement.classList.toggle('active')">
+            <h3>¿Realmente pasa como Artículo Personal sin costo?</h3>
+            <span class="hh-faq-icon">+</span>
+          </div>
+          <div class="hh-faq-a">
+            <p>Sí. Sus dimensiones de 45 x 35 x 20 cm cumplen con la normativa de equipaje de mano gratuito que cabe bajo el asiento en Sky, JetSMART, LATAM y aerolíneas internacionales.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════
+       8. BRAND TRUST & FOOTER CALLOUT
+       ════════════════════════════════════════════════ -->
+  <section class="hh-trust-banner">
+    <div class="hh-container">
+
+      <div class="hh-trust-grid">
+        <div>
+          <span class="hh-trust-item-icon">🛡️</span>
+          <p class="hh-trust-item-title">90 Días de Garantía</p>
+          <p class="hh-trust-item-desc">Blindaje legal SERNAC</p>
+        </div>
+        <div>
+          <span class="hh-trust-item-icon">🚚</span>
+          <p class="hh-trust-item-title">Despacho Exprés</p>
+          <p class="hh-trust-item-desc">Mismo día hábil en Chile</p>
+        </div>
+        <div>
+          <span class="hh-trust-item-icon">🔒</span>
+          <p class="hh-trust-item-title">Pago 100% Seguro</p>
+          <p class="hh-trust-item-desc">MercadoPago en 3 cuotas</p>
+        </div>
+        <div>
+          <span class="hh-trust-item-icon">💬</span>
+          <p class="hh-trust-item-title">Soporte 24/7</p>
+          <p class="hh-trust-item-desc">Atención humana directa</p>
+        </div>
+      </div>
+
+      <a href="{{ section.settings.featured_product_url | default: '/products/compress-bag' }}" class="hh-btn-primary" style="padding: 18px 36px; font-size: 16px;">
+        <span>Comprar Compress Bag® Pro con Envíos Gratis →</span>
+      </a>
+
+    </div>
+  </section>
+
+</div>

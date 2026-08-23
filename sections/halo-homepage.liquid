@@ -1,803 +1,1145 @@
 {% schema %}
 {
-  "name": "HALO Homepage",
+  "name": "🎒 HALO Homepage",
+  "tag": "section",
+  "class": "halo-homepage-section",
   "settings": [
     {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Título Principal del Hero",
+      "default": "El Estándar Táctico del Viaje Moderno"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtitle",
+      "label": "Subtítulo del Hero",
+      "default": "Ingeniería balística calibrada milimétricamente para cabina. Viaja con 10 días de ropa en un solo artículo personal pagando tarifa zero."
+    },
+    {
       "type": "url",
-      "id": "cta_url",
-      "label": "Link del Producto (HALO Loop)"
+      "id": "featured_product_url",
+      "label": "URL del Producto Estrella (Compress Bag®)",
+      "default": "/products/compress-bag"
     }
   ],
   "presets": [
     {
-      "name": "HALO Homepage",
-      "category": "HALO"
+      "name": "🎒 HALO Homepage"
     }
   ]
 }
 {% endschema %}
 
-<!-- GOOGLE FONTS: Inter (Official HALO Tech Typography) -->
+<!-- GOOGLE FONTS: Inter -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-{%- assign product = all_products['loop-band'] -%}
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
   :root {
-    --h-bg: #030303;
-    --h-surface: #09090b;
-    --h-surface-light: #18181b;
-    --h-cyan: #00ECFF;
-    --h-green: #00C97B;
-    --h-text-main: #FFFFFF;
-    --h-text-muted: #94a3b8;
-    --h-border: rgba(255,255,255,0.08);
-    --font-family: 'Inter', sans-serif;
+    --hh-black: #0A0A0A;
+    --hh-black-card: #121214;
+    --hh-black-surface: #18181B;
+    --hh-white: #FFFFFF;
+    --hh-cream: #FAF9F6;
+    --hh-slate: #F4F4F5;
+    --hh-gray-light: #ECECEE;
+    --hh-gray-mid: #71717A;
+    --hh-green: #00C97B;
+    --hh-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
-  .halo-home {
-    background: var(--h-bg);
-    color: var(--h-text-main);
-    font-family: var(--font-family);
+  .halo-homepage-wrap {
+    font-family: var(--hh-font) !important;
+    background: var(--hh-white);
+    color: var(--hh-black);
     overflow-x: hidden;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* Fade-In Scroll Animation Utility */
-  .hh-fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .hh-fade-in.is-visible {
-    opacity: 1;
-    transform: translateY(0);
+  .halo-homepage-wrap * {
+    box-sizing: border-box;
   }
 
-  .halo-home h1, .halo-home h2, .halo-home h3, .halo-home h4 {
-    font-family: var(--font-family);
-    margin: 0;
-    line-height: 1.08;
-    letter-spacing: -0.04em;
-  }
-
-  .hh-wrap {
+  .hh-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px;
   }
 
-  .hh-tag {
-    display: inline-block;
-    font-family: var(--font-family);
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--h-cyan);
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    margin-bottom: 20px;
-  }
-
-  /* PREMIUM BUTTONS (Apple / Vercel Aesthetic) */
-  .hh-btn {
+  /* BUTTONS */
+  .hh-btn-primary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: #FFFFFF !important;
-    border: 1px solid #FFFFFF !important;
-    color: #000000 !important;
-    font-family: var(--font-family);
-    font-weight: 600;
-    font-size: 1rem;
-    padding: 16px 36px;
+    gap: 8px;
+    background: var(--hh-green) !important;
+    color: #FFFFFF !important;
+    font-family: var(--hh-font) !important;
+    font-size: 15px;
+    font-weight: 800;
+    padding: 16px 28px;
     border-radius: 9999px;
     text-decoration: none;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 8px 24px rgba(0,201,123,0.35);
+    border: none;
     cursor: pointer;
   }
-  .hh-btn:hover {
-    background: #000000 !important;
-    color: #FFFFFF !important;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
-  }
-  .hh-btn span {
-    color: inherit !important;
-    letter-spacing: -0.01em;
+
+  .hh-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0,201,123,0.45);
   }
 
-  .hh-btn--secondary {
-    background: transparent;
-    border: 1px solid var(--h-border);
-    color: #FFFFFF !important;
-    box-shadow: none;
-  }
-  .hh-btn--secondary:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: #FFFFFF;
-  }
-  .hh-btn--secondary span {
-    color: inherit !important;
-  }
-
-  /* ===== BLOCK 1: HERO (Glow Dynamic Transition) ===== */
-  .hh-hero {
-    position: relative;
-    padding: 180px 0 120px;
-    min-height: 95vh;
-    display: flex;
+  .hh-btn-secondary {
+    display: inline-flex;
     align-items: center;
-    text-align: center;
-    overflow: hidden;
-  }
-  .hh-hero__bg {
-    position: absolute;
-    inset: 0;
-    background: 
-      radial-gradient(circle at 50% 20%, rgba(0, 236, 255, 0.12) 0%, transparent 50%),
-      radial-gradient(circle at 20% 50%, rgba(0, 201, 123, 0.04) 0%, transparent 40%),
-      var(--h-bg);
-    z-index: 0;
-  }
-  .hh-hero__content {
-    position: relative;
-    z-index: 1;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  .hh-hero h1 {
-    font-size: clamp(3rem, 7vw, 5.2rem);
-    font-weight: 800;
-    margin-bottom: 28px;
-    background: linear-gradient(180deg, #FFFFFF 30%, #a1a1aa 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .hh-hero p {
-    font-size: 1.35rem;
-    color: var(--h-text-muted);
-    max-width: 720px;
-    margin: 0 auto 44px;
-    line-height: 1.6;
-    font-weight: 400;
+    justify-content: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--hh-black) !important;
+    font-family: var(--hh-font) !important;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 16px 28px;
+    border-radius: 9999px;
+    text-decoration: none;
+    border: 1px solid rgba(0,0,0,0.15);
+    transition: all 0.2s;
   }
 
-  .hh-hero__stars {
+  .hh-btn-secondary:hover {
+    background: var(--hh-slate);
+    border-color: var(--hh-black);
+  }
+
+  /* ════════════════════════════════════════════════
+     1. HERO BRAND STATEMENT
+     ════════════════════════════════════════════════ */
+  .hh-hero {
+    padding: 80px 0 60px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FAF9F6 100%);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .hh-hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .hh-hero-pretitle {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 24px;
-    font-size: 0.9rem;
-    background: rgba(255,255,255,0.03);
-    padding: 6px 16px;
+    background: rgba(0,201,123,0.10);
+    border: 1px solid rgba(0,201,123,0.25);
     border-radius: 9999px;
-    border: 1px solid var(--h-border);
-  }
-  .hh-hero__stars span {
-    color: #FFFFFF !important;
-  }
-  .hh-stars {
-    color: #FFC107;
+    padding: 6px 14px;
+    margin-bottom: 20px;
   }
 
-  /* SHOWCASE RENDER */
-  .hh-showcase {
-    margin-top: 80px;
-    height: 480px;
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 24px;
-    background: linear-gradient(180deg, rgba(24,24,27,0.8) 0%, rgba(9,9,11,0.9) 100%);
-    border: 1px solid var(--h-border);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    box-shadow: 0 40px 80px rgba(0,0,0,0.8);
-    overflow: hidden;
-    backdrop-filter: blur(20px);
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .hh-showcase:hover {
-    transform: scale(1.01);
-  }
-  .hh-showcase::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, transparent, rgba(0,236,255,0.05), transparent);
-    transform: skewX(-20deg) translateX(-150%);
-    animation: hh-shimmer 6s infinite;
+  .hh-hero-pretitle-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--hh-green);
+    border-radius: 50%;
   }
 
-  /* ===== BLOCK 2: LOGO BAR ===== */
-  .hh-logobar {
-    padding: 60px 0;
-    border-top: 1px solid var(--h-border);
-    border-bottom: 1px solid var(--h-border);
-    background: #0A0A0A;
-    position: relative;
+  .hh-hero-pretitle-text {
+    font-family: var(--hh-font) !important;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--hh-black) !important;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
-  .hh-logobar::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--h-cyan), transparent);
-    opacity: 0.3;
+
+  .hh-hero-title {
+    font-size: clamp(2.4rem, 4.5vw, 3.8rem) !important;
+    font-weight: 900 !important;
+    color: var(--hh-black) !important;
+    letter-spacing: -0.035em;
+    line-height: 1.08;
+    margin: 0 0 20px;
   }
-  .hh-logobar__inner {
+
+  .hh-hero-subtitle {
+    font-family: var(--hh-font) !important;
+    font-size: 17px;
+    color: var(--hh-gray-mid) !important;
+    line-height: 1.6;
+    margin: 0 0 32px;
+    max-width: 540px;
+  }
+
+  .hh-hero-cta-row {
     display: flex;
-    justify-content: space-around;
     align-items: center;
-    gap: 30px;
+    gap: 16px;
     flex-wrap: wrap;
-    opacity: 0.4;
-  }
-  .hh-logobar__logo {
-    font-size: 1.1rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-  }
-
-  /* ===== BLOCK 3: PIVOTE (PROBLEM vs SOLUTION) ===== */
-  .hh-split {
-    padding: 140px 0;
-    background: #141414;
-    position: relative;
-  }
-  .hh-split--alt {
-    background: #1F1F1F;
-    border-top: 1px solid var(--h-border);
-    border-bottom: 1px solid var(--h-border);
-  }
-  .hh-split__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 100px;
-    align-items: center;
-  }
-  .hh-split h2 {
-    font-size: 3.2rem;
-    margin-bottom: 28px;
-    font-weight: 800;
-  }
-  .hh-split p {
-    font-size: 1.15rem;
-    color: var(--h-text-muted);
-    margin-bottom: 28px;
-    line-height: 1.7;
-  }
-  .hh-split__img {
-    height: 520px;
-    border-radius: 24px;
-    border: 1px solid var(--h-border);
-    background: radial-gradient(circle at center, rgba(255,255,255,0.02) 0%, #09090b 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-    transition: border-color 0.4s ease;
-  }
-  .hh-split__img:hover {
-    border-color: rgba(0, 236, 255, 0.3);
-  }
-
-  /* ===== BLOCK 4: PITCH (SHOPPING GRID DIRECT) ===== */
-  .hh-pitch {
-    padding: 140px 0;
-    background: #0A0A0A;
-    border-bottom: 1px solid var(--h-border);
-    text-align: center;
-    position: relative;
-  }
-  .hh-pitch::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 600px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(0, 236, 255, 0.03) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .hh-pitch h2 {
-    font-size: 3.4rem;
-    margin-bottom: 18px;
-    font-weight: 800;
-  }
-  .hh-pitch__sub {
-    color: var(--h-text-muted);
-    font-size: 1.25rem;
-    margin-bottom: 60px;
-  }
-  .hh-product-card {
-    max-width: 900px;
-    margin: 0 auto;
-    background: rgba(24, 24, 27, 0.4);
-    border: 1px solid var(--h-border);
-    border-radius: 32px;
-    padding: 50px;
-    text-align: left;
-    display: grid;
-    grid-template-columns: 1fr 1.1fr;
-    gap: 60px;
-    align-items: center;
-    backdrop-filter: blur(10px);
-  }
-  .hh-product-gallery {
-    background: #030303;
-    border-radius: 20px;
-    height: 360px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--h-border);
-    position: relative;
-    overflow: hidden;
-  }
-  .hh-product-gallery::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at center, rgba(0, 236, 255, 0.1) 0%, transparent 60%);
-  }
-  .hh-price-stack {
-    margin: 20px 0 30px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-  .hh-price-current {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--h-cyan);
-  }
-  .hh-price-compare {
-    font-size: 1.5rem;
-    text-decoration: line-through;
-    color: var(--h-text-muted);
-  }
-
-  /* ===== BLOCK 5: LA CONEXIÓN (MANIFESTO) ===== */
-  .hh-manifesto {
-    padding: 160px 0;
-    background: #141414;
-    text-align: center;
-    position: relative;
-  }
-  .hh-manifesto__inner {
-    max-width: 850px;
-    margin: 0 auto;
-  }
-  .hh-manifesto h2 {
-    font-size: 3.6rem;
-    margin-bottom: 44px;
-    font-weight: 800;
-  }
-  .hh-manifesto p {
-    font-size: 1.4rem;
-    line-height: 1.8;
-    color: var(--h-text-muted);
     margin-bottom: 36px;
-    font-weight: 300;
-  }
-  .hh-signature {
-    margin-top: 60px;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--h-cyan);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
   }
 
-  /* ===== BLOCK 6: TRUSTPILOT MARQUEE ===== */
-  .hh-trust {
-    padding: 120px 0;
-    background: #1F1F1F;
-    overflow: hidden;
-    border-top: 1px solid var(--h-border);
-    border-bottom: 1px solid var(--h-border);
-  }
-  .hh-trust h2 { text-align: center; font-size: 2.8rem; margin-bottom: 60px; font-weight: 800; }
-  .hh-marquee-wrapper {
+  .hh-hero-trust-strip {
     display: flex;
-    overflow: hidden;
-    position: relative;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-  }
-  .hh-marquee {
-    display: flex;
-    gap: 24px;
-    width: max-content;
-    animation: hh-scroll 40s linear infinite;
-  }
-  .hh-marquee:hover { animation-play-state: paused; }
-  .hh-review {
-    width: 400px;
-    background: rgba(24, 24, 27, 0.6);
-    border: 1px solid var(--h-border);
-    border-radius: 24px;
-    padding: 36px;
-    backdrop-filter: blur(10px);
-  }
-  .hh-review__stars { color: #00B67A; font-size: 1.2rem; margin-bottom: 18px; }
-  .hh-review__title { font-weight: 800; font-size: 1.2rem; margin-bottom: 12px; }
-  .hh-review__body { font-size: 1rem; color: var(--h-text-muted); margin-bottom: 24px; line-height: 1.6; }
-  .hh-review__author { font-size: 0.85rem; font-weight: 700; color: #fff; }
-
-  /* ===== BLOCK 7: FAQS & CLOSING ===== */
-  .hh-closing {
-    padding: 140px 0;
-    background: #0A0A0A;
-  }
-  .hh-faq-grid {
-    max-width: 850px;
-    margin: 0 auto 100px;
-  }
-  .hh-faq-item {
-    border-bottom: 1px solid var(--h-border);
-    padding: 28px 0;
-  }
-  .hh-faq-question {
-    font-size: 1.35rem;
-    font-weight: 700;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    transition: color 0.3s ease;
+    gap: 12px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0,0,0,0.06);
   }
-  .hh-faq-question:hover {
-    color: var(--h-cyan);
+
+  .hh-hero-tp-logo {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--hh-black);
   }
-  .hh-faq-answer {
-    margin-top: 20px;
-    font-size: 1.05rem;
-    color: #FFFFFF !important;
-    line-height: 1.7;
-    display: none;
+
+  .hh-hero-tp-stars {
+    color: #00B67A;
+    font-size: 14px;
   }
-  .hh-faq-item[open] .hh-faq-answer {
+
+  .hh-hero-tp-text {
+    font-size: 12px;
+    color: var(--hh-gray-mid);
+    font-weight: 500;
+  }
+
+  /* HERO VISUAL CARD */
+  .hh-hero-card {
+    background: #FFFFFF;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 28px;
+    padding: 24px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.06);
+    position: relative;
+  }
+
+  .hh-hero-card-img-wrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+  }
+
+  .hh-hero-card-img {
+    width: 100%;
+    max-height: 420px;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.08));
+  }
+
+  .hh-hero-card-footer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    background: var(--hh-slate);
+    border-radius: 14px;
+    padding: 12px;
+    text-align: center;
+    margin-top: 12px;
+  }
+
+  .hh-hero-card-footer-item {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--hh-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  /* ════════════════════════════════════════════════
+     2. AIRLINE COMPATIBILITY & SOCIAL PROOF STRIP
+     ════════════════════════════════════════════════ */
+  .hh-social-strip {
+    background: var(--hh-white);
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .hh-social-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .hh-social-title {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--hh-gray-mid);
+    margin: 0;
+  }
+
+  .hh-airlines-logos {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+
+  .hh-airline-badge {
+    font-family: var(--hh-font) !important;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--hh-black) !important;
+    background: var(--hh-slate);
+    padding: 6px 14px;
+    border-radius: 8px;
+    letter-spacing: 0.02em;
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+
+  /* ════════════════════════════════════════════════
+     3. PRODUCT SHOWCASE / BOUTIQUE GRID
+     ════════════════════════════════════════════════ */
+  .hh-products {
+    padding: 100px 0;
+    background: var(--hh-white);
+  }
+
+  .hh-section-header {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 60px;
+  }
+
+  .hh-section-tag {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--hh-green) !important;
+    margin-bottom: 10px;
     display: block;
   }
-  .hh-faq-toggle::after {
-    content: '+';
-    font-size: 1.5rem;
-    transition: transform 0.3s ease;
-  }
-  .hh-faq-item[open] .hh-faq-toggle::after {
-    content: '−';
+
+  .hh-section-title {
+    font-size: clamp(2rem, 3.8vw, 3rem) !important;
+    font-weight: 900 !important;
+    color: var(--hh-black) !important;
+    letter-spacing: -0.03em;
+    margin: 0 0 16px;
   }
 
-  .hh-guarantee-box {
-    max-width: 900px;
-    margin: 0 auto;
-    background: radial-gradient(circle at top left, rgba(0, 236, 255, 0.03) 0%, rgba(9, 9, 11, 0.8) 100%);
-    border: 1px solid rgba(0, 236, 255, 0.2);
-    border-radius: 32px;
-    padding: 60px 40px;
-    text-align: center;
-    box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+  .hh-section-subtitle {
+    font-size: 16px;
+    color: var(--hh-gray-mid);
+    margin: 0;
+    line-height: 1.6;
   }
-  .hh-guarantee-box h3 {
-    font-size: 2.4rem;
+
+  .hh-products-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 28px;
+    align-items: stretch;
+  }
+
+  .hh-product-card {
+    background: var(--hh-slate);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 24px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    position: relative;
+  }
+
+  .hh-product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    border-color: rgba(0,201,123,0.3);
+  }
+
+  .hh-product-card.featured {
+    background: var(--hh-black);
+    color: #FFFFFF !important;
+    border-color: rgba(255,255,255,0.12);
+  }
+
+  .hh-product-card.featured .hh-product-title {
+    color: #FFFFFF !important;
+  }
+
+  .hh-product-card.featured .hh-product-desc {
+    color: rgba(255,255,255,0.65) !important;
+  }
+
+  .hh-product-badge-float {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--hh-green);
     color: #FFFFFF;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .hh-product-img-wrap {
+    width: 100%;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .hh-product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.4s;
+  }
+
+  .hh-product-card:hover .hh-product-img {
+    transform: scale(1.04);
+  }
+
+  .hh-product-info {
     margin-bottom: 24px;
+  }
+
+  .hh-product-title {
+    font-size: 18px !important;
+    font-weight: 800 !important;
+    color: var(--hh-black);
+    margin: 0 0 6px;
+  }
+
+  .hh-product-desc {
+    font-size: 13px;
+    color: var(--hh-gray-mid);
+    line-height: 1.45;
+    margin: 0 0 16px;
+  }
+
+  .hh-product-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .hh-product-price {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--hh-black);
+  }
+
+  .hh-product-card.featured .hh-product-price {
+    color: #FFFFFF;
+  }
+
+  .hh-product-price-old {
+    font-size: 13px;
+    color: var(--hh-gray-mid);
+    text-decoration: line-through;
+  }
+
+  /* ════════════════════════════════════════════════
+     4. BRAND MANIFESTO (BLACK SECTION)
+     ════════════════════════════════════════════════ */
+  .hh-manifesto {
+    background: var(--hh-black);
+    color: #FFFFFF;
+    padding: 120px 0;
+    position: relative;
+  }
+
+  .hh-manifesto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .hh-manifesto-tag {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--hh-green);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .hh-manifesto-title {
+    font-size: clamp(2.2rem, 4vw, 3.4rem) !important;
+    font-weight: 900 !important;
+    color: #FFFFFF !important;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    margin: 0 0 24px;
+  }
+
+  .hh-manifesto-body {
+    font-size: 17px;
+    color: rgba(255,255,255,0.70);
+    line-height: 1.7;
+    margin: 0 0 36px;
+  }
+
+  .hh-manifesto-visual {
+    background: var(--hh-black-card);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+  }
+
+  .hh-manifesto-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* ════════════════════════════════════════════════
+     5. 3 ENGINEERING PILLARS (BENTO GRID)
+     ════════════════════════════════════════════════ */
+  .hh-pillars {
+    background: var(--hh-cream);
+    padding: 100px 0;
+  }
+
+  .hh-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .hh-pillar-card {
+    background: #FFFFFF;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 24px;
+    padding: 32px 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .hh-pillar-icon-box {
+    width: 52px;
+    height: 52px;
+    background: var(--hh-slate);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .hh-pillar-title {
+    font-size: 18px !important;
+    font-weight: 800 !important;
+    color: var(--hh-black) !important;
+    margin: 0 0 10px;
+    line-height: 1.3;
+  }
+
+  .hh-pillar-desc {
+    font-size: 14px;
+    color: var(--hh-gray-mid);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ════════════════════════════════════════════════
+     6. UGC & CUSTOMER REVIEWS
+     ════════════════════════════════════════════════ */
+  .hh-reviews {
+    padding: 100px 0;
+    background: var(--hh-white);
+  }
+
+  .hh-reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .hh-review-card {
+    background: var(--hh-slate);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 20px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .hh-review-stars {
+    color: #00B67A;
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .hh-review-quote {
+    font-size: 14px;
+    color: var(--hh-black);
+    font-weight: 500;
+    line-height: 1.6;
+    margin: 0 0 20px;
+  }
+
+  .hh-review-author-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    padding-top: 14px;
+  }
+
+  .hh-review-avatar {
+    width: 36px;
+    height: 36px;
+    background: var(--hh-black);
+    color: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
     font-weight: 800;
   }
 
-  .hh-features-row {
-    margin-top: 40px;
+  .hh-review-name {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--hh-black);
+    margin: 0;
+  }
+
+  .hh-review-sub {
+    font-size: 11px;
+    color: var(--hh-gray-mid);
+    margin: 0;
+  }
+
+  /* ════════════════════════════════════════════════
+     7. BRAND FAQS
+     ════════════════════════════════════════════════ */
+  .hh-faq {
+    padding: 90px 0;
+    background: var(--hh-cream);
+  }
+
+  .hh-faq-list {
+    max-width: 800px;
+    margin: 0 auto;
     display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-    font-size: 0.95rem;
-    color: #FFFFFF !important;
-    font-weight: 600;
-  }
-  .hh-features-row span {
-    color: #FFFFFF !important;
+    flex-direction: column;
+    gap: 14px;
   }
 
-  @keyframes hh-shimmer {
-    0% { transform: skewX(-20deg) translateX(-150%); }
-    50%, 100% { transform: skewX(-20deg) translateX(150%); }
+  .hh-faq-item {
+    background: #FFFFFF;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 16px;
+    overflow: hidden;
   }
 
-  @keyframes hh-scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+  .hh-faq-q {
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
   }
 
-  @media (max-width: 768px) {
-    .hh-split__grid, .hh-product-card { grid-template-columns: 1fr; gap: 50px; }
-    .hh-hero h1 { font-size: 2.8rem; }
-    .hh-split__img, .hh-product-gallery { height: 340px; }
-    .hh-manifesto h2 { font-size: 2.6rem; }
+  .hh-faq-q h3 {
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    color: var(--hh-black) !important;
+    margin: 0;
+  }
+
+  .hh-faq-icon {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--hh-black);
+    transition: transform 0.3s;
+  }
+
+  .hh-faq-item.active .hh-faq-icon {
+    transform: rotate(45deg);
+    color: var(--hh-green);
+  }
+
+  .hh-faq-a {
+    padding: 0 24px 20px;
+    display: none;
+  }
+
+  .hh-faq-item.active .hh-faq-a {
+    display: block;
+  }
+
+  .hh-faq-a p {
+    font-size: 14px;
+    color: var(--hh-gray-mid);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ════════════════════════════════════════════════
+     8. BRAND TRUST & NEWSLETTER
+     ════════════════════════════════════════════════ */
+  .hh-trust-banner {
+    background: var(--hh-black);
+    color: #FFFFFF;
+    padding: 80px 0;
+    text-align: center;
+  }
+
+  .hh-trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+
+  .hh-trust-item-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .hh-trust-item-title {
+    font-size: 14px;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin: 0 0 4px;
+  }
+
+  .hh-trust-item-desc {
+    font-size: 12px;
+    color: rgba(255,255,255,0.60);
+    margin: 0;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 960px) {
+    .hh-hero-grid,
+    .hh-manifesto-grid,
+    .hh-products-grid,
+    .hh-pillars-grid,
+    .hh-reviews-grid,
+    .hh-trust-grid {
+      grid-template-columns: 1fr !important;
+      gap: 32px !important;
+    }
+
+    .hh-hero {
+      padding: 40px 0 !important;
+      text-align: center;
+    }
+
+    .hh-hero-subtitle {
+      margin: 0 auto 28px !important;
+    }
+
+    .hh-hero-cta-row {
+      justify-content: center;
+    }
+
+    .hh-hero-trust-strip {
+      justify-content: center;
+    }
   }
 </style>
 
-<div class="halo-home">
+<div class="halo-homepage-wrap">
 
-  <!-- BLOQUE 1: GANCHO (HERO) -->
+  <!-- ════════════════════════════════════════════════
+       1. HERO SECTION
+       ════════════════════════════════════════════════ -->
   <section class="hh-hero">
-    <div class="hh-hero__bg"></div>
-    <div class="hh-wrap hh-hero__content hh-fade-in" id="hero-content">
-      <div class="hh-hero__stars">
-        <span class="hh-stars">★★★★★</span>
-        <span>4.9/5 de más de 12,000 atletas</span>
+    <div class="hh-container">
+      <div class="hh-hero-grid">
+
+        <!-- TEXT LEFT -->
+        <div>
+          <div class="hh-hero-pretitle">
+            <span class="hh-hero-pretitle-dot"></span>
+            <span class="hh-hero-pretitle-text">Ingeniería Táctica de Viaje</span>
+          </div>
+
+          <h1 class="hh-hero-title">
+            {{ section.settings.hero_title | default: "El Estándar Táctico del Viaje Moderno" }}
+          </h1>
+
+          <p class="hh-hero-subtitle">
+            {{ section.settings.hero_subtitle | default: "Ingeniería balística calibrada milimétricamente para cabina. Viaja con 10 días de ropa en un solo artículo personal pagando tarifa zero." }}
+          </p>
+
+          <div class="hh-hero-cta-row">
+            <a href="{{ section.settings.featured_product_url | default: '/products/compress-bag' }}" class="hh-btn-primary">
+              <span>Ver Compress Bag® Pro →</span>
+            </a>
+            <a href="#hh-coleccion" class="hh-btn-secondary">
+              <span>Explorar Catálogo</span>
+            </a>
+          </div>
+
+          <div class="hh-hero-trust-strip">
+            <span class="hh-hero-tp-logo">★ Trustpilot</span>
+            <div class="hh-hero-tp-stars">★★★★★</div>
+            <span class="hh-hero-tp-text"><strong>Excelente 4.9/5</strong> (+4.800 viajeros en Chile)</span>
+          </div>
+        </div>
+
+        <!-- VISUAL RIGHT -->
+        <div class="hh-hero-card">
+          <div class="hh-hero-card-img-wrap">
+            <img
+              src="{{ 'halo-hero-rich.png' | asset_url }}?v=2"
+              alt="Mochila Compress Bag Pro con Turbo-Pump"
+              class="hh-hero-card-img"
+              loading="eager"
+              width="800"
+            >
+          </div>
+          <div class="hh-hero-card-footer">
+            <div class="hh-hero-card-footer-item">
+              <span>✈️ Tarifa $0</span>
+            </div>
+            <div class="hh-hero-card-footer-item">
+              <span>⚡ Vacío en 30s</span>
+            </div>
+            <div class="hh-hero-card-footer-item">
+              <span>🔋 Carga USB</span>
+            </div>
+          </div>
+        </div>
+
       </div>
-      <br>
-      <span class="hh-tag">El Estándar Biométrico</span>
-      <h1>Te despiertas cansado porque no has sabido leer tu descanso profundo.</h1>
-      <p>Dormir no es lo mismo que descansar. Optimiza tu recuperación y descansa mejor desde la primera noche con LOOP.</p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════
+       2. AIRLINE COMPATIBILITY & SOCIAL PROOF STRIP
+       ════════════════════════════════════════════════ -->
+  <section class="hh-social-strip">
+    <div class="hh-container">
+      <div class="hh-social-inner">
+        <p class="hh-social-title">100% Calibrada para Cabina en:</p>
+        <div class="hh-airlines-logos">
+          <span class="hh-airline-badge">SKY AIRLINE</span>
+          <span class="hh-airline-badge">JETSMART</span>
+          <span class="hh-airline-badge">LATAM AIRLINES</span>
+          <span class="hh-airline-badge">AVIANCA</span>
+          <span class="hh-airline-badge">COPA AIRLINES</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════
+       3. PRODUCT SHOWCASE / BOUTIQUE GRID
+       ════════════════════════════════════════════════ -->
+  <section class="hh-products" id="hh-coleccion">
+    <div class="hh-container">
       
-      <a href="#comprar" class="hh-btn">
-        <span>CONSEGUIR TU LOOP BAND</span>
-      </a>
+      <div class="hh-section-header">
+        <span class="hh-section-tag">Colección Táctica 2026</span>
+        <h2 class="hh-section-title">Diseñados para Eliminar el Exceso</h2>
+        <p class="hh-section-subtitle">Cada pieza del ecosistema HALO está construida con materiales balísticos de grado militar y optimizada para máxima capacidad sin pagar multas.</p>
+      </div>
 
-      <div class="hh-showcase hh-hero-visual">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(0,236,255,0.4)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-        <span style="font-size:1.1rem; color:rgba(255,255,255,0.7); margin-top:16px; font-weight: 600;">RENDER: LOOP BAND (TECNOLOGÍA INVISIBLE)</span>
+      <div class="hh-products-grid">
+
+        <!-- PRODUCTO 1 (ESTRELLA) -->
+        <div class="hh-product-card featured">
+          <span class="hh-product-badge-float">MÁS VENDIDO 🔥</span>
+          <div class="hh-product-img-wrap">
+            <img src="{{ 'halo-hero-clean.png' | asset_url }}" alt="Compress Bag Pro" class="hh-product-img" loading="lazy" width="600">
+          </div>
+          <div class="hh-product-info">
+            <h3 class="hh-product-title">Compress Bag® Pro</h3>
+            <p class="hh-product-desc">La mochila definitiva de compresión al vacío. Lleva 10 días de ropa en 45x35cm con Turbo-Pump y Powerbank incluidos.</p>
+            <div class="hh-product-price-row">
+              <span class="hh-product-price">$89.990</span>
+              <span class="hh-product-price-old">$140.000</span>
+            </div>
+          </div>
+          <a href="{{ section.settings.featured_product_url | default: '/products/compress-bag' }}" class="hh-btn-primary" style="width:100%;">
+            <span>Ver Producto Estrella →</span>
+          </a>
+        </div>
+
+        <!-- PRODUCTO 2 -->
+        <div class="hh-product-card">
+          <div class="hh-product-img-wrap">
+            <img src="{{ 'halo-solution-pump.png' | asset_url }}" alt="Turbo-Pump 100W" class="hh-product-img" loading="lazy" width="600">
+          </div>
+          <div class="hh-product-info">
+            <h3 class="hh-product-title">Turbo-Pump 100W Inalámbrica</h3>
+            <p class="hh-product-desc">Mini-turbina de vacío recargable por USB-C. Extrae el 100% del aire en 30 segundos con batería de larga duración.</p>
+            <div class="hh-product-price-row">
+              <span class="hh-product-price">$29.990</span>
+              <span class="hh-product-price-old">$45.000</span>
+            </div>
+          </div>
+          <a href="{{ section.settings.featured_product_url | default: '/products/compress-bag' }}" class="hh-btn-secondary" style="width:100%;">
+            <span>Incluido en Bundle</span>
+          </a>
+        </div>
+
+        <!-- PRODUCTO 3 -->
+        <div class="hh-product-card">
+          <div class="hh-product-img-wrap">
+            <img src="{{ 'halo-anatomy-clean.png' | asset_url }}" alt="Set Bolsas Militares" class="hh-product-img" loading="lazy" width="600">
+          </div>
+          <div class="hh-product-info">
+            <h3 class="hh-product-title">Set 3x Bolsas Herméticas</h3>
+            <p class="hh-product-desc">Polímero militar reforzado con válvula de silicona antifugas. Reutilizables de por vida para cualquier viaje.</p>
+            <div class="hh-product-price-row">
+              <span class="hh-product-price">$14.990</span>
+              <span class="hh-product-price-old">$25.000</span>
+            </div>
+          </div>
+          <a href="{{ section.settings.featured_product_url | default: '/products/compress-bag' }}" class="hh-btn-secondary" style="width:100%;">
+            <span>Incluido en Bundle</span>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════
+       4. BRAND MANIFESTO (BLACK SECTION)
+       ════════════════════════════════════════════════ -->
+  <section class="hh-manifesto">
+    <div class="hh-container">
+      <div class="hh-manifesto-grid">
+
+        <div>
+          <span class="hh-manifesto-tag">Nuestra Filosofía</span>
+          <h2 class="hh-manifesto-title">Nacimos para terminar con la trampa del equipaje low-cost.</h2>
+          <p class="hh-manifesto-body">
+            Las aerolíneas crearon un modelo de negocio abusivo: te venden pasajes baratos para luego emboscarte en la puerta de embarque y cobrarte el doble por llevar tu propia ropa.
+            <br><br>
+            En <strong>HALO</strong> aplicamos ingeniería balística de precisión para que nunca más tengas que abrir tu ropa en el suelo ni pagar un solo peso extra.
+          </p>
+          <a href="{{ section.settings.featured_product_url | default: '/products/compress-bag' }}" class="hh-btn-primary">
+            <span>Conoce la Compress Bag® →</span>
+          </a>
+        </div>
+
+        <div class="hh-manifesto-visual">
+          <img src="{{ 'halo-enemy-trap.png' | asset_url }}" alt="Manifiesto Anti-Multas HALO" class="hh-manifesto-img" loading="lazy" width="800">
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- BLOQUE 2: CONFÍAN EN NOSOTROS (LOGOS) -->
-  <section class="hh-logobar">
-    <div class="hh-wrap">
-      <div class="hh-logobar__inner">
-        <div class="hh-logobar__logo">GQ</div>
-        <div class="hh-logobar__logo">MEN'S HEALTH</div>
-        <div class="hh-logobar__logo">FORBES</div>
-        <div class="hh-logobar__logo">WIRED</div>
+  <!-- ════════════════════════════════════════════════
+       5. 3 ENGINEERING PILLARS (BENTO GRID)
+       ════════════════════════════════════════════════ -->
+  <section class="hh-pillars">
+    <div class="hh-container">
+      
+      <div class="hh-section-header">
+        <span class="hh-section-tag">Ingeniería sin Concesiones</span>
+        <h2 class="hh-section-title">Los 3 Estándares de Calidad HALO</h2>
+        <p class="hh-section-subtitle">No fabricamos mochilas comunes. Desarrollamos herramientas de transporte táctico construidas para durar más de 10 años.</p>
       </div>
+
+      <div class="hh-pillars-grid">
+
+        <div class="hh-pillar-card">
+          <div class="hh-pillar-icon-box">🛡️</div>
+          <div>
+            <h3 class="hh-pillar-title">Cordura 1000D & Cierres YKK-R</h3>
+            <p class="hh-pillar-desc">Tela impermeable ultra resistente a cortes y abrasión con cremalleras blindadas que soportan más de 45 kg de presión sin abrirse jamás.</p>
+          </div>
+        </div>
+
+        <div class="hh-pillar-card">
+          <div class="hh-pillar-icon-box">⚡</div>
+          <div>
+            <h3 class="hh-pillar-title">Compresión Eléctrica en 30s</h3>
+            <p class="hh-pillar-desc">Motor Turbo-Pump de 100W que extrae el 100% del aire sin bombas manuales inútiles ni esfuerzo físico en el piso del hotel.</p>
+          </div>
+        </div>
+
+        <div class="hh-pillar-card">
+          <div class="hh-pillar-icon-box">💻</div>
+          <div>
+            <h3 class="hh-pillar-title">Apertura 180° TSA & Carga USB</h3>
+            <p class="hh-pillar-desc">Pasa los controles de seguridad del aeropuerto en 5 segundos y carga tu teléfono caminando gracias al módulo USB integrado.</p>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   </section>
 
-  <!-- BLOQUE 3: EL PIVOTE (PROBLEMA VS SOLUCIÓN) -->
-  <section class="hh-split">
-    <div class="hh-wrap hh-split__grid hh-fade-in">
-      <div>
-        <span class="hh-tag" style="color: #FFFFFF;">El Problema Actual</span>
-        <h2>Tu smartwatch es un juguete de notificaciones, no un sensor clínico.</h2>
-        <p>Te despiertas, miras el reloj y dejas que un algoritmo adivine tu cansancio. Pero sigues tomando decisiones basándote en sensaciones vagas.</p>
-        <p>Los atletas de élite no adivinan su variabilidad de la frecuencia cardíaca (HRV) ni dejan su ciclo de sueño profundo al azar. Entrenar y vivir sin conocer tu estado de recuperación es garantizar un desgaste continuo.</p>
-        <a href="#comprar" class="hh-btn hh-btn--secondary">
-          <span>Ver Diferencia</span>
-        </a>
+  <!-- ════════════════════════════════════════════════
+       6. UGC & CUSTOMER REVIEWS
+       ════════════════════════════════════════════════ -->
+  <section class="hh-reviews">
+    <div class="hh-container">
+
+      <div class="hh-section-header">
+        <span class="hh-section-tag">Prueba Social Verificada</span>
+        <h2 class="hh-section-title">+4.800 Viajeros Ya No Pagan Multas</h2>
+        <p class="hh-section-subtitle">Historias reales de personas en Chile que transformaron su forma de viajar con HALO.</p>
       </div>
-      <div class="hh-split__img" style="border-color: rgba(255,255,255,0.12);">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-        <span style="font-size:1.1rem; color:rgba(255,255,255,0.7); margin-top:16px; font-weight: 600;">DISEÑO SIN PANTALLA NI DISTRACCIONES</span>
+
+      <div class="hh-reviews-grid">
+
+        <div class="hh-review-card">
+          <div class="hh-review-stars">★★★★★</div>
+          <p class="hh-review-quote">"Viajé a Calama por Sky. Metí 8 días de ropa y la mochila pasó suave bajo el asiento. Me ahorré $58.000 solo en ese vuelo. Calidad atómica."</p>
+          <div class="hh-review-author-row">
+            <div class="hh-review-avatar">FR</div>
+            <div>
+              <p class="hh-review-name">Felipe R.</p>
+              <p class="hh-review-sub">Comprador verificado · Santiago</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hh-review-card">
+          <div class="hh-review-stars">★★★★★</div>
+          <p class="hh-review-quote">"La bomba de vacío es ridículamente rápida. En 30 segundos la ropa queda como una tabla. Los cierres se sienten indestructibles."</p>
+          <div class="hh-review-author-row">
+            <div class="hh-review-avatar">CM</div>
+            <div>
+              <p class="hh-review-name">Camila M.</p>
+              <p class="hh-review-sub">Comprador verificado · Viña del Mar</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hh-review-card">
+          <div class="hh-review-stars">★★★★★</div>
+          <p class="hh-review-quote">"Pasé por el control del aeropuerto de Santiago sin abrir la maleta gracias al bolsillo de la laptop. El mejor dinero invertido en equipaje."</p>
+          <div class="hh-review-author-row">
+            <div class="hh-review-avatar">MG</div>
+            <div>
+              <p class="hh-review-name">Matías G.</p>
+              <p class="hh-review-sub">Comprador verificado · Concepción</p>
+            </div>
+          </div>
+        </div>
+
       </div>
+
     </div>
   </section>
 
-  <section class="hh-split hh-split--alt">
-    <div class="hh-wrap hh-split__grid hh-fade-in">
-      <div class="hh-split__img">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(0,201,123,0.3)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-        <span style="font-size:1.1rem; color:rgba(255,255,255,0.7); margin-top:16px; font-weight: 600;">ECOSISTEMA DE ANÁLISIS CLÍNICO</span>
+  <!-- ════════════════════════════════════════════════
+       7. BRAND FAQS
+       ════════════════════════════════════════════════ -->
+  <section class="hh-faq">
+    <div class="hh-container">
+
+      <div class="hh-section-header">
+        <span class="hh-section-tag">Dudas Frecuentes</span>
+        <h2 class="hh-section-title">Preguntas sobre HALO</h2>
+        <p class="hh-section-subtitle">Todo lo que necesitas saber sobre garantías, despachos en Chile y aerolíneas.</p>
       </div>
-      <div>
-        <span class="hh-tag">La Solución HALO</span>
-        <h2>Para medirte no tienes que distraerte.</h2>
-        <p>La tecnología médica debe adaptarse a ti, no tú a ella. La <strong>Loop Band®</strong> recolecta tus biomarcadores esenciales en total silencio físico y mental.</p>
-        <ul style="list-style: none; padding: 0; margin-top: 24px;">
-          <li style="margin-bottom: 12px; display: flex; gap: 12px; align-items: flex-start;">
-            <span style="color: var(--h-green); font-weight: bold;">✓</span>
-            <span style="color: var(--h-text-muted);">Precisión clínica de HRV, SpO2 y ondas de sueño.</span>
-          </li>
-          <li style="margin-bottom: 12px; display: flex; gap: 12px; align-items: flex-start;">
-            <span style="color: var(--h-green); font-weight: bold;">✓</span>
-            <span style="color: var(--h-text-muted);">Sin cuotas mensuales. Tus datos te pertenecen para siempre.</span>
-          </li>
-          <li style="margin-bottom: 12px; display: flex; gap: 12px; align-items: flex-start;">
-            <span style="color: var(--h-green); font-weight: bold;">✓</span>
-            <span style="color: var(--h-text-muted);">Batería imperceptible de carga continua.</span>
-          </li>
-        </ul>
+
+      <div class="hh-faq-list">
+
+        <div class="hh-faq-item active">
+          <div class="hh-faq-q" onclick="this.parentElement.classList.toggle('active')">
+            <h3>¿Cómo opera la Garantía Legal de 90 Días en Chile?</h3>
+            <span class="hh-faq-icon">+</span>
+          </div>
+          <div class="hh-faq-a">
+            <p>Cumplimos estrictamente con la Ley del Consumidor (SERNAC). Tienes 90 días corridos de garantía ante cualquier defecto de fabricación, falla en cremalleras o problemas en la Turbo-Pump con reposición inmediata.</p>
+          </div>
+        </div>
+
+        <div class="hh-faq-item">
+          <div class="hh-faq-q" onclick="this.parentElement.classList.toggle('active')">
+            <h3>¿Cuáles son los tiempos de despacho?</h3>
+            <span class="hh-faq-icon">+</span>
+          </div>
+          <div class="hh-faq-a">
+            <p>Despachamos el mismo día hábil para compras antes de las 14:00 hrs. En Santiago entregamos en 24 a 48 horas. A regiones de todo Chile de 2 a 4 días hábiles vía Blue Express o Starken con tracking en tiempo real.</p>
+          </div>
+        </div>
+
+        <div class="hh-faq-item">
+          <div class="hh-faq-q" onclick="this.parentElement.classList.toggle('active')">
+            <h3>¿Realmente pasa como Artículo Personal sin costo?</h3>
+            <span class="hh-faq-icon">+</span>
+          </div>
+          <div class="hh-faq-a">
+            <p>Sí. Sus dimensiones de 45 x 35 x 20 cm cumplen con la normativa de equipaje de mano gratuito que cabe bajo el asiento en Sky, JetSMART, LATAM y aerolíneas internacionales.</p>
+          </div>
+        </div>
+
       </div>
+
     </div>
   </section>
 
-  <!-- BLOQUE 4: EL PITCH (COMPRA DIRECTA) -->
-  <section class="hh-pitch" id="comprar">
-    <div class="hh-wrap hh-fade-in">
-      <span class="hh-tag">Oferta Exclusiva</span>
-      <h2>Adquiere tu LOOP Band</h2>
-      <p class="hh-pitch__sub">Desbloquea tu potencial biométrico con un solo pago. Sin suscripciones.</p>
+  <!-- ════════════════════════════════════════════════
+       8. BRAND TRUST & FOOTER CALLOUT
+       ════════════════════════════════════════════════ -->
+  <section class="hh-trust-banner">
+    <div class="hh-container">
 
-      <div class="hh-product-card">
-        <div class="hh-product-gallery">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+      <div class="hh-trust-grid">
+        <div>
+          <span class="hh-trust-item-icon">🛡️</span>
+          <p class="hh-trust-item-title">90 Días de Garantía</p>
+          <p class="hh-trust-item-desc">Blindaje legal SERNAC</p>
         </div>
         <div>
-          <h3 style="font-size: 2rem; margin-bottom: 12px; font-weight: 800;">LOOP Band® Classic</h3>
-          <p style="color: var(--h-text-muted); font-size: 1rem; line-height: 1.5;">Incluye sensor de grado médico, banda textil de alta resistencia y cargador inalámbrico.</p>
-          
-          <div class="hh-price-stack">
-            <span class="hh-price-current">{% if product %}{{ product.price | money }}{% else %}$149.00{% endif %}</span>
-            <span class="hh-price-compare">{% if product %}{{ product.compare_at_price | money }}{% else %}$199.00{% endif %}</span>
-          </div>
-
-          {% if product %}
-            <form method="post" action="/cart/add" enctype="multipart/form-data">
-              <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
-              <button type="submit" class="hh-btn" style="width: 100%;">
-                <span>AÑADIR AL CARRITO</span>
-              </button>
-            </form>
-          {% else %}
-            <a href="{{ section.settings.cta_url | default: '#' }}" class="hh-btn" style="width: 100%;">
-              <span>COMPRAR AHORA</span>
-            </a>
-          {% endif %}
-
-          <div style="margin-top: 24px; font-size: 0.9rem; color: var(--h-text-muted); display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-weight: 500;">
-            <div>✓ Envío gratuito exprés</div>
-            <div>✓ Garantía contra defectos</div>
-            <div>✓ App incluida de por vida</div>
-            <div>✓ Soporte prioritario 24/7</div>
-          </div>
+          <span class="hh-trust-item-icon">🚚</span>
+          <p class="hh-trust-item-title">Despacho Exprés</p>
+          <p class="hh-trust-item-desc">Mismo día hábil en Chile</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BLOQUE 5: LA CONEXIÓN (MANIFIESTO) -->
-  <section class="hh-manifesto">
-    <div class="hh-wrap hh-manifesto__inner hh-fade-in">
-      <span class="hh-tag">Manifiesto HALO</span>
-      <h2>El secuestro de tus propios datos de salud.</h2>
-      <p>Nos negamos a aceptar que las corporaciones te cobren una renta mensual por decirte cómo latió tu corazón anoche. Pagas por el sensor, pagas por el diseño y luego te obligan a pagar para ver tu propio HRV.</p>
-      <p>Creamos HALO para devolverle el control al atleta. Sin pantallas táctiles que exijan tu atención, sin notificaciones que disparen tu cortisol, y bajo una premisa firme: pagas una vez, y tus datos médicos son tuyos de por vida.</p>
-      <div class="hh-signature">DISEÑADO PARA EL RENDIMIENTO SILENCIOSO</div>
-    </div>
-  </section>
-
-  <!-- BLOQUE 6: TRUSTPILOT MARQUEE -->
-  <section class="hh-trust">
-    <h2>Avalado por Atletas Reales</h2>
-    <div class="hh-marquee-wrapper">
-      <div class="hh-marquee">
-        <!-- GRUPO 1 -->
-        <div class="hh-review">
-          <div class="hh-review__stars">★★★★★</div>
-          <div class="hh-review__title">Descanso medible real</div>
-          <div class="hh-review__body">"Me despertaba cansado a pesar de dormir 8 horas. Con Loop entendí que mi fase profunda era casi nula por cenar tarde. Cambio radical."</div>
-          <div class="hh-review__author">Carlos M. - Atleta</div>
+        <div>
+          <span class="hh-trust-item-icon">🔒</span>
+          <p class="hh-trust-item-title">Pago 100% Seguro</p>
+          <p class="hh-trust-item-desc">MercadoPago en 3 cuotas</p>
         </div>
-        <div class="hh-review">
-          <div class="hh-review__stars">★★★★★</div>
-          <div class="hh-review__title">Sin cuotas absurdas</div>
-          <div class="hh-review__body">"Tenía el Oura y me cansé de la suscripción. Halo me da exactamente las mismas métricas de recuperación pero con un pago único. Espectacular."</div>
-          <div class="hh-review__author">Diego S. - Biohacker</div>
-        </div>
-        <div class="hh-review">
-          <div class="hh-review__stars">★★★★★</div>
-          <div class="hh-review__title">Se siente invisible</div>
-          <div class="hh-review__body">"Dormir sin una pantalla que te mande notificaciones me ha bajado el estrés nocturno al 100%. La app es impecable."</div>
-          <div class="hh-review__author">Andrea T. - Triatleta</div>
-        </div>
-
-        <!-- DUPLICADOS PARA LOOP INFINITO -->
-        <div class="hh-review">
-          <div class="hh-review__stars">★★★★★</div>
-          <div class="hh-review__title">Descanso medible real</div>
-          <div class="hh-review__body">"Me despertaba cansado a pesar de dormir 8 horas. Con Loop entendí que mi fase profunda era casi nula por cenar tarde. Cambio radical."</div>
-          <div class="hh-review__author">Carlos M. - Atleta</div>
-        </div>
-        <div class="hh-review">
-          <div class="hh-review__stars">★★★★★</div>
-          <div class="hh-review__title">Sin cuotas absurdas</div>
-          <div class="hh-review__body">"Tenía el Oura y me cansé de la suscripción. Halo me da exactamente las mismas métricas de recuperación pero con un pago único. Espectacular."</div>
-          <div class="hh-review__author">Diego S. - Biohacker</div>
-        </div>
-        <div class="hh-review">
-          <div class="hh-review__stars">★★★★★</div>
-          <div class="hh-review__title">Se siente invisible</div>
-          <div class="hh-review__body">"Dormir sin una pantalla que te mande notificaciones me ha bajado el estrés nocturno al 100%. La app es impecable."</div>
-          <div class="hh-review__author">Andrea T. - Triatleta</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BLOQUE 7: CIERRE & FAQS -->
-  <section class="hh-closing">
-    <div class="hh-wrap">
-      <div class="hh-faq-grid hh-fade-in">
-        <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 50px; font-weight: 800;">Preguntas Frecuentes</h2>
-        
-        <div class="hh-faq-item">
-          <div class="hh-faq-question" onclick="this.parentElement.toggleAttribute('open')">
-            <span>¿Realmente no requiere suscripción mensual?</span>
-            <span class="hh-faq-toggle"></span>
-          </div>
-          <div class="hh-faq-answer">
-            Exacto. Al adquirir la LOOP Band compras el hardware y obtienes acceso completo a la aplicación y a todas las métricas de por vida. Sin pagos recurrentes ni funciones bloqueadas.
-          </div>
-        </div>
-
-        <div class="hh-faq-item">
-          <div class="hh-faq-question" onclick="this.parentElement.toggleAttribute('open')">
-            <span>¿Cómo se carga el dispositivo?</span>
-            <span class="hh-faq-toggle"></span>
-          </div>
-          <div class="hh-faq-answer">
-            Incluimos un cargador inalámbrico magnético que se acopla a la banda. Puedes cargarla en menos de 45 minutos mientras te duchas.
-          </div>
-        </div>
-
-        <div class="hh-faq-item">
-          <div class="hh-faq-question" onclick="this.parentElement.toggleAttribute('open')">
-            <span>¿Es resistente al agua?</span>
-            <span class="hh-faq-toggle"></span>
-          </div>
-          <div class="hh-faq-answer">
-            Sí, la Loop Band es sumergible hasta 50 metros. Puedes usarla para nadar, bañarte o entrenar bajo lluvia intensa sin problemas.
-          </div>
+        <div>
+          <span class="hh-trust-item-icon">💬</span>
+          <p class="hh-trust-item-title">Soporte 24/7</p>
+          <p class="hh-trust-item-desc">Atención humana directa</p>
         </div>
       </div>
 
-      <div class="hh-guarantee-box hh-fade-in">
-        <h3>Garantía por Defectos de Fábrica</h3>
-        <p style="color: #FFFFFF !important; font-size: 1.15rem; line-height: 1.7; max-width: 700px; margin: 0 auto 36px; font-weight: 400;">
-          Tu dispositivo está respaldado por nuestra política estricta de calidad. Si tu LOOP Band presenta cualquier defecto de funcionamiento de fábrica en los primeros 12 meses, la reemplazaremos sin costo. Calidad asegurada.
-        </p>
-        <a href="#comprar" class="hh-btn">
-          <span>CONSIGUE TU LOOP BAND AHORA</span>
-        </a>
-        <div class="hh-features-row">
-          <span>🚚 Envío Exprés Gratis</span>
-          <span>🛡️ Garantía por Defectos</span>
-          <span>🔒 Pagos Encriptados</span>
-        </div>
-      </div>
+      <a href="{{ section.settings.featured_product_url | default: '/products/compress-bag' }}" class="hh-btn-primary" style="padding: 18px 36px; font-size: 16px;">
+        <span>Comprar Compress Bag® Pro con Envíos Gratis →</span>
+      </a>
+
     </div>
   </section>
 
 </div>
-
-<script>
-  // Intersection Observer for Smooth Clinical Fade transitions (IM8 Benchmark)
-  document.addEventListener('DOMContentLoaded', function() {
-    const fadeElements = document.querySelectorAll('.hh-fade-in');
-    
-    const observerOptions = {
-      root: null,
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    fadeElements.forEach(el => observer.observe(el));
-    
-    // Trigger hero fade immediately
-    const heroContent = document.getElementById('hero-content');
-    if (heroContent) {
-      setTimeout(() => heroContent.classList.add('is-visible'), 100);
-    }
-  });
-</script>

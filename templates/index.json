@@ -1,11 +1,11 @@
 {
   "sections": {
-    "halo_homepage": {
+    "main": {
       "type": "halo-homepage",
       "settings": {}
     }
   },
   "order": [
-    "halo_homepage"
+    "main"
   ]
 }

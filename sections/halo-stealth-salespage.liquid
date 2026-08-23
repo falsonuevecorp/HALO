@@ -1,0 +1,242 @@
+{% schema %}
+{
+  "name": "HALO Stealth Salespage",
+  "settings": [
+    {
+      "type": "text",
+      "id": "ticker_text",
+      "label": "Texto del Ticker Top",
+      "default": "⚡ OFERTA DE LANZAMIENTO EN CHILE: Quedan pocas unidades."
+    },
+    {
+      "type": "text",
+      "id": "ticker_highlight",
+      "label": "Destacado del Ticker",
+      "default": "ENVÍO INMEDIATO GRATIS 📦"
+    },
+    {
+      "type": "text",
+      "id": "product_title",
+      "label": "Título del Producto",
+      "default": "Mochila HALO Stealth: Grado Balístico Anti-Multas"
+    },
+    {
+      "type": "textarea",
+      "id": "product_description",
+      "label": "Descripción del Producto",
+      "default": "Lleva 10 Días de Equipaje Pagando Tarifa Zero. Sin cierres reventados, sin infladores manuales. La única mochila que humilla a las aerolíneas."
+    },
+    {
+      "type": "text",
+      "id": "price_new",
+      "label": "Precio Oferta",
+      "default": "$69.990"
+    },
+    {
+      "type": "text",
+      "id": "price_old",
+      "label": "Precio Referencia",
+      "default": "$134.970"
+    }
+  ],
+  "presets": [
+    {
+      "name": "HALO Stealth Salespage",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  :root {
+      --halo-bg-space: #050505;
+      --halo-surface: #111111;
+      --halo-surface-border: rgba(255, 255, 255, 0.08);
+      --halo-accent: #00C97B;
+      --halo-text-primary: #FFFFFF !important;
+      --halo-text-muted: #A1A1AA !important;
+      --halo-font-main: -apple-system, BlinkMacSystemFont, "Inter", "SF Pro Display", sans-serif !important;
+      --halo-font-mono: "JetBrains Mono", monospace !important;
+  }
+
+  .halo-stealth-wrapper {
+      background-color: var(--halo-bg-space);
+      color: var(--halo-text-primary);
+      line-height: 1.6;
+      font-family: var(--halo-font-main);
+      padding-bottom: 80px;
+  }
+  
+  .halo-stealth-wrapper * { box-sizing: border-box; }
+  
+  .halo-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .halo-section { padding: 80px 0; border-bottom: 1px solid var(--halo-surface-border); }
+  
+  /* 1. TOP TICKER */
+  .halo-ticker { background: var(--halo-surface); text-align: center; padding: 12px; font-size: 14px; font-weight: 500; border-bottom: 1px solid var(--halo-surface-border); }
+  .halo-ticker span { color: var(--halo-accent) !important; font-weight: 800; }
+  
+  /* 2. HERO PDP (HYPER-DENSE BUY BOX) */
+  .halo-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; padding-top: 60px; padding-bottom: 60px; }
+  .halo-hero-img { background: var(--halo-surface); border-radius: 20px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border: 1px solid var(--halo-surface-border); overflow: hidden; position: relative;}
+  .halo-hero-img img { width: 100%; height: 100%; object-fit: cover; }
+  
+  .halo-buy-box { background: var(--halo-surface); padding: 40px; border-radius: 20px; border: 1px solid var(--halo-surface-border); }
+  .halo-stars { color: var(--halo-accent); font-weight: 800; font-size: 14px; margin-bottom: 16px; letter-spacing: 2px; }
+  .halo-buy-box h1 { font-family: var(--halo-font-main); font-size: 36px; font-weight: 900; line-height: 1.08; letter-spacing: -0.04em; margin-bottom: 24px; color: var(--halo-text-primary); }
+  .halo-price-block { margin-bottom: 24px; display: flex; align-items: center; gap: 16px; }
+  .halo-price-new { font-size: 32px; font-weight: 900; color: var(--halo-accent) !important; }
+  .halo-price-old { font-size: 18px; color: var(--halo-text-muted); text-decoration: line-through; }
+  .halo-stock-pulse { display: inline-flex; align-items: center; gap: 8px; font-family: var(--halo-font-mono); font-size: 14px; color: #ff3366 !important; margin-bottom: 24px; }
+  .halo-pulse-dot { width: 8px; height: 8px; background: #ff3366; border-radius: 50%; animation: halo-pulse 1.5s infinite; }
+  @keyframes halo-pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 51, 102, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(255, 51, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 51, 102, 0); } }
+  
+  .halo-cta-btn { display: block; width: 100%; background: var(--halo-accent) !important; color: #000 !important; text-align: center; padding: 20px; border-radius: 12px; text-decoration: none; border: none; cursor: pointer; transition: transform 0.2s; margin-bottom: 16px; box-shadow: 0 0 25px rgba(0,201,123,0.3); }
+  .halo-cta-btn:hover { transform: translateY(-2px); }
+  .halo-cta-title { display: block; font-family: var(--halo-font-main); font-size: 20px; font-weight: 900; margin-bottom: 4px; color: #000 !important; }
+  .halo-cta-sub { display: block; font-family: var(--halo-font-main); font-size: 12px; font-weight: 800; opacity: 0.8; letter-spacing: 1px; color: #000 !important; }
+  
+  .halo-trust-badges { display: flex; justify-content: center; gap: 16px; margin-top: 24px; flex-wrap: wrap; }
+  .halo-badge { font-size: 12px; color: var(--halo-text-muted); display: flex; align-items: center; gap: 6px; font-weight: 500; }
+  
+  /* 3. MANIFIESTO */
+  .halo-manifesto { text-align: center; max-width: 800px; margin: 0 auto; }
+  .halo-manifesto h2 { font-size: 32px; font-weight: 900; margin-bottom: 24px; line-height: 1.1; color: var(--halo-text-primary); }
+  .halo-manifesto p { font-size: 18px; color: var(--halo-text-muted); margin-bottom: 24px; }
+  
+  /* 4. CASCADA DE SOLUCIONES */
+  .halo-grid-solutions { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px; }
+  .halo-solution-card { background: var(--halo-surface); padding: 40px; border-radius: 20px; border: 1px solid var(--halo-surface-border); }
+  .halo-solution-card h3 { font-size: 24px; font-weight: 800; margin-bottom: 16px; color: var(--halo-text-primary); }
+  .halo-solution-card p { color: var(--halo-text-muted); font-size: 16px; }
+  
+  /* 5. GRAND SLAM STACK */
+  .halo-offer-stack { background: var(--halo-surface); padding: 60px; border-radius: 24px; border: 1px solid var(--halo-accent); text-align: center; margin-top: 80px; position: relative; overflow: hidden; }
+  .halo-offer-stack::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--halo-accent); }
+  .halo-offer-stack h2 { font-size: 36px; font-weight: 900; margin-bottom: 40px; color: var(--halo-text-primary); }
+  .halo-stack-list { list-style: none; max-width: 600px; margin: 0 auto 40px; text-align: left; padding: 0; }
+  .halo-stack-list li { font-size: 18px; padding: 16px 0; border-bottom: 1px solid var(--halo-surface-border); display: flex; justify-content: space-between; font-weight: 500; color: var(--halo-text-primary); }
+  .halo-stack-list li span:last-child { color: var(--halo-accent) !important; font-family: var(--halo-font-mono); font-weight: 700; }
+  
+  @media (max-width: 768px) {
+      .halo-hero, .halo-grid-solutions { grid-template-columns: 1fr; }
+      .halo-buy-box { padding: 24px; }
+      .halo-hero-img { aspect-ratio: 4/3; }
+  }
+</style>
+
+<div class="halo-stealth-wrapper">
+    <!-- 1. Ticker -->
+    <div class="halo-ticker">
+        {{ section.settings.ticker_text }} <span>{{ section.settings.ticker_highlight }}</span>
+    </div>
+
+    <!-- 2. Hero Buy Box Hiper-Densa -->
+    <div class="halo-container halo-section halo-hero">
+        <div class="halo-hero-img">
+            {% if product.featured_image %}
+               <img src="{{ product.featured_image | img_url: '800x' }}" alt="{{ product.title }}">
+            {% else %}
+               <!-- SVG Placeholder de respaldo -->
+               <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin:auto"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><polyline points="14 2 14 8 20 8"/><path d="M2 15h10"/><path d="M6 12v6"/></svg>
+            {% endif %}
+        </div>
+        
+        <div class="halo-buy-box">
+            <div class="halo-stars">★★★★★ Excelente 4.9/5</div>
+            <h1>{{ section.settings.product_title }}</h1>
+            <p style="color: var(--halo-text-muted); margin-bottom: 24px;">{{ section.settings.product_description }}</p>
+            
+            <div class="halo-price-block">
+                <span class="halo-price-new">{{ section.settings.price_new }}</span>
+                <span class="halo-price-old">{{ section.settings.price_old }}</span>
+            </div>
+            
+            <!-- Mercadopago Banner Opcional -->
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-size: 13px; font-weight: 600; color: #fff;">MercadoPago</span>
+              <span style="font-size: 12px; color: var(--halo-accent); font-weight: 800;">Pago 100% Seguro</span>
+            </div>
+
+            <div class="halo-stock-pulse">
+                <div class="halo-pulse-dot"></div>
+                {% assign seconds = 'now' | date: '%S' | modulo: 5 | plus: 3 %}
+                SOLO QUEDAN {{ seconds }} UNIDADES EN OFERTA CON TURBO-PUMP
+            </div>
+            
+            {% form 'product', product %}
+              <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+              <button type="submit" class="halo-cta-btn">
+                  <span class="halo-cta-title">DEJAR DE PAGAR EQUIPAJE ✈️</span>
+                  <span class="halo-cta-sub">ANTES DE QUE SE AGOTEN LAS TURBO-PUMP DE REGALO 🔥</span>
+              </button>
+            {% endform %}
+            
+            <div class="halo-trust-badges">
+                <div class="halo-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> Pago Encriptado</div>
+                <div class="halo-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Aprobada Aerolíneas</div>
+                <div class="halo-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.59-9.21l-5.44-5.44"></path></svg> Garantía 30 Días</div>
+            </div>
+            
+            <!-- Integración Trustpilot Compact -->
+            <div style="margin-top:24px; text-align:center;">
+              <span style="font-size:12px; font-weight:600; color: #fff;">Excelente 4.9/5 en <strong style="color:var(--halo-accent);">Trustpilot</strong></span>
+              <div style="font-size:11px; color:var(--halo-text-muted); margin-top:4px;">Basado en +12,000 viajeros</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Manifiesto del Enemigo -->
+    <div class="halo-container halo-section halo-manifesto">
+        <h2>Pagar $60.000 por una maleta de cabina es un asalto a mano armada.</h2>
+        <p>Las aerolíneas low-cost diseñaron un sistema para atraparte en la puerta de embarque y cobrarte multas absurdas. Peor aún, las mochilas "chinas" de vacío te prometen espacio, pero sus cierres revientan con la presión dejándote humillado y pagando sobrepeso.</p>
+        <p style="color: #fff !important; font-weight: 800;">Se acabó. Diseñamos la Mochila HALO Stealth con cierres balísticos YKK-R para aniquilar el negocio de las aerolíneas.</p>
+    </div>
+
+    <!-- 4. Cascada de Soluciones -->
+    <div class="halo-container halo-section">
+        <div class="halo-grid-solutions">
+            <div class="halo-solution-card">
+                <h3>🛡️ Diseño Stealth Anti-Medidor</h3>
+                <p>Compresión geométrica blindada que fuerza la mochila a no superar las medidas exactas de Artículo Personal (45x35x20cm). Nadie te pedirá meterla en la caja de metal.</p>
+            </div>
+            <div class="halo-solution-card">
+                <h3>⚔️ Cierres Balísticos YKK-R</h3>
+                <p>Soportan 3x más tensión de vacío sin ceder. Nunca serás la víctima que revienta su mochila frente a todo el vuelo por usar materiales baratos.</p>
+            </div>
+            <div class="halo-solution-card">
+                <h3>⚡ Turbo-Pump Portátil</h3>
+                <p>Olvídate de sudar bombeando manualmente. Succiona el aire en 30 segundos apretando un solo botón. Se guarda en tu bolsillo y viene INCLUIDA de regalo.</p>
+            </div>
+            <div class="halo-solution-card">
+                <h3>🧬 Arnés Zero-G (Gravedad Cero)</h3>
+                <p>15kg de equipaje que se sienten como 5kg. Distribución de peso clínica que protege tus lumbares y hombros para que viajes con total comodidad.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. Grand Slam Offer Stack -->
+    <div class="halo-container halo-section" style="border-bottom:none;">
+        <div class="halo-offer-stack">
+            <h2>La Caja de Valor HALO</h2>
+            <ul class="halo-stack-list">
+                <li><span>Mochila HALO Vacío Balística</span> <span>$89.990</span></li>
+                <li><span>Bomba Eléctrica Turbo-Pump</span> <span>GRATIS HOY</span></li>
+                <li><span>Masterclass "Hacker de Equipaje"</span> <span>GRATIS HOY</span></li>
+                <li><span>Garantía Anti-Multas 30 Días</span> <span>INVALUABLE</span></li>
+            </ul>
+            <div class="halo-price-block" style="justify-content: center;">
+                <span class="halo-price-old">{{ section.settings.price_old }}</span>
+                <span class="halo-price-new">{{ section.settings.price_new }}</span>
+            </div>
+            <p style="color: var(--halo-text-muted); margin-bottom: 32px;">El producto se paga solo en tu primer vuelo redondo evitando cobros de equipaje.</p>
+            {% form 'product', product %}
+              <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+              <button type="submit" class="halo-cta-btn" style="max-width: 400px; margin: 0 auto;">
+                  <span class="halo-cta-title">OBTENER MI MOCHILA HALO ✈️</span>
+              </button>
+            {% endform %}
+        </div>
+    </div>
+</div>

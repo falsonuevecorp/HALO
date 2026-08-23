@@ -1,36 +1,3 @@
-{% schema %}
-{
-  "name": "🎒 HALO Homepage",
-  "tag": "section",
-  "class": "halo-homepage-section",
-  "settings": [
-    {
-      "type": "text",
-      "id": "hero_title",
-      "label": "Título Principal del Hero",
-      "default": "El Estándar Táctico del Viaje Moderno"
-    },
-    {
-      "type": "textarea",
-      "id": "hero_subtitle",
-      "label": "Subtítulo del Hero",
-      "default": "Ingeniería balística calibrada milimétricamente para cabina. Viaja con 10 días de ropa en un solo artículo personal pagando tarifa zero."
-    },
-    {
-      "type": "url",
-      "id": "featured_product_url",
-      "label": "URL del Producto Estrella (Compress Bag®)",
-      "default": "/products/compress-bag"
-    }
-  ],
-  "presets": [
-    {
-      "name": "🎒 HALO Homepage"
-    }
-  ]
-}
-{% endschema %}
-
 <!-- GOOGLE FONTS: Inter -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,6 +18,10 @@
   }
 
   .halo-homepage-wrap {
+    display: block !important;
+    width: 100% !important;
+    background: #FFFFFF !important;
+    min-height: 100vh !important;
     font-family: var(--hh-font) !important;
     background: var(--hh-white);
     color: var(--hh-black);
@@ -1143,3 +1114,36 @@
   </section>
 
 </div>
+
+{% schema %}
+{
+  "name": "🎒 HALO Homepage",
+  "tag": "section",
+  "class": "halo-homepage-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Título Principal del Hero",
+      "default": "El Estándar Táctico del Viaje Moderno"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtitle",
+      "label": "Subtítulo del Hero",
+      "default": "Ingeniería balística calibrada milimétricamente para cabina. Viaja con 10 días de ropa en un solo artículo personal pagando tarifa zero."
+    },
+    {
+      "type": "url",
+      "id": "featured_product_url",
+      "label": "URL del Producto Estrella (Compress Bag®)",
+      "default": "/products/compress-bag"
+    }
+  ],
+  "presets": [
+    {
+      "name": "🎒 HALO Homepage"
+    }
+  ]
+}
+{% endschema %}

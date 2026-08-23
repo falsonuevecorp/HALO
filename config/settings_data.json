@@ -255,13 +255,13 @@
           "defaultCollection": ""
         }
       },
-      "halo_brand_homepage": {
-        "type": "halo-brand-homepage",
+      "halo_homepage": {
+        "type": "halo-homepage",
         "settings": {}
       }
     },
     "content_for_index": [
-      "halo_brand_homepage"
+      "halo_homepage"
     ]
   }
 }

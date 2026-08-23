@@ -1,1146 +1,2251 @@
-<!-- GOOGLE FONTS: Inter -->
+{% schema %}
+{
+  "name": "HALO Loop V2",
+  "settings": [],
+  "presets": [
+    {
+      "name": "HALO Loop V2",
+      "category": "HALO"
+    }
+  ]
+}
+{% endschema %}
+
+<!-- GOOGLE FONTS: Inter (Official HALO Tech Typography) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Remove hardcoded product -->
 
 <style>
   :root {
-    --hh-black: #0A0A0A;
-    --hh-black-card: #121214;
-    --hh-black-surface: #18181B;
-    --hh-white: #FFFFFF;
-    --hh-cream: #FAF9F6;
-    --hh-slate: #F4F4F5;
-    --hh-gray-light: #ECECEE;
-    --hh-gray-mid: #71717A;
-    --hh-green: #00C97B;
-    --hh-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --h2-bg-0: #030303;
+    --h2-bg-1: #0A0A0A;
+    --h2-bg-2: #141414;
+    --h2-bg-3: #1F1F1F;
+    --h2-cyan: #00ECFF;
+    --h2-green: #00C97B;
+    --h2-text-main: #FFFFFF;
+    --h2-text-muted: #94a3b8;
+    --h2-border: rgba(255, 255, 255, 0.08);
+    --font-family: -apple-system, BlinkMacSystemFont, "Inter", "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
 
-  .halo-homepage-wrap {
-    display: block !important;
-    width: 100% !important;
-    background: #FFFFFF !important;
-    min-height: 100vh !important;
-    font-family: var(--hh-font) !important;
-    background: var(--hh-white);
-    color: var(--hh-black);
+  /* RESET & BASE */
+  .halo-loop-v2 {
+    background: var(--h2-bg-0);
+    color: var(--h2-text-main);
+    font-family: var(--font-family);
     overflow-x: hidden;
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
+  }
+  
+  .halo-loop-v2 h1, .halo-loop-v2 h2, .halo-loop-v2 h3, .halo-loop-v2 h4 {
+    font-family: var(--font-family);
+    margin: 0;
+    line-height: 1.08;
+    letter-spacing: -0.04em;
   }
 
-  .halo-homepage-wrap * {
-    box-sizing: border-box;
-  }
-
-  .hh-container {
+  .hl2-wrap {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px;
   }
 
-  /* BUTTONS */
-  .hh-btn-primary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background: var(--hh-green) !important;
-    color: #FFFFFF !important;
-    font-family: var(--hh-font) !important;
-    font-size: 15px;
-    font-weight: 800;
-    padding: 16px 28px;
-    border-radius: 9999px;
-    text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 8px 24px rgba(0,201,123,0.35);
-    border: none;
-    cursor: pointer;
+  /* KINETIC VANGUARD UTILS */
+  .hl2-fade {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hl2-fade.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 
-  .hh-btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 30px rgba(0,201,123,0.45);
-  }
-
-  .hh-btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background: transparent;
-    color: var(--hh-black) !important;
-    font-family: var(--hh-font) !important;
-    font-size: 15px;
+  .hl2-tag {
+    display: inline-block;
+    font-family: var(--font-family);
+    font-size: 0.75rem;
     font-weight: 700;
-    padding: 16px 28px;
-    border-radius: 9999px;
-    text-decoration: none;
-    border: 1px solid rgba(0,0,0,0.15);
-    transition: all 0.2s;
-  }
-
-  .hh-btn-secondary:hover {
-    background: var(--hh-slate);
-    border-color: var(--hh-black);
-  }
-
-  /* ════════════════════════════════════════════════
-     1. HERO BRAND STATEMENT
-     ════════════════════════════════════════════════ */
-  .hh-hero {
-    padding: 80px 0 60px;
-    background: linear-gradient(180deg, #FFFFFF 0%, #FAF9F6 100%);
-    border-bottom: 1px solid rgba(0,0,0,0.06);
-  }
-
-  .hh-hero-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 56px;
-    align-items: center;
-  }
-
-  .hh-hero-pretitle {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(0,201,123,0.10);
-    border: 1px solid rgba(0,201,123,0.25);
-    border-radius: 9999px;
-    padding: 6px 14px;
-    margin-bottom: 20px;
-  }
-
-  .hh-hero-pretitle-dot {
-    width: 6px;
-    height: 6px;
-    background: var(--hh-green);
-    border-radius: 50%;
-  }
-
-  .hh-hero-pretitle-text {
-    font-family: var(--hh-font) !important;
-    font-size: 11px;
-    font-weight: 800;
-    color: var(--hh-black) !important;
-    letter-spacing: 0.08em;
+    color: var(--h2-cyan) !important;
     text-transform: uppercase;
-  }
-
-  .hh-hero-title {
-    font-size: clamp(2.4rem, 4.5vw, 3.8rem) !important;
-    font-weight: 900 !important;
-    color: var(--hh-black) !important;
-    letter-spacing: -0.035em;
-    line-height: 1.08;
-    margin: 0 0 20px;
-  }
-
-  .hh-hero-subtitle {
-    font-family: var(--hh-font) !important;
-    font-size: 17px;
-    color: var(--hh-gray-mid) !important;
-    line-height: 1.6;
-    margin: 0 0 32px;
-    max-width: 540px;
-  }
-
-  .hh-hero-cta-row {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-bottom: 36px;
-  }
-
-  .hh-hero-trust-strip {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(0,0,0,0.06);
-  }
-
-  .hh-hero-tp-logo {
-    font-size: 13px;
-    font-weight: 800;
-    color: var(--hh-black);
-  }
-
-  .hh-hero-tp-stars {
-    color: #00B67A;
-    font-size: 14px;
-  }
-
-  .hh-hero-tp-text {
-    font-size: 12px;
-    color: var(--hh-gray-mid);
-    font-weight: 500;
-  }
-
-  /* HERO VISUAL CARD */
-  .hh-hero-card {
-    background: #FFFFFF;
-    border: 1px solid rgba(0,0,0,0.08);
-    border-radius: 28px;
-    padding: 24px;
-    box-shadow: 0 24px 60px rgba(0,0,0,0.06);
-    position: relative;
-  }
-
-  .hh-hero-card-img-wrap {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 0;
-  }
-
-  .hh-hero-card-img {
-    width: 100%;
-    max-height: 420px;
-    object-fit: contain;
-    display: block;
-    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.08));
-  }
-
-  .hh-hero-card-footer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    background: var(--hh-slate);
-    border-radius: 14px;
-    padding: 12px;
-    text-align: center;
-    margin-top: 12px;
-  }
-
-  .hh-hero-card-footer-item {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--hh-black);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-  }
-
-  /* ════════════════════════════════════════════════
-     2. AIRLINE COMPATIBILITY & SOCIAL PROOF STRIP
-     ════════════════════════════════════════════════ */
-  .hh-social-strip {
-    background: var(--hh-white);
-    padding: 32px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.06);
-  }
-
-  .hh-social-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-
-  .hh-social-title {
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--hh-gray-mid);
-    margin: 0;
-  }
-
-  .hh-airlines-logos {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-    flex-wrap: wrap;
-  }
-
-  .hh-airline-badge {
-    font-family: var(--hh-font) !important;
-    font-size: 13px;
-    font-weight: 800;
-    color: var(--hh-black) !important;
-    background: var(--hh-slate);
-    padding: 6px 14px;
-    border-radius: 8px;
-    letter-spacing: 0.02em;
-    border: 1px solid rgba(0,0,0,0.05);
-  }
-
-  /* ════════════════════════════════════════════════
-     3. PRODUCT SHOWCASE / BOUTIQUE GRID
-     ════════════════════════════════════════════════ */
-  .hh-products {
-    padding: 100px 0;
-    background: var(--hh-white);
-  }
-
-  .hh-section-header {
-    text-align: center;
-    max-width: 680px;
-    margin: 0 auto 60px;
-  }
-
-  .hh-section-tag {
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--hh-green) !important;
-    margin-bottom: 10px;
-    display: block;
-  }
-
-  .hh-section-title {
-    font-size: clamp(2rem, 3.8vw, 3rem) !important;
-    font-weight: 900 !important;
-    color: var(--hh-black) !important;
-    letter-spacing: -0.03em;
-    margin: 0 0 16px;
-  }
-
-  .hh-section-subtitle {
-    font-size: 16px;
-    color: var(--hh-gray-mid);
-    margin: 0;
-    line-height: 1.6;
-  }
-
-  .hh-products-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr 1fr;
-    gap: 28px;
-    align-items: stretch;
-  }
-
-  .hh-product-card {
-    background: var(--hh-slate);
-    border: 1px solid rgba(0,0,0,0.06);
-    border-radius: 24px;
-    padding: 28px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-    position: relative;
-  }
-
-  .hh-product-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-    border-color: rgba(0,201,123,0.3);
-  }
-
-  .hh-product-card.featured {
-    background: var(--hh-black);
-    color: #FFFFFF !important;
-    border-color: rgba(255,255,255,0.12);
-  }
-
-  .hh-product-card.featured .hh-product-title {
-    color: #FFFFFF !important;
-  }
-
-  .hh-product-card.featured .hh-product-desc {
-    color: rgba(255,255,255,0.65) !important;
-  }
-
-  .hh-product-badge-float {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: var(--hh-green);
-    color: #FFFFFF;
-    font-size: 10px;
-    font-weight: 800;
-    padding: 4px 10px;
-    border-radius: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .hh-product-img-wrap {
-    width: 100%;
-    aspect-ratio: 1/1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-
-  .hh-product-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-    transition: transform 0.4s;
-  }
-
-  .hh-product-card:hover .hh-product-img {
-    transform: scale(1.04);
-  }
-
-  .hh-product-info {
+    letter-spacing: 0.15em;
     margin-bottom: 24px;
   }
 
-  .hh-product-title {
-    font-size: 18px !important;
-    font-weight: 800 !important;
-    color: var(--hh-black);
-    margin: 0 0 6px;
+  /* BUTTONS: ZERO RED, APPLE STEALTH AESTHETIC */
+  .hl2-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--h2-green) !important;
+    border: 1px solid var(--h2-green) !important;
+    color: #FFFFFF !important; /* HARDCODED CONTRAST */
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 18px 42px;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 20px rgba(0, 201, 123, 0.3);
+    cursor: pointer;
+  }
+  .hl2-btn span {
+    color: inherit !important;
+  }
+  .hl2-btn:hover {
+    background: #00A865 !important;
+    border-color: #00A865 !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 0 30px rgba(0, 201, 123, 0.5);
   }
 
-  .hh-product-desc {
-    font-size: 13px;
-    color: var(--hh-gray-mid);
-    line-height: 1.45;
-    margin: 0 0 16px;
+  .hl2-btn--outline {
+    background: transparent !important;
+    border: 1px solid var(--h2-border) !important;
+    color: #FFFFFF !important;
+    box-shadow: none;
+  }
+  .hl2-btn--outline:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: #FFFFFF !important;
   }
 
-  .hh-product-price-row {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-  }
-
-  .hh-product-price {
-    font-size: 22px;
-    font-weight: 900;
-    color: var(--hh-black);
-  }
-
-  .hh-product-card.featured .hh-product-price {
-    color: #FFFFFF;
-  }
-
-  .hh-product-price-old {
-    font-size: 13px;
-    color: var(--hh-gray-mid);
-    text-decoration: line-through;
-  }
-
-  /* ════════════════════════════════════════════════
-     4. BRAND MANIFESTO (BLACK SECTION)
-     ════════════════════════════════════════════════ */
-  .hh-manifesto {
-    background: var(--hh-black);
-    color: #FFFFFF;
-    padding: 120px 0;
+  /* ====== BLOCK 1: HERO (SPLIT LAYOUT) ====== */
+  .hl2-hero {
     position: relative;
+    padding: 60px 0 100px;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: var(--h2-bg-0);
   }
-
-  .hh-manifesto-grid {
+  .hl2-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 70% 30%, rgba(0, 236, 255, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .hl2-hero__content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+  }
+  .hl2-hero__grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
+    grid-template-columns: 1fr 0.9fr;
+    gap: 60px;
     align-items: center;
   }
-
-  .hh-manifesto-tag {
-    font-size: 11px;
+  .hl2-hero__buybox {
+    background: var(--h2-bg-1);
+    border: 1px solid var(--h2-border);
+    border-radius: 32px;
+    padding: 45px;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+  }
+  .hl2-hero__buybox h1 {
+    font-size: clamp(2.5rem, 4vw, 3.2rem);
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
     font-weight: 800;
-    color: var(--hh-green);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-    display: block;
+    color: #FFFFFF;
   }
-
-  .hh-manifesto-title {
-    font-size: clamp(2.2rem, 4vw, 3.4rem) !important;
-    font-weight: 900 !important;
+  .hl2-hero__specs-box {
+    background: var(--h2-bg-0);
+    border: 1px solid var(--h2-border);
+    border-radius: 20px;
+    padding: 24px;
+    margin-top: 25px;
+  }
+  .hl2-hero__text {
+    text-align: left;
+  }
+  .hl2-hero h1 {
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-weight: 800;
+    margin-bottom: 25px;
+    background: linear-gradient(180deg, #FFFFFF 20%, #71717a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hl2-hero p {
+    font-size: 1.25rem;
+    color: var(--h2-text-muted) !important; /* HARDCODED CONTRAST */
+    margin: 0 0 40px 0;
+    line-height: 1.6;
+    font-weight: 400;
+    max-width: 90%;
+  }
+  .hl2-hero__price {
+    display: flex;
+    align-items: baseline;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  .hl2-hero__price .price-current {
+    font-size: 2.5rem;
+    font-weight: 800;
     color: #FFFFFF !important;
-    line-height: 1.12;
-    letter-spacing: -0.03em;
-    margin: 0 0 24px;
   }
-
-  .hh-manifesto-body {
-    font-size: 17px;
-    color: rgba(255,255,255,0.70);
-    line-height: 1.7;
-    margin: 0 0 36px;
+  .hl2-hero__price .price-compare {
+    font-size: 1.2rem;
+    color: var(--h2-text-muted) !important;
+    text-decoration: line-through;
   }
-
-  .hh-manifesto-visual {
-    background: var(--hh-black-card);
-    border: 1px solid rgba(255,255,255,0.10);
-    border-radius: 28px;
-    overflow: hidden;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+  .hl2-hero__micro-proof {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    color: #FFFFFF !important;
+    margin-bottom: 30px;
   }
-
-  .hh-manifesto-img {
+  .stock-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--h2-green);
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 10px var(--h2-green);
+  }
+  .hl2-hero__badges {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    padding-top: 25px;
+    border-top: 1px solid var(--h2-border);
+    max-width: 90%;
+  }
+  .hl2-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #FFFFFF !important;
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+  .hl2-badge svg {
+    color: var(--h2-green);
+  }
+  .hl2-badge span {
+    color: #FFFFFF !important;
+  }
+  
+  /* ====== CTA TRUST BADGES (COGNITIVE BIASES) ====== */
+  .hl2-trust-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 18px;
+    margin-top: 15px;
+  }
+  .hl2-trust-badges span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: var(--h2-text-muted) !important;
+  }
+  .hl2-trust-badges svg {
+    color: var(--h2-green);
+    width: 16px;
+    height: 16px;
+  }
+  .hl2-hero__visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hl2-hero__image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    animation: floatImage 6s ease-in-out infinite;
+  }
+  .hl2-hero-img {
     width: 100%;
     height: auto;
-    display: block;
-    object-fit: cover;
-  }
-
-  /* ════════════════════════════════════════════════
-     5. 3 ENGINEERING PILLARS (BENTO GRID)
-     ════════════════════════════════════════════════ */
-  .hh-pillars {
-    background: var(--hh-cream);
-    padding: 100px 0;
-  }
-
-  .hh-pillars-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-  }
-
-  .hh-pillar-card {
-    background: #FFFFFF;
-    border: 1px solid rgba(0,0,0,0.06);
     border-radius: 24px;
-    padding: 32px 24px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    filter: drop-shadow(0 30px 40px rgba(0,0,0,0.4));
+  }
+  .hl2-hero-placeholder {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background: var(--h2-bg-1);
+    border: 1px solid var(--h2-border);
+    border-radius: 32px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+  }
+  .hl2-hero-placeholder span {
+    color: #FFFFFF !important;
+    font-weight: 600;
+    margin-top: 20px;
+    letter-spacing: 0.05em;
+  }
+  @keyframes floatImage {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+  }
+  @keyframes ping {
+    75%, 100% {
+      transform: scale(2.5);
+      opacity: 0;
+    }
   }
 
-  .hh-pillar-icon-box {
-    width: 52px;
-    height: 52px;
-    background: var(--hh-slate);
-    border-radius: 14px;
+  /* MERCADOPAGO HIGH-CONTRAST CARD & ANTI-INVISIBILIDAD REGLA 19 */
+  .hl2-mp-card {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  }
+  .hl2-mp-card,
+  .hl2-mp-card span,
+  .hl2-mp-card div,
+  .hl2-mp-card .money,
+  .hl2-mp-card * {
+    color: #FFFFFF !important;
+  }
+  .hl2-mp-card .hl2-mp-highlight {
+    color: #009EE3 !important;
+  }
+  .hl2-mp-card .hl2-mp-green {
+    color: var(--h2-green) !important;
+  }
+  .hl2-mp-card .hl2-mp-muted {
+    color: var(--h2-text-muted) !important;
+  }
+
+  .hl2-stars {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 30px;
+    background: rgba(255,255,255,0.04);
+    padding: 8px 20px;
+    border-radius: 9999px;
+    border: 1px solid var(--h2-border);
+  }
+  /* REGLA 19 ANTI-INVISIBILIDAD */
+  .hl2-stars span, .hl2-stars div {
+    color: #FFFFFF !important; 
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+  .hl2-stars svg {
+    color: #FFC107;
+  }
+
+  /* ====== BLOCK 2: LOGO BAR MARQUEE ====== */
+  .hl2-logos {
+    padding: 20px 0;
+    background: var(--h2-bg-1);
+    border-top: 1px solid var(--h2-border);
+    border-bottom: 1px solid var(--h2-border);
+    overflow: hidden;
+    position: relative;
+  }
+  .hl2-logos::after, .hl2-logos::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 60px;
+    height: 100%;
+    z-index: 2;
+  }
+  .hl2-logos::before {
+    left: 0;
+    background: linear-gradient(to right, var(--h2-bg-1), transparent);
+  }
+  .hl2-logos::after {
+    right: 0;
+    background: linear-gradient(to left, var(--h2-bg-1), transparent);
+  }
+  .hl2-logos__track {
+    display: flex;
+    gap: 80px;
+    width: max-content;
+    animation: hl2-scroll-logos 20s linear infinite;
+    opacity: 0.4;
+    align-items: center;
+  }
+  .hl2-logos__item {
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #FFFFFF !important;
+    white-space: nowrap;
+  }
+  @keyframes hl2-scroll-logos {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ====== BLOCK 3: EL PIVOTE (ENEMIGO COMÚN) ====== */
+  .hl2-pivot {
+    padding: 80px 0;
+    background: var(--h2-bg-2);
+    position: relative;
+  }
+  .hl2-pivot__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .hl2-pivot h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.1;
+  }
+  .hl2-pivot p {
+    font-size: 1.2rem;
+    color: var(--h2-text-muted) !important;
+    line-height: 1.7;
+    margin-bottom: 30px;
+  }
+  .hl2-pivot__visual {
+    height: 350px;
+    background: var(--h2-bg-1);
+    border: 1px solid var(--h2-border);
+    border-radius: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+  }
+  .hl2-pivot__visual span {
+    color: #FFFFFF !important;
+    font-weight: 600;
+    margin-top: 20px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ====== BLOCK 4: STICKY STACKING ====== */
+  .hl2-sticky-section {
+    background: var(--h2-bg-3);
+    padding: 80px 0 150px;
+    position: relative;
+    border-top: 1px solid var(--h2-border);
+  }
+  .hl2-sticky-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .hl2-sticky-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .hl2-sticky-header h2 {
+    font-size: 3.8rem;
+    font-weight: 800;
+  }
+  
+  .hl2-card {
+    background: var(--h2-bg-1);
+    border: 1px solid var(--h2-border);
+    border-radius: 32px;
+    padding: 60px;
+    margin-bottom: 40px;
+    position: sticky;
+    top: 120px;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+  }
+  .hl2-card:nth-child(2) { top: 140px; transform: scale(0.98); }
+  .hl2-card:nth-child(3) { top: 160px; transform: scale(0.96); }
+
+  .hl2-card h3 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    font-weight: 800;
+  }
+  .hl2-card p {
+    font-size: 1.15rem;
+    color: var(--h2-text-muted) !important;
+    line-height: 1.6;
+  }
+  .hl2-card__icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background: rgba(0, 236, 255, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
+    margin-bottom: 30px;
+  }
+
+  /* ====== BLOCK 4.1: COMPARATIVE TABLE (NEW) ====== */
+  .hl2-compare-section {
+    background: var(--h2-bg-1);
+    padding: 160px 0;
+    border-top: 1px solid var(--h2-border);
+  }
+  .hl2-compare-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+  .hl2-compare-header h2 {
+    font-size: 3rem;
+  }
+  .hl2-table-wrapper {
+    background: var(--h2-bg-2);
+    border: 1px solid var(--h2-border);
+    border-radius: 32px;
+    overflow: hidden;
+  }
+  .hl2-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+  }
+  .hl2-table tr {
+    background-color: transparent !important;
+  }
+  .hl2-table tbody tr:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.02) !important;
+  }
+  .hl2-table tbody tr:nth-child(even) {
+    background-color: transparent !important;
+  }
+  .hl2-table th, .hl2-table td {
+    padding: 30px;
+    border-bottom: 1px solid var(--h2-border) !important;
+    font-size: 1.1rem;
+    color: #FFFFFF !important;
+  }
+  .hl2-table th {
+    background-color: rgba(255,255,255,0.04) !important;
+    font-weight: 700;
+  }
+  .hl2-table td span, .hl2-table td p {
+    color: #FFFFFF !important;
+  }
+  .hl2-table td strong {
+    color: var(--h2-green) !important;
+    font-weight: 700;
+  }
+  .hl2-table tr:last-child td { border-bottom: none !important; }
+  
+  .hl2-table td.highlight-col, .hl2-table th.highlight-col {
+    background-color: rgba(0, 201, 123, 0.08) !important;
+    border-left: 1px solid rgba(0, 201, 123, 0.3) !important;
+    border-right: 1px solid rgba(0, 201, 123, 0.3) !important;
+  }
+  .hl2-table .highlight-col strong {
+    color: var(--h2-green) !important;
+  }
+
+  /* ====== BLOCK 4.2: DEEP DATA (NEW) ====== */
+  .hl2-data-section {
+    background: var(--h2-bg-0);
+    padding: 160px 0;
+  }
+  .hl2-data-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 80px;
+  }
+  .hl2-data-card {
+    background: var(--h2-bg-1);
+    border: 1px solid var(--h2-border);
+    border-radius: 24px;
+    padding: 50px;
+    transition: transform 0.4s ease;
+  }
+  .hl2-data-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 236, 255, 0.3);
+  }
+  .hl2-data-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #FFFFFF !important;
+  }
+  .hl2-data-card p {
+    font-size: 1.1rem;
+    color: var(--h2-text-muted) !important;
+    line-height: 1.6;
+  }
+  .hl2-data-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--h2-cyan) !important;
     margin-bottom: 20px;
   }
 
-  .hh-pillar-title {
-    font-size: 18px !important;
-    font-weight: 800 !important;
-    color: var(--hh-black) !important;
-    margin: 0 0 10px;
-    line-height: 1.3;
+  /* ====== BLOCK 5: EL PITCH ====== */
+  .hl2-pitch {
+    padding: 160px 0;
+    background: var(--h2-bg-2);
+    border-top: 1px solid var(--h2-border);
+    text-align: center;
   }
-
-  .hh-pillar-desc {
-    font-size: 14px;
-    color: var(--hh-gray-mid);
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  /* ════════════════════════════════════════════════
-     6. UGC & CUSTOMER REVIEWS
-     ════════════════════════════════════════════════ */
-  .hh-reviews {
-    padding: 100px 0;
-    background: var(--hh-white);
-  }
-
-  .hh-reviews-grid {
+  .hl2-pitch-box {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: var(--h2-bg-1);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 40px;
+    padding: 80px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
   }
-
-  .hh-review-card {
-    background: var(--hh-slate);
-    border: 1px solid rgba(0,0,0,0.06);
-    border-radius: 20px;
-    padding: 28px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  .hl2-pitch-box::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(0, 236, 255, 0.08) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
   }
-
-  .hh-review-stars {
-    color: #00B67A;
-    font-size: 16px;
-    margin-bottom: 12px;
-  }
-
-  .hh-review-quote {
-    font-size: 14px;
-    color: var(--hh-black);
-    font-weight: 500;
-    line-height: 1.6;
-    margin: 0 0 20px;
-  }
-
-  .hh-review-author-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    border-top: 1px solid rgba(0,0,0,0.06);
-    padding-top: 14px;
-  }
-
-  .hh-review-avatar {
-    width: 36px;
-    height: 36px;
-    background: var(--hh-black);
-    color: #FFFFFF;
-    border-radius: 50%;
+  .hl2-pitch-img {
+    background: var(--h2-bg-0);
+    border-radius: 24px;
+    border: 1px solid var(--h2-border);
+    height: 100%;
+    min-height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 13px;
+  }
+  .hl2-pitch-content h2 {
+    font-size: 2.8rem;
+    margin-bottom: 16px;
+  }
+  .hl2-pitch-price {
+    font-size: 2.5rem;
     font-weight: 800;
+    color: var(--h2-cyan) !important;
+    margin: 24px 0;
   }
-
-  .hh-review-name {
-    font-size: 13px;
-    font-weight: 800;
-    color: var(--hh-black);
-    margin: 0;
+  .hl2-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 30px 0 40px;
   }
-
-  .hh-review-sub {
-    font-size: 11px;
-    color: var(--hh-gray-mid);
-    margin: 0;
-  }
-
-  /* ════════════════════════════════════════════════
-     7. BRAND FAQS
-     ════════════════════════════════════════════════ */
-  .hh-faq {
-    padding: 90px 0;
-    background: var(--hh-cream);
-  }
-
-  .hh-faq-list {
-    max-width: 800px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .hh-faq-item {
-    background: #FFFFFF;
-    border: 1px solid rgba(0,0,0,0.06);
-    border-radius: 16px;
-    overflow: hidden;
-  }
-
-  .hh-faq-q {
-    padding: 20px 24px;
+  .hl2-checklist li {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-    user-select: none;
+    gap: 12px;
+    margin-bottom: 16px;
+    font-size: 1.05rem;
+  }
+  .hl2-checklist li span {
+    color: #FFFFFF !important; /* HARDCODED CONTRAST */
+    font-weight: 500;
+  }
+  .hl2-checklist li svg {
+    color: var(--h2-cyan);
   }
 
-  .hh-faq-q h3 {
-    font-size: 15px !important;
-    font-weight: 800 !important;
-    color: var(--hh-black) !important;
-    margin: 0;
+  /* ====== BLOCK 5.1: CASOS DE ESTUDIO (NEW) ====== */
+  .hl2-cases-section {
+    padding: 160px 0;
+    background: var(--h2-bg-1);
+    border-top: 1px solid var(--h2-border);
   }
-
-  .hh-faq-icon {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--hh-black);
-    transition: transform 0.3s;
-  }
-
-  .hh-faq-item.active .hh-faq-icon {
-    transform: rotate(45deg);
-    color: var(--hh-green);
-  }
-
-  .hh-faq-a {
-    padding: 0 24px 20px;
-    display: none;
-  }
-
-  .hh-faq-item.active .hh-faq-a {
-    display: block;
-  }
-
-  .hh-faq-a p {
-    font-size: 14px;
-    color: var(--hh-gray-mid);
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  /* ════════════════════════════════════════════════
-     8. BRAND TRUST & NEWSLETTER
-     ════════════════════════════════════════════════ */
-  .hh-trust-banner {
-    background: var(--hh-black);
-    color: #FFFFFF;
-    padding: 80px 0;
-    text-align: center;
-  }
-
-  .hh-trust-grid {
+  .hl2-cases-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin-top: 80px;
+  }
+  .hl2-case-card {
+    background: var(--h2-bg-2);
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid var(--h2-border);
+  }
+  .hl2-case-img {
+    height: 250px;
+    background: var(--h2-bg-0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--h2-border);
+  }
+  .hl2-case-img span {
+    color: #FFFFFF !important;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+  .hl2-case-body {
+    padding: 40px;
+  }
+  .hl2-case-body h4 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #FFFFFF !important;
+  }
+  .hl2-case-quote {
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--h2-text-muted) !important;
+    margin-bottom: 25px;
+    line-height: 1.6;
+  }
+  .hl2-case-result {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    color: var(--h2-green) !important;
+  }
+
+  /* ====== BLOCK 6: TRUSTPILOT MARQUEE ====== */
+  .hl2-marquee-section {
+    padding: 100px 0;
+    background: var(--h2-bg-3);
+    border-top: 1px solid var(--h2-border);
+    border-bottom: 1px solid var(--h2-border);
+    overflow: hidden;
+  }
+  .hl2-marquee-section h2 {
+    text-align: center;
+    font-size: 2.8rem;
     margin-bottom: 60px;
   }
+  .hl2-marquee-track {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+    animation: hl2-scroll 35s linear infinite;
+  }
+  .hl2-marquee-track:hover {
+    animation-play-state: paused;
+  }
+  .hl2-review {
+    width: 420px;
+    background: var(--h2-bg-1);
+    border: 1px solid var(--h2-border);
+    border-radius: 24px;
+    padding: 40px;
+  }
+  .hl2-review h4 {
+    font-size: 1.25rem;
+    margin: 16px 0;
+  }
+  .hl2-review p {
+    color: var(--h2-text-muted) !important;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  .hl2-review span {
+    color: #FFFFFF !important;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
 
-  .hh-trust-item-icon {
-    font-size: 32px;
-    margin-bottom: 12px;
+  /* ====== BLOCK 6.1: WHAT'S IN THE BOX (NEW) ====== */
+  .hl2-box-section {
+    padding: 160px 0;
+    background: var(--h2-bg-2);
+  }
+  .hl2-box-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--h2-bg-1);
+    border: 1px solid var(--h2-border);
+    border-radius: 32px;
+    padding: 80px;
+    text-align: center;
+  }
+  .hl2-box-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 50px;
+    text-align: left;
+  }
+  .hl2-box-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.15rem;
+  }
+  .hl2-box-item span {
+    color: #FFFFFF !important; /* HARDCODED CONTRAST */
+    font-weight: 500;
+  }
+  .hl2-box-item svg {
+    color: var(--h2-cyan);
+    flex-shrink: 0;
+  }
+
+  /* ====== BLOCK 7: FAQS & GARANTÍA CLÍNICA ====== */
+  .hl2-closure {
+    padding: 160px 0;
+    background: var(--h2-bg-0);
+  }
+  .hl2-faq {
+    max-width: 800px;
+    margin: 0 auto 120px;
+  }
+  .hl2-faq h2 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 60px;
+  }
+  .hl2-faq-item {
+    border-bottom: 1px solid var(--h2-border);
+    padding: 30px 0;
+  }
+  .hl2-faq-q {
+    font-size: 1.3rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    color: #FFFFFF !important; /* HARDCODED CONTRAST */
+  }
+  .hl2-faq-q span {
+    color: #FFFFFF !important;
+  }
+  .hl2-faq-a {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    color: #FFFFFF !important;
+    opacity: 0.85;
+    line-height: 1.7;
+    display: none;
+  }
+  .hl2-faq-item[open] .hl2-faq-a {
     display: block;
   }
 
-  .hh-trust-item-title {
-    font-size: 14px;
-    font-weight: 800;
-    color: #FFFFFF;
-    margin: 0 0 4px;
+  .hl2-guarantee {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--h2-bg-2);
+    border: 1px solid rgba(0, 236, 255, 0.2);
+    border-radius: 32px;
+    padding: 70px 50px;
+    text-align: center;
+  }
+  .hl2-guarantee h3 {
+    font-size: 2.5rem;
+    margin-bottom: 24px;
+  }
+  .hl2-guarantee p {
+    color: #FFFFFF !important; /* HARDCODED CONTRAST REGLA 19 */
+    font-size: 1.2rem;
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 0 auto 40px;
+  }
+  .hl2-guarantee-badges {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+  .hl2-guarantee-badges span {
+    color: #FFFFFF !important;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
-  .hh-trust-item-desc {
-    font-size: 12px;
-    color: rgba(255,255,255,0.60);
+  @keyframes hl2-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @media (max-width: 768px) {
+    .hl2-hero { padding: 40px 0 60px; }
+    .hl2-hero h1 { font-size: 2.5rem; }
+    .hl2-hero__grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+    .hl2-hero__text { text-align: center; }
+    .hl2-hero p { max-width: 100%; margin: 0 auto 30px; }
+    .hl2-hero__price { justify-content: center; }
+    .hl2-hero__micro-proof { justify-content: center; }
+    .hl2-hero__badges { justify-content: center; max-width: 100%; }
+    .hl2-pivot__grid, .hl2-pitch-box, .hl2-card, .hl2-data-grid, .hl2-cases-grid, .hl2-box-list { grid-template-columns: 1fr; }
+    .hl2-card, .hl2-pitch-box, .hl2-box-container { padding: 40px; }
+    .hl2-pivot { padding: 50px 0; }
+    .hl2-sticky-section { padding: 50px 0 100px; }
+    .hl2-table-wrapper { overflow-x: auto; }
+  }
+
+  /* ====== NEW BLOCK: DOLOR CRUDO ====== */
+  .hl2-pain {
+    padding: 120px 0;
+    background: #000000;
+    text-align: center;
+    border-top: 1px solid var(--h2-border);
+    border-bottom: 1px solid var(--h2-border);
+  }
+  .hl2-pain h2 {
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    color: #FFFFFF !important;
+    font-weight: 900;
+    line-height: 1.1;
+    max-width: 900px;
+    margin: 0 auto 30px;
+  }
+  .hl2-pain p {
+    font-size: 1.25rem;
+    color: var(--h2-text-muted) !important;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .hl2-pain-highlight {
+    color: #EF4444 !important;
+  }
+
+  /* ====== NEW BLOCK: ULTRA-SEGMENTACION ====== */
+  .hl2-lifestyle {
+    padding: 140px 0;
+    background: var(--h2-bg-1);
+    border-top: 1px solid var(--h2-border);
+  }
+  .hl2-lifestyle-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 60px;
+  }
+  .hl2-lifestyle-card {
+    background: var(--h2-bg-2);
+    border: 1px solid var(--h2-border);
+    border-radius: 24px;
+    padding: 50px 40px;
+    text-align: center;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .hl2-lifestyle-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(0, 236, 255, 0.1), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .hl2-lifestyle-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(0, 236, 255, 0.5);
+  }
+  .hl2-lifestyle-card:hover::before {
+    opacity: 1;
+  }
+  .hl2-lifestyle-icon {
+    width: 60px; height: 60px;
+    margin: 0 auto 25px;
+    background: rgba(0,236,255,0.05);
+    border: 1px solid rgba(0,236,255,0.2);
+    border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hl2-lifestyle-card h3 {
+    font-size: 1.6rem;
+    color: #FFFFFF !important;
+    margin-bottom: 15px;
+  }
+  .hl2-lifestyle-card p {
+    font-size: 1.05rem;
+    color: var(--h2-text-muted) !important;
+    line-height: 1.6;
+  }
+
+  /* ====== NEW BLOCK: ANATOMIA 3D ====== */
+  .hl2-anatomy {
+    padding: 160px 0;
+    background: var(--h2-bg-0);
+    border-top: 1px solid var(--h2-border);
+  }
+  .hl2-anatomy-box {
+    background: var(--h2-bg-1);
+    border-radius: 32px;
+    border: 1px solid var(--h2-border);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    min-height: 600px;
+  }
+  .hl2-anatomy-visual {
+    background: radial-gradient(circle at center, rgba(0, 201, 123, 0.08) 0%, var(--h2-bg-0) 80%);
+    border-right: 1px solid var(--h2-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hl2-anatomy-content {
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .hl2-anatomy-item {
+    margin-bottom: 40px;
+    position: relative;
+    padding-left: 30px;
+  }
+  .hl2-anatomy-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px;
+    width: 12px; height: 12px;
+    background: var(--h2-green);
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--h2-green);
+  }
+  .hl2-anatomy-item h4 {
+    font-size: 1.4rem;
+    color: #FFFFFF !important;
+    margin-bottom: 10px;
+  }
+  .hl2-anatomy-item p {
+    font-size: 1.05rem;
+    color: var(--h2-text-muted) !important;
+  }
+  
+  /* ====== NEW BLOCK: APP SIMULATOR ====== */
+  .hl2-app-sim {
+    padding: 160px 0;
+    background: var(--h2-bg-2);
+    border-top: 1px solid var(--h2-border);
+  }
+  .hl2-app-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .hl2-app-phone {
+    width: 320px;
+    height: 650px;
+    background: #000000;
+    border: 12px solid #1A1A1A;
+    border-radius: 45px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 0 0 2px #333;
+  }
+  .hl2-app-notch {
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 120px; height: 25px;
+    background: #1A1A1A;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    z-index: 10;
+  }
+  .hl2-app-screen {
+    position: absolute;
+    inset: 0;
+    padding: 50px 20px 20px;
+    background: #050505;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(20px);
+    pointer-events: none;
+  }
+  .hl2-app-screen.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .hl2-app-trigger {
+    padding: 40px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--h2-border);
+    border-radius: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .hl2-app-trigger.active {
+    background: rgba(0,236,255,0.08);
+    border-color: rgba(0,236,255,0.3);
+  }
+  .hl2-app-trigger h4 {
+    font-size: 1.5rem;
+    color: #FFFFFF !important;
+    margin-bottom: 10px;
+  }
+  .hl2-app-trigger p {
+    color: var(--h2-text-muted) !important;
+    font-size: 1rem;
     margin: 0;
   }
+  
+  @media (max-width: 768px) {
+    .hl2-lifestyle-grid, .hl2-anatomy-box, .hl2-app-grid { grid-template-columns: 1fr; }
+    .hl2-anatomy-visual { min-height: 300px; border-right: none; border-bottom: 1px solid var(--h2-border); }
+    .hl2-anatomy-content { padding: 40px; }
+  }
 
-  /* RESPONSIVE */
-  @media (max-width: 960px) {
-    .hh-hero-grid,
-    .hh-manifesto-grid,
-    .hh-products-grid,
-    .hh-pillars-grid,
-    .hh-reviews-grid,
-    .hh-trust-grid {
-      grid-template-columns: 1fr !important;
-      gap: 32px !important;
-    }
-
-    .hh-hero {
-      padding: 40px 0 !important;
-      text-align: center;
-    }
-
-    .hh-hero-subtitle {
-      margin: 0 auto 28px !important;
-    }
-
-    .hh-hero-cta-row {
-      justify-content: center;
-    }
-
-    .hh-hero-trust-strip {
-      justify-content: center;
-    }
+  /* ====== NEW BLOCK: ADVERTENCIA (LO QUE NO ES) ====== */
+  .hl2-warning {
+    padding: 120px 0;
+    background: #000000;
+    border-top: 1px solid rgba(239, 68, 68, 0.2);
+    border-bottom: 1px solid var(--h2-border);
+    position: relative;
+    overflow: hidden;
+  }
+  .hl2-warning::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 60%; height: 200px;
+    background: radial-gradient(ellipse, rgba(239, 68, 68, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hl2-warning-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 60px;
+  }
+  .hl2-warning-card {
+    background: rgba(255,255,255,0.02);
+    border-left: 3px solid #EF4444;
+    padding: 40px 30px;
+    border-radius: 0 16px 16px 0;
+    position: relative;
+  }
+  .hl2-warning-card svg {
+    margin-bottom: 20px;
+  }
+  .hl2-warning-card h3 {
+    font-size: 1.4rem;
+    color: #FFFFFF !important;
+    margin-bottom: 15px;
+    line-height: 1.3;
+  }
+  .hl2-warning-card p {
+    font-size: 1.05rem;
+    color: var(--h2-text-muted) !important;
+    line-height: 1.6;
+  }
+  @media (max-width: 768px) {
+    .hl2-warning-grid { grid-template-columns: 1fr; }
   }
 </style>
 
-<div class="halo-homepage-wrap">
+<div class="halo-loop-v2">
 
-  <!-- ════════════════════════════════════════════════
-       1. HERO SECTION
-       ════════════════════════════════════════════════ -->
-  <section class="hh-hero">
-    <div class="hh-container">
-      <div class="hh-hero-grid">
+  <!-- BLOCK 1: GANCHO CLÍNICO Y CONVERSIÓN (SPLIT LAYOUT) -->
+  <section class="hl2-hero">
+    <div class="hl2-wrap hl2-hero__content">
+      <div class="hl2-hero__grid">
+        <!-- IZQUIERDA: GALERÍA Y FOTO DE PRODUCTO EN USO (UGC LIFESTYLE) -->
+        <div class="hl2-hero__visual hl2-fade">
+          <div class="hl2-hero__image-wrapper" style="max-width: 100%; position: relative;">
+            {% if product.images.size > 1 %}
+              <!-- PRODUCT GALLERY SLIDER IF SHOPIFY HAS MULTIPLE IMAGES -->
+              <div class="hl2-hero-gallery" style="display: flex; flex-direction: column; gap: 15px;">
+                <img src="{{ product.featured_image | img_url: '1000x' }}" alt="{{ product.title }}" class="hl2-hero-img" style="border-radius: 28px; width: 100%; object-fit: cover; aspect-ratio: 4/5;">
+                <div style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px;">
+                  {% for image in product.images limit: 4 %}
+                    <img src="{{ image | img_url: '300x' }}" alt="{{ product.title }}" style="width: 70px; height: 70px; border-radius: 12px; object-fit: cover; border: 1px solid rgba(255,255,255,0.2); cursor: pointer;">
+                  {% endfor %}
+                </div>
+              </div>
+            {% elsif product.featured_image %}
+              <div style="position: relative; overflow: hidden; border-radius: 28px;">
+                <img src="{{ product.featured_image | img_url: '1000x' }}" alt="{{ product.title }}" class="hl2-hero-img" style="border-radius: 28px; width: 100%; object-fit: cover; aspect-ratio: 4/5;">
+                
+                <!-- OVERLAY UGC IN-USE BADGE -->
+                <div style="position: absolute; bottom: 20px; left: 20px; background: rgba(0,0,0,0.75); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); padding: 10px 16px; border-radius: 16px; display: flex; align-items: center; gap: 10px;">
+                  <span style="width: 10px; height: 10px; background: var(--h2-green); border-radius: 50%; display: inline-block;"></span>
+                  <div>
+                    <div style="color: #FFFFFF !important; font-size: 0.8rem; font-weight: 800;">EN USO REAL: RECUPERACIÓN BIOMÉTRICA</div>
+                    <div style="color: var(--h2-text-muted) !important; font-size: 0.7rem;">Fotografía de uso cotidiano sin distracciones</div>
+                  </div>
+                </div>
+              </div>
+            {% else %}
+              <div class="hl2-hero-placeholder" style="aspect-ratio: 4/5; border-radius: 28px;">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                <span>FOTO PRODUCTO EN USO (UGC REAL)</span>
+              </div>
+            {% endif %}
+          </div>
+        </div>
 
-        <!-- TEXT LEFT -->
-        <div>
-          <div class="hh-hero-pretitle">
-            <span class="hh-hero-pretitle-dot"></span>
-            <span class="hh-hero-pretitle-text">Ingeniería Táctica de Viaje</span>
+        <!-- DERECHA: BUY BOX TRANSACCIONAL (ESTILO E-COMMERCE) -->
+        <div class="hl2-hero__text hl2-hero__buybox hl2-fade">
+          <div class="hl2-stars" style="margin-bottom: 15px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <span style="font-size:0.85rem;">4.9/5 (12,000+ Atletas)</span>
+          </div>
+          
+          <h1>{{ product.title | default: 'HALO Loop Band' }}</h1>
+          <p style="font-size: 1.1rem; margin-bottom: 25px; color: var(--h2-text-muted) !important;">Te despiertas agotado porque no mides tu biología real. Mide tu sueño profundo y HRV con precisión clínica.</p>
+          
+          <div class="hl2-hero__price" style="margin-bottom: 20px;">
+            {% if product %}
+              <span class="price-current">{{ product.price | money }}</span>
+              {% if product.compare_at_price > product.price %}
+                <span class="price-compare">{{ product.compare_at_price | money }}</span>
+                <span class="hl2-tag" style="background:rgba(0,236,255,0.1); padding:4px 8px; border-radius:4px; margin:0 0 0 10px; margin-bottom:0;">- AHORRAS</span>
+              {% endif %}
+            {% else %}
+              <span class="price-current">$149.00</span>
+            {% endif %}
+          </div>
+          
+          <!-- MERCADOPAGO PREMIUM BANNER (HIGH CONTRAST) -->
+          <div class="hl2-mp-card" style="border-radius: 16px; padding: 16px; display: flex; align-items: center; gap: 15px; margin-bottom: 25px;">
+            <div style="background: #FFFFFF; border-radius: 8px; padding: 6px; display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; flex-shrink: 0;">
+              <img src="https://http2.mlstatic.com/frontend-assets/mp-web-navigation/ui-navigation/5.19.1/mercadopago/logo__small@2x.png" alt="Mercado Pago" style="max-width: 100%; object-fit: contain;">
+            </div>
+            <div style="display:flex; flex-direction:column; gap:4px;">
+              <div style="color: #FFFFFF !important; font-size: 0.95rem; font-weight: 600;">
+                Paga en <span class="hl2-mp-highlight" style="color: #009EE3 !important;">3 cuotas</span> de <span style="font-weight: 800; color: #FFFFFF !important;" class="hl2-mp-amount">{% if product %}{{ product.price | divided_by: 3 | money }}{% else %}$49.66{% endif %}</span>
+              </div>
+              <div style="display: flex; gap: 10px; align-items: center;">
+                <span class="hl2-mp-green" style="color: var(--h2-green) !important; font-size: 0.85rem; font-weight: 700; display:flex; align-items:center; gap:4px;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  Sin interés
+                </span>
+                <span class="hl2-mp-muted" style="color: var(--h2-text-muted) !important; font-size: 0.85rem; display:flex; align-items:center; gap:4px;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  100% Seguro
+                </span>
+              </div>
+            </div>
           </div>
 
-          <h1 class="hh-hero-title">
-            {{ section.settings.hero_title | default: "El Estándar Táctico del Viaje Moderno" }}
-          </h1>
+          <!-- STOCK PULSE -->
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid var(--h2-border);">
+            <div style="position: relative; display: flex; align-items: center; justify-content: center; width: 12px; height: 12px;">
+              <span style="position: absolute; width: 100%; height: 100%; background-color: #EF4444; border-radius: 50%; opacity: 0.7; animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;"></span>
+              <span style="position: relative; width: 8px; height: 8px; background-color: #EF4444; border-radius: 50%;"></span>
+            </div>
+            <span style="color: #FFFFFF !important; font-size: 0.95rem;">
+              Solo quedan <strong style="color: #EF4444 !important;">{{ 'now' | date: '%S' | modulo: 5 | plus: 3 }} unidades</strong> en oferta
+            </span>
+          </div>
 
-          <p class="hh-hero-subtitle">
-            {{ section.settings.hero_subtitle | default: "Ingeniería balística calibrada milimétricamente para cabina. Viaja con 10 días de ropa en un solo artículo personal pagando tarifa zero." }}
-          </p>
-
-          <div class="hh-hero-cta-row">
-            <a href="{{ section.settings.featured_product_url | default: '/products/compress-bag' }}" class="hh-btn-primary">
-              <span>Ver Compress Bag® Pro →</span>
+          <!-- ENVIO INMEDIATO -->
+          <div style="background: rgba(0, 201, 123, 0.1); border-radius: 8px; padding: 12px; text-align: center; margin-bottom: 20px;">
+            <span style="color: var(--h2-green) !important; font-size: 0.95rem; font-weight: 700; display:flex; align-items:center; justify-content:center; gap:8px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              Envío inmediato a todo Chile (MISMO DÍA)
+            </span>
+          </div>
+          
+          <div style="margin-bottom: 20px;">
+            {% if product %}
+            <form method="post" action="/cart/add" class="hl2-hero-form" style="display:flex; flex-direction:column;">
+              <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+              <button type="submit" class="hl2-btn" style="width: 100%; flex-direction: column; padding: 18px 20px; gap: 4px;">
+                <span style="font-size: 1.15rem; font-weight: 800; color: #FFFFFF !important;">Pide ahora y aprovecha el Descuento 🎁</span>
+                <span style="font-size: 0.8rem; font-weight: 700; color: rgba(255,255,255,0.7) !important; text-transform: uppercase; letter-spacing: 0.05em;">ANTES DE QUE SE AGOTE LA PROMO 🔥</span>
+              </button>
+            </form>
+            {% else %}
+            <a href="#comprar-v2" class="hl2-btn" style="width: 100%; text-align:center; flex-direction: column; padding: 18px 20px; gap: 4px;">
+              <span style="font-size: 1.15rem; font-weight: 800; color: #FFFFFF !important;">Pide ahora y aprovecha el Descuento 🎁</span>
+              <span style="font-size: 0.8rem; font-weight: 700; color: rgba(255,255,255,0.7) !important; text-transform: uppercase; letter-spacing: 0.05em;">ANTES DE QUE SE AGOTE LA PROMO 🔥</span>
             </a>
-            <a href="#hh-coleccion" class="hh-btn-secondary">
-              <span>Explorar Catálogo</span>
+            {% endif %}
+          </div>
+
+          <!-- TRUSTPILOT LIQUID -->
+          <div style="margin-bottom: 30px; text-align: center;">
+            <div style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 5px;">
+              <svg width="24" height="24" viewBox="0 0 31.7 31.7"><path fill="#00B67A" d="M31.7 15.8l-12.1-8.8 4.6-14.2-12.1 8.8-12.1-8.8 4.6 14.2-12.1 8.8h15z" transform="translate(9.6 14.2) scale(.38)"/><path fill="#00B67A" d="M15.8 31.7c8.8 0 15.8-7.1 15.8-15.8S24.6 0 15.8 0 0 7.1 0 15.8s7.1 15.8 15.8 15.8z"/><path fill="#fff" d="M16 23.4l-4.7 3.4 1.8-5.5-4.7-3.4h5.8l1.8-5.5 1.8 5.5h5.8l-4.7 3.4 1.8 5.5z"/></svg>
+              <span style="color: #FFFFFF !important; font-weight: 800; font-size: 1.1rem; letter-spacing: 0.02em;">Trustpilot</span>
+              <div style="display:flex; gap: 2px;">
+                <div style="background:#00B67A; padding:2px; display:flex;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFF"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+                <div style="background:#00B67A; padding:2px; display:flex;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFF"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+                <div style="background:#00B67A; padding:2px; display:flex;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFF"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+                <div style="background:#00B67A; padding:2px; display:flex;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFF"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+                <div style="background:#00B67A; padding:2px; display:flex;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFF"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              </div>
+            </div>
+            <div style="color: #FFFFFF !important; font-weight: 700; font-size: 0.95rem; margin-bottom: 2px;">Excelente 4.9/5</div>
+            <div style="color: var(--h2-text-muted) !important; font-size: 0.8rem;">Basado en +12,000 atletas y usuarios</div>
+          </div>
+
+          <div class="hl2-hero__specs-box">
+            <div style="font-size:0.8rem; color:var(--h2-cyan) !important; text-transform:uppercase; letter-spacing:0.1em; font-weight:700; margin-bottom:10px;">INTEGRACIÓN NATIVA (GRATIS)</div>
+            <div class="hl2-hero__ecosystem" style="display:flex; gap: 15px; margin-bottom: 20px; align-items: center; flex-wrap: wrap;">
+              <div style="display:flex; align-items:center; gap:6px; color:rgba(255,255,255,0.7) !important; font-size:0.8rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                <span style="color:#FFFFFF !important;">Apple Health</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:6px; color:rgba(255,255,255,0.7) !important; font-size:0.8rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FC4C02" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15.38 17.65L12 11.23l-3.38 6.42h-3L12 5.8l6.38 11.85h-3zm-6.76-6.42l3.38-6.43 3.38 6.43H8.62z"/></svg>
+                <span style="color:#FFFFFF !important;">Strava</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:6px; color:rgba(255,255,255,0.7) !important; font-size:0.8rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
+                <span style="color:#FFFFFF !important;">Oura</span>
+              </div>
+            </div>
+            
+            <div style="display:flex; flex-direction:column; gap:8px; padding-top:15px; border-top:1px solid var(--h2-border);">
+              <div style="display:flex; align-items:center; gap:8px; font-size:0.9rem; color:#FFFFFF !important; font-weight:500;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--h2-green)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Cero Suscripciones. Datos 100% tuyos.
+              </div>
+              <div style="display:flex; align-items:center; gap:8px; font-size:0.9rem; color:#FFFFFF !important; font-weight:500;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--h2-green)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Batería de larga duración (Hasta 20 días).
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCK 2: CONFIANZA ASIMÉTRICA -->
+  <section class="hl2-logos">
+    <div class="hl2-logos__track hl2-fade">
+      <div class="hl2-logos__item">GQ</div>
+      <div class="hl2-logos__item">Forbes</div>
+      <div class="hl2-logos__item">Wired</div>
+      <div class="hl2-logos__item">Men's Health</div>
+      <div class="hl2-logos__item">The Verge</div>
+      <div class="hl2-logos__item">Bloomberg</div>
+      <!-- DUPLICATES FOR INFINITE SCROLL -->
+      <div class="hl2-logos__item">GQ</div>
+      <div class="hl2-logos__item">Forbes</div>
+      <div class="hl2-logos__item">Wired</div>
+      <div class="hl2-logos__item">Men's Health</div>
+      <div class="hl2-logos__item">The Verge</div>
+      <div class="hl2-logos__item">Bloomberg</div>
+    </div>
+  </section>
+
+  <!-- BLOCK 3: PIVOTE (ENEMIGO COMÚN) -->
+  <section class="hl2-pivot">
+    <div class="hl2-wrap hl2-pivot__grid hl2-fade">
+      <div>
+        <span class="hl2-tag" style="color:#FFFFFF !important;">FASE REM BLINDADA</span>
+        <h2>Cero distracciones. Foco 100% clínico.</h2>
+        <p>Una pantalla en tu muñeca solo dispara tu cortisol cuando más necesitas paz. Diseñamos un hardware quirúrgico, invisible durante la noche, que recopila tus datos biométricos en silencio absoluto.</p>
+      </div>
+      <div class="hl2-pivot__visual" style="position: relative; overflow: hidden; background: radial-gradient(circle at center, rgba(0,236,255,0.08) 0%, rgba(10,10,10,0.95) 70%); border: 1px solid rgba(0,236,255,0.25); border-radius: 28px; padding: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 380px;">
+        <!-- Glowing Radar Ring Pulse -->
+        <div style="position: absolute; width: 220px; height: 220px; border-radius: 50%; border: 1px dashed rgba(0,236,255,0.3); animation: spin 20s linear infinite;"></div>
+        <div style="position: absolute; width: 160px; height: 160px; border-radius: 50%; border: 1px solid rgba(0,201,123,0.3); animation: ping 3s cubic-bezier(0, 0, 0.2, 1) infinite;"></div>
+        
+        <!-- Central Optical Sensor Lens -->
+        <div style="position: relative; z-index: 2; background: #000000; border: 2px solid var(--h2-cyan); border-radius: 50%; width: 100px; height: 100px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 40px rgba(0,236,255,0.4);">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--h2-cyan)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" fill="var(--h2-green)" fill-opacity="0.6"/>
+            <path d="M12 3v3M12 18v3M3 12h3M18 12h3"/>
+          </svg>
+        </div>
+
+        <!-- Biometric Pulse Waveform -->
+        <div style="position: relative; z-index: 2; margin-top: 25px; width: 80%; display: flex; flex-direction: column; align-items: center;">
+          <svg width="100%" height="40" viewBox="0 0 200 40" fill="none">
+            <path d="M0 20H40L50 5L65 35L80 15L90 25L100 20H200" stroke="#00ECFF" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <div style="display: flex; gap: 15px; margin-top: 15px; flex-wrap: wrap; justify-content: center;">
+            <span style="background: rgba(0,236,255,0.1); border: 1px solid rgba(0,236,255,0.3); padding: 6px 14px; border-radius: 99px; color: #FFFFFF !important; font-size: 0.8rem; font-weight: 700; display: flex; align-items: center; gap: 6px;">
+              <span style="width: 6px; height: 6px; background: var(--h2-cyan); border-radius: 50%;"></span>
+              REM: 2h 45m
+            </span>
+            <span style="background: rgba(0,201,123,0.1); border: 1px solid rgba(0,201,123,0.3); padding: 6px 14px; border-radius: 99px; color: #FFFFFF !important; font-size: 0.8rem; font-weight: 700; display: flex; align-items: center; gap: 6px;">
+              <span style="width: 6px; height: 6px; background: var(--h2-green); border-radius: 50%;"></span>
+              HRV: 94 ms
+            </span>
+          </div>
+        </div>
+
+        <span style="position: relative; z-index: 2; margin-top: 20px; color: var(--h2-cyan) !important; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase;">SENSOR CLÍNICO ÓPTICO PA-100</span>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- BLOCK 2.1: DOLOR CRUDO (THE SABRI SUBY PAIN EXCAVATION) -->
+  <section class="hl2-pain">
+    <div class="hl2-wrap hl2-fade">
+      <h2>Pasar 8 horas en la cama no sirve de nada si tu <span class="hl2-pain-highlight">Fase REM</span> está fracturada.</h2>
+      <p>La mayoría de personas se despiertan agotadas porque sufren micro-apneas o picos de cortisol nocturno que jamás notan. El HALO Loop no te dice "cuánto" dormiste, te revela <strong style="color:#FFF !important;">por qué tu descanso es una mentira</strong>.</p>
+    </div>
+  </section>
+
+  <!-- BLOCK 3.1: ULTRA-SEGMENTACION (THE LOOP EARPLUGS FRAMEWORK) -->
+  <section class="hl2-lifestyle">
+    <div class="hl2-wrap hl2-fade">
+      <div class="hl2-compare-header" style="margin-bottom: 40px;">
+        <span class="hl2-tag">DISEÑADO PARA TU BIOLOGÍA</span>
+        <h2>¿Qué tipo de optimización buscas?</h2>
+      </div>
+      <div class="hl2-lifestyle-grid">
+        <!-- Card 1: Atleta -->
+        <div class="hl2-lifestyle-card">
+          <div class="hl2-lifestyle-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--h2-cyan)" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          </div>
+          <h3>Para el Atleta</h3>
+          <p>Mide tu Strain diario y HRV. El algoritmo te dirá exactamente cuándo debes empujar al máximo y cuándo tu cuerpo exige recuperación profunda.</p>
+        </div>
+        <!-- Card 2: Ejecutivo -->
+        <div class="hl2-lifestyle-card">
+          <div class="hl2-lifestyle-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--h2-cyan)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          </div>
+          <h3>Para el Ejecutivo</h3>
+          <p>Hackea tu estrés. Detecta los picos de cortisol durante el día y protege tu higiene del sueño para operar en Focus Mode al día siguiente.</p>
+        </div>
+        <!-- Card 3: Insomne -->
+        <div class="hl2-lifestyle-card">
+          <div class="hl2-lifestyle-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--h2-cyan)" stroke-width="2"><path d="M2 12h4l3-9 5 18 3-9h5"></path></svg>
+          </div>
+          <h3>Para el Insomne</h3>
+          <p>Aísla la causa de tus noches en vela. El sensor infrarrojo detecta micro-despertares y desniveles de oxígeno para curar tu insomnio de raíz.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCK 4: STICKY STACKING -->
+  <section class="hl2-sticky-section">
+    <div class="hl2-wrap hl2-sticky-container">
+      <div class="hl2-sticky-header hl2-fade">
+        <span class="hl2-tag">LA VENTAJA CLÍNICA</span>
+        <h2>Pagar $30/mes por ver tus propios datos es un robo.</h2>
+      </div>
+
+      <div class="hl2-card hl2-fade">
+        <div>
+          <div class="hl2-card__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--h2-cyan)" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </div>
+          <h3>Tus Datos no se Alquilan: $0 Suscripción Mensual.</h3>
+          <p>Comprar un dispositivo de $300 para luego pagar $360 USD CADA AÑO solo por ver cuánto dormiste es una trampa. Tu salud es tuya: pagas una sola vez y accedes a todos tus biométricos de por vida, sin cuotas ni bloqueos.</p>
+        </div>
+        
+        <!-- VISUAL COMPARACIÓN DE COSTO DE SUSCRIPCIÓN -->
+        <div class="hl2-pivot__visual" style="min-height: 280px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 25px; display: flex; flex-direction: column; justify-content: center; gap: 15px;">
+          <!-- FILA COMPETENCIA -->
+          <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 14px; padding: 14px 18px; display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <span style="color: #FFFFFF !important; font-weight: 700; font-size: 0.9rem;">Otros (Whoop / Oura)</span>
+            </div>
+            <span style="color: #EF4444 !important; font-weight: 800; font-size: 0.9rem;">+$360 USD / año</span>
+          </div>
+
+          <!-- FILA HALO -->
+          <div style="background: rgba(0, 201, 123, 0.12); border: 1px solid rgba(0, 201, 123, 0.4); border-radius: 14px; padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 0 20px rgba(0,201,123,0.15);">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--h2-green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span style="color: #FFFFFF !important; font-weight: 800; font-size: 1rem;">HALO System</span>
+            </div>
+            <span style="background: var(--h2-green); color: #000000 !important; font-weight: 900; font-size: 0.85rem; padding: 4px 10px; border-radius: 6px; text-transform: uppercase;">$0 / MES DE POR VIDA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hl2-card hl2-fade">
+        <div>
+          <div class="hl2-card__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--h2-cyan)" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+          </div>
+          <h3>Mide la Verdadera Recuperación de tu Sistema Nervioso.</h3>
+          <p>Sentirse "bien" no significa nada si tu Sistema Nervioso Simpático está agotado. Mide la Variabilidad de Frecuencia Cardíaca (HRV) y descubre en números reales si tu cuerpo está listo para entrenar o requiere descanso profundo.</p>
+        </div>
+
+        <!-- VISUAL HRV READOUT -->
+        <div class="hl2-pivot__visual" style="min-height: 280px; background: rgba(0, 236, 255, 0.03); border: 1px solid rgba(0, 236, 255, 0.15); border-radius: 24px; padding: 25px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+          <div style="font-size: 3.2rem; font-weight: 900; color: #FFFFFF !important; line-height: 1; letter-spacing: -0.03em;">
+            94 <span style="font-size: 1.1rem; color: var(--h2-cyan) !important; font-weight: 700;">ms</span>
+          </div>
+          <div style="color: var(--h2-green) !important; font-size: 0.85rem; font-weight: 800; margin-top: 8px; text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 6px;">
+            <span style="width: 8px; height: 8px; background: var(--h2-green); border-radius: 50%;"></span>
+            ESTADO BIOLÓGICO: OPTIMIZADO (98%)
+          </div>
+          <div style="margin-top: 20px; width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 99px; overflow: hidden;">
+            <div style="width: 88%; height: 100%; background: linear-gradient(90deg, var(--h2-cyan), var(--h2-green)); border-radius: 99px;"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  
+  <!-- BLOCK 4.1.5: APP SIMULATOR (SCROLL KINETIC UI) -->
+  <section class="hl2-app-sim" id="halo-app-simulator">
+    <div class="hl2-wrap hl2-fade">
+      <div class="hl2-compare-header" style="text-align: left; margin-bottom: 50px;">
+        <span class="hl2-tag">APP GRATUITA DE POR VIDA</span>
+        <h2>Tu biología, decodificada.</h2>
+      </div>
+      
+      <div class="hl2-app-grid">
+        <!-- Interactive Triggers (Left) -->
+        <div class="hl2-app-triggers">
+          <div class="hl2-app-trigger active" onclick="switchAppScreen(1, this)">
+            <h4>1. Dashboard de Recuperación</h4>
+            <p>Conoce tu score de 0 a 100% cada mañana. El algoritmo cruza tu HRV, sueño y temperatura para decirte si estás listo para el día.</p>
+          </div>
+          <div class="hl2-app-trigger" onclick="switchAppScreen(2, this)">
+            <h4>2. Arquitectura del Sueño</h4>
+            <p>Gráficas moleculares de tu fase REM, sueño profundo y ligero. Identifica a qué hora tu cuerpo realmente descansa.</p>
+          </div>
+          <div class="hl2-app-trigger" onclick="switchAppScreen(3, this)">
+            <h4>3. Nivel de Tensión (Strain)</h4>
+            <p>Mide tu desgaste cardiovascular acumulado. Evita el sobre-entrenamiento o el burnout ejecutivo antes de que ocurra.</p>
+          </div>
+        </div>
+
+        <!-- Phone Simulator (Right) -->
+        <div class="hl2-app-phone">
+          <div class="hl2-app-notch"></div>
+          
+          <!-- Screen 1: Recovery -->
+          <div class="hl2-app-screen active" id="screen-1">
+            <div style="text-align:center; color:var(--h2-cyan) !important; font-size:0.75rem; font-weight:800; letter-spacing:0.1em; margin-bottom:20px;">RECOVERY SCORE</div>
+            <div style="width:140px; height:140px; border-radius:50%; border:8px solid var(--h2-cyan); margin:0 auto; display:flex; align-items:center; justify-content:center; box-shadow:0 0 30px rgba(0,236,255,0.2);">
+              <span style="font-size:3rem; font-weight:900; color:#FFF !important;">96</span>
+            </div>
+            <div style="margin-top:30px; background:rgba(255,255,255,0.05); padding:15px; border-radius:12px;">
+              <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                <span style="color:#FFF !important; font-size:0.85rem;">HRV (Var. Cardíaca)</span>
+                <span style="color:var(--h2-cyan) !important; font-weight:700; font-size:0.85rem;">108 ms</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                <span style="color:#FFF !important; font-size:0.85rem;">Frecuencia Reposo</span>
+                <span style="color:var(--h2-green) !important; font-weight:700; font-size:0.85rem;">48 bpm</span>
+              </div>
+              <div style="display:flex; justify-content:space-between;">
+                <span style="color:#FFF !important; font-size:0.85rem;">Temperatura</span>
+                <span style="color:#FFF !important; font-weight:700; font-size:0.85rem;">+0.1 °C</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screen 2: Sleep -->
+          <div class="hl2-app-screen" id="screen-2">
+            <div style="text-align:center; color:#B48EAD !important; font-size:0.75rem; font-weight:800; letter-spacing:0.1em; margin-bottom:20px;">SLEEP PERFORMANCE</div>
+            <div style="font-size:2.5rem; font-weight:900; color:#FFF !important; text-align:center; margin-bottom:30px;">7h 24m</div>
+            
+            <!-- Sleep Graph Fake -->
+            <div style="display:flex; height:100px; align-items:flex-end; gap:4px; margin-bottom:20px;">
+              <div style="flex:1; background:#8FBCBB; height:30%; border-radius:4px;"></div>
+              <div style="flex:1; background:#5E81AC; height:80%; border-radius:4px;"></div>
+              <div style="flex:1; background:#B48EAD; height:50%; border-radius:4px;"></div>
+              <div style="flex:1; background:#8FBCBB; height:20%; border-radius:4px;"></div>
+              <div style="flex:1; background:#5E81AC; height:90%; border-radius:4px;"></div>
+              <div style="flex:1; background:#B48EAD; height:60%; border-radius:4px;"></div>
+              <div style="flex:1; background:#8FBCBB; height:40%; border-radius:4px;"></div>
+            </div>
+            
+            <div style="background:rgba(255,255,255,0.05); padding:15px; border-radius:12px; display:flex; justify-content:space-between; text-align:center;">
+              <div>
+                <div style="color:#B48EAD !important; font-size:0.7rem; font-weight:700; text-transform:uppercase;">REM</div>
+                <div style="color:#FFF !important; font-weight:800; font-size:1.1rem;">2h 10m</div>
+              </div>
+              <div>
+                <div style="color:#5E81AC !important; font-size:0.7rem; font-weight:700; text-transform:uppercase;">Profundo</div>
+                <div style="color:#FFF !important; font-weight:800; font-size:1.1rem;">1h 45m</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screen 3: Strain -->
+          <div class="hl2-app-screen" id="screen-3">
+            <div style="text-align:center; color:#EF4444 !important; font-size:0.75rem; font-weight:800; letter-spacing:0.1em; margin-bottom:20px;">DAY STRAIN</div>
+            
+            <div style="position:relative; width:160px; height:80px; margin:0 auto 20px; overflow:hidden;">
+              <div style="position:absolute; top:0; left:0; width:160px; height:160px; border-radius:50%; border:12px solid rgba(239,68,68,0.2); border-bottom-color:transparent; border-right-color:transparent; transform:rotate(45deg);"></div>
+              <div style="position:absolute; top:0; left:0; width:160px; height:160px; border-radius:50%; border:12px solid #EF4444; border-bottom-color:transparent; border-right-color:transparent; transform:rotate(-45deg);"></div>
+              <div style="position:absolute; bottom:0; left:0; width:100%; text-align:center; font-size:2.5rem; font-weight:900; color:#FFF !important; line-height:1;">14.2</div>
+            </div>
+            
+            <p style="color:rgba(255,255,255,0.7) !important; font-size:0.85rem; text-align:center; margin-bottom:20px; padding:0 10px;">Tu carga cardiovascular es óptima. Tienes capacidad para un entrenamiento intenso hoy.</p>
+            
+            <div style="background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); padding:15px; border-radius:12px; text-align:center;">
+              <div style="color:#EF4444 !important; font-size:0.75rem; font-weight:800; text-transform:uppercase; margin-bottom:5px;">Pico de Estrés Detectado</div>
+              <div style="color:#FFF !important; font-size:0.9rem; font-weight:600;">14:30 PM - 15:15 PM</div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function switchAppScreen(id, el) {
+      document.querySelectorAll('.hl2-app-trigger').forEach(trigger => trigger.classList.remove('active'));
+      document.querySelectorAll('.hl2-app-screen').forEach(screen => screen.classList.remove('active'));
+      
+      el.classList.add('active');
+      document.getElementById('screen-' + id).classList.add('active');
+    }
+  </script>
+
+  <!-- BLOCK 4.05: ADVERTENCIA (LO QUE NO ES) -->
+  <section class="hl2-warning">
+    <div class="hl2-wrap hl2-fade">
+      <div class="hl2-compare-header" style="margin-bottom: 40px; text-align: left;">
+        <span class="hl2-tag" style="background: rgba(239,68,68,0.1); color: #EF4444 !important; border-color: rgba(239,68,68,0.2);">⚠️ ADVERTENCIA CLÍNICA</span>
+        <h2 style="font-size: clamp(2.5rem, 4vw, 3.5rem); margin-top: 20px;">Lo que el HALO Loop <br><strong style="color: #EF4444 !important;">definitivamente NO es.</strong></h2>
+        <p style="color: var(--h2-text-muted) !important; font-size: 1.15rem; max-width: 600px; margin-top: 20px;">Antes de considerar esta inversión, debes tener claro que no construimos juguetes para contar pasos.</p>
+      </div>
+
+      <div class="hl2-warning-grid">
+        <!-- Card 1 -->
+        <div class="hl2-warning-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+          <h3>NO es "Joyería China" Desechable</h3>
+          <p>Las bandas genéricas (como las H59) mueren a la primera gota de sudor o lluvia. El HALO Loop es un tanque sellado ultrasónico. <strong style="color:#FFF !important;">Sumérgete hasta 5 metros bajo el agua (IP68/5ATM)</strong> sin dudarlo.</p>
+        </div>
+        <!-- Card 2 -->
+        <div class="hl2-warning-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          <h3>NO es un "Vampiro de Suscripciones"</h3>
+          <p>Pagar $30 USD al mes por ver tu propia frecuencia cardíaca es un insulto a tu inteligencia. Compras el hardware una vez, y <strong style="color:#FFF !important;">el algoritmo IA de decodificación es tuyo de por vida.</strong></p>
+        </div>
+        <!-- Card 3 -->
+        <div class="hl2-warning-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2"><path d="M13.73 21a2 2 0 0 1-3.46 0"></path><path d="M18.63 13A17.89 17.89 0 0 1 18 8"></path><path d="M6.26 6.26A5.86 5.86 0 0 0 6 8c0 7-3 9-3 9h14"></path><path d="M18 8a6 6 0 0 0-9.33-5"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+          <h3>NO es una "Pantalla de Estrés"</h3>
+          <p>Tu smartwatch vibra y te ciega con notificaciones a las 3 AM arruinando tu fase REM. El HALO <strong style="color:#FFF !important;">no tiene pantalla por diseño clínico</strong>. Cero luz azul. Solo datos puros fluyendo en silencio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCK 4.08: COMPARATIVA VS BASURA GENÉRICA -->
+  <section class="hl2-compare-section" style="padding-top: 0; padding-bottom: 20px;">
+    <div class="hl2-wrap hl2-fade">
+      <div class="hl2-compare-header">
+        <span class="hl2-tag" style="background: rgba(239,68,68,0.1); color: #EF4444 !important; border-color: rgba(239,68,68,0.2);">LA CRUDA VERDAD</span>
+        <h2>HALO Loop vs <strong style="color: #EF4444 !important;">Copias Baratas</strong></h2>
+      </div>
+      <div class="hl2-table-wrapper" style="max-width: 900px; margin: 0 auto;">
+        <table class="hl2-table">
+          <thead>
+            <tr>
+              <th style="width: 30%;">Característica</th>
+              <th class="highlight-col" style="width: 35%; text-align: center; vertical-align: bottom;">
+                <div style="width: 90px; height: 90px; border-radius: 16px; background: #000; border: 2px solid var(--h2-cyan); margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; overflow: hidden; box-shadow: 0 0 20px rgba(0,236,255,0.2);">
+                  <img src="https://cdn.shopify.com/s/files/1/0893/5886/0593/files/halo_band_placeholder.png" alt="HALO Loop" style="max-width:100%; object-fit:cover;" onerror="this.style.display='none';">
+                </div>
+                HALO Loop Band
+              </th>
+              <th style="width: 35%; text-align: center; vertical-align: bottom;">
+                <div style="width: 80px; height: 80px; border-radius: 16px; background: rgba(255,255,255,0.02); margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; overflow: hidden; opacity: 0.5; filter: grayscale(100%);">
+                  <img src="https://cdn.shopify.com/s/files/1/0893/5886/0593/files/h59_placeholder.png" alt="Banda Genérica" style="max-width:100%; object-fit:cover;" onerror="this.style.display='none';">
+                </div>
+                Bandas Genéricas (H59)
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="color: #FFF !important; font-weight: 600;">La Mentira del Sueño</td>
+              <td class="highlight-col"><strong>Radiografía exacta de tus Fases REM. Sabes por qué te despertaste cansado.</strong></td>
+              <td style="color: var(--h2-text-muted) !important;">Creen que estás durmiendo porque te quedaste quieto viendo Netflix. Una burla.</td>
+            </tr>
+            <tr>
+              <td style="color: #FFF !important; font-weight: 600;">El Sensor "De Juguete"</td>
+              <td class="highlight-col"><strong>Sensor médico real que lee tu pulso a través del sudor y agua.</strong></td>
+              <td style="color: var(--h2-text-muted) !important;">Luz verde de juguete que pierde tu pulso apenas sudas. Te inventa los números.</td>
+            </tr>
+            <tr>
+              <td style="color: #FFF !important; font-weight: 600;">Construcción y Piel</td>
+              <td class="highlight-col"><strong>Silicón de grado médico. Cero sarpullido, sumergible 5mts (IP68).</strong></td>
+              <td style="color: var(--h2-text-muted) !important;">Plástico barato que atrapa el sudor, da comezón y muere ahogada en la ducha.</td>
+            </tr>
+            <tr>
+              <td style="color: #FFF !important; font-weight: 600;">La App "Basura"</td>
+              <td class="highlight-col"><strong>IA que te dice: "Tu cuerpo está frito, descansa" o "Rompe tus récords".</strong></td>
+              <td style="color: var(--h2-text-muted) !important;">App genérica mal traducida que te escupe números inútiles. La borras a los 3 días.</td>
+            </tr>
+            <tr>
+              <td style="color: #FFF !important; font-weight: 600;">Agonía de Batería</td>
+              <td class="highlight-col"><strong>Te olvidas del cargador. Hasta 7 días reales de vida con una sola carga.</strong></td>
+              <td style="color: var(--h2-text-muted) !important;">Prometen "semanas", pero al 2do mes tienes que cargarla a diario como un celular viejo.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCK 4.1: COMPARATIVE TABLE -->
+  <section class="hl2-compare-section">
+    <div class="hl2-wrap hl2-fade">
+      <div class="hl2-compare-header">
+        <span class="hl2-tag">MATEMÁTICA FRÍA</span>
+        <h2>Deja de pagar por adivinanzas.</h2>
+      </div>
+      <div class="hl2-table-wrapper">
+        <table class="hl2-table">
+          <thead>
+            <tr>
+              <th>Característica</th>
+              <th class="highlight-col" style="text-align: center; vertical-align: bottom;">
+                <div style="width: 90px; height: 90px; border-radius: 16px; background: #000; border: 2px solid var(--h2-cyan); margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; overflow: hidden; box-shadow: 0 0 20px rgba(0,236,255,0.2);">
+                  <img src="https://cdn.shopify.com/s/files/1/0893/5886/0593/files/halo_band_placeholder.png" alt="HALO Loop" style="max-width:100%; object-fit:cover;" onerror="this.style.display='none';">
+                </div>
+                HALO Loop Band
+              </th>
+              <th style="text-align: center; vertical-align: bottom;">
+                <div style="width: 80px; height: 80px; border-radius: 16px; background: rgba(255,255,255,0.02); margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; overflow: hidden; opacity: 0.5; filter: grayscale(100%);">
+                  <img src="https://cdn.shopify.com/s/files/1/0893/5886/0593/files/smartwatch_placeholder.png" alt="Smartwatches" style="max-width:100%; object-fit:cover;" onerror="this.style.display='none';">
+                </div>
+                Smartwatches Premium (Apple)
+              </th>
+              <th style="text-align: center; vertical-align: bottom;">
+                <div style="width: 80px; height: 80px; border-radius: 16px; background: rgba(255,255,255,0.02); margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; overflow: hidden; opacity: 0.5; filter: grayscale(100%);">
+                  <img src="https://cdn.shopify.com/s/files/1/0893/5886/0593/files/ring_placeholder.png" alt="Anillos" style="max-width:100%; object-fit:cover;" onerror="this.style.display='none';">
+                </div>
+                Anillos de Suscripción
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Suscripción Mensual</td>
+              <td class="highlight-col"><strong>Cero. $0/mes.</strong></td>
+              <td>Depende de apps 3ras</td>
+              <td>$30 / mes (Obligatorio)</td>
+            </tr>
+            <tr>
+              <td>Propiedad de los Datos</td>
+              <td class="highlight-col"><strong>100% Tuyos</strong></td>
+              <td>App de terceros</td>
+              <td>Rehenes de la suscripción</td>
+            </tr>
+            <tr>
+              <td>Diseño Anti-Insomnio</td>
+              <td class="highlight-col"><strong>100% Invisible (Sin pantalla)</strong></td>
+              <td>Pantallas y vibraciones</td>
+              <td>Invisible</td>
+            </tr>
+            <tr>
+              <td>Precisión Nocturna (HRV/SpO2)</td>
+              <td class="highlight-col"><strong>Nivel Clínico</strong></td>
+              <td>Estimada (Sensor de muñeca)</td>
+              <td>Nivel Clínico</td>
+            </tr>
+            <tr>
+              <td>Batería Extendida</td>
+              <td class="highlight-col"><strong>Hasta 7 Días</strong></td>
+              <td>1-2 Días</td>
+              <td>5 Días</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCK 4.2: DEEP DATA -->
+  <section class="hl2-data-section">
+    <div class="hl2-wrap hl2-fade">
+      <div class="hl2-compare-header" style="margin-bottom: 40px;">
+        <span class="hl2-tag">BIOMETRÍA MOLECULAR</span>
+        <h2>¿Qué miden los sensores de grado médico?</h2>
+      </div>
+      <div class="hl2-data-grid">
+        <div class="hl2-data-card">
+          <div class="hl2-data-value">HRV</div>
+          <h3>Variabilidad Cardíaca</h3>
+          <p>Mide la fluctuación en milisegundos entre latidos. Un HRV alto indica que tu sistema nervioso parasimpático (descanso) está dominando. Sabrás exactamente cuándo entrenar duro y cuándo parar.</p>
+        </div>
+        <div class="hl2-data-card">
+          <div class="hl2-data-value">SpO2</div>
+          <h3>Oxígeno en Sangre</h3>
+          <p>Sensores ópticos rojos e infrarrojos miden la eficiencia de tu respiración durante la fase REM. Crucial para detectar apneas leves o fatiga por mala oxigenación celular.</p>
+        </div>
+        <div class="hl2-data-card">
+          <div class="hl2-data-value">±0.1°C</div>
+          <h3>Temperatura Cutánea</h3>
+          <p>Monitoriza micro-variaciones térmicas de tu piel mientras duermes. El algoritmo predice si estás incubando una enfermedad (o tu ciclo hormonal) antes de que sientas el primer síntoma.</p>
+        </div>
+        <div class="hl2-data-card">
+          <div class="hl2-data-value">100%</div>
+          <h3>Fases de Sueño Reales</h3>
+          <p>No adivinamos por tu movimiento. Combinamos pulso, oxígeno y temperatura para mapear exactamente cuántos minutos estuviste en sueño profundo, ligero o REM.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- BLOCK 4.3: ANATOMIA 3D (EFECTO IRON MAN) -->
+  <section class="hl2-anatomy">
+    <div class="hl2-wrap hl2-fade">
+      <div class="hl2-compare-header" style="margin-bottom: 50px;">
+        <span class="hl2-tag">INGENIERÍA INVISIBLE</span>
+        <h2>¿Qué hay dentro del HALO Loop?</h2>
+      </div>
+      
+      <div class="hl2-anatomy-box">
+        <div class="hl2-anatomy-visual">
+          <div style="position: absolute; width: 300px; height: 300px; background: rgba(0,201,123,0.1); border-radius: 50%; filter: blur(50px);"></div>
+          
+          <!-- Mockup of Band cross-section -->
+          <div style="position: relative; z-index: 2; width: 220px; height: 350px; background: #0A0A0A; border: 2px solid #333; border-radius: 110px; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 40px 80px rgba(0,0,0,0.8), inset 0 0 20px rgba(255,255,255,0.05);">
+            <!-- Optical Sensor Array -->
+            <div style="width: 80px; height: 80px; border-radius: 50%; background: #000; border: 2px solid var(--h2-green); display: flex; align-items: center; justify-content: center; position: relative; box-shadow: inset 0 0 15px rgba(0,201,123,0.5), 0 0 30px rgba(0,201,123,0.2);">
+              <div style="width: 15px; height: 15px; background: #00C97B; border-radius: 50%; box-shadow: 0 0 10px #00C97B; position: absolute; top: 15px;"></div>
+              <div style="width: 15px; height: 15px; background: #EF4444; border-radius: 50%; box-shadow: 0 0 10px #EF4444; position: absolute; bottom: 15px;"></div>
+              <div style="width: 8px; height: 8px; background: #FFF; border-radius: 50%; box-shadow: 0 0 5px #FFF;"></div>
+            </div>
+            
+            <div style="width: 1px; height: 40px; background: rgba(255,255,255,0.2); margin: 15px 0;"></div>
+            
+            <!-- Battery / Processor -->
+            <div style="width: 60px; height: 90px; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; display: flex; flex-direction: column; justify-content: space-between; padding: 8px;">
+              <div style="width: 100%; height: 2px; background: rgba(255,255,255,0.2);"></div>
+              <div style="width: 100%; height: 2px; background: rgba(255,255,255,0.2);"></div>
+              <div style="width: 100%; height: 2px; background: rgba(255,255,255,0.2);"></div>
+              <div style="text-align: center; color: var(--h2-cyan) !important; font-size: 0.5rem; font-weight: 800; letter-spacing: 0.1em; margin-top: 5px;">H2 CHIP</div>
+            </div>
+          </div>
+          
+          <!-- Connectors/Lines -->
+          <div style="position: absolute; right: -20px; top: 150px; width: 100px; height: 1px; background: var(--h2-cyan);"></div>
+          <div style="position: absolute; right: -20px; bottom: 200px; width: 100px; height: 1px; background: var(--h2-green);"></div>
+        </div>
+        
+        <div class="hl2-anatomy-content">
+          <div class="hl2-anatomy-item">
+            <h4>Arreglo Óptico PA-100</h4>
+            <p>Diodos verdes e infrarrojos penetran la dermis 100 veces por segundo para leer tu variabilidad cardíaca y oxigenación con precisión médica.</p>
+          </div>
+          <div class="hl2-anatomy-item" style="--h2-green: var(--h2-cyan);">
+            <h4>Chasis de Silicón Médico</h4>
+            <p>Hipoalergénico y transpirable. Diseñado para dormir sin sentirlo. Resiste sudor, agua (IPX5) y fricción extrema sin irritar tu piel.</p>
+          </div>
+          <div class="hl2-anatomy-item" style="--h2-green: #FFFFFF;">
+            <h4>H2 Micro-Procesador</h4>
+            <p>Procesa los algoritmos biométricos en el propio dispositivo antes de enviar la metadata encriptada a la App HALO. Batería garantizada de hasta 7 días.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCK 5: EL PITCH DIRECTO -->
+  <section class="hl2-pitch" id="comprar-v2">
+    <div class="hl2-wrap hl2-fade">
+      <div class="hl2-pitch-box">
+        <div class="hl2-pitch-img" style="overflow: hidden; border-radius: 24px; position: relative; min-height: 420px; background: #0A0A0A; border: 1px solid var(--h2-border);">
+          <!-- SPLIT-SCREEN CONTAINER -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; width: 100%; height: 100%; position: absolute; inset: 0;">
+            
+            <!-- LADO IZQUIERDO: PERSONA EN CAMA (SCENE UGC MINIMALISTA) -->
+            <div style="position: relative; overflow: hidden; background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(0,0,0,0.95)); border-right: 1px solid rgba(255,255,255,0.1); padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
+              <div style="position: absolute; inset: 0; background: radial-gradient(circle at 30% 30%, rgba(0,236,255,0.08), transparent 70%); pointer-events: none;"></div>
+              
+              <!-- Tag Minimalista -->
+              <span style="background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; border-radius: 99px; color: #FFFFFF !important; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; align-self: flex-start; z-index: 2;">
+                06:30 AM — DESPERTAR
+              </span>
+
+              <!-- Vector Ilustrativo de Escena en Cama & Mirando Muñeca -->
+              <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 2; margin: auto 0; text-align: center; gap: 12px;">
+                {% if product.featured_image %}
+                  <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}" style="width: 130px; height: 130px; object-fit: cover; border-radius: 20px; border: 2px solid var(--h2-cyan); box-shadow: 0 0 30px rgba(0,236,255,0.2);">
+                {% else %}
+                  <div style="width: 100px; height: 100px; background: rgba(0,236,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid var(--h2-cyan);">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--h2-cyan)" stroke-width="1.5"><path d="M2 20h20M4 20v-6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6M6 12V9a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v3"/></svg>
+                  </div>
+                {% endif %}
+                <div style="color: #FFFFFF !important; font-size: 0.85rem; font-weight: 700; line-height: 1.3;">Cero Alarma Cortisol. Lectura Invisible de Biometría.</div>
+              </div>
+
+              <div style="z-index: 2; color: var(--h2-text-muted) !important; font-size: 0.7rem; text-transform: uppercase; font-weight: 700;">UGC Real — Sin Pantallas</div>
+            </div>
+
+            <!-- LADO DERECHO: INTERFAZ APP HALO (NIVEL DE ESTRÉS Y SUEÑO) -->
+            <div style="background: #050505; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; border-left: 1px solid rgba(0,236,255,0.15);">
+              
+              <!-- Header App -->
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span style="color: var(--h2-cyan) !important; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em;">HALO APP v4.2</span>
+                <span style="width: 8px; height: 8px; background: var(--h2-green); border-radius: 50%;"></span>
+              </div>
+
+              <!-- Dashboard Score -->
+              <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 15px 0;">
+                <div style="position: relative; display: flex; align-items: center; justify-content: center; width: 110px; height: 110px;">
+                  <svg width="110" height="110" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="42" stroke="rgba(255,255,255,0.08)" stroke-width="8" fill="none"/>
+                    <circle cx="50" cy="50" r="42" stroke="#00ECFF" stroke-width="8" fill="none" stroke-dasharray="264" stroke-dashoffset="40" stroke-linecap="round"/>
+                  </svg>
+                  <div style="position: absolute; display: flex; flex-direction: column; align-items: center;">
+                    <span style="font-size: 2rem; font-weight: 900; color: #FFFFFF !important; line-height: 1;">96%</span>
+                    <span style="font-size: 0.6rem; color: var(--h2-cyan) !important; font-weight: 800; text-transform: uppercase;">RECOVERY</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Metrics Widget -->
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                <div style="background: rgba(255,255,255,0.04); border-radius: 10px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center;">
+                  <span style="color: rgba(255,255,255,0.7) !important; font-size: 0.75rem;">Fase Sueño REM:</span>
+                  <span style="color: #FFFFFF !important; font-weight: 800; font-size: 0.8rem;">2h 45m</span>
+                </div>
+                <div style="background: rgba(0,201,123,0.1); border: 1px solid rgba(0,201,123,0.25); border-radius: 10px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center;">
+                  <span style="color: var(--h2-green) !important; font-size: 0.75rem; font-weight: 700;">Nivel de Estrés:</span>
+                  <span style="color: var(--h2-green) !important; font-weight: 800; font-size: 0.8rem;">BAJO (12/100)</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+        <div class="hl2-pitch-content">
+          <h2>{{ product.title | default: 'LOOP Band® Pro' }}</h2>
+          <p style="color: var(--h2-text-muted) !important; font-size: 1.15rem; line-height: 1.6;">Incluye sensor de grado médico, banda ultra transpirable y acceso de por vida a la app analítica de HALO.</p>
+          
+          <div class="hl2-pitch-price" style="margin-bottom: 15px;">{% if product %}{{ product.price | money }}{% else %}$59,990{% endif %}</div>
+
+          <!-- MERCADOPAGO MINI BANNER -->
+          <div class="hl2-mp-card" style="border-radius: 12px; padding: 12px 16px; display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+            <img src="https://http2.mlstatic.com/frontend-assets/mp-web-navigation/ui-navigation/5.19.1/mercadopago/logo__small@2x.png" alt="Mercado Pago" style="width: 36px; height: 36px; object-fit: contain; background:#FFF; border-radius:6px; padding:4px; flex-shrink:0;">
+            <div style="font-size: 0.88rem; color: #FFFFFF !important;">
+              Paga en <span class="hl2-mp-highlight" style="color: #009EE3 !important; font-weight:700;">3 cuotas</span> de <strong style="color:#FFF !important;">{% if product %}{{ product.price | divided_by: 3 | money }}{% else %}$19,997{% endif %}</strong> <span style="color: var(--h2-green) !important; font-weight:700; margin-left: 4px;">Sin Interés</span>
+            </div>
+          </div>
+
+          <ul class="hl2-checklist" style="margin-bottom: 25px;">
+            <li>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span style="color:#FFFFFF !important;">App Gratuita de por Vida ($0 Suscripción)</span>
+            </li>
+            <li>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span style="color:#FFFFFF !important;">Sin mensualidades ocultas</span>
+            </li>
+            <li>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span style="color:#FFFFFF !important;">Envío inmediato a todo Chile (MISMO DÍA)</span>
+            </li>
+          </ul>
+
+          <div style="margin-bottom: 20px;">
+            {% if product %}
+            <form method="post" action="/cart/add">
+              <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+              <button type="submit" class="hl2-btn" style="width: 100%; flex-direction: column; padding: 18px 20px; gap: 4px;">
+                <span style="font-size: 1.15rem; font-weight: 800; color: #FFFFFF !important;">Pide ahora y aprovecha el Descuento 🎁</span>
+                <span style="font-size: 0.8rem; font-weight: 700; color: rgba(255,255,255,0.7) !important; text-transform: uppercase; letter-spacing: 0.05em;">ANTES DE QUE SE AGOTE LA PROMO 🔥</span>
+              </button>
+            </form>
+            {% else %}
+            <a href="#comprar-v2" class="hl2-btn" style="width: 100%; flex-direction: column; padding: 18px 20px; gap: 4px; text-align: center;">
+              <span style="font-size: 1.15rem; font-weight: 800; color: #FFFFFF !important;">Pide ahora y aprovecha el Descuento 🎁</span>
+              <span style="font-size: 0.8rem; font-weight: 700; color: rgba(255,255,255,0.7) !important; text-transform: uppercase; letter-spacing: 0.05em;">ANTES DE QUE SE AGOTE LA PROMO 🔥</span>
             </a>
+            {% endif %}
           </div>
-
-          <div class="hh-hero-trust-strip">
-            <span class="hh-hero-tp-logo">★ Trustpilot</span>
-            <div class="hh-hero-tp-stars">★★★★★</div>
-            <span class="hh-hero-tp-text"><strong>Excelente 4.9/5</strong> (+4.800 viajeros en Chile)</span>
+          
+          <div class="hl2-trust-badges">
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              Pago 100% Seguro
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              4.9/5 (Trustpilot)
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+              Garantía de 30 Días
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+              Compatible Apple/Android
+            </span>
           </div>
-        </div>
-
-        <!-- VISUAL RIGHT -->
-        <div class="hh-hero-card">
-          <div class="hh-hero-card-img-wrap">
-            <img
-              src="{{ 'halo-hero-rich.png' | asset_url }}?v=2"
-              alt="Mochila Compress Bag Pro con Turbo-Pump"
-              class="hh-hero-card-img"
-              loading="eager"
-              width="800"
-            >
-          </div>
-          <div class="hh-hero-card-footer">
-            <div class="hh-hero-card-footer-item">
-              <span>✈️ Tarifa $0</span>
-            </div>
-            <div class="hh-hero-card-footer-item">
-              <span>⚡ Vacío en 30s</span>
-            </div>
-            <div class="hh-hero-card-footer-item">
-              <span>🔋 Carga USB</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ════════════════════════════════════════════════
-       2. AIRLINE COMPATIBILITY & SOCIAL PROOF STRIP
-       ════════════════════════════════════════════════ -->
-  <section class="hh-social-strip">
-    <div class="hh-container">
-      <div class="hh-social-inner">
-        <p class="hh-social-title">100% Calibrada para Cabina en:</p>
-        <div class="hh-airlines-logos">
-          <span class="hh-airline-badge">SKY AIRLINE</span>
-          <span class="hh-airline-badge">JETSMART</span>
-          <span class="hh-airline-badge">LATAM AIRLINES</span>
-          <span class="hh-airline-badge">AVIANCA</span>
-          <span class="hh-airline-badge">COPA AIRLINES</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ════════════════════════════════════════════════
-       3. PRODUCT SHOWCASE / BOUTIQUE GRID
-       ════════════════════════════════════════════════ -->
-  <section class="hh-products" id="hh-coleccion">
-    <div class="hh-container">
+  <!-- BLOCK 5.1: CASOS DE ESTUDIO (ARQUETIPOS) -->
+  <section class="hl2-cases-section">
+    <div class="hl2-wrap hl2-fade">
+      <div class="hl2-compare-header">
+        <span class="hl2-tag">INGENIERÍA HUMANA</span>
+        <h2>Cómo cambia tu biología.</h2>
+      </div>
+      <div class="hl2-cases-grid">
+        <div class="hl2-case-card">
+          <div class="hl2-case-img" style="height: 240px; background: radial-gradient(circle at center, rgba(0, 201, 123, 0.12) 0%, rgba(15,15,15,0.95) 80%); border-bottom: 1px solid var(--h2-border); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 25px; position: relative;">
+            <div style="position: absolute; top: 15px; left: 15px; background: rgba(0,201,123,0.15); border: 1px solid rgba(0,201,123,0.3); padding: 4px 10px; border-radius: 99px; color: var(--h2-green) !important; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.05em;">
+              PERFIL: ALTO RENDIMIENTO
+            </div>
+            
+            <div style="display:flex; align-items:center; gap:12px; margin-top: 15px;">
+              <div style="width: 44px; height: 44px; background: #000; border: 2px solid var(--h2-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink:0;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--h2-green)" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+              </div>
+              <div>
+                <div style="color: #FFFFFF !important; font-weight: 800; font-size: 1.05rem;">Atleta de Triatlón</div>
+                <div style="color: #00B67A !important; font-size: 0.8rem; font-weight: 700;">★★★★★ 5.0 Verificado</div>
+              </div>
+            </div>
+
+            <!-- Waveform & Stat -->
+            <div style="margin-top: 20px; width: 100%; display: flex; align-items: center; justify-content: space-around; background: rgba(255,255,255,0.03); padding: 10px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06);">
+              <div style="text-align: center;">
+                <div style="color: var(--h2-text-muted) !important; font-size: 0.7rem; text-transform: uppercase;">HRV Promedio</div>
+                <div style="color: var(--h2-green) !important; font-size: 1.1rem; font-weight: 900;">108 ms (+32%)</div>
+              </div>
+              <div style="width: 1px; height: 25px; background: rgba(255,255,255,0.1);"></div>
+              <div style="text-align: center;">
+                <div style="color: var(--h2-text-muted) !important; font-size: 0.7rem; text-transform: uppercase;">VO2 Max Index</div>
+                <div style="color: #FFFFFF !important; font-size: 1.1rem; font-weight: 900;">64 ml/kg</div>
+              </div>
+            </div>
+          </div>
+          <div class="hl2-case-body">
+            <h4>"Dejé de sobreentrenarme."</h4>
+            <p class="hl2-case-quote">"Entrenaba 6 días a la semana y estaba estancado. Empecé a usar LOOP y descubrí que mi HRV estaba por el piso. Al adaptar mis días de descanso según mi biología real, rompí mis récords personales en un mes."</p>
+            <div class="hl2-case-result">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
+              +32% Recuperación Muscular
+            </div>
+          </div>
+        </div>
+        <div class="hl2-case-card">
+          <div class="hl2-case-img" style="height: 240px; background: radial-gradient(circle at center, rgba(0, 236, 255, 0.12) 0%, rgba(15,15,15,0.95) 80%); border-bottom: 1px solid var(--h2-border); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 25px; position: relative;">
+            <div style="position: absolute; top: 15px; left: 15px; background: rgba(0,236,255,0.15); border: 1px solid rgba(0,236,255,0.3); padding: 4px 10px; border-radius: 99px; color: var(--h2-cyan) !important; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.05em;">
+              PERFIL: ALTO ESTRÉS (CEO)
+            </div>
+
+            <div style="display:flex; align-items:center; gap:12px; margin-top: 15px;">
+              <div style="width: 44px; height: 44px; background: #000; border: 2px solid var(--h2-cyan); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink:0;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--h2-cyan)" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+              </div>
+              <div>
+                <div style="color: #FFFFFF !important; font-weight: 800; font-size: 1.05rem;">Fundador & VP Tech</div>
+                <div style="color: #00B67A !important; font-size: 0.8rem; font-weight: 700;">★★★★★ 5.0 Verificado</div>
+              </div>
+            </div>
+
+            <!-- Waveform & Stat -->
+            <div style="margin-top: 20px; width: 100%; display: flex; align-items: center; justify-content: space-around; background: rgba(255,255,255,0.03); padding: 10px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06);">
+              <div style="text-align: center;">
+                <div style="color: var(--h2-text-muted) !important; font-size: 0.7rem; text-transform: uppercase;">Sueño REM</div>
+                <div style="color: var(--h2-cyan) !important; font-size: 1.1rem; font-weight: 900;">2h 50m (+45m)</div>
+              </div>
+              <div style="width: 1px; height: 25px; background: rgba(255,255,255,0.1);"></div>
+              <div style="text-align: center;">
+                <div style="color: var(--h2-text-muted) !important; font-size: 0.7rem; text-transform: uppercase;">Nivel Cortisol</div>
+                <div style="color: var(--h2-green) !important; font-size: 1.1rem; font-weight: 900;">Bajo (Optimizado)</div>
+              </div>
+            </div>
+          </div>
+          <div class="hl2-case-body">
+            <h4>"Dormir volvió a ser fácil."</h4>
+            <p class="hl2-case-quote">"Mi reloj inteligente me vibraba a las 11 PM con correos, disparando mi estrés. Cambiar a una banda invisible (LOOP) apagó las distracciones. Ahora solo me enfoco en los datos de mis fases profundas al despertar."</p>
+            <div class="hl2-case-result">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              +1.5 Hrs Sueño Profundo
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCK 6: TRUSTPILOT INFINITO -->
+  <section class="hl2-marquee-section">
+    <div class="hl2-wrap hl2-fade">
+      <h2>Avalado por Expertos</h2>
+    </div>
+    <div class="hl2-marquee-track">
+      <div class="hl2-review">
+        <div style="color: #00B67A; font-size: 1.2rem;">★★★★★</div>
+        <h4>Por fin sin suscripciones</h4>
+        <p>"El Oura me costó un dineral y encima tenía que pagar mensual. Halo tiene las mismas métricas exactas y es de pago único. Espectacular diseño invisible."</p>
+        <span>— Miguel R. (Atleta de Alto Rendimiento)</span>
+      </div>
+      <div class="hl2-review">
+        <div style="color: #00B67A; font-size: 1.2rem;">★★★★★</div>
+        <h4>HRV Impecable</h4>
+        <p>"Mi Apple Watch me volvía loco con las notificaciones antes de dormir. Esto es una banda suave que ni sientes, pero me da un desglose de mi sueño profundo perfecto."</p>
+        <span>— Sofía L. (Biohacker)</span>
+      </div>
+      <div class="hl2-review">
+        <div style="color: #00B67A; font-size: 1.2rem;">★★★★★</div>
+        <h4>Mejor inversión del año</h4>
+        <p>"No imaginé que la recuperación se sintiera tan tangible. Al poder ver qué días mi cuerpo requiere descanso, dejé de lesionarme entrenando. El soporte es A1."</p>
+        <span>— David C. (Crossfit)</span>
+      </div>
+      <!-- DUPLICATES FOR INFINITE SCROLL -->
+      <div class="hl2-review">
+        <div style="color: #00B67A; font-size: 1.2rem;">★★★★★</div>
+        <h4>Por fin sin suscripciones</h4>
+        <p>"El Oura me costó un dineral y encima tenía que pagar mensual. Halo tiene las mismas métricas exactas y es de pago único. Espectacular diseño invisible."</p>
+        <span>— Miguel R. (Atleta de Alto Rendimiento)</span>
+      </div>
+      <div class="hl2-review">
+        <div style="color: #00B67A; font-size: 1.2rem;">★★★★★</div>
+        <h4>HRV Impecable</h4>
+        <p>"Mi Apple Watch me volvía loco con las notificaciones antes de dormir. Esto es una banda suave que ni sientes, pero me da un desglose de mi sueño profundo perfecto."</p>
+        <span>— Sofía L. (Biohacker)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCK 6.1: WHAT'S IN THE BOX -->
+  <section class="hl2-box-section">
+    <div class="hl2-wrap hl2-fade">
+      <div class="hl2-box-container">
+        <h2>Qué recibes hoy.</h2>
+        <p style="color: var(--h2-text-muted) !important; font-size: 1.2rem; margin-top: 15px;">Hardware clínico. Software vitalicio. Cero complicaciones.</p>
+        
+        <div class="hl2-box-list">
+          <div class="hl2-box-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>1x Sensor Biométrico LOOP (Núcleo)</span>
+          </div>
+          <div class="hl2-box-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>1x Banda ultra-transpirable intercambiable</span>
+          </div>
+          <div class="hl2-box-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>1x Cable de carga rápida magnética</span>
+          </div>
+          <div class="hl2-box-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Acceso Vitalicio a la App HALO Health</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCK 7: FAQS & GARANTÍA CLÍNICA -->
+  <section class="hl2-closure">
+    <div class="hl2-wrap">
       
-      <div class="hh-section-header">
-        <span class="hh-section-tag">Colección Táctica 2026</span>
-        <h2 class="hh-section-title">Diseñados para Eliminar el Exceso</h2>
-        <p class="hh-section-subtitle">Cada pieza del ecosistema HALO está construida con materiales balísticos de grado militar y optimizada para máxima capacidad sin pagar multas.</p>
-      </div>
-
-      <div class="hh-products-grid">
-
-        <!-- PRODUCTO 1 (ESTRELLA) -->
-        <div class="hh-product-card featured">
-          <span class="hh-product-badge-float">MÁS VENDIDO 🔥</span>
-          <div class="hh-product-img-wrap">
-            <img src="{{ 'halo-hero-clean.png' | asset_url }}" alt="Compress Bag Pro" class="hh-product-img" loading="lazy" width="600">
+      <div class="hl2-faq hl2-fade">
+        <h2>Preguntas Clínicas Frecuentes</h2>
+        
+        <div class="hl2-faq-item">
+          <div class="hl2-faq-q" onclick="this.parentElement.toggleAttribute('open')">
+            <span>¿Es compatible con Apple Health o Google Fit?</span>
+            <span>+</span>
           </div>
-          <div class="hh-product-info">
-            <h3 class="hh-product-title">Compress Bag® Pro</h3>
-            <p class="hh-product-desc">La mochila definitiva de compresión al vacío. Lleva 10 días de ropa en 45x35cm con Turbo-Pump y Powerbank incluidos.</p>
-            <div class="hh-product-price-row">
-              <span class="hh-product-price">$89.990</span>
-              <span class="hh-product-price-old">$140.000</span>
-            </div>
-          </div>
-          <a href="{{ section.settings.featured_product_url | default: '/products/compress-bag' }}" class="hh-btn-primary" style="width:100%;">
-            <span>Ver Producto Estrella →</span>
-          </a>
-        </div>
-
-        <!-- PRODUCTO 2 -->
-        <div class="hh-product-card">
-          <div class="hh-product-img-wrap">
-            <img src="{{ 'halo-solution-pump.png' | asset_url }}" alt="Turbo-Pump 100W" class="hh-product-img" loading="lazy" width="600">
-          </div>
-          <div class="hh-product-info">
-            <h3 class="hh-product-title">Turbo-Pump 100W Inalámbrica</h3>
-            <p class="hh-product-desc">Mini-turbina de vacío recargable por USB-C. Extrae el 100% del aire en 30 segundos con batería de larga duración.</p>
-            <div class="hh-product-price-row">
-              <span class="hh-product-price">$29.990</span>
-              <span class="hh-product-price-old">$45.000</span>
-            </div>
-          </div>
-          <a href="{{ section.settings.featured_product_url | default: '/products/compress-bag' }}" class="hh-btn-secondary" style="width:100%;">
-            <span>Incluido en Bundle</span>
-          </a>
-        </div>
-
-        <!-- PRODUCTO 3 -->
-        <div class="hh-product-card">
-          <div class="hh-product-img-wrap">
-            <img src="{{ 'halo-anatomy-clean.png' | asset_url }}" alt="Set Bolsas Militares" class="hh-product-img" loading="lazy" width="600">
-          </div>
-          <div class="hh-product-info">
-            <h3 class="hh-product-title">Set 3x Bolsas Herméticas</h3>
-            <p class="hh-product-desc">Polímero militar reforzado con válvula de silicona antifugas. Reutilizables de por vida para cualquier viaje.</p>
-            <div class="hh-product-price-row">
-              <span class="hh-product-price">$14.990</span>
-              <span class="hh-product-price-old">$25.000</span>
-            </div>
-          </div>
-          <a href="{{ section.settings.featured_product_url | default: '/products/compress-bag' }}" class="hh-btn-secondary" style="width:100%;">
-            <span>Incluido en Bundle</span>
-          </a>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ════════════════════════════════════════════════
-       4. BRAND MANIFESTO (BLACK SECTION)
-       ════════════════════════════════════════════════ -->
-  <section class="hh-manifesto">
-    <div class="hh-container">
-      <div class="hh-manifesto-grid">
-
-        <div>
-          <span class="hh-manifesto-tag">Nuestra Filosofía</span>
-          <h2 class="hh-manifesto-title">Nacimos para terminar con la trampa del equipaje low-cost.</h2>
-          <p class="hh-manifesto-body">
-            Las aerolíneas crearon un modelo de negocio abusivo: te venden pasajes baratos para luego emboscarte en la puerta de embarque y cobrarte el doble por llevar tu propia ropa.
-            <br><br>
-            En <strong>HALO</strong> aplicamos ingeniería balística de precisión para que nunca más tengas que abrir tu ropa en el suelo ni pagar un solo peso extra.
-          </p>
-          <a href="{{ section.settings.featured_product_url | default: '/products/compress-bag' }}" class="hh-btn-primary">
-            <span>Conoce la Compress Bag® →</span>
-          </a>
-        </div>
-
-        <div class="hh-manifesto-visual">
-          <img src="{{ 'halo-enemy-trap.png' | asset_url }}" alt="Manifiesto Anti-Multas HALO" class="hh-manifesto-img" loading="lazy" width="800">
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ════════════════════════════════════════════════
-       5. 3 ENGINEERING PILLARS (BENTO GRID)
-       ════════════════════════════════════════════════ -->
-  <section class="hh-pillars">
-    <div class="hh-container">
-      
-      <div class="hh-section-header">
-        <span class="hh-section-tag">Ingeniería sin Concesiones</span>
-        <h2 class="hh-section-title">Los 3 Estándares de Calidad HALO</h2>
-        <p class="hh-section-subtitle">No fabricamos mochilas comunes. Desarrollamos herramientas de transporte táctico construidas para durar más de 10 años.</p>
-      </div>
-
-      <div class="hh-pillars-grid">
-
-        <div class="hh-pillar-card">
-          <div class="hh-pillar-icon-box">🛡️</div>
-          <div>
-            <h3 class="hh-pillar-title">Cordura 1000D & Cierres YKK-R</h3>
-            <p class="hh-pillar-desc">Tela impermeable ultra resistente a cortes y abrasión con cremalleras blindadas que soportan más de 45 kg de presión sin abrirse jamás.</p>
+          <div class="hl2-faq-a">
+            Sí. LOOP Band se sincroniza de forma nativa con los ecosistemas de salud para unificar tus métricas sin fricción.
           </div>
         </div>
 
-        <div class="hh-pillar-card">
-          <div class="hh-pillar-icon-box">⚡</div>
-          <div>
-            <h3 class="hh-pillar-title">Compresión Eléctrica en 30s</h3>
-            <p class="hh-pillar-desc">Motor Turbo-Pump de 100W que extrae el 100% del aire sin bombas manuales inútiles ni esfuerzo físico en el piso del hotel.</p>
+        <div class="hl2-faq-item">
+          <div class="hl2-faq-q" onclick="this.parentElement.toggleAttribute('open')">
+            <span>¿Tiene batería suficiente para rastrear múltiples días?</span>
+            <span>+</span>
           </div>
-        </div>
-
-        <div class="hh-pillar-card">
-          <div class="hh-pillar-icon-box">💻</div>
-          <div>
-            <h3 class="hh-pillar-title">Apertura 180° TSA & Carga USB</h3>
-            <p class="hh-pillar-desc">Pasa los controles de seguridad del aeropuerto en 5 segundos y carga tu teléfono caminando gracias al módulo USB integrado.</p>
+          <div class="hl2-faq-a">
+            Por supuesto. Al eliminar pantallas consumidoras de energía, nuestra batería de alto rendimiento soporta mediciones continuas sin preocuparte de recargas diarias.
           </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ════════════════════════════════════════════════
-       6. UGC & CUSTOMER REVIEWS
-       ════════════════════════════════════════════════ -->
-  <section class="hh-reviews">
-    <div class="hh-container">
-
-      <div class="hh-section-header">
-        <span class="hh-section-tag">Prueba Social Verificada</span>
-        <h2 class="hh-section-title">+4.800 Viajeros Ya No Pagan Multas</h2>
-        <p class="hh-section-subtitle">Historias reales de personas en Chile que transformaron su forma de viajar con HALO.</p>
-      </div>
-
-      <div class="hh-reviews-grid">
-
-        <div class="hh-review-card">
-          <div class="hh-review-stars">★★★★★</div>
-          <p class="hh-review-quote">"Viajé a Calama por Sky. Metí 8 días de ropa y la mochila pasó suave bajo el asiento. Me ahorré $58.000 solo en ese vuelo. Calidad atómica."</p>
-          <div class="hh-review-author-row">
-            <div class="hh-review-avatar">FR</div>
-            <div>
-              <p class="hh-review-name">Felipe R.</p>
-              <p class="hh-review-sub">Comprador verificado · Santiago</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="hh-review-card">
-          <div class="hh-review-stars">★★★★★</div>
-          <p class="hh-review-quote">"La bomba de vacío es ridículamente rápida. En 30 segundos la ropa queda como una tabla. Los cierres se sienten indestructibles."</p>
-          <div class="hh-review-author-row">
-            <div class="hh-review-avatar">CM</div>
-            <div>
-              <p class="hh-review-name">Camila M.</p>
-              <p class="hh-review-sub">Comprador verificado · Viña del Mar</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="hh-review-card">
-          <div class="hh-review-stars">★★★★★</div>
-          <p class="hh-review-quote">"Pasé por el control del aeropuerto de Santiago sin abrir la maleta gracias al bolsillo de la laptop. El mejor dinero invertido en equipaje."</p>
-          <div class="hh-review-author-row">
-            <div class="hh-review-avatar">MG</div>
-            <div>
-              <p class="hh-review-name">Matías G.</p>
-              <p class="hh-review-sub">Comprador verificado · Concepción</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ════════════════════════════════════════════════
-       7. BRAND FAQS
-       ════════════════════════════════════════════════ -->
-  <section class="hh-faq">
-    <div class="hh-container">
-
-      <div class="hh-section-header">
-        <span class="hh-section-tag">Dudas Frecuentes</span>
-        <h2 class="hh-section-title">Preguntas sobre HALO</h2>
-        <p class="hh-section-subtitle">Todo lo que necesitas saber sobre garantías, despachos en Chile y aerolíneas.</p>
-      </div>
-
-      <div class="hh-faq-list">
-
-        <div class="hh-faq-item active">
-          <div class="hh-faq-q" onclick="this.parentElement.classList.toggle('active')">
-            <h3>¿Cómo opera la Garantía Legal de 90 Días en Chile?</h3>
-            <span class="hh-faq-icon">+</span>
-          </div>
-          <div class="hh-faq-a">
-            <p>Cumplimos estrictamente con la Ley del Consumidor (SERNAC). Tienes 90 días corridos de garantía ante cualquier defecto de fabricación, falla en cremalleras o problemas en la Turbo-Pump con reposición inmediata.</p>
-          </div>
-        </div>
-
-        <div class="hh-faq-item">
-          <div class="hh-faq-q" onclick="this.parentElement.classList.toggle('active')">
-            <h3>¿Cuáles son los tiempos de despacho?</h3>
-            <span class="hh-faq-icon">+</span>
-          </div>
-          <div class="hh-faq-a">
-            <p>Despachamos el mismo día hábil para compras antes de las 14:00 hrs. En Santiago entregamos en 24 a 48 horas. A regiones de todo Chile de 2 a 4 días hábiles vía Blue Express o Starken con tracking en tiempo real.</p>
-          </div>
-        </div>
-
-        <div class="hh-faq-item">
-          <div class="hh-faq-q" onclick="this.parentElement.classList.toggle('active')">
-            <h3>¿Realmente pasa como Artículo Personal sin costo?</h3>
-            <span class="hh-faq-icon">+</span>
-          </div>
-          <div class="hh-faq-a">
-            <p>Sí. Sus dimensiones de 45 x 35 x 20 cm cumplen con la normativa de equipaje de mano gratuito que cabe bajo el asiento en Sky, JetSMART, LATAM y aerolíneas internacionales.</p>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ════════════════════════════════════════════════
-       8. BRAND TRUST & FOOTER CALLOUT
-       ════════════════════════════════════════════════ -->
-  <section class="hh-trust-banner">
-    <div class="hh-container">
-
-      <div class="hh-trust-grid">
-        <div>
-          <span class="hh-trust-item-icon">🛡️</span>
-          <p class="hh-trust-item-title">90 Días de Garantía</p>
-          <p class="hh-trust-item-desc">Blindaje legal SERNAC</p>
-        </div>
-        <div>
-          <span class="hh-trust-item-icon">🚚</span>
-          <p class="hh-trust-item-title">Despacho Exprés</p>
-          <p class="hh-trust-item-desc">Mismo día hábil en Chile</p>
-        </div>
-        <div>
-          <span class="hh-trust-item-icon">🔒</span>
-          <p class="hh-trust-item-title">Pago 100% Seguro</p>
-          <p class="hh-trust-item-desc">MercadoPago en 3 cuotas</p>
-        </div>
-        <div>
-          <span class="hh-trust-item-icon">💬</span>
-          <p class="hh-trust-item-title">Soporte 24/7</p>
-          <p class="hh-trust-item-desc">Atención humana directa</p>
         </div>
       </div>
 
-      <a href="{{ section.settings.featured_product_url | default: '/products/compress-bag' }}" class="hh-btn-primary" style="padding: 18px 36px; font-size: 16px;">
-        <span>Comprar Compress Bag® Pro con Envíos Gratis →</span>
-      </a>
+      <div class="hl2-guarantee hl2-fade">
+        <h3>Garantía por Defectos de Fábrica</h3>
+        <p>Tu hardware está respaldado por nuestra política clínica de calidad. Si tu dispositivo presenta cualquier defecto de funcionamiento o ensamble, lo reemplazaremos sin costo alguno. Tu inversión está protegida.</p>
+        <a href="#comprar-v2" class="hl2-btn">
+          <span>ASEGURA TU DESCANSO AHORA</span>
+        </a>
+        <div class="hl2-trust-badges">
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Soporte 24/7
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            Pago Encriptado
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            +15,000 Usuarios
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            Envío Inmediato
+          </span>
+        </div>
+      </div>
 
     </div>
   </section>
 
 </div>
 
-{% schema %}
-{
-  "name": "HALO Homepage",
-  "settings": [
-    {
-      "type": "text",
-      "id": "hero_title",
-      "label": "Titulo Principal del Hero",
-      "default": "El Estandar Tactico del Viaje Moderno"
-    },
-    {
-      "type": "textarea",
-      "id": "hero_subtitle",
-      "label": "Subtitulo del Hero",
-      "default": "Ingenieria balistica calibrada milimetricamente para cabina."
-    },
-    {
-      "type": "url",
-      "id": "featured_product_url",
-      "label": "URL del Producto Estrella"
-    }
-  ],
-  "presets": [
-    {
-      "name": "HALO Homepage"
-    }
-  ]
-}
-{% endschema %}
+<script>
+  // Clinical Fades Logic
+  document.addEventListener('DOMContentLoaded', function() {
+    const fadeEls = document.querySelectorAll('.hl2-fade');
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { root: null, threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    fadeEls.forEach(el => observer.observe(el));
+    
+    // Quick load for hero
+    setTimeout(() => {
+      const hero = document.querySelector('.hl2-hero__content');
+      if (hero) hero.classList.add('is-visible');
+    }, 150);
+  });
+</script>

@@ -398,31 +398,38 @@
   }
   .avp-table {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 40px;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 50px;
     text-align: left;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.01);
   }
   .avp-table th, .avp-table td {
-    padding: 20px 24px;
-    border-bottom: 1px solid var(--avp-border) !important;
+    padding: 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.05) !important;
     color: #FFFFFF !important;
-    background-color: transparent !important;
+    min-width: 180px;
   }
   .avp-table th {
-    font-size: 1.1rem;
-    font-weight: 800;
-    background: var(--avp-bg-graphite) !important;
+    background: rgba(0,0,0,0.4) !important;
   }
-  .avp-table tbody tr:nth-child(odd) td {
-    background-color: rgba(255, 255, 255, 0.02) !important;
+  .avp-table tbody tr:last-child td {
+    border-bottom: none !important;
   }
   .avp-table tbody tr:nth-child(even) td {
-    background-color: rgba(255, 255, 255, 0.05) !important;
+    background-color: rgba(0,0,0,0.2) !important;
   }
   .avp-table .highlight-col {
-    background: rgba(0, 236, 255, 0.08) !important;
-    border-left: 2px solid var(--avp-cyan) !important;
-    border-right: 2px solid var(--avp-cyan) !important;
+    background: rgba(0, 201, 123, 0.05) !important;
+    border-left: 1px solid rgba(0, 201, 123, 0.2) !important;
+    border-right: 1px solid rgba(0, 201, 123, 0.2) !important;
+  }
+  .avp-table thead .highlight-col {
+    background: rgba(0, 201, 123, 0.1) !important;
+    border-top: 3px solid #00C97B !important;
   }
 
   /* ====== BLOCK 7: SIMULADOR DUAL (GRIS CLARO CLÍNICO #F8FAFC) ====== */
@@ -576,7 +583,7 @@
           </div>
 
           <h1>{{ product.title | default: 'Atacama Vision PRO®' }}</h1>
-          <p>Lentes inteligentes fotocromáticos con cambio de tinte a un clic, traducción por voz simultánea con IA y sonido espacial de oído libre.</p>
+          <p style="color: rgba(255, 255, 255, 0.75) !important; font-size: 1.1rem; line-height: 1.5; margin-bottom: 24px;">Lentes inteligentes fotocromáticos con cambio de tinte a un clic, traducción por voz simultánea con IA y sonido espacial de oído libre.</p>
 
           <div class="avp-hero__price">
             {% if product %}
@@ -823,48 +830,50 @@
         <h2>¿Por qué Atacama Vision PRO® destruye lo convencional?</h2>
       </div>
 
-      <table class="avp-table">
-        <thead>
-          <tr>
-            <th style="color:#FFFFFF !important;">CARACTERÍSTICA</th>
-            <th class="highlight-col" style="color:#FFFFFF !important;">ATACAMA VISION PRO®</th>
-            <th style="color:#FFFFFF !important;">LENTES SOL COMUNES</th>
-            <th style="color:#FFFFFF !important;">AUDÍFONOS IN-EAR</th>
+      <div style="overflow-x:auto; padding-bottom: 20px;">
+        <table class="avp-table">
+          <thead>
+            <tr>
+            <th style="color:#A1A1AA !important; font-size:0.85rem; letter-spacing:0.1em; text-transform:uppercase;">Característica</th>
+            <th class="highlight-col" style="color:#FFFFFF !important; font-size:1.1rem; letter-spacing:-0.02em;">ATACAMA VISION PRO®</th>
+            <th style="color:#A1A1AA !important; font-size:0.85rem; letter-spacing:0.1em; text-transform:uppercase;">Lentes Comunes</th>
+            <th style="color:#A1A1AA !important; font-size:0.85rem; letter-spacing:0.1em; text-transform:uppercase;">Audífonos In-Ear</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td style="color:#FFFFFF !important;">Traducción Simultánea IA</td>
-            <td class="highlight-col"><strong style="color:#FFFFFF !important;">✔ 50+ Idiomas en Vivo</strong></td>
-            <td style="color:var(--avp-text-muted) !important;">✘ No Posee</td>
-            <td style="color:var(--avp-text-muted) !important;">✘ Incómodo / Limitado</td>
+            <td style="color:#FFFFFF !important; font-weight:600;">Traducción Simultánea IA</td>
+            <td class="highlight-col"><strong style="color:#FFFFFF !important;"><span style="color:#00C97B; margin-right:6px;">✔</span>50+ Idiomas en Vivo</strong></td>
+            <td style="color:rgba(255,255,255,0.4) !important;"><span style="color:#FF3333; margin-right:4px;">✘</span> No Posee</td>
+            <td style="color:rgba(255,255,255,0.4) !important;"><span style="color:#FF3333; margin-right:4px;">✘</span> Incómodo / Limitado</td>
           </tr>
           <tr>
-            <td style="color:#FFFFFF !important;">Fotocromía a un Clic</td>
-            <td class="highlight-col"><strong style="color:#FFFFFF !important;">✔ Instantánea 0.1s</strong></td>
-            <td style="color:var(--avp-text-muted) !important;">✘ Cristal Fijo Oscuro</td>
-            <td style="color:var(--avp-text-muted) !important;">✘ No Aplica</td>
+            <td style="color:#FFFFFF !important; font-weight:600;">Fotocromía a un Clic</td>
+            <td class="highlight-col"><strong style="color:#FFFFFF !important;"><span style="color:#00C97B; margin-right:6px;">✔</span>Instantánea 0.1s</strong></td>
+            <td style="color:rgba(255,255,255,0.4) !important;"><span style="color:#FF3333; margin-right:4px;">✘</span> Cristal Fijo Oscuro</td>
+            <td style="color:rgba(255,255,255,0.4) !important;"><span style="color:#FF3333; margin-right:4px;">✘</span> No Aplica</td>
           </tr>
           <tr>
-            <td style="color:#FFFFFF !important;">Seguridad Vial (Open-Ear)</td>
-            <td class="highlight-col"><strong style="color:#FFFFFF !important;">✔ 100% Alerta al Tráfico</strong></td>
-            <td style="color:#FFFFFF !important;">✔ Buena visión</td>
-            <td style="color:var(--avp-text-muted) !important;">✘ Sordo a emergencias</td>
+            <td style="color:#FFFFFF !important; font-weight:600;">Seguridad Vial (Open-Ear)</td>
+            <td class="highlight-col"><strong style="color:#FFFFFF !important;"><span style="color:#00C97B; margin-right:6px;">✔</span>100% Alerta al Tráfico</strong></td>
+            <td style="color:#A1A1AA !important;"><span style="color:#00C97B; margin-right:4px;">✔</span> Buena visión</td>
+            <td style="color:rgba(255,255,255,0.4) !important;"><span style="color:#FF3333; margin-right:4px;">✘</span> Sordo a emergencias</td>
           </tr>
           <tr>
-            <td style="color:#FFFFFF !important;">Conexión Asistente Voz</td>
-            <td class="highlight-col"><strong style="color:#FFFFFF !important;">✔ Siri / Google / ChatGPT</strong></td>
-            <td style="color:var(--avp-text-muted) !important;">✘ No Posee</td>
-            <td style="color:#FFFFFF !important;">✔ Básico</td>
+            <td style="color:#FFFFFF !important; font-weight:600;">Conexión Asistente Voz</td>
+            <td class="highlight-col"><strong style="color:#FFFFFF !important;"><span style="color:#00C97B; margin-right:6px;">✔</span>Siri / Google / ChatGPT</strong></td>
+            <td style="color:rgba(255,255,255,0.4) !important;"><span style="color:#FF3333; margin-right:4px;">✘</span> No Posee</td>
+            <td style="color:#A1A1AA !important;"><span style="color:#00C97B; margin-right:4px;">✔</span> Básico</td>
           </tr>
           <tr>
-            <td style="color:#FFFFFF !important;">Costo por Suscripciones</td>
-            <td class="highlight-col"><strong style="color:#FFFFFF !important;">✔ $0 Mensual</strong></td>
-            <td style="color:#FFFFFF !important;">✔ $0 Mensual</td>
-            <td style="color:var(--avp-text-muted) !important;">✘ In-App Pagado</td>
+            <td style="color:#FFFFFF !important; font-weight:600;">Costo por Suscripciones</td>
+            <td class="highlight-col"><strong style="color:#FFFFFF !important;"><span style="color:#00C97B; margin-right:6px;">✔</span>$0 Mensual</strong></td>
+            <td style="color:#A1A1AA !important;"><span style="color:#00C97B; margin-right:4px;">✔</span> $0 Mensual</td>
+            <td style="color:rgba(255,255,255,0.4) !important;"><span style="color:#FF3333; margin-right:4px;">✘</span> In-App Pagado</td>
           </tr>
         </tbody>
-      </table>
+        </table>
+      </div>
     </div>
   </section>
 
@@ -883,8 +892,8 @@
           <div style="text-align:center;">
             <div style="font-size:0.8rem; color:var(--avp-cyan) !important; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:15px;">PRUEBA DE TINTE ÓPTICO 0.1S</div>
             
-            <div id="avp-lens-preview" style="width:180px; height:180px; margin:0 auto 20px; border-radius:50%; border:3px solid var(--avp-cyan); background:radial-gradient(circle, rgba(0,236,255,0.2) 0%, #000 80%); display:flex; align-items:center; justify-content:center; box-shadow:0 0 40px rgba(0,236,255,0.3); transition: all 0.5s ease;">
-              <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="var(--avp-cyan)" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            <div id="avp-lens-preview" style="width:200px; height:200px; margin:0 auto 20px; border-radius:50%; border:3px solid rgba(255,255,255,0.5); background:#FFFFFF; display:flex; align-items:center; justify-content:center; box-shadow:0 0 20px rgba(255,255,255,0.2); transition: all 0.5s ease; overflow:hidden;">
+              <img id="avp-lens-img" src="{{ product.featured_image | img_url: '400x' }}" style="width:120%; height:120%; object-fit:cover; transition: filter 0.5s ease;" alt="Fotocromía Atacama">
             </div>
             
             <div style="color:#FFFFFF !important; font-size:1.1rem; font-weight:800; margin-bottom:6px;">Fotocromía Dinámica</div>
@@ -1090,12 +1099,15 @@
   // SIMULATOR MODE TOGGLE
   function setLensMode(mode) {
     const preview = document.getElementById('avp-lens-preview');
+    const img = document.getElementById('avp-lens-img');
     if (mode === 'day') {
-      preview.style.background = 'radial-gradient(circle, rgba(0,0,0,0.95) 0%, #000 100%)';
+      preview.style.background = '#1A1A1A';
+      if(img) img.style.filter = 'brightness(0.35) contrast(1.2)';
       preview.style.borderColor = 'var(--avp-cyan)';
       preview.style.boxShadow = '0 0 50px rgba(0,236,255,0.5)';
     } else {
-      preview.style.background = 'radial-gradient(circle, rgba(0,236,255,0.25) 0%, rgba(255,255,255,0.05) 100%)';
+      preview.style.background = '#FFFFFF';
+      if(img) img.style.filter = 'none';
       preview.style.borderColor = 'rgba(255,255,255,0.5)';
       preview.style.boxShadow = '0 0 20px rgba(255,255,255,0.2)';
     }

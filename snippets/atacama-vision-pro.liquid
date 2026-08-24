@@ -534,6 +534,19 @@
     transform: translateY(0);
   }
 
+    .avp-sim-overlay {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px;
+    }
+    .avp-flex-responsive {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+      align-items: center;
+    }
+
   @keyframes blink {
     0% { opacity: 1; }
     50% { opacity: 0.3; }
@@ -542,6 +555,11 @@
 
   /* ====== RESPONSIVE ====== */
   @media (max-width: 768px) {
+    .avp-flex-responsive {
+      flex-direction: column;
+      gap: 20px;
+      align-items: flex-start;
+    }
     .avp-hero__grid, .orion-grid, .apple-pin-grid {
       grid-template-columns: 1fr;
       gap: 30px !important;
@@ -728,40 +746,49 @@
   <section class="avp-pain-section">
     <div class="avp-wrap avp-fade">
       <div style="text-align:center; max-width:800px; margin:0 auto 60px;">
-        <span class="avp-tag avp-tag-red">ANÁLISIS DE FRICCIÓN VIAL Y SOCIAL</span>
-        <h2 style="font-weight:900 !important; color:#FFFFFF !important;">Tres problemas latentes que la industria óptica tradicional te ocultó.</h2>
+        <span class="avp-tag" style="background:rgba(0,201,123,0.15); color:var(--avp-green) !important; padding:6px 16px; border-radius:99px; font-size:0.8rem; font-weight:800; letter-spacing:0.1em; margin-bottom:16px; display:inline-block;">EL ESTÁNDAR BIÓNICO</span>
+        <h2 style="font-weight:900 !important; color:#FFFFFF !important;">Tres soluciones definitivas que elevan tu experiencia diaria.</h2>
       </div>
 
       <div style="display:flex; flex-direction:column; gap:40px;">
         
-        <!-- DOLOR 1: AISLAMIENTO PELIGROSO -->
-        <div class="avp-pain-card avp-fade stagger-1">
-          <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px;">
-            <span style="background:rgba(239,68,68,0.2); color:#EF4444 !important; font-size:0.8rem; font-weight:800; padding:4px 12px; border-radius:99px;">FRICCIÓN 01</span>
-            <span style="color:#CBD5E1 !important; font-size:0.85rem; font-weight:700;">SALUD Y SEGURIDAD VIAL</span>
+        <!-- SOLUCION 1: AUDIO OPEN EAR -->
+        <div class="avp-pain-card avp-fade stagger-1 avp-flex-responsive">
+          <img src="{{ 'avp-laptop-context.jpg' | asset_img_url: 'master' }}" alt="Audio Open Ear" style="flex: 0 0 350px; height:250px; object-fit:cover; border-radius:16px; width: 100%;">
+          <div>
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px;">
+              <span style="background:rgba(0,201,123,0.2); color:var(--avp-green) !important; font-size:0.8rem; font-weight:800; padding:4px 12px; border-radius:99px;">SOLUCIÓN 01</span>
+              <span style="color:#CBD5E1 !important; font-size:0.85rem; font-weight:700;">SALUD Y SEGURIDAD VIAL</span>
+            </div>
+            <h3>Sonido open-ear que no te aísla del entorno</h3>
+            <p>Escucha música o llamadas sin tapar tus oídos.<br>Mantente alerta a los bocinazos y al tráfico.<br>Cero dolor de orejas, úsalos todo el día.</p>
           </div>
-          <h3>Audífonos in-ear = Peligro en ruta</h3>
-          <p>Tapar tus oídos anula tu percepción espacial.<br>No escuchar frenos causa el 84% de choques.<br>El plástico genera dolor tras 45 minutos.</p>
         </div>
 
-        <!-- DOLOR 2: LA ESTAFA DE LENTES ESTÁTICOS -->
-        <div class="avp-pain-card avp-fade stagger-2">
-          <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px;">
-            <span style="background:rgba(239,68,68,0.2); color:#EF4444 !important; font-size:0.8rem; font-weight:800; padding:4px 12px; border-radius:99px;">FRICCIÓN 02</span>
-            <span style="color:#CBD5E1 !important; font-size:0.85rem; font-weight:700;">INGENIERÍA ÓPTICA ANACRÓNICA</span>
+        <!-- SOLUCION 2: FOTOCROMIA -->
+        <div class="avp-pain-card avp-fade stagger-2 avp-flex-responsive">
+          <img src="{{ 'avp-photochromic-demo.jpg' | asset_img_url: 'master' }}" alt="Lentes Fotocromáticos" style="flex: 0 0 350px; height:250px; object-fit:cover; border-radius:16px; width: 100%;">
+          <div>
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px;">
+              <span style="background:rgba(0,201,123,0.2); color:var(--avp-green) !important; font-size:0.8rem; font-weight:800; padding:4px 12px; border-radius:99px;">SOLUCIÓN 02</span>
+              <span style="color:#CBD5E1 !important; font-size:0.85rem; font-weight:700;">INGENIERÍA ÓPTICA ADAPTATIVA</span>
+            </div>
+            <h3>Lentes fotocromáticos que se adaptan a la luz</h3>
+            <p>Se oscurecen solos bajo el sol brillante.<br>Se aclaran al instante al entrar a un túnel.<br>Jamás tendrás que quitártelos de la cara.</p>
           </div>
-          <h3>Lentes oscuros que te dejan a ciegas</h3>
-          <p>Pagas caro por plástico que no se adapta al sol.<br>Si entras a un túnel o atardece, no ves nada.<br>Debes quitártelos y cargar otro par extra.</p>
         </div>
 
-        <!-- DOLOR 3: LA FRICCIÓN SOCIAL DEL IDIOMA -->
-        <div class="avp-pain-card avp-fade stagger-3">
-          <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px;">
-            <span style="background:rgba(239,68,68,0.2); color:#EF4444 !important; font-size:0.8rem; font-weight:800; padding:4px 12px; border-radius:99px;">FRICCIÓN 03</span>
-            <span style="color:#CBD5E1 !important; font-size:0.85rem; font-weight:700;">COMUNICACIÓN & ESTATUS</span>
+        <!-- SOLUCION 3: TRADUCCION -->
+        <div class="avp-pain-card avp-fade stagger-3 avp-flex-responsive">
+          <img src="{{ 'avp-airport-context.jpg' | asset_img_url: 'master' }}" alt="Traducción IA" style="flex: 0 0 350px; height:250px; object-fit:cover; border-radius:16px; width: 100%;">
+          <div>
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px;">
+              <span style="background:rgba(0,201,123,0.2); color:var(--avp-green) !important; font-size:0.8rem; font-weight:800; padding:4px 12px; border-radius:99px;">SOLUCIÓN 03</span>
+              <span style="color:#CBD5E1 !important; font-size:0.85rem; font-weight:700;">COMUNICACIÓN & ESTATUS</span>
+            </div>
+            <h3>Traducción simultánea fluida y sin pantallas</h3>
+            <p>Escucha la traducción directo en tu oído.<br>Mantén el contacto visual y fluye en reuniones.<br>Viaja por el mundo sin la barrera del idioma.</p>
           </div>
-          <h3>El dolor de cabeza de Google Translate</h3>
-          <p>Usar el celular para traducir rompe la fluidez.<br>Pierdes tiempo valioso en viajes de negocios.<br>Rompes el contacto visual con las personas.</p>
         </div>
 
       </div>

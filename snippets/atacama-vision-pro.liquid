@@ -892,8 +892,9 @@
           <div style="text-align:center;">
             <div style="font-size:0.8rem; color:var(--avp-cyan) !important; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:15px;">PRUEBA DE TINTE ÓPTICO 0.1S</div>
             
-            <div id="avp-lens-preview" style="width:200px; height:200px; margin:0 auto 20px; border-radius:50%; border:3px solid rgba(255,255,255,0.5); background:#FFFFFF; display:flex; align-items:center; justify-content:center; box-shadow:0 0 20px rgba(255,255,255,0.2); transition: all 0.5s ease; overflow:hidden;">
-              <img id="avp-lens-img" src="{{ product.featured_image | img_url: '400x' }}" style="width:120%; height:120%; object-fit:cover; transition: filter 0.5s ease;" alt="Fotocromía Atacama">
+            <div id="avp-lens-preview" style="width:240px; height:240px; margin:0 auto 20px; border-radius:50%; border:3px solid rgba(255,255,255,0.5); background:#1A1A1A; display:flex; align-items:center; justify-content:center; box-shadow:0 0 20px rgba(255,255,255,0.2); transition: all 0.5s ease; overflow:hidden; position:relative;">
+              <img id="avp-lens-img" src="{{ 'avp-photochromic-demo.jpg' | asset_url }}" style="width:100%; height:100%; object-fit:cover; transition: filter 0.5s ease; filter:none;" alt="Fotocromía Atacama Lifestyle">
+              <div id="avp-lens-overlay" style="position:absolute; inset:0; background:rgba(0,0,0,0); transition:background 0.5s ease; mix-blend-mode:multiply; pointer-events:none;"></div>
             </div>
             
             <div style="color:#FFFFFF !important; font-size:1.1rem; font-weight:800; margin-bottom:6px;">Fotocromía Dinámica</div>
@@ -1100,14 +1101,18 @@
   function setLensMode(mode) {
     const preview = document.getElementById('avp-lens-preview');
     const img = document.getElementById('avp-lens-img');
+    const overlay = document.getElementById('avp-lens-overlay');
+    
     if (mode === 'day') {
       preview.style.background = '#1A1A1A';
-      if(img) img.style.filter = 'brightness(0.35) contrast(1.2)';
+      if(img) img.style.filter = 'brightness(0.4) contrast(1.1) grayscale(0.2)';
+      if(overlay) overlay.style.background = 'rgba(0,0,0,0.4)';
       preview.style.borderColor = 'var(--avp-cyan)';
       preview.style.boxShadow = '0 0 50px rgba(0,236,255,0.5)';
     } else {
-      preview.style.background = '#FFFFFF';
+      preview.style.background = '#1A1A1A';
       if(img) img.style.filter = 'none';
+      if(overlay) overlay.style.background = 'rgba(0,0,0,0)';
       preview.style.borderColor = 'rgba(255,255,255,0.5)';
       preview.style.boxShadow = '0 0 20px rgba(255,255,255,0.2)';
     }

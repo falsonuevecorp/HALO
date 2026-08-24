@@ -497,9 +497,11 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(10, 10, 10, 0.95) !important;
-    backdrop-filter: blur(15px);
-    border-top: 1px solid var(--avp-cyan) !important;
+    background: rgba(10, 10, 10, 0.65) !important;
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.3);
     padding: 14px 24px;
     z-index: 9999;
     display: flex;
@@ -510,6 +512,12 @@
   }
   .avp-sticky-bar.is-visible {
     transform: translateY(0);
+  }
+
+  @keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
   }
 
   /* ====== RESPONSIVE ====== */
@@ -575,7 +583,7 @@
               <span class="price-current">{{ product.price | money }}</span>
               {% if product.compare_at_price > product.price %}
                 <span class="price-compare">{{ product.compare_at_price | money }}</span>
-                <span style="background:rgba(0,236,255,0.12); color:var(--avp-cyan) !important; font-size:0.75rem; font-weight:800; padding:4px 10px; border-radius:6px; border:1px solid rgba(0,236,255,0.3);">OFICIAL - 57% OFF</span>
+                <span style="background:#E60000; color:#FFFFFF !important; font-size:0.75rem; font-weight:900; padding:4px 10px; border-radius:6px; letter-spacing:0.05em;">SALE - 57% OFF</span>
               {% endif %}
             {% else %}
               <span class="price-current">$59,990 CLP</span>
@@ -1016,20 +1024,26 @@
 
   <!-- BLOCK 10: STICKY MOBILE CHECKOUT BAR -->
   <div id="avp-sticky-footer" class="avp-sticky-bar">
-    <div>
-      <div style="font-size:0.75rem; color:var(--avp-cyan) !important; font-weight:800; text-transform:uppercase;">ATACAMA VISION PRO®</div>
-      <div style="font-size:1.1rem; font-weight:900; color:#FFFFFF !important;">{% if product %}{{ product.price | money }}{% else %}$59,990 CLP{% endif %}</div>
+    <div style="display:flex; flex-direction:column; justify-content:center;">
+      <div style="font-size:0.7rem; color:#FF3333; font-weight:800; text-transform:uppercase; margin-bottom:2px; display:flex; align-items:center;">
+        <span style="display:inline-block; width:6px; height:6px; background:#FF3333; border-radius:50%; margin-right:4px; animation: blink 1s infinite;"></span>
+        Solo 6 unidades
+      </div>
+      <div style="display:flex; align-items:center; gap:6px;">
+        <span style="font-size:1.1rem; font-weight:900; color:#FFFFFF !important;">{% if product %}{{ product.price | money }}{% else %}$59.990{% endif %}</span>
+        <span style="font-size:0.85rem; color:rgba(255,255,255,0.4); text-decoration:line-through;">{% if product.compare_at_price %}{{ product.compare_at_price | money }}{% else %}$140.000{% endif %}</span>
+      </div>
     </div>
     {% if product %}
       <form method="post" action="/cart/add" style="margin:0;">
         <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
-        <button type="submit" class="avp-btn" style="padding:10px 20px; font-size:0.9rem;">
-          <span style="color:#FFFFFF !important;">Comprar Ahora 🎁</span>
+        <button type="submit" class="avp-btn" style="padding:10px 16px; font-size:0.85rem;">
+          <span style="color:#FFFFFF !important; white-space:nowrap;">Asegurar Descuento 🎁</span>
         </button>
       </form>
     {% else %}
-      <a href="#comprar-avp" class="avp-btn" style="padding:10px 20px; font-size:0.9rem;">
-        <span style="color:#FFFFFF !important;">Comprar Ahora 🎁</span>
+      <a href="#comprar-avp" class="avp-btn" style="padding:10px 16px; font-size:0.85rem;">
+        <span style="color:#FFFFFF !important; white-space:nowrap;">Asegurar Descuento 🎁</span>
       </a>
     {% endif %}
   </div>

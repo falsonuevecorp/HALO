@@ -12,23 +12,14 @@
 {% assign smartpaine_url   = smartpaine_prod.url   | default: '/products/smartpaine%C2%AE-inteligencia-artificial-con-cambio-de-color-audio-hd-traduccion' %}
 {% assign atacama_band_url = atacama_band_prod.url | default: '/products/atacama-band%C2%AE' %}
 
-{% if compress_bag_prod.featured_image %}
-  {% assign compress_bag_img = compress_bag_prod.featured_image | img_url: '800x800' %}
-{% else %}
-  {% assign compress_bag_img = 'halo-hero-rich.png' | asset_url %}
-{% endif %}
+{% assign compress_bag_img = 'halo-compress-bag-white.webp' | asset_url %}
 
-{% if smartpaine_prod.featured_image %}
-  {% assign smartpaine_img = smartpaine_prod.featured_image | img_url: '800x800' %}
-{% else %}
-  {% assign smartpaine_img = 'halo-stealth-hero.png' | asset_url %}
-{% endif %}
+{% assign smartpaine_img = 'halo-smartpaine-white.webp' | asset_url %}
 
-{% if atacama_band_prod.featured_image %}
-  {% assign atacama_band_img = atacama_band_prod.featured_image | img_url: '800x800' %}
-{% else %}
-  {% assign atacama_band_img = 'halo-anatomy-clean.png' | asset_url %}
-{% endif %}
+{% assign atacama_band_img = 'halo-atacama-band-white.webp' | asset_url %}
+
+<!-- ⚡ LCP OPTIMIZATION: Preload de la Hero Image (Menos Resource Load Delay) -->
+<link rel="preload" as="image" href="{{ compress_bag_img }}" fetchpriority="high">
 
 {% assign compress_bag_price = compress_bag_prod.price_min | money | default: '$49.990' %}
 {% assign smartpaine_price   = smartpaine_prod.price_min   | money | default: '$89.990' %}
@@ -467,7 +458,7 @@
 
           <a href="{{ compress_bag_url }}" class="hh-hero-prod-card highlight">
             <div class="hh-hero-prod-img-wrap">
-              <img src="{{ compress_bag_img }}" alt="Compress Bag® Pro HALO" class="hh-hero-prod-img" loading="eager">
+              <img src="{{ compress_bag_img }}" alt="Compress Bag® Pro HALO" class="hh-hero-prod-img" loading="eager" fetchpriority="high">
             </div>
             <div class="hh-hero-prod-info">
               <span class="hh-hero-prod-cat">Viaje · Carry-on</span>

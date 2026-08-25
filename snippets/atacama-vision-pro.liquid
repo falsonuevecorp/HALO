@@ -416,30 +416,36 @@
     border-spacing: 0;
     margin-top: 50px;
     text-align: left;
-    border: 1px solid rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 20px;
-    overflow: hidden;
-    background: rgba(255,255,255,0.01);
+    background: #0A0A0A;
   }
   .avp-table th, .avp-table td {
-    padding: 24px;
+    padding: 20px 24px;
     border-bottom: 1px solid rgba(255,255,255,0.05) !important;
     color: #FFFFFF !important;
     min-width: 180px;
+    font-size: 0.95rem;
   }
   .avp-table th {
-    background: rgba(0,0,0,0.4) !important;
+    background: #121214 !important;
+    font-size: 0.8rem !important;
+    font-weight: 700;
   }
   .avp-table tbody tr:last-child td {
     border-bottom: none !important;
   }
   .avp-table tbody tr:nth-child(even) td {
-    background-color: rgba(0,0,0,0.2) !important;
+    background-color: rgba(255,255,255,0.01) !important;
   }
-  .avp-table .highlight-col {
+  .highlight-col {
     background: rgba(0, 201, 123, 0.05) !important;
     border-left: 1px solid rgba(0, 201, 123, 0.2) !important;
     border-right: 1px solid rgba(0, 201, 123, 0.2) !important;
+  }
+  .avp-table thead .highlight-col {
+    background: rgba(0, 201, 123, 0.1) !important;
+    border-top: 2px solid var(--avp-green) !important;
   }
   .avp-table thead .highlight-col {
     background: rgba(0, 201, 123, 0.1) !important;

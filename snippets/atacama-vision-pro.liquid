@@ -416,40 +416,41 @@
     border-spacing: 0;
     margin-top: 50px;
     text-align: left;
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 20px;
-    background: #0A0A0A;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    background: #000000 !important;
+  }
+  .avp-table tr {
+    background: #000000 !important;
   }
   .avp-table th, .avp-table td {
     padding: 20px 24px;
-    border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1) !important;
     color: #FFFFFF !important;
-    min-width: 180px;
+    min-width: 160px;
     font-size: 0.95rem;
+    background: #000000 !important;
   }
   .avp-table th {
-    background: #121214 !important;
+    background: #0A0A0A !important;
     font-size: 0.8rem !important;
     font-weight: 700;
   }
   .avp-table tbody tr:last-child td {
     border-bottom: none !important;
   }
-  .avp-table tbody tr:nth-child(even) td {
-    background-color: rgba(255,255,255,0.01) !important;
+  .avp-table tbody tr:nth-child(even) td,
+  .avp-table tbody tr:nth-child(odd) td {
+    background-color: #000000 !important;
   }
   .highlight-col {
-    background: rgba(0, 201, 123, 0.05) !important;
-    border-left: 1px solid rgba(0, 201, 123, 0.2) !important;
-    border-right: 1px solid rgba(0, 201, 123, 0.2) !important;
+    background: #0A140F !important; /* Fully opaque dark green tint */
+    border-left: 1px solid rgba(0, 201, 123, 0.3) !important;
+    border-right: 1px solid rgba(0, 201, 123, 0.3) !important;
   }
   .avp-table thead .highlight-col {
-    background: rgba(0, 201, 123, 0.1) !important;
-    border-top: 2px solid var(--avp-green) !important;
-  }
-  .avp-table thead .highlight-col {
-    background: rgba(0, 201, 123, 0.1) !important;
-    border-top: 3px solid #00C97B !important;
+    background: #0D1A13 !important;
+    border-top: 3px solid var(--avp-green) !important;
   }
 
   /* ====== BLOCK 7: SIMULADOR DUAL (GRIS CLARO CLÍNICO #F8FAFC) ====== */

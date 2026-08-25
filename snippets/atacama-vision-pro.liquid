@@ -172,7 +172,8 @@
 
   .avp-hero__price {
     display: flex;
-    align-items: baseline;
+    align-items: center;
+    flex-wrap: wrap;
     gap: 15px;
     margin-bottom: 20px;
   }
@@ -566,6 +567,17 @@
     }
     .avp-hero h1 {
       font-size: 2.2rem !important;
+    }
+    .avp-hero__price {
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+    .price-current {
+      font-size: 2.2rem !important;
+    }
+    .price-compare {
+      font-size: 1.2rem !important;
     }
     .atacama-vision-pro h2 {
       font-size: 2rem !important;

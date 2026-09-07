@@ -1955,6 +1955,7 @@
           <!-- CTA Dual -->
           {%- if halo_product != blank -%}
             <form action="/cart/add" method="post">
+              <input type="hidden" name="return_to" value="/checkout">
               <input type="hidden" name="id" value="{{ halo_product.selected_or_first_available_variant.id }}">
               <button type="submit" class="halo-cta-btn">
                 <span class="halo-cta-main">DEJAR DE PAGAR EQUIPAJE ✈️</span>
@@ -2462,6 +2463,7 @@
         <!-- Final CTA -->
         {%- if halo_product != blank -%}
           <form action="/cart/add" method="post" style="display:flex;justify-content:center;">
+            <input type="hidden" name="return_to" value="/checkout">
             <input type="hidden" name="id" value="{{ halo_product.selected_or_first_available_variant.id }}">
             <button type="submit" class="halo-final-cta">
               <span class="halo-final-cta-main">Quiero mi Mochila HALO Stealth →</span>
@@ -2582,6 +2584,7 @@
     </div>
     {%- if halo_product != blank -%}
       <form action="/cart/add" method="post" style="margin:0;">
+        <input type="hidden" name="return_to" value="/checkout">
         <input type="hidden" name="id" value="{{ halo_product.selected_or_first_available_variant.id }}">
         <button type="submit" class="halo-sticky-btn">PEDIR AHORA 📦</button>
       </form>

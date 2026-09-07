@@ -1,20 +1,3 @@
-<div class="row">
-
-{%- section 'breadcrumbs' -%}
-
-{% comment %}
-  Markup del carrito inline, no en sections/cart-page.liquid: el sync de
-  GitHub->Shopify rechaza ese archivo de seccion, asi que /cart devolvia
-  "Liquid error ... 'cart-page' is not a valid section type". Los templates
-  si sincronizan. El div de abajo reproduce a mano el wrapper que Shopify
-  generaba para la seccion (shopify-section + la clase del schema), porque
-  el JS de actualizacion AJAX busca '.shopify-section.section--cart-page'.
-  Los dos settings del schema quedan fijados a sus defaults.
-{% endcomment %}
-{%- assign discountDisplay = 'money' -%}
-{%- assign featuredCollection = blank -%}
-
-<div id="shopify-section-cart-main" class="shopify-section col-12 row max-width section--cart-page">
 {% unless cart.items.size == 0 %}
 {% assign tran_checkout = 'general.buttons.checkout' | t %}
 {% assign tran_update = 'general.buttons.update_cart' | t %}
@@ -164,10 +147,10 @@
                 <textarea class="cart__notes--note" name="note" placeholder="{{'cart.page.additional_notes' | t}}" rows="6"></textarea>
             </div>
             <div class="cart__total">
-                {% if totalAmount > cart.total_price and discountDisplay != 'none' %}
+                {% if totalAmount > cart.total_price and section.settings.discount != 'none' %}
                 <span class="cart__total">{{'cart.page.total' | t}}: <span class="jsPrice">{{ totalAmount | money | strip_html }}</span></span>
-                <span class="cart__discount">{{'cart.page.discount' | t}}: <span class="cart__discount--amount {% if discountDisplay == 'money' %}jsPrice{% endif %}">
-                        {% if discountDisplay == 'money' %}
+                <span class="cart__discount">{{'cart.page.discount' | t}}: <span class="cart__discount--amount {% if section.settings.discount == 'money' %}jsPrice{% endif %}">
+                        {% if section.settings.discount == 'money' %}
                         -{{totalAmount | minus: cart.total_price | money | strip_html }}
                         {% else %}
                         {{ cart.total_price | minus: totalAmount | times: 100 | divided_by: totalAmount }}%
@@ -189,10 +172,10 @@
 
 <div class="row col-12">
     <h3 class="h-reset col-12 center">{{'cart.page.empty_text'|t}}</h3>
-    {% if featuredCollection != blank %}
+    {% if section.settings.featured != blank %}
     <h3 class="h-reset col-12 center cart__suggestion">{{'cart.page.empty_suggestion'|t}}</h3>
     <div class="col-12 cart__page--suggestions" style="overflow: auto;">
-        {% assign coll = collections[featuredCollection] %}
+        {% assign coll = collections[section.settings.featured] %}
         {% for item in coll.products limit: 4 %}
             <div class="col-12 col-md-3">
             {% render 'product-card-default', product: item, dsize: '3' %}
@@ -265,6 +248,61 @@ document.addEventListener('booster:cart:update', (e)=>{
     cartPage.updateCart()
 })
   </script>
-</div>
 
-</div>
+{% schema %}
+{
+"name": "Cart page",
+"class": "col-12 row max-width section--cart-page",
+"settings": [
+    {
+            "type": "header",
+            "content": "Help"
+        },
+        {
+        "type": "paragraph",
+        "content": "[Click here to follow an interactive Tutorial](https://vimeo.com/58187608)"
+        },
+{
+"type": "radio",
+"label": "Show discount in",
+"options": [
+{"value": "money", "label": "Money amount ($)"},
+{"value": "percent", "label": "Percent (%)"},
+{"value": "none", "label": "Don't show saved amount"}
+],
+"default": "money",
+"id": "discount"
+},
+{
+    "type": "header",
+    "content": "Featured products"
+},
+{
+    "type": "collection",
+    "label": "Featured collection",
+    "info": "This collection will be shown if there are no products in the cart",
+    "id": "featured"
+}
+],
+"blocks": [
+{
+"type": "cartField",
+"name": "Text field",
+"settings": [
+{
+"id": "required",
+"label": "This field is required",
+"type": "checkbox",
+"default": false
+},
+{
+"id": "label",
+"label": "Label",
+"default": "Additional field",
+"type": "text"
+}
+]
+}
+]
+}
+{% endschema %}

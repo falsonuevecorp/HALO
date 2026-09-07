@@ -1,1 +1,17 @@
-{"wrapper":"div.row","sections":{"breadcrumbs":{"type":"breadcrumbs","settings":{}},"content":{"type":"cart-page","settings":{}}},"order":["breadcrumbs","content"]}
+{
+  "wrapper": "div.row",
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {}
+    },
+    "content": {
+      "type": "cart-page",
+      "settings": {}
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "content"
+  ]
+}

@@ -42,7 +42,8 @@
             <a class="card__img--container minicart__image" href="{{ item.url | within: collections.all }}">
                 <div class="card__img--ratio">
                     <div class="card__img">
-                        {% render 'image', src: item, alt: item.title | escape , size: 'medium' %}
+                        {%- assign itemAlt = item.title | escape -%}
+                        {% render 'image', src: item, alt: itemAlt, size: 'medium' %}
                     </div>
                 </div>
             </a>

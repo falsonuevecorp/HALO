@@ -715,6 +715,7 @@
           <div style="margin-bottom:25px;">
             {% if product %}
               <form method="post" action="/cart/add">
+                <input type="hidden" name="return_to" value="/checkout">
                 <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
                 <button type="submit" class="avp-btn" style="width:100%;">
                   <span style="font-size:1.15rem; font-weight:800; color:#FFFFFF !important;">Pide tus Atacama Vision PRO® 🎁</span>
@@ -1101,6 +1102,7 @@
         <div style="max-width:500px; margin:0 auto 30px;">
           {% if product %}
             <form method="post" action="/cart/add">
+              <input type="hidden" name="return_to" value="/checkout">
               <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
               <button type="submit" class="avp-btn" style="width:100%;">
                 <span style="font-size:1.25rem; font-weight:800; color:#FFFFFF !important;">Pide tus Atacama Vision PRO® 🎁</span>
@@ -1138,6 +1140,7 @@
     </div>
     {% if product %}
       <form method="post" action="/cart/add" style="margin:0;">
+        <input type="hidden" name="return_to" value="/checkout">
         <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
         <button type="submit" class="avp-btn" style="padding:10px 16px; font-size:0.85rem;">
           <span style="color:#FFFFFF !important; white-space:nowrap;">Asegurar Descuento 🎁</span>

@@ -32,7 +32,7 @@ button--{{-settings[style]}} button--{{-color-}}__{{-settings[style]}}
 {%- endunless %} {{class-}}"
 
 {% unless disabled %}
-    {% if settings.ajaxType == "disabled" %}
+    {% if directCheckout or settings.ajaxType == "disabled" %}
         type="submit"
     {% else %}
         type="button"

@@ -6,7 +6,8 @@
             <input {% if product.selected_or_first_available_variant.inventory_policy != "continue" %}max="{{ product.selected_or_first_available_variant.inventory_quantity }}"{% endif %} class="quantity--input__input" value="1" data-qty-input type="number" name="quantity" min="1" aria-label="Quantity input"><!--
             --><button class="quantity--input__button quantity--input__decr" onclick="BoosterTheme.cart.quantityHandler(event, true, false)">+</button>
         </div>
-        {% render 'add-to-cart-button', type: 'secondary', price: product.price %}
+        <input type="hidden" name="return_to" value="/checkout">
+        {% render 'add-to-cart-button', type: 'secondary', price: product.price, directCheckout: true %}
         {% if settings.dynamicCheckout %}
             <div data-dynamic-button="{{product.id}}"  class="col-12 no-gap checkout--dynamic">
             {{ form | payment_button }}

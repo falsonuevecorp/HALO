@@ -1274,6 +1274,7 @@
           <div style="margin-bottom: 20px;">
             {% if product %}
             <form method="post" action="/cart/add" class="hl2-hero-form" style="display:flex; flex-direction:column;">
+              <input type="hidden" name="return_to" value="/checkout">
               <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
               <button type="submit" class="hl2-btn" style="width: 100%; flex-direction: column; padding: 18px 20px; gap: 4px;">
                 <span style="font-size: 1.15rem; font-weight: 800; color: #FFFFFF !important;">Pide ahora y aprovecha el Descuento 🎁</span>
@@ -1975,6 +1976,7 @@
           <div style="margin-bottom: 20px;">
             {% if product %}
             <form method="post" action="/cart/add">
+              <input type="hidden" name="return_to" value="/checkout">
               <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
               <button type="submit" class="hl2-btn" style="width: 100%; flex-direction: column; padding: 18px 20px; gap: 4px;">
                 <span style="font-size: 1.15rem; font-weight: 800; color: #FFFFFF !important;">Pide ahora y aprovecha el Descuento 🎁</span>

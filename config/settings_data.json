@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "defaultLogo": "shopify://shop_images/halo_logo_social-removebg-preview.png",
@@ -179,7 +188,7 @@
               "width": "auto",
               "horizontalAlignment": "center",
               "verticalAlignment": "middle",
-              "heading": "T\u00e9rminos de la Empresa",
+              "heading": "Términos de la Empresa",
               "links": "footer"
             }
           },
@@ -190,7 +199,7 @@
               "horizontalAlignment": "center",
               "verticalAlignment": "middle",
               "heading": "",
-              "text": "<p>HALO 2026\u00ae - Todos los derechos reservados</p>"
+              "text": "<p>HALO 2026® - Todos los derechos reservados</p>"
             }
           }
         },

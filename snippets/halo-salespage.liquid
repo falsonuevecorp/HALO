@@ -154,6 +154,40 @@
   }
   .hl-cuotas { font-size: 0.88rem; color: var(--text-muted) !important; margin-bottom: 20px; }
 
+  /* MercadoPago — versión clara del banner de halo-loop-v2 */
+  .hl-mp-card {
+    background: #F4F8FB !important;
+    border: 1px solid rgba(0, 158, 227, 0.28) !important;
+    border-radius: 14px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    width: 100%;
+    box-sizing: border-box !important;
+    text-align: left;
+  }
+  .hl-mp-card__logo {
+    background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 8px;
+    padding: 5px; display: flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px; flex-shrink: 0;
+  }
+  .hl-mp-card__logo img { max-width: 100%; object-fit: contain; }
+  .hl-mp-card__body { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .hl-mp-card__line { font-size: 0.92rem; font-weight: 600; color: var(--text-white) !important; }
+  .hl-mp-card__line .hl-mp-highlight { color: #009EE3 !important; font-weight: 700; }
+  .hl-mp-card__line .hl-mp-amount { font-weight: 800; color: var(--text-white) !important; }
+  .hl-mp-card__meta { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .hl-mp-card__meta .hl-mp-green {
+    color: var(--green-signal) !important; font-size: 0.8rem; font-weight: 700;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .hl-mp-card__meta .hl-mp-muted {
+    color: var(--text-muted) !important; font-size: 0.8rem;
+    display: flex; align-items: center; gap: 4px;
+  }
+
   /* CTA Button */
   .hl-btn-cta {
     display: flex; align-items: center; justify-content: center;
@@ -621,6 +655,28 @@
               <span class="hl-price-badge" id="price-badge" style="background:#E53935; color:#fff; padding: 2px 8px; border-radius: 4px; font-weight:bold; font-size:0.8rem;">30% OFF</span>
             </div>
             
+            <!-- MERCADOPAGO PREMIUM BANNER -->
+            <div class="hl-mp-card">
+              <div class="hl-mp-card__logo">
+                <img src="https://http2.mlstatic.com/frontend-assets/mp-web-navigation/ui-navigation/5.19.1/mercadopago/logo__small@2x.png" alt="Mercado Pago" width="34" height="34" loading="lazy">
+              </div>
+              <div class="hl-mp-card__body">
+                <div class="hl-mp-card__line">
+                  Paga en <span class="hl-mp-highlight">3 cuotas</span> de <span class="hl-mp-amount">{% if product %}{{ product.price | divided_by: 3 | money }}{% else %}$23.330{% endif %}</span>
+                </div>
+                <div class="hl-mp-card__meta">
+                  <span class="hl-mp-green">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    Sin interés
+                  </span>
+                  <span class="hl-mp-muted">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    100% Seguro
+                  </span>
+                </div>
+              </div>
+            </div>
+
             <!-- 3. Escasez (Centrado) -->
             <div style="font-size: 0.85rem; font-weight: 700; color: #E53935; margin-bottom: 16px; display:flex; align-items:center; justify-content:center; gap:6px; width: 100%;">
               <span class="hl-hero__dot" style="background:#E53935; box-shadow: 0 0 8px #E53935; width:6px; height:6px;"></span>

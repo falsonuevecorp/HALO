@@ -1,0 +1,287 @@
+{%- comment -%}
+  Upsell de correas para la Loop Band.
+
+  Uso:
+    {% render 'halo-upsell-correa', product: product, block: 'init'   %}  estilos + popup + JS (una sola vez, arriba)
+    {% render 'halo-upsell-correa', product: product, block: 'addon'  %}  tarjeta con checkbox debajo de un CTA
+    {% render 'halo-upsell-correa', product: product, block: 'bundle' %}  bloque "comprados juntos" tipo Amazon
+
+  El producto de la correa se resuelve por handle. Si no existe o está agotado,
+  el snippet no imprime nada y la página queda igual que antes.
+{%- endcomment -%}
+
+{%- assign strap = all_products['strap-de-silicon-loob-band'] -%}
+{%- if strap != blank and strap.available -%}
+{%- assign strap_variant = strap.selected_or_first_available_variant -%}
+
+{%- case block -%}
+
+{%- when 'addon' -%}
+  <label class="hlu-addon" for="hlu-addon-check">
+    <input type="checkbox" id="hlu-addon-check" class="hlu-addon__check" data-hlu-check>
+    <span class="hlu-addon__box" aria-hidden="true"></span>
+    <img class="hlu-addon__img" src="{{ strap.featured_image | image_url: width: 120 }}" alt="{{ strap.title | escape }}" width="44" height="44" loading="lazy">
+    <span class="hlu-addon__text">
+      <span class="hlu-addon__title">Agrega una correa de repuesto</span>
+      <span class="hlu-addon__price">
+        <strong>{{ strap_variant.price | money }}</strong>
+        {%- if strap_variant.compare_at_price > strap_variant.price %}
+          <s>{{ strap_variant.compare_at_price | money }}</s>
+          <em>-{{ strap_variant.compare_at_price | minus: strap_variant.price | times: 100 | divided_by: strap_variant.compare_at_price }}%</em>
+        {%- endif -%}
+      </span>
+    </span>
+  </label>
+
+{%- when 'bundle' -%}
+  <div class="hlu-bundle">
+    <div class="hlu-bundle__head">Comprados juntos habitualmente</div>
+    <div class="hlu-bundle__row">
+      <div class="hlu-bundle__item">
+        <img src="{{ product.featured_image | image_url: width: 240 }}" alt="{{ product.title | escape }}" width="92" height="92" loading="lazy">
+        <span class="hlu-bundle__name">Loop Band®</span>
+        <span class="hlu-bundle__p">{{ product.price | money }}</span>
+      </div>
+      <div class="hlu-bundle__plus" aria-hidden="true">+</div>
+      <div class="hlu-bundle__item">
+        <img src="{{ strap.featured_image | image_url: width: 240 }}" alt="{{ strap.title | escape }}" width="92" height="92" loading="lazy">
+        <span class="hlu-bundle__name">Correa de repuesto</span>
+        <span class="hlu-bundle__p">{{ strap_variant.price | money }}</span>
+      </div>
+    </div>
+
+    <div class="hlu-bundle__pick">
+      <label for="hlu-bundle-variant">Elige tu correa</label>
+      <select id="hlu-bundle-variant" data-hlu-variant>
+        {%- for v in strap.variants -%}
+          {%- if v.available -%}<option value="{{ v.id }}">{{ v.title }}</option>{%- endif -%}
+        {%- endfor -%}
+      </select>
+    </div>
+
+    <div class="hlu-bundle__total">
+      <span>Total de los 2</span>
+      <strong>{{ product.price | plus: strap_variant.price | money }}</strong>
+    </div>
+
+    <button type="button" class="hlu-btn" data-hlu-buy-both data-main="{{ product.selected_or_first_available_variant.id }}">
+      Agregar los 2 y pagar
+    </button>
+    <div class="hlu-bundle__note">La correa se suma a tu pedido. Mismo despacho, mismo envío gratis.</div>
+  </div>
+
+{%- else -%}
+  <style>
+    /* ---------- Upsell correa ---------- */
+    .hlu-addon {
+      display: flex; align-items: center; gap: 10px; cursor: pointer;
+      border: 1.5px dashed rgba(0,158,227,0.45); background: #F7FBFD;
+      border-radius: 12px; padding: 10px 12px; margin-top: 12px;
+      width: 100%; box-sizing: border-box !important; text-align: left;
+      transition: border-color .15s ease, background .15s ease;
+    }
+    .hlu-addon.is-on { border-style: solid; border-color: var(--green-signal); background: #F1F9F4; }
+    .hlu-addon__check { position: absolute; opacity: 0; width: 0; height: 0; }
+    .hlu-addon__box {
+      width: 20px; height: 20px; flex-shrink: 0; border-radius: 6px;
+      border: 2px solid rgba(0,0,0,0.25); background: #fff; position: relative;
+    }
+    .hlu-addon.is-on .hlu-addon__box { background: var(--green-signal); border-color: var(--green-signal); }
+    .hlu-addon.is-on .hlu-addon__box::after {
+      content: ""; position: absolute; left: 6px; top: 2px; width: 5px; height: 10px;
+      border: solid #fff; border-width: 0 2.5px 2.5px 0; transform: rotate(45deg);
+    }
+    .hlu-addon__img { border-radius: 8px; object-fit: cover; flex-shrink: 0; background: #fff; }
+    .hlu-addon__text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+    .hlu-addon__title { font-size: 0.86rem; font-weight: 700; color: var(--text-white) !important; }
+    .hlu-addon__price { font-size: 0.82rem; color: var(--text-muted) !important; display: flex; gap: 6px; align-items: baseline; }
+    .hlu-addon__price strong { color: var(--text-white) !important; font-weight: 800; }
+    .hlu-addon__price s { opacity: 0.55; }
+    .hlu-addon__price em { font-style: normal; color: var(--green-signal) !important; font-weight: 700; }
+
+    .hlu-bundle {
+      border: 1px solid var(--border-subtle); border-radius: 16px; background: #fff;
+      padding: 18px 16px; max-width: 480px; margin: 0 auto; box-sizing: border-box !important;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+    .hlu-bundle__head { font-size: 0.95rem; font-weight: 800; color: var(--text-white) !important; margin-bottom: 14px; text-align: center; }
+    .hlu-bundle__row { display: flex; align-items: flex-start; justify-content: center; gap: 10px; margin-bottom: 14px; }
+    .hlu-bundle__item { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 120px; }
+    .hlu-bundle__item img { border-radius: 10px; object-fit: cover; background: #F4F6F8; }
+    .hlu-bundle__name { font-size: 0.75rem; font-weight: 700; color: var(--text-white) !important; text-align: center; line-height: 1.25; }
+    .hlu-bundle__p { font-size: 0.8rem; font-weight: 800; color: var(--text-muted) !important; }
+    .hlu-bundle__plus { font-size: 1.4rem; font-weight: 300; color: var(--text-muted); align-self: center; }
+    .hlu-bundle__pick { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+    .hlu-bundle__pick label { font-size: 0.75rem; font-weight: 700; color: var(--text-muted) !important; letter-spacing: 0.04em; text-transform: uppercase; }
+    .hlu-bundle__pick select, .hlu-modal__pick select {
+      width: 100%; padding: 10px 12px; border-radius: 10px; font-size: 0.9rem;
+      border: 1px solid var(--border-subtle); background: #fff; color: var(--text-white);
+      box-sizing: border-box !important;
+    }
+    .hlu-bundle__total {
+      display: flex; align-items: baseline; justify-content: space-between;
+      padding: 12px 0; border-top: 1px solid var(--border-subtle); margin-bottom: 12px;
+      font-size: 0.9rem; color: var(--text-muted) !important;
+    }
+    .hlu-bundle__total strong { font-size: 1.35rem; font-weight: 900; color: var(--text-white) !important; }
+    .hlu-bundle__note { font-size: 0.72rem; color: var(--text-muted) !important; text-align: center; margin-top: 10px; }
+    .hlu-btn {
+      display: block; width: 100%; padding: 14px 12px; border: 0; cursor: pointer;
+      border-radius: 12px; background: var(--green-signal); color: #fff;
+      font-size: 0.95rem; font-weight: 900; letter-spacing: 0.01em;
+      box-sizing: border-box !important;
+    }
+    .hlu-btn[disabled] { opacity: 0.6; cursor: wait; }
+    .hlu-btn--ghost { background: transparent; color: var(--text-muted); font-weight: 700; font-size: 0.85rem; padding: 10px; }
+
+    .hlu-modal { position: fixed; inset: 0; z-index: 99999; display: none; }
+    .hlu-modal.is-open { display: block; }
+    .hlu-modal__veil { position: absolute; inset: 0; background: rgba(6,10,14,0.66); }
+    .hlu-modal__card {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+      width: min(94vw, 400px); background: #fff; border-radius: 18px; padding: 22px 20px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.4); box-sizing: border-box !important; text-align: center;
+    }
+    .hlu-modal__tag { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em; color: var(--green-signal) !important; text-transform: uppercase; }
+    .hlu-modal__title { font-size: 1.2rem; font-weight: 900; color: var(--text-white) !important; margin: 8px 0 6px; line-height: 1.25; }
+    .hlu-modal__sub { font-size: 0.88rem; color: var(--text-muted) !important; margin-bottom: 16px; }
+    .hlu-modal__img { width: 128px; height: 128px; object-fit: cover; border-radius: 14px; background: #F4F6F8; margin: 0 auto 14px; display: block; }
+    .hlu-modal__price { font-size: 1.5rem; font-weight: 900; color: var(--text-white) !important; margin-bottom: 4px; }
+    .hlu-modal__price s { font-size: 0.95rem; font-weight: 500; opacity: 0.5; margin-left: 8px; }
+    .hlu-modal__pick { text-align: left; margin: 14px 0; }
+    @media (max-width: 480px) { .hlu-bundle__item { width: 100px; } }
+  </style>
+
+  <div class="hlu-modal" data-hlu-modal role="dialog" aria-modal="true" aria-labelledby="hlu-modal-title" hidden>
+    <div class="hlu-modal__veil" data-hlu-close></div>
+    <div class="hlu-modal__card">
+      <div class="hlu-modal__tag">Espera</div>
+      <div class="hlu-modal__title" id="hlu-modal-title">¿Le sumas una correa?</div>
+      <div class="hlu-modal__sub">Se agrega a este mismo pedido, sin costo de envío extra.</div>
+      <img class="hlu-modal__img" src="{{ strap.featured_image | image_url: width: 320 }}" alt="{{ strap.title | escape }}" width="128" height="128" loading="lazy">
+      <div class="hlu-modal__price">
+        {{ strap_variant.price | money }}
+        {%- if strap_variant.compare_at_price > strap_variant.price %}<s>{{ strap_variant.compare_at_price | money }}</s>{% endif -%}
+      </div>
+      <div class="hlu-modal__pick">
+        <select data-hlu-variant aria-label="Elige tu correa">
+          {%- for v in strap.variants -%}
+            {%- if v.available -%}<option value="{{ v.id }}">{{ v.title }}</option>{%- endif -%}
+          {%- endfor -%}
+        </select>
+      </div>
+      <button type="button" class="hlu-btn" data-hlu-accept>Sí, agregar y pagar</button>
+      <button type="button" class="hlu-btn hlu-btn--ghost" data-hlu-skip>No gracias, seguir sin correa</button>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var MAIN = {{ product.selected_or_first_available_variant.id | json }};
+    var DEFAULT_STRAP = {{ strap_variant.id | json }};
+    var SEEN = 'hlu_modal_seen';
+    var busy = false;
+
+    function $(s, r) { return (r || document).querySelector(s); }
+    function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+    function modal() { return $('[data-hlu-modal]'); }
+
+    function chosenStrap(scope) {
+      var sel = scope ? $('[data-hlu-variant]', scope) : null;
+      return (sel && sel.value) || DEFAULT_STRAP;
+    }
+    function addonOn() {
+      var c = $('[data-hlu-check]');
+      return !!(c && c.checked);
+    }
+
+    function go(items) {
+      if (busy) return;
+      busy = true;
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ items: items })
+      }).then(function () {
+        window.location.href = '/checkout';
+      }).catch(function () {
+        // si el AJAX falla, caemos al flujo clásico y no perdemos la venta
+        window.location.href = '/cart/add?id=' + MAIN + '&quantity=1&return_to=%2Fcheckout';
+      });
+    }
+
+    function openModal() {
+      var m = modal();
+      if (!m) return false;
+      m.hidden = false;
+      m.classList.add('is-open');
+      document.documentElement.style.overflow = 'hidden';
+      try { sessionStorage.setItem(SEEN, '1'); } catch (e) {}
+      return true;
+    }
+    function closeModal() {
+      var m = modal();
+      if (!m) return;
+      m.classList.remove('is-open');
+      m.hidden = true;
+      document.documentElement.style.overflow = '';
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      // 1 · checkbox debajo del botón
+      $$('[data-hlu-check]').forEach(function (c) {
+        c.addEventListener('change', function () {
+          var card = c.closest('.hlu-addon');
+          if (card) card.classList.toggle('is-on', c.checked);
+        });
+      });
+
+      // 2 · bloque tipo Amazon
+      $$('[data-hlu-buy-both]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          b.disabled = true;
+          go([{ id: MAIN, quantity: 1 }, { id: chosenStrap(b.closest('.hlu-bundle')), quantity: 1 }]);
+        });
+      });
+
+      // 3 · intercepta los CTA de compra
+      $$('a.hl-btn-cta[href*="/cart/add"]').forEach(function (a) {
+        a.addEventListener('click', function (ev) {
+          if (busy) return;
+          var seen = false;
+          try { seen = sessionStorage.getItem(SEEN) === '1'; } catch (e) {}
+
+          if (addonOn()) {                       // ya la agregó: los dos al carro
+            ev.preventDefault();
+            go([{ id: MAIN, quantity: 1 }, { id: chosenStrap(document), quantity: 1 }]);
+            return;
+          }
+          if (!seen) {                           // no la agregó: se la ofrecemos una vez
+            ev.preventDefault();
+            if (!openModal()) { go([{ id: MAIN, quantity: 1 }]); }
+          }
+          // si ya vio el popup, el link sigue su curso normal
+        });
+      });
+
+      // 4 · botones del popup
+      var m = modal();
+      if (m) {
+        $('[data-hlu-accept]', m).addEventListener('click', function () {
+          go([{ id: MAIN, quantity: 1 }, { id: chosenStrap(m), quantity: 1 }]);
+        });
+        $('[data-hlu-skip]', m).addEventListener('click', function () {
+          go([{ id: MAIN, quantity: 1 }]);
+        });
+        $$('[data-hlu-close]', m).forEach(function (el) {
+          el.addEventListener('click', closeModal);
+        });
+        document.addEventListener('keydown', function (ev) {
+          if (ev.key === 'Escape') closeModal();
+        });
+      }
+    });
+  })();
+  </script>
+{%- endcase -%}
+{%- endif -%}

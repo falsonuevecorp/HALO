@@ -587,6 +587,8 @@
   }
 </style>
 
+{% render 'halo-upsell-correa', product: product, block: 'init' %}
+
 <div class="halo-funnel">
 
   <!-- =============================================
@@ -693,6 +695,8 @@
               <span style="display:block; font-size:1.05rem; font-weight:900; margin-bottom:4px; text-align: center;">PIDE AHORA Y APROVECHA EL DESCUENTO 🎁</span>
               <span style="display:block; font-size:0.75rem; font-weight:500; opacity:0.9; text-align: center;">ANTES DE QUE SE AGOTE LA PROMO 🚀</span>
             </a>
+
+            {% render 'halo-upsell-correa', product: product, block: 'addon' %}
 
             <!-- 6. Trustpilot (Centrado) -->
             <div style="display:flex; flex-direction:column; align-items:center; margin-top: 16px; width: 100%;">
@@ -1363,6 +1367,11 @@
       </div>
     </div>
   </section>
+
+  <!-- COMPRADOS JUNTOS -->
+  <div style="padding: 0 20px 48px;">
+    {% render 'halo-upsell-correa', product: product, block: 'bundle' %}
+  </div>
 
   <!-- FINAL CTA -->
   <div class="hl-final-cta">

@@ -22,7 +22,8 @@
     <span class="hlu-addon__box" aria-hidden="true"></span>
     <img class="hlu-addon__img" src="{{ strap.featured_image | image_url: width: 120 }}" alt="{{ strap.title | escape }}" width="44" height="44" loading="lazy">
     <span class="hlu-addon__text">
-      <span class="hlu-addon__title">Agrega una correa de repuesto</span>
+      <span class="hlu-addon__title">Una para entrenar, otra para el resto</span>
+      <span class="hlu-addon__sub">La sudada se lava. La otra sigue midiendo.</span>
       <span class="hlu-addon__price">
         <strong>{{ strap_variant.price | money }}</strong>
         {%- if strap_variant.compare_at_price > strap_variant.price %}
@@ -45,7 +46,7 @@
       <div class="hlu-bundle__plus" aria-hidden="true">+</div>
       <div class="hlu-bundle__item">
         <img src="{{ strap.featured_image | image_url: width: 240 }}" alt="{{ strap.title | escape }}" width="92" height="92" loading="lazy">
-        <span class="hlu-bundle__name">Correa de repuesto</span>
+        <span class="hlu-bundle__name">Segunda correa</span>
         <span class="hlu-bundle__p">{{ strap_variant.price | money }}</span>
       </div>
     </div>
@@ -67,7 +68,7 @@
     <button type="button" class="hlu-btn" data-hlu-buy-both data-main="{{ product.selected_or_first_available_variant.id }}">
       Agregar los 2 y pagar
     </button>
-    <div class="hlu-bundle__note">La correa se suma a tu pedido. Mismo despacho, mismo envío gratis.</div>
+    <div class="hlu-bundle__note">Llega en el mismo paquete. Sin envío extra.</div>
   </div>
 
 {%- else -%}
@@ -94,6 +95,7 @@
     .hlu-addon__img { border-radius: 8px; object-fit: cover; flex-shrink: 0; background: #fff; }
     .hlu-addon__text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
     .hlu-addon__title { font-size: 0.86rem; font-weight: 700; color: var(--text-white) !important; }
+    .hlu-addon__sub { font-size: 0.78rem; color: var(--text-muted) !important; line-height: 1.3; }
     .hlu-addon__price { font-size: 0.82rem; color: var(--text-muted) !important; display: flex; gap: 6px; align-items: baseline; }
     .hlu-addon__price strong { color: var(--text-white) !important; font-weight: 800; }
     .hlu-addon__price s { opacity: 0.55; }
@@ -156,8 +158,8 @@
     <div class="hlu-modal__veil" data-hlu-close></div>
     <div class="hlu-modal__card">
       <div class="hlu-modal__tag">Espera</div>
-      <div class="hlu-modal__title" id="hlu-modal-title">¿Le sumas una correa?</div>
-      <div class="hlu-modal__sub">Se agrega a este mismo pedido, sin costo de envío extra.</div>
+      <div class="hlu-modal__title" id="hlu-modal-title">¿Le sumas la segunda correa?</div>
+      <div class="hlu-modal__sub">Una para entrenar, otra para el resto. Se suma a este pedido, sin envío extra.</div>
       <img class="hlu-modal__img" src="{{ strap.featured_image | image_url: width: 320 }}" alt="{{ strap.title | escape }}" width="128" height="128" loading="lazy">
       <div class="hlu-modal__price">
         {{ strap_variant.price | money }}

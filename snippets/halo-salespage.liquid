@@ -596,7 +596,7 @@
   ============================================== -->
   <div class="hl-announcement">
     <div class="hl-announcement__marquee">
-      🔥 LANZAMIENTO: 30% OFF en tu primer pedido <span>|</span> 🚚 Despacho Express GRATIS sobre $79.990 <span>|</span> 🛡️ Garantía por Defectos de Fábrica
+      🔥 LANZAMIENTO: 30% OFF en tu primer pedido <span>|</span> 🚚 Despacho Express GRATIS sobre $79.990 <span>|</span> 🛡️ 30 días de garantía
     </div>
   </div>
 
@@ -714,7 +714,7 @@
 
             <div class="hl-trust-micro" style="margin-top:16px; justify-content: center; width: 100%;">
               <span>🔒 Pago 100% Seguro</span>
-              <span>↩ Garantía por defectos</span>
+              <span>↩ 30 días de garantía</span>
             </div>
           </div>
         </div>
@@ -757,8 +757,8 @@
         </div>
         <div class="hl-proof-divider"></div>
         <div class="hl-proof-stat">
-          <div class="hl-proof-stat__num">30 Noches</div>
-          <div class="hl-proof-stat__label">Garantía por Defectos de Fábrica</div>
+          <div class="hl-proof-stat__num">30 días</div>
+          <div class="hl-proof-stat__label">de garantía por defectos de fábrica</div>
         </div>
         <div class="hl-proof-divider"></div>
         <div class="hl-proof-stat">
@@ -768,6 +768,24 @@
       </div>
     </div>
   </div>
+
+  <!-- ASÍ SE VE PUESTA -->
+  <section class="hl-section" style="padding-top:0;">
+    <div class="hl-wrap">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px;">
+        <figure style="margin:0;">
+          <img src="{{ 'halo-sensor-macro.jpg' | asset_url }}" alt="Sensor óptico de la Loop Band midiendo sobre la piel" loading="lazy" decoding="async"
+               style="width:100%; height:auto; aspect-ratio:4/5; object-fit:cover; border-radius:20px; display:block; background:#0A0F13;">
+          <figcaption style="font-size:0.82rem; color:var(--text-muted); margin-top:10px; text-align:center;">Mide desde abajo, toda la noche.</figcaption>
+        </figure>
+        <figure style="margin:0;">
+          <img src="{{ 'halo-perfil-delgado.jpg' | asset_url }}" alt="Perfil de la Loop Band, casi al ras de la piel" loading="lazy" decoding="async"
+               style="width:100%; height:auto; aspect-ratio:4/5; object-fit:cover; border-radius:20px; display:block; background:#0A0F13;">
+          <figcaption style="font-size:0.82rem; color:var(--text-muted); margin-top:10px; text-align:center;">Tan delgada que se te olvida.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
 
   <!-- =============================================
        PASO 4: PAIN & EMPATHY BRIDGE — Pattern Interrupt
@@ -846,7 +864,7 @@
         </div>
         <div class="hl-cred__item">
           <div class="hl-cred__icon">🛡️</div>
-          <div class="hl-cred__title">Garantía por Defectos de Fábrica</div>
+          <div class="hl-cred__title">30 días de garantía</div>
           <div class="hl-cred__desc">Controles de calidad en cada lote. Si te llega con un defecto de fábrica, nos hacemos cargo del reemplazo.</div>
         </div>
       </div>
@@ -1253,7 +1271,7 @@
         <h2 class="h-title">Todo lo que necesitas <em style="color:var(--cyan-orbit);">saber</em>.</h2>
       </div>
       <div class="hl-faq__list">
-        {% assign faqs = "¿Cuánto dura la batería y cómo se carga?|Loop Band tiene una autonomía de hasta 7 días completos con monitoreo continuo 24/7. Se carga de 0 a 100% en menos de 90 minutos con el cargador magnético incluido.||¿Es resistente al agua?|Sí. Loop Band cuenta con certificación IP67. Puedes ducharte, nadar y sudar intensamente sin tener que quitártela.||¿Tengo que pagar una suscripción mensual en la App?|¡No! A diferencia de otros anillos o bandas, nuestra aplicación es 100% gratuita de por vida. No retenemos tus datos de salud detrás de un muro de pago.||¿Necesito tener mi teléfono cerca mientras duermo o entreno?|No. Loop Band tiene memoria interna. Puedes entrenar o dormir sin el teléfono. Solo abre la aplicación después y los datos se sincronizarán vía Bluetooth.||¿Cómo funciona la Garantía?|Cubre defectos de fábrica: que te llegue dañada o que los sensores fallen por un defecto nuestro. En ese caso te enviamos una banda nueva y nosotros nos hacemos cargo del envío.||¿Funciona tanto en iOS como en Android?|Absolutamente. Nuestra App está optimizada y disponible para ambas plataformas con sincronización perfecta." | split: "||" %}
+        {% assign faqs = "¿Cuánto dura la batería y cómo se carga?|Loop Band tiene una autonomía de hasta 7 días completos con monitoreo continuo 24/7. Se carga de 0 a 100% en menos de 90 minutos con el cargador magnético incluido.||¿Es resistente al agua?|Sí. Loop Band cuenta con certificación IP67. Puedes ducharte, nadar y sudar intensamente sin tener que quitártela.||¿Tengo que pagar una suscripción mensual en la App?|¡No! A diferencia de otros anillos o bandas, nuestra aplicación es 100% gratuita de por vida. No retenemos tus datos de salud detrás de un muro de pago.||¿Necesito tener mi teléfono cerca mientras duermo o entreno?|No. Loop Band tiene memoria interna. Puedes entrenar o dormir sin el teléfono. Solo abre la aplicación después y los datos se sincronizarán vía Bluetooth.||¿Cómo funciona la Garantía?|Tienes 30 días desde que la recibes. Cubre defectos de fábrica: que llegue dañada o que los sensores fallen por algo nuestro. En ese caso te enviamos una banda nueva y el envío lo pagamos nosotros.||¿Funciona tanto en iOS como en Android?|Absolutamente. Nuestra App está optimizada y disponible para ambas plataformas con sincronización perfecta." | split: "||" %}
         {% for faq_item in faqs %}
           {% assign faq_parts = faq_item | split: "|" %}
           <div class="hl-faq__item">
@@ -1339,7 +1357,7 @@
           {% endif %}
           <div class="hl-trust-micro" style="margin-top:14px; justify-content:center;">
             <span>🔒 Pago 100% Seguro</span>
-            <span>🛡️ Garantía por defectos</span>
+            <span>🛡️ 30 días de garantía</span>
             <span>📦 Despacho Gratis</span>
           </div>
         </div>
@@ -1350,7 +1368,7 @@
         <div class="hl-guarantee__icon">🛡️</div>
         <div class="hl-guarantee__title">Nos hacemos responsables</div>
         <div class="hl-guarantee__text">
-          Si tu Loop Band llega con un defecto de fábrica, te la reemplazamos nosotros. No tienes que pelear con nadie.<br>Y la app es gratis de por vida: sin suscripción, sin letra chica.
+          Tienes <strong style="color: var(--text-white) !important;">30 días de garantía</strong> por defectos de fábrica. Si llega dañada o falla por algo nuestro, te la reemplazamos y el envío lo pagamos nosotros.<br>La app es gratis de por vida: sin suscripción, sin letra chica.
         </div>
       </div>
     </div>

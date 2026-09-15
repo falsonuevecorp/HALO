@@ -1,6 +1,6 @@
 {% comment %}
   HALO® — Brand Homepage v4.1
-  Products: Compress Bag® | SmartPaine® | Atacama Band®
+  Products: Compress Bag® | Atacama Vision PRO® | Loop Band®
   URLs & Images loaded dynamically via all_products
 {% endcomment %}
 
@@ -16,14 +16,14 @@
 
 {% assign smartpaine_img = 'halo-smartpaine-white.webp' | asset_url %}
 
-{% assign atacama_band_img = 'halo-atacama-band-white.webp' | asset_url %}
+{% assign atacama_band_img = 'halo-loop-band.png' | asset_url %}
 
 <!-- ⚡ LCP OPTIMIZATION: Preload de la Hero Image (Menos Resource Load Delay) -->
 <link rel="preload" as="image" href="{{ compress_bag_img }}" fetchpriority="high">
 
 {% assign compress_bag_price = compress_bag_prod.price_min | money | default: '$49.990' %}
-{% assign smartpaine_price   = smartpaine_prod.price_min   | money | default: '$89.990' %}
-{% assign atacama_band_price = atacama_band_prod.price_min | money | default: '$19.990' %}
+{% assign smartpaine_price   = smartpaine_prod.price_min   | money | default: '$69.990' %}
+{% assign atacama_band_price = atacama_band_prod.price_min | money | default: '$79.990' %}
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,7 +32,7 @@
 <style>
 /* =====================================================
    HALO® — BRAND HOMEPAGE v4.1
-   Compress Bag® | SmartPaine® | Atacama Band®
+   Compress Bag® | Atacama Vision PRO® | Loop Band®
    Protocolo: Regla 39 (Grayscale) + Regla 10 (Homepage)
    ===================================================== */
 
@@ -470,11 +470,11 @@
 
           <a href="{{ smartpaine_url }}" class="hh-hero-prod-card">
             <div class="hh-hero-prod-img-wrap">
-              <img src="{{ smartpaine_img }}" alt="SmartPaine® Lentes IA" class="hh-hero-prod-img" loading="lazy">
+              <img src="{{ smartpaine_img }}" alt="Atacama Vision PRO® Lentes IA" class="hh-hero-prod-img" loading="lazy">
             </div>
             <div class="hh-hero-prod-info">
               <span class="hh-hero-prod-cat">Smart Eyewear · IA</span>
-              <span class="hh-hero-prod-name">SmartPaine®</span>
+              <span class="hh-hero-prod-name">Atacama Vision PRO®</span>
               <span class="hh-hero-prod-desc">IA integrada · Audio HD · Traducción instantánea.</span>
               <span class="hh-hero-prod-price">{{ smartpaine_price }}</span>
             </div>
@@ -482,12 +482,12 @@
 
           <a href="{{ atacama_band_url }}" class="hh-hero-prod-card">
             <div class="hh-hero-prod-img-wrap">
-              <img src="{{ atacama_band_img }}" alt="Atacama Band® HALO" class="hh-hero-prod-img" loading="lazy">
+              <img src="{{ atacama_band_img }}" alt="Loop Band® HALO" class="hh-hero-prod-img" loading="lazy">
             </div>
             <div class="hh-hero-prod-info">
-              <span class="hh-hero-prod-cat">Fitness · Resistencia</span>
-              <span class="hh-hero-prod-name">Atacama Band®</span>
-              <span class="hh-hero-prod-desc">Entrena donde estés. Resistencia de élite.</span>
+              <span class="hh-hero-prod-cat">Salud · Recuperación</span>
+              <span class="hh-hero-prod-name">Loop Band®</span>
+              <span class="hh-hero-prod-desc">Mide tu sueño, tu estrés y tu recuperación.</span>
               <span class="hh-hero-prod-price">{{ atacama_band_price }}</span>
             </div>
           </a>
@@ -511,13 +511,13 @@
       <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">Garantía legal 90 días SERNAC</span></div>
       <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">Despacho 24 hrs en Santiago</span></div>
       <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">Pago en cuotas sin interés</span></div>
-      <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">Compress Bag® · SmartPaine® · Atacama Band®</span></div>
+      <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">Compress Bag® · Atacama Vision PRO® · Loop Band®</span></div>
       <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">+4.800 clientes verificados</span></div>
       <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">Excelente 4.9/5 en Trustpilot</span></div>
       <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">Garantía legal 90 días SERNAC</span></div>
       <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">Despacho 24 hrs en Santiago</span></div>
       <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">Pago en cuotas sin interés</span></div>
-      <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">Compress Bag® · SmartPaine® · Atacama Band®</span></div>
+      <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">Compress Bag® · Atacama Vision PRO® · Loop Band®</span></div>
     </div>
   </div>
 
@@ -554,11 +554,11 @@
         <a href="{{ smartpaine_url }}" class="hh-line-card hh-line-card-2">
           <span class="hh-line-badge">Con IA</span>
           <div class="hh-line-img-frame">
-            <img src="{{ smartpaine_img }}" alt="SmartPaine® Lentes Inteligentes" class="hh-line-img" loading="lazy">
+            <img src="{{ smartpaine_img }}" alt="Atacama Vision PRO® Lentes Inteligentes" class="hh-line-img" loading="lazy">
           </div>
           <div class="hh-line-body">
             <span class="hh-line-cat">Smart Eyewear · Inteligencia Artificial</span>
-            <h3 class="hh-line-name">SmartPaine®</h3>
+            <h3 class="hh-line-name">Atacama Vision PRO®</h3>
             <p class="hh-line-desc">Cristales con cambio automático de color. Audio HD integrado. Traducción en tiempo real con IA. El futuro del eyewear inteligente.</p>
             <div class="hh-line-footer">
               <span class="hh-line-price">{{ smartpaine_price }}</span>
@@ -571,11 +571,11 @@
         <a href="{{ atacama_band_url }}" class="hh-line-card hh-line-card-3">
           <span class="hh-line-badge">Nuevo</span>
           <div class="hh-line-img-frame">
-            <img src="{{ atacama_band_img }}" alt="Atacama Band® HALO" class="hh-line-img" loading="lazy">
+            <img src="{{ atacama_band_img }}" alt="Loop Band® HALO" class="hh-line-img" loading="lazy">
           </div>
           <div class="hh-line-body">
-            <span class="hh-line-cat">Fitness · Resistencia</span>
-            <h3 class="hh-line-name">Atacama Band®</h3>
+            <span class="hh-line-cat">Salud · Recuperación</span>
+            <h3 class="hh-line-name">Loop Band®</h3>
             <p class="hh-line-desc">Bandas de resistencia de élite. Entrena en el hotel, en la playa o en casa. Compatible con cualquier rutina. Sin excusas.</p>
             <div class="hh-line-footer">
               <span class="hh-line-price">{{ atacama_band_price }}</span>
@@ -600,7 +600,7 @@
             El mercado te vendía<br><em>apariencia.</em><br>Nosotros te damos<br><em>performance.</em>
           </h2>
           <p class="hh-manifesto-body">
-            Cada producto HALO empieza con una pregunta: ¿qué le falta al viajero activo que nadie en el mercado latinoamericano se ha molestado en resolver? La Compress Bag elimina las multas de equipaje. SmartPaine lleva la IA a tu campo visual. La Atacama Band lleva tu gimnasio a cualquier lugar.<br><br>
+            Cada producto HALO empieza con una pregunta: ¿qué le falta al viajero activo que nadie en el mercado latinoamericano se ha molestado en resolver? La Compress Bag elimina las multas de equipaje. Atacama Vision PRO lleva la IA a tu campo visual. La Loop Band te dice por qué amaneces cansado.<br><br>
             No vendemos accesorios. Vendemos ventajas medibles.
           </p>
           <div class="hh-manifesto-nums">
@@ -628,15 +628,15 @@
               <span class="hh-mini-badge">$0 en Sky</span>
             </a>
             <a href="{{ atacama_band_url }}" class="hh-mini" style="text-decoration:none;">
-              <img src="{{ atacama_band_img }}" alt="Atacama Band" class="hh-mini-img">
-              <span class="hh-mini-name">Atacama Band®</span>
+              <img src="{{ atacama_band_img }}" alt="Loop Band" class="hh-mini-img">
+              <span class="hh-mini-name">Loop Band®</span>
               <span class="hh-mini-tag">Entrena donde estés</span>
               <span class="hh-mini-badge">Multi-nivel</span>
             </a>
             <a href="{{ smartpaine_url }}" class="hh-mini span-2" style="text-decoration:none;">
-              <img src="{{ smartpaine_img }}" alt="SmartPaine" class="hh-mini-img">
+              <img src="{{ smartpaine_img }}" alt="Atacama Vision PRO" class="hh-mini-img">
               <div style="flex:1;">
-                <span class="hh-mini-name">SmartPaine®</span>
+                <span class="hh-mini-name">Atacama Vision PRO®</span>
                 <span class="hh-mini-tag" style="display:block;margin-top:2px;">IA · Audio HD · Traducción en tiempo real</span>
               </div>
               <span class="hh-mini-badge">UV400 + IA</span>
@@ -665,21 +665,21 @@
 
         <div class="hh-feat">
           <div class="hh-feat-icon">🧠</div>
-          <span class="hh-feat-line">SmartPaine® — IA Integrada</span>
+          <span class="hh-feat-line">Atacama Vision PRO® — IA Integrada</span>
           <h3 class="hh-feat-name">Traducción instantánea con IA</h3>
-          <p class="hh-feat-desc">Habla en cualquier idioma. Los SmartPaine® procesan la voz en tiempo real y te la traducen directo en tu campo auditivo. Audio HD sin auriculares.</p>
+          <p class="hh-feat-desc">Habla en cualquier idioma. Los Atacama Vision PRO® procesan la voz en tiempo real y te la traducen directo en tu campo auditivo. Audio HD sin auriculares.</p>
         </div>
 
         <div class="hh-feat">
           <div class="hh-feat-icon">🌑</div>
-          <span class="hh-feat-line">SmartPaine® — Fotocromático</span>
+          <span class="hh-feat-line">Atacama Vision PRO® — Fotocromático</span>
           <h3 class="hh-feat-name">Cristales que cambian solos</h3>
           <p class="hh-feat-desc">Tecnología de cambio de color automático en segundos. Sin presionar nada. Interiores claros, exteriores oscuros.</p>
         </div>
 
         <div class="hh-feat">
           <div class="hh-feat-icon">🔥</div>
-          <span class="hh-feat-line">Atacama Band® — Fitness</span>
+          <span class="hh-feat-line">Loop Band® — Recuperación</span>
           <h3 class="hh-feat-name">Sin excusas para no entrenar</h3>
           <p class="hh-feat-desc">Ocupa 0 espacio en tu Compress Bag. Múltiples niveles de resistencia para cualquier nivel de entrenamiento.</p>
         </div>
@@ -738,8 +738,8 @@
 
         <div class="hh-rv">
           <div class="hh-rv-stars">★★★★★</div>
-          <span class="hh-rv-tag">🧠 SmartPaine®</span>
-          <p class="hh-rv-quote">"Viajé a Japón con los SmartPaine y la traducción instantánea me salvó. Audio HD sin auriculares, los cristales oscurecen solos. Son de otro nivel. No se los saco."</p>
+          <span class="hh-rv-tag">🧠 Atacama Vision PRO®</span>
+          <p class="hh-rv-quote">"Viajé a Japón con los Atacama Vision PRO y la traducción instantánea me salvó. Audio HD sin auriculares, los cristales oscurecen solos. Son de otro nivel. No se los saco."</p>
           <div class="hh-rv-author">
             <div class="hh-rv-av">RP</div>
             <div>
@@ -751,8 +751,8 @@
 
         <div class="hh-rv">
           <div class="hh-rv-stars">★★★★★</div>
-          <span class="hh-rv-tag">💪 Atacama Band®</span>
-          <p class="hh-rv-quote">"Las Atacama Band van dentro de la Compress Bag y no ocupan nada. Entreno en el hotel igual que en el gym. Para el precio que tienen son brutales."</p>
+          <span class="hh-rv-tag">💪 Loop Band®</span>
+          <p class="hh-rv-quote">"Las Loop Band van dentro de la Compress Bag y no ocupan nada. Entreno en el hotel igual que en el gym. Para el precio que tienen son brutales."</p>
           <div class="hh-rv-author">
             <div class="hh-rv-av">CF</div>
             <div>
@@ -787,10 +787,10 @@
 
         <div class="hh-faq-item">
           <div class="hh-faq-q" onclick="this.parentElement.classList.toggle('open')">
-            <span class="hh-faq-qt">¿Los SmartPaine® funcionan con todos los idiomas?</span>
+            <span class="hh-faq-qt">¿Los Atacama Vision PRO® funcionan con todos los idiomas?</span>
             <span class="hh-faq-ico">+</span>
           </div>
-          <div class="hh-faq-a"><p>Sí. La IA de SmartPaine® soporta los principales idiomas incluyendo español, inglés, japonés, portugués, francés y alemán. La traducción es en tiempo real con una latencia menor a 1 segundo en condiciones normales de conectividad.</p></div>
+          <div class="hh-faq-a"><p>Sí. La IA de Atacama Vision PRO® soporta los principales idiomas incluyendo español, inglés, japonés, portugués, francés y alemán. La traducción es en tiempo real con una latencia menor a 1 segundo en condiciones normales de conectividad.</p></div>
         </div>
 
         <div class="hh-faq-item">
@@ -814,7 +814,7 @@
             <span class="hh-faq-qt">¿Qué garantía tienen todos los productos HALO?</span>
             <span class="hh-faq-ico">+</span>
           </div>
-          <div class="hh-faq-a"><p>90 días de garantía legal completa según la Ley del Consumidor (SERNAC). Cualquier defecto de fabricación en cualquier línea — Compress Bag, SmartPaine o Atacama Band — tiene reposición inmediata sin preguntas.</p></div>
+          <div class="hh-faq-a"><p>90 días de garantía legal completa según la Ley del Consumidor (SERNAC). Cualquier defecto de fabricación en cualquier línea — Compress Bag, Atacama Vision PRO o Loop Band — tiene reposición inmediata sin preguntas.</p></div>
         </div>
 
       </div>
@@ -835,12 +835,12 @@
         </div>
         <div class="hh-cta-line"></div>
         <h2 class="hh-cta-h">Tres líneas.<br>Un solo estándar: HALO.</h2>
-        <p class="hh-cta-sub">Compress Bag® · SmartPaine® · Atacama Band®</p>
+        <p class="hh-cta-sub">Compress Bag® · Atacama Vision PRO® · Loop Band®</p>
         <div class="hh-cta-btns">
           <a href="/collections/all" class="hh-btn hh-btn-green" style="padding:16px 36px;font-size:15px;">Ver toda la colección →</a>
           <a href="{{ compress_bag_url }}" class="hh-btn hh-btn-ghost-white">Compress Bag® Pro</a>
-          <a href="{{ smartpaine_url }}" class="hh-btn hh-btn-ghost-white">SmartPaine®</a>
-          <a href="{{ atacama_band_url }}" class="hh-btn hh-btn-ghost-white">Atacama Band®</a>
+          <a href="{{ smartpaine_url }}" class="hh-btn hh-btn-ghost-white">Atacama Vision PRO®</a>
+          <a href="{{ atacama_band_url }}" class="hh-btn hh-btn-ghost-white">Loop Band®</a>
         </div>
       </div>
     </div>

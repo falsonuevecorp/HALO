@@ -104,6 +104,29 @@
     .hl-hero__img-wrap { order: 0; }
   }
   .hl-hero__left { max-width: 540px; }
+  .hl-hero__proof {
+    display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    padding: 7px 14px 7px 8px; background: #fff;
+    border: 1px solid var(--border-subtle); border-radius: 100px;
+    margin-bottom: 24px; box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+  }
+  .hl-proof__best {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: var(--text-white); color: #fff !important;
+    font-size: 0.64rem; font-weight: 800; letter-spacing: 0.1em;
+    padding: 5px 10px; border-radius: 100px; white-space: nowrap;
+  }
+  .hl-proof__stars { display: inline-flex; gap: 2px; color: #FFB400; }
+  .hl-proof__stars svg { width: 14px; height: 14px; display: block; }
+  .hl-proof__txt {
+    font-size: 0.78rem; font-weight: 600; color: var(--text-muted) !important;
+    white-space: nowrap; letter-spacing: -0.005em;
+  }
+  .hl-proof__txt b { color: var(--text-white) !important; font-weight: 800; }
+  @media (max-width: 420px) {
+    .hl-hero__proof { gap: 8px; padding: 6px 12px 6px 6px; }
+    .hl-proof__txt { font-size: 0.72rem; }
+  }
   .hl-hero__pretag { 
     display: inline-flex; align-items: center; gap: 8px; 
     padding: 6px 14px; background: rgba(0,236,255,0.06); 
@@ -608,9 +631,10 @@
       <div class="hl-hero__grid">
         <!-- COPY -->
         <div class="hl-hero__copy hl-hero__left">
-          <div class="hl-hero__pretag">
-            <div class="hl-hero__dot"></div>
-            <span class="mono-tag">BIOMETRÍA PURA. CERO DISTRACCIONES.</span>
+          <div class="hl-hero__proof">
+            <span class="hl-proof__best">★ BEST SELLER</span>
+            <span class="hl-proof__stars"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2l2.95 5.98 6.6.96-4.78 4.65 1.13 6.57L12 17.26l-5.9 3.1 1.13-6.57L2.45 9.14l6.6-.96z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2l2.95 5.98 6.6.96-4.78 4.65 1.13 6.57L12 17.26l-5.9 3.1 1.13-6.57L2.45 9.14l6.6-.96z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2l2.95 5.98 6.6.96-4.78 4.65 1.13 6.57L12 17.26l-5.9 3.1 1.13-6.57L2.45 9.14l6.6-.96z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2l2.95 5.98 6.6.96-4.78 4.65 1.13 6.57L12 17.26l-5.9 3.1 1.13-6.57L2.45 9.14l6.6-.96z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2l2.95 5.98 6.6.96-4.78 4.65 1.13 6.57L12 17.26l-5.9 3.1 1.13-6.57L2.45 9.14l6.6-.96z"/></svg></span>
+            <span class="hl-proof__txt"><b>5/5</b> · +100 opiniones</span>
           </div>
 
           <h1 class="h-display">

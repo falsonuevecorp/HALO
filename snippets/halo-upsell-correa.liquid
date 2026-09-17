@@ -10,6 +10,9 @@
   el snippet no imprime nada y la página queda igual que antes.
 {%- endcomment -%}
 
+{%- comment -%} Interruptor del popup: ponlo en true para volver a mostrarlo. {%- endcomment -%}
+{%- assign hlu_popup = false -%}
+
 {%- assign strap = all_products['strap-de-silicon-loob-band'] -%}
 {%- if strap != blank and strap.available -%}
 {%- assign strap_variant = strap.selected_or_first_available_variant -%}
@@ -154,6 +157,7 @@
     @media (max-width: 480px) { .hlu-bundle__item { width: 100px; } }
   </style>
 
+  {%- if hlu_popup -%}
   <div class="hlu-modal" data-hlu-modal role="dialog" aria-modal="true" aria-labelledby="hlu-modal-title" hidden>
     <div class="hlu-modal__veil" data-hlu-close></div>
     <div class="hlu-modal__card">
@@ -176,11 +180,13 @@
       <button type="button" class="hlu-btn hlu-btn--ghost" data-hlu-skip>No gracias, seguir sin correa</button>
     </div>
   </div>
+  {%- endif -%}
 
   <script>
   (function () {
     var MAIN = {{ product.selected_or_first_available_variant.id | json }};
     var DEFAULT_STRAP = {{ strap_variant.id | json }};
+    var POPUP = {{ hlu_popup | json }};
     var SEEN = 'hlu_modal_seen';
     var busy = false;
 
@@ -258,7 +264,7 @@
             go([{ id: MAIN, quantity: 1 }, { id: chosenStrap(document), quantity: 1 }]);
             return;
           }
-          if (!seen) {                           // no la agregó: se la ofrecemos una vez
+          if (POPUP && !seen) {                  // no la agregó: se la ofrecemos una vez
             ev.preventDefault();
             if (!openModal()) { go([{ id: MAIN, quantity: 1 }]); }
           }

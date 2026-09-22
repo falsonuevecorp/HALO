@@ -621,7 +621,7 @@
   ============================================== -->
   <div class="hl-announcement">
     <div class="hl-announcement__marquee">
-      🔥 LANZAMIENTO: 30% OFF en tu primer pedido <span>|</span> 🚚 Despacho Express GRATIS sobre $59,990 <span>|</span> 🛡️ 90 días de garantía
+      🔥 LANZAMIENTO: 30% OFF en tu primer pedido <span>|</span> 🚚 Despacho Express GRATIS sobre $59.990 <span>|</span> 🛡️ 90 días de garantía
     </div>
   </div>
 
@@ -642,7 +642,7 @@
           <h1 class="h-display">{{ product.title }}</h1>
 
           <p class="body-lg" style="color:#A0AAB5; margin-top:20px; margin-bottom:0;">
-            <strong style="color: var(--text-white) !important;">Duermes tus ocho horas y amaneces muerto.</strong> No es la edad ni el café: es cuánto de esas horas fue sueño profundo, y eso no se siente. Se mide. La Loop Band® te lo entrega cada mañana en un número, y con ese número sabes si hoy tu cuerpo aguanta entrenar o le toca parar.
+            <strong style="color: var(--text-white) !important;">Duermes ocho horas y amaneces sin energía.</strong><br>La Loop Band® mide cuánto de eso fue sueño profundo y cada mañana te dice si hoy entrenas o descansas.
           </p>
 
           <div class="hl-hero__badge-row">
@@ -665,8 +665,8 @@
             
             <!-- Precios (Centrados) -->
             <div class="hl-price-row" style="justify-content: center; width: 100%; margin-left: 0; padding-left: 0;">
-              <span class="hl-price-main" id="price-display">{{ product.price | money }}</span>
-              <span class="hl-price-compare" id="price-compare" style="text-decoration: line-through; opacity: 0.6; font-size:1.2rem;">{{ product.compare_at_price | money }}</span>
+              <span class="hl-price-main" id="price-display">{{ product.price | money | replace: ',', '.' }}</span>
+              <span class="hl-price-compare" id="price-compare" style="text-decoration: line-through; opacity: 0.6; font-size:1.2rem;">{{ product.compare_at_price | money | replace: ',', '.' }}</span>
               <span class="hl-price-badge" id="price-badge" style="background:#E53935; color:#fff; padding: 2px 8px; border-radius: 4px; font-weight:bold; font-size:0.8rem;">30% OFF</span>
             </div>
             
@@ -677,7 +677,7 @@
               </div>
               <div class="hl-mp-card__body">
                 <div class="hl-mp-card__line">
-                  Paga en <span class="hl-mp-highlight">3 cuotas</span> de <span class="hl-mp-amount">{% if product %}{{ product.price | divided_by: 3 | money }}{% else %}$19,996{% endif %}</span>
+                  Paga en <span class="hl-mp-highlight">3 cuotas</span> de <span class="hl-mp-amount">{% if product %}{{ product.price | divided_by: 3 | money | replace: ',', '.' }}{% else %}$19.996{% endif %}</span>
                 </div>
                 <div class="hl-mp-card__meta">
                   <span class="hl-mp-green">
@@ -692,10 +692,10 @@
               </div>
             </div>
 
-            <!-- 3. Escasez (Centrado) -->
+            <!-- 3. Reloj de la oferta -->
             <div style="font-size: 0.85rem; font-weight: 700; color: #E53935; margin-bottom: 16px; display:flex; align-items:center; justify-content:center; gap:6px; width: 100%;">
               <span class="hl-hero__dot" style="background:#E53935; box-shadow: 0 0 8px #E53935; width:6px; height:6px;"></span>
-              Solo quedan 13 unidades en oferta
+              El precio de lanzamiento se mantiene por <span id="hl-oferta-reloj" style="font-variant-numeric:tabular-nums;">--:--:--</span>
             </div>
 
             <!-- 4. Envío Gratis -->
@@ -783,8 +783,8 @@
         </div>
         <div class="hl-proof-divider"></div>
         <div class="hl-proof-stat">
-          <div class="hl-proof-stat__num">94%</div>
-          <div class="hl-proof-stat__label">reporta mejor sueño en 14 días</div>
+          <div class="hl-proof-stat__num">Sin</div>
+          <div class="hl-proof-stat__label">suscripción: la app es gratis de por vida</div>
         </div>
       </div>
     </div>
@@ -942,12 +942,12 @@
         <div class="hl-bullet-card">
           <div class="hl-bullet-card__icon">💤</div>
           <div class="hl-bullet-card__title">Despierta sabiendo por qué dormiste mal</div>
-          <div class="hl-bullet-card__desc">Descubre exactamente qué te está robando el sueño profundo (REM) y corrígelo esta misma noche. No más mañanas de arrastrarte.</div>
+          <div class="hl-bullet-card__desc">Ves qué te está quitando sueño profundo —cena tarde, alcohol, estrés— y corrígelo esta misma noche. Y lo ves en el dato, no en la sensación.</div>
         </div>
         <div class="hl-bullet-card">
           <div class="hl-bullet-card__icon">❤️</div>
           <div class="hl-bullet-card__title">Sabe si hoy te conviene entrenar o parar</div>
-          <div class="hl-bullet-card__desc">Deja de sobre-entrenar y quemarte. Te decimos matemáticamente si hoy debes romper tus límites o quedarte descansando.</div>
+          <div class="hl-bullet-card__desc">El dato te dice si hoy tu cuerpo está para exigirle o para bajar un cambio, en vez de que lo adivines.</div>
         </div>
         <div class="hl-bullet-card">
           <div class="hl-bullet-card__icon">📵</div>
@@ -956,8 +956,8 @@
         </div>
         <div class="hl-bullet-card">
           <div class="hl-bullet-card__icon">⚡</div>
-          <div class="hl-bullet-card__title">Cárgala una vez por semana y olvídate</div>
-          <div class="hl-bullet-card__desc">Hasta 7 días con una sola carga. Nosotros no te damos un trabajo extra, te damos libertad para vivir y entrenar.</div>
+          <div class="hl-bullet-card__title">Cárgala una vez al mes y olvídate</div>
+          <div class="hl-bullet-card__desc">Hasta 30 días con una sola carga. Un aparato menos que enchufar todas las noches.</div>
         </div>
         <div class="hl-bullet-card">
           <div class="hl-bullet-card__icon">🪶</div>
@@ -967,7 +967,7 @@
         <div class="hl-bullet-card">
           <div class="hl-bullet-card__icon">📱</div>
           <div class="hl-bullet-card__title">Te dice qué hacer, no solo qué pasó</div>
-          <div class="hl-bullet-card__desc">Nada de datos médicos inútiles. Te damos un Score diario del 1 al 100 para que sepas qué tan indestructible está tu cuerpo hoy.</div>
+          <div class="hl-bullet-card__desc">Nada de gráficos que no sabes leer. Un Score diario del 1 al 100 que te dice cómo viene tu cuerpo hoy.</div>
         </div>
       </div>
 
@@ -1018,7 +1018,7 @@
             </tr>
             <tr>
               <td class="feature-label">Batería de larga duración</td>
-              <td class="col-halo check">✓ 5 a 7 días</td>
+              <td class="col-halo check">✓ Hasta 30 días</td>
               <td class="cross">✗ Patéticas 18 horas</td>
               <td class="check" style="color:var(--green-signal)">✓ 4 a 7 días</td>
             </tr>
@@ -1037,7 +1037,7 @@
             <tr>
               <td class="feature-label">Precio Justo</td>
               <td class="col-halo check">✓ Inversión Accesible</td>
-              <td class="cross">✗ $500 - $1,000 USD (Robo)</td>
+              <td class="cross">✗ $500 - $1.000 USD (Robo)</td>
               <td class="cross">✗ $350 - $550 USD</td>
             </tr>
           </tbody>
@@ -1083,13 +1083,13 @@
         <div class="hl-accordion__item">
           <button class="hl-accordion__trigger" onclick="toggleAccordion(this)">
             <div>
-              <div class="hl-accordion__trigger-title">🔋 7 días sin acordarte del cargador</div>
+              <div class="hl-accordion__trigger-title">🔋 Un mes sin acordarte del cargador</div>
               <div class="hl-accordion__trigger-tag">Hardware</div>
             </div>
             <span class="hl-accordion__icon">+</span>
           </button>
           <div class="hl-accordion__content">
-            <div class="hl-accordion__body">Sin pantalla no hay batería que drenar: 7 días de monitoreo con una carga. Y nada de luz azul en tu muñeca a las 3 de la mañana.</div>
+            <div class="hl-accordion__body">Sin pantalla no hay batería que drenar: hasta 30 días de monitoreo con una carga. Y nada de luz azul en tu muñeca a las 3 de la mañana.</div>
           </div>
         </div>
         <div class="hl-accordion__item">
@@ -1122,7 +1122,7 @@
     <!-- MARQUEE REVIEWS -->
     <div class="hl-reviews__marquee-wrap" style="margin-top:40px;">
       <div class="hl-reviews__track">
-        {% assign reviews = "Daniela M.|★★★★★|Llevaba años usando mi Apple Watch para dormir pero era súper incómodo. Loop Band ni se siente y la batería dura días.||Carlos R.|★★★★★|Mi HRV subió un 15% en el primer mes porque finalmente entendí cómo el alcohol arruinaba mi sueño profundo. Data de oro pura.||Valentina K.|★★★★★|Corredora amateur aquí. El Score de Recuperación es lo primero que veo en la mañana para saber si me toca series o trote suave.||Rodrigo P.|★★★★★|Me encanta que no tenga pantalla. Antes me despertaba, veía la hora y ya no podía volver a dormir. Loop Band solucionó eso de raíz.||Camila A.|★★★★★|He probado anillos inteligentes pero me incomodaban al levantar pesas. Esta banda en el bíceps es invisible. 10/10.||Sebastián L.|★★★★★|Sencillo, preciso y la batería dura toda la semana laboral. Es exactamente lo que buscaba en un tracker." | split: "||" %}
+        {% assign reviews = "Daniela M.|★★★★★|Llevaba años usando mi Apple Watch para dormir pero era súper incómodo. Loop Band ni se siente y la batería dura días.||Carlos R.|★★★★★|Mi HRV subió un 15% en el primer mes porque finalmente entendí cómo el alcohol arruinaba mi sueño profundo. Data de oro pura.||Valentina K.|★★★★★|Corredora amateur aquí. El Score de Recuperación es lo primero que veo en la mañana para saber si me toca series o trote suave.||Rodrigo P.|★★★★★|Me encanta que no tenga pantalla. Antes me despertaba, veía la hora y ya no podía volver a dormir. Loop Band solucionó eso de raíz.||Camila A.|★★★★★|He probado anillos inteligentes pero me incomodaban al levantar pesas. Esta banda en el bíceps es invisible. 10/10.||Sebastián L.|★★★★★|Sencillo, preciso y la batería dura semanas. Es exactamente lo que buscaba en un tracker." | split: "||" %}
         {% for r in reviews %}
           {% assign parts = r | split: "|" %}
           <div class="hl-review-card">
@@ -1159,7 +1159,7 @@
       <div class="hl-reviews__ugc-grid">
         <div class="hl-ugc-msg">
           <div class="hl-ugc-msg__body">
-            Gente, tienen que probar esto. Llevaba meses sintiéndome basura al despertar. Loop Band me mostró que estaba durmiendo 2 horas menos de lo que creía. Ajusté mi rutina y mi energía volvió a tope.
+            Gente, tienen que probar esto. Llevaba meses despertando sin energía. Loop Band me mostró que estaba durmiendo 2 horas menos de lo que creía. Ajusté mi rutina y mi energía volvió a tope.
             <div class="hl-ugc-msg__user">— @nico.runner23</div>
             <div class="hl-ugc-msg__platform">Instagram DM</div>
           </div>
@@ -1231,36 +1231,36 @@
         <div class="hl-journey__item">
           <div class="hl-journey__dot"></div>
           <div>
-            <div class="hl-journey__month">Semana 1–2</div>
+            <div class="hl-journey__month">Semana 1</div>
             <div class="hl-journey__title">Semana 1: ves cuánto duermes de verdad</div>
-            <div class="hl-journey__desc">Descubres cómo hábitos ocultos (cenas tardías, alcohol, luz azul) están saboteando tu fase REM. Al fin tienes claridad.</div>
+            <div class="hl-journey__desc">Ves cuánto de tus horas en cama fue sueño profundo y qué noches se cayó: cena tarde, alcohol, pantallas. El dato, no la sensación.</div>
             <span class="hl-journey__tag">🎁 Acceso a Guía de Optimización del Sueño — GRATIS</span>
           </div>
         </div>
         <div class="hl-journey__item">
           <div class="hl-journey__dot"></div>
           <div>
-            <div class="hl-journey__month">Mes 1</div>
-            <div class="hl-journey__title">Semana 2: cambias dos cosas y lo notas</div>
-            <div class="hl-journey__desc">Tu HRV se estabiliza. Ya sabes qué días empujar y qué días parar.</div>
+            <div class="hl-journey__month">Semana 2</div>
+            <div class="hl-journey__title">Semana 2: ya sabes qué cambiar</div>
+            <div class="hl-journey__desc">Con dos semanas de historial ya distingues tus noches buenas de las malas, y con qué se relacionan.</div>
             <span class="hl-journey__tag">🎁 Protocolo de Recuperación para Atletas — GRATIS</span>
           </div>
         </div>
         <div class="hl-journey__item">
           <div class="hl-journey__dot"></div>
           <div>
-            <div class="hl-journey__month">Mes 3</div>
-            <div class="hl-journey__title">Semana 4: amaneces distinto</div>
-            <div class="hl-journey__desc">Tu cuerpo está adaptado al descanso de calidad. La niebla mental desaparece. Tu frecuencia cardíaca en reposo alcanza su punto óptimo.</div>
+            <div class="hl-journey__month">Semana 4</div>
+            <div class="hl-journey__title">Semana 4: ves si lo que cambiaste sirvió</div>
+            <div class="hl-journey__desc">Comparas la semana 1 con la semana 4 y el dato te muestra qué funcionó y qué no. Dejas de probar a ciegas.</div>
             <span class="hl-journey__tag">🎁 Rutinas de Stretching Nocturno Exclusivas — GRATIS</span>
           </div>
         </div>
         <div class="hl-journey__item">
           <div class="hl-journey__dot" style="background: var(--amber-warn); box-shadow: 0 0 12px rgba(245,166,35,0.5);"></div>
           <div>
-            <div class="hl-journey__month">Mes 6+</div>
-            <div class="hl-journey__title">Mes 3: dejas de adivinar para siempre</div>
-            <div class="hl-journey__desc">Dejas de adivinar cómo te sientes. Tienes control absoluto sobre tu energía, recuperación y foco. Eres un atleta del día a día.</div>
+            <div class="hl-journey__month">Mes 3</div>
+            <div class="hl-journey__title">Mes 3: decides con datos, no con corazonadas</div>
+            <div class="hl-journey__desc">Tienes tres meses de historial propio: cómo se mueve tu pulso en reposo, tu HRV y tu sueño profundo. Cada decisión sobre entrenar o parar sale de ahí.</div>
             <span class="hl-journey__tag" style="background:rgba(245,166,35,0.15); border-color:rgba(245,166,35,0.3); color:var(--amber-warn);">⭐ Nivel: Optimización Consolidada</span>
           </div>
         </div>
@@ -1278,7 +1278,7 @@
         <h2 class="h-title">Todo lo que necesitas <em style="color:var(--cyan-orbit);">saber</em>.</h2>
       </div>
       <div class="hl-faq__list">
-        {% assign faqs = "¿Cuánto dura la batería y cómo se carga?|Loop Band tiene una autonomía de hasta 7 días completos con monitoreo continuo 24/7. Se carga de 0 a 100% en menos de 90 minutos con el cargador magnético incluido.||¿Es resistente al agua?|Sí. Loop Band cuenta con certificación IP67. Puedes ducharte, nadar y sudar intensamente sin tener que quitártela.||¿Tengo que pagar una suscripción mensual en la App?|¡No! A diferencia de otros anillos o bandas, nuestra aplicación es 100% gratuita de por vida. No retenemos tus datos de salud detrás de un muro de pago.||¿Necesito tener mi teléfono cerca mientras duermo o entreno?|No. Loop Band tiene memoria interna. Puedes entrenar o dormir sin el teléfono. Solo abre la aplicación después y los datos se sincronizarán vía Bluetooth.||¿Cómo funciona la Garantía?|Tienes 90 días desde que la recibes. Cubre defectos de fábrica: que llegue dañada o que los sensores fallen por algo nuestro. En ese caso te enviamos una banda nueva y el envío lo pagamos nosotros.||¿Funciona tanto en iOS como en Android?|Absolutamente. Nuestra App está optimizada y disponible para ambas plataformas con sincronización perfecta." | split: "||" %}
+        {% assign faqs = "¿Cuánto dura la batería y cómo se carga?|Loop Band tiene una autonomía de hasta 30 días con monitoreo continuo 24/7. Se carga de 0 a 100% en menos de 90 minutos con el cargador magnético incluido.||¿Es resistente al agua?|Sí. Loop Band cuenta con certificación IP67. Puedes ducharte, nadar y sudar intensamente sin tener que quitártela.||¿Tengo que pagar una suscripción mensual en la App?|¡No! A diferencia de otros anillos o bandas, nuestra aplicación es 100% gratuita de por vida. No retenemos tus datos de salud detrás de un muro de pago.||¿Necesito tener mi teléfono cerca mientras duermo o entreno?|No. Loop Band tiene memoria interna. Puedes entrenar o dormir sin el teléfono. Solo abre la aplicación después y los datos se sincronizarán vía Bluetooth.||¿Cómo funciona la Garantía?|Tienes 90 días desde que la recibes. Cubre defectos de fábrica: que llegue dañada o que los sensores fallen por algo nuestro. En ese caso te enviamos una banda nueva y el envío lo pagamos nosotros.||¿Funciona tanto en iOS como en Android?|Absolutamente. Nuestra App está optimizada y disponible para ambas plataformas con sincronización perfecta." | split: "||" %}
         {% for faq_item in faqs %}
           {% assign faq_parts = faq_item | split: "|" %}
           <div class="hl-faq__item">
@@ -1302,7 +1302,7 @@
     <div class="hl-wrap">
       <div style="text-align:center;">
         <span class="mono-tag" style="display:block;margin-bottom:12px;">EL RETORNO DE INVERSIÓN</span>
-        <h2 class="h-title">Lo que te llevas por <em style="color:var(--cyan-orbit);">$59,990</em>.</h2>
+        <h2 class="h-title">Lo que te llevas por <em style="color:var(--cyan-orbit);">$59.990</em>.</h2>
       </div>
 
       <div class="hl-offer__box">
@@ -1315,10 +1315,10 @@
             <div class="hl-offer__item-icon">➰</div>
             <div>
               <div class="hl-offer__item-name">Dispositivo LOOP BAND®</div>
-              <div class="hl-offer__item-desc">Sensores PPG · Batería 7 días · App 100% Gratis de por vida</div>
+              <div class="hl-offer__item-desc">Sensores PPG · Batería hasta 30 días · App 100% Gratis de por vida</div>
             </div>
             <div class="hl-offer__item-val">
-              <div class="orig">$180,000</div>
+              <div class="orig">$180.000</div>
             </div>
           </div>
           <div class="hl-offer__item">
@@ -1328,7 +1328,7 @@
               <div class="hl-offer__item-desc">Guía para interpretar tu HRV y maximizar tu energía.</div>
             </div>
             <div class="hl-offer__item-val">
-              <div class="orig">$29,990</div>
+              <div class="orig">$29.990</div>
               <div class="free">GRATIS</div>
             </div>
           </div>
@@ -1339,25 +1339,25 @@
               <div class="hl-offer__item-desc">Entrega en 24–48 hrs. a todo Chile</div>
             </div>
             <div class="hl-offer__item-val">
-              <div class="orig">$4,990</div>
+              <div class="orig">$4.990</div>
               <div class="free">GRATIS</div>
             </div>
           </div>
           <div class="hl-offer__total">
             <div>
               <div class="hl-offer__total-label">Valor Total</div>
-              <div class="hl-offer__total-orig">{{ product.compare_at_price | money }}</div>
+              <div class="hl-offer__total-orig">{{ product.compare_at_price | money | replace: ',', '.' }}</div>
             </div>
             <div style="text-align:right;">
               <div class="hl-offer__total-label">Precio de Lanzamiento</div>
-              <div class="hl-offer__total-price" style="color:var(--cyan-orbit);">{{ product.price | money }}</div>
+              <div class="hl-offer__total-price" style="color:var(--cyan-orbit);">{{ product.price | money | replace: ',', '.' }}</div>
             </div>
           </div>
         </div>
         <div style="padding:0 40px 32px;">
           {% if product.available %}
             <a href="/cart/add?id={{ product.variants.first.id }}&quantity=1&return_to=%2Fcheckout" class="hl-btn-cta">
-              ⚡ Quiero Controlar Mi Rendimiento — {{ product.price | money }}
+              ⚡ Quiero Controlar Mi Rendimiento — {{ product.price | money | replace: ',', '.' }}
             </a>
           {% else %}
             <div class="hl-btn-cta" style="opacity:0.5; cursor:not-allowed; animation:none;">Agotado Temporalmente</div>
@@ -1410,10 +1410,10 @@
       <a href="/cart/add?id={{ product.variants.first.id }}&quantity=1&return_to=%2Fcheckout" class="wb-sticky-direct-btn">
         <span class="wb-sticky-btn-title">
           <span>Obtener Descuento</span>
-          <span style="opacity:0.7; font-size:0.85em; text-decoration:line-through;">{{ product.compare_at_price | money }}</span>
-          <span>{{ product.price | money }}</span>
+          <span style="opacity:0.7; font-size:0.85em; text-decoration:line-through;">{{ product.compare_at_price | money | replace: ',', '.' }}</span>
+          <span>{{ product.price | money | replace: ',', '.' }}</span>
         </span>
-        <span class="wb-sticky-btn-subtitle" id="sticky-timer-wrap">La promo termina en <span id="sticky-timer">05:00</span> ⏱️</span>
+        <span class="wb-sticky-btn-subtitle" id="sticky-timer-wrap">El precio de lanzamiento se mantiene por <span id="sticky-timer">--:--:--</span> ⏱️</span>
       </a>
     </div>
   </div>
@@ -1432,20 +1432,41 @@
       }, {passive:true});
     }
 
-    var timerDisplay = document.getElementById('sticky-timer');
-    if(timerDisplay) {
-      var duration = 5 * 60; // 5 minutos
-      var timer = setInterval(function() {
-        var m = parseInt(duration / 60, 10);
-        var s = parseInt(duration % 60, 10);
-        m = m < 10 ? "0" + m : m;
-        s = s < 10 ? "0" + s : s;
-        timerDisplay.textContent = m + ":" + s;
-        if (--duration < 0) {
-          clearInterval(timer);
-          document.getElementById('sticky-timer-wrap').style.display = 'none';
-        }
-      }, 1000);
+    // Reloj del precio de lanzamiento: 24 h desde la primera visita.
+    // Se guarda en el navegador para que no se reinicie en cada recarga.
+    var VENTANA = 24 * 60 * 60 * 1000;
+    var CLAVE = 'hl_oferta_hasta';
+    var hasta;
+    try { hasta = parseInt(localStorage.getItem(CLAVE), 10); } catch (e) {}
+    if (!hasta || isNaN(hasta) || hasta - Date.now() > VENTANA) {
+      hasta = Date.now() + VENTANA;
+      try { localStorage.setItem(CLAVE, String(hasta)); } catch (e) {}
+    }
+
+    var reloj = document.getElementById('hl-oferta-reloj');
+    var relojSticky = document.getElementById('sticky-timer');
+    var envoltorio = document.getElementById('sticky-timer-wrap');
+
+    function dosDigitos(n) { return n < 10 ? '0' + n : '' + n; }
+
+    function pintarReloj() {
+      var falta = hasta - Date.now();
+      if (falta <= 0) {
+        if (reloj) reloj.parentNode.textContent = 'Precio de lanzamiento vigente';
+        if (envoltorio) envoltorio.style.display = 'none';
+        return false;
+      }
+      var seg = Math.floor(falta / 1000);
+      var texto = dosDigitos(Math.floor(seg / 3600)) + ':' +
+                  dosDigitos(Math.floor(seg % 3600 / 60)) + ':' +
+                  dosDigitos(seg % 60);
+      if (reloj) reloj.textContent = texto;
+      if (relojSticky) relojSticky.textContent = texto;
+      return true;
+    }
+
+    if (pintarReloj()) {
+      var tic = setInterval(function () { if (!pintarReloj()) clearInterval(tic); }, 1000);
     }
   })();
 

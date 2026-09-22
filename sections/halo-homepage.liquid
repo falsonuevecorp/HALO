@@ -1,6 +1,6 @@
 {% comment %}
   HALO® — Brand Homepage v4.1
-  Products: Compress Bag® | Atacama Vision PRO® | Loop Band®
+  Products: Atacama Vision PRO® | Loop Band®
   URLs & Images loaded dynamically via all_products
 {% endcomment %}
 
@@ -19,11 +19,10 @@
 {% assign atacama_band_img = 'halo-loop-band.png' | asset_url %}
 
 <!-- ⚡ LCP OPTIMIZATION: Preload de la Hero Image (Menos Resource Load Delay) -->
-<link rel="preload" as="image" href="{{ compress_bag_img }}" fetchpriority="high">
 
-{% assign compress_bag_price = compress_bag_prod.price_min | money | default: '$49,990' %}
-{% assign smartpaine_price   = smartpaine_prod.price_min   | money | default: '$69,990' %}
-{% assign atacama_band_price = atacama_band_prod.price_min | money | default: '$59,990' %}
+{% assign compress_bag_price = compress_bag_prod.price_min | money | replace: ',', '.' | default: '$49.990' %}
+{% assign smartpaine_price   = smartpaine_prod.price_min   | money | replace: ',', '.' | default: '$69.990' %}
+{% assign atacama_band_price = atacama_band_prod.price_min | money | replace: ',', '.' | default: '$59.990' %}
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,7 +31,7 @@
 <style>
 /* =====================================================
    HALO® — BRAND HOMEPAGE v4.1
-   Compress Bag® | Atacama Vision PRO® | Loop Band®
+   Atacama Vision PRO® | Loop Band®
    Protocolo: Regla 39 (Grayscale) + Regla 10 (Homepage)
    ===================================================== */
 
@@ -439,7 +438,7 @@
             Equípate<br>para <span class="hh-hero-title-accent">ganar</span><br>cada día.
           </h1>
           <p class="hh-hero-sub">
-            HALO es la marca del viajero y el deportista moderno. Tres líneas sin concesiones: viaje sin costo de equipaje, bandas de entrenamiento y lentes con IA integrada.
+            HALO es la marca del deportista y el viajero moderno. Dos líneas sin concesiones: biometría que mide tu descanso y lentes con IA integrada.
           </p>
           <div class="hh-hero-ctas">
             <a href="/collections/all" class="hh-btn hh-btn-green">Ver Colección Completa →</a>
@@ -447,7 +446,7 @@
           </div>
           <div class="hh-hero-trust">
             <span class="hh-hero-tp-stars">★★★★★</span>
-            <span class="hh-hero-tp-text"><strong>Excelente 4.9/5</strong> · +4.800 clientes en Chile</span>
+            <span class="hh-hero-tp-text"><strong>Excelente 4.9/5</strong> · +2.400 clientes en Chile</span>
             <span class="hh-hero-trust-sep">|</span>
             <span class="hh-hero-trust-meta">Despacho 24–48 hrs · Garantía 90 días</span>
           </div>
@@ -456,17 +455,6 @@
         <!-- 3 PRODUCT CARDS -->
         <div class="hh-hero-products">
 
-          <a href="{{ compress_bag_url }}" class="hh-hero-prod-card highlight">
-            <div class="hh-hero-prod-img-wrap">
-              <img src="{{ compress_bag_img }}" alt="Compress Bag® Pro HALO" class="hh-hero-prod-img" loading="eager" fetchpriority="high">
-            </div>
-            <div class="hh-hero-prod-info">
-              <span class="hh-hero-prod-cat">Viaje · Carry-on</span>
-              <span class="hh-hero-prod-name">Compress Bag® Pro</span>
-              <span class="hh-hero-prod-desc">10 días de ropa. Tarifa $0 en cabina.</span>
-              <span class="hh-hero-prod-price">{{ compress_bag_price }}</span>
-            </div>
-          </a>
 
           <a href="{{ smartpaine_url }}" class="hh-hero-prod-card">
             <div class="hh-hero-prod-img-wrap">
@@ -497,7 +485,7 @@
     </div>
 
     <div class="hh-hero-scroll">
-      <span>Certificado para Sky · JetSMART · LATAM · Avianca · Copa Airlines</span>
+      <span>Diseñado en Chile · Despacho en 24–48 hrs</span>
     </div>
   </section>
 
@@ -506,18 +494,18 @@
        ═══════════════════════════ -->
   <div class="hh-strip">
     <div class="hh-strip-inner">
-      <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">+4.800 clientes verificados</span></div>
+      <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">+2.400 clientes verificados</span></div>
       <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">Excelente 4.9/5 en Trustpilot</span></div>
-      <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">Garantía legal 90 días SERNAC</span></div>
+      <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">90 días de garantía por defectos de fábrica</span></div>
       <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">Despacho 24 hrs en Santiago</span></div>
       <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">Pago en cuotas sin interés</span></div>
-      <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">Compress Bag® · Atacama Vision PRO® · Loop Band®</span></div>
-      <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">+4.800 clientes verificados</span></div>
+      <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">Atacama Vision PRO® · Loop Band®</span></div>
+      <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">+2.400 clientes verificados</span></div>
       <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">Excelente 4.9/5 en Trustpilot</span></div>
-      <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">Garantía legal 90 días SERNAC</span></div>
+      <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">90 días de garantía por defectos de fábrica</span></div>
       <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">Despacho 24 hrs en Santiago</span></div>
       <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">Pago en cuotas sin interés</span></div>
-      <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">Compress Bag® · Atacama Vision PRO® · Loop Band®</span></div>
+      <div class="hh-strip-item"><span class="hh-strip-dot"></span><span class="hh-strip-text">Atacama Vision PRO® · Loop Band®</span></div>
     </div>
   </div>
 
@@ -527,28 +515,12 @@
   <section class="hh-lines" id="hh-lines">
     <div class="hh-c">
       <div class="hh-lines-header">
-        <span class="hh-eyebrow">Las 3 Líneas HALO</span>
-        <h2 class="hh-h2">Un ecosistema completo<br>para el viajero activo</h2>
+        <span class="hh-eyebrow">Las Líneas HALO</span>
+        <h2 class="hh-h2">Un ecosistema completo<br>para la vida activa</h2>
       </div>
 
       <div class="hh-lines-grid">
 
-        <!-- COMPRESS BAG -->
-        <a href="{{ compress_bag_url }}" class="hh-line-card hh-line-card-1">
-          <span class="hh-line-badge">Bestseller #1</span>
-          <div class="hh-line-img-frame">
-            <img src="{{ compress_bag_img }}" alt="Compress Bag® Pro" class="hh-line-img" loading="lazy">
-          </div>
-          <div class="hh-line-body">
-            <span class="hh-line-cat">Viaje · Carry-on Inteligente</span>
-            <h3 class="hh-line-name">Compress Bag® Pro</h3>
-            <p class="hh-line-desc">Viaja con 10 días de ropa sin pagar equipaje. Compresión al vacío en 30 segundos. 45×35×20 cm exactos para Sky, JetSMART y LATAM.</p>
-            <div class="hh-line-footer">
-              <span class="hh-line-price">{{ compress_bag_price }}</span>
-              <span class="hh-line-cta">Comprar ahora →</span>
-            </div>
-          </div>
-        </a>
 
         <!-- SMARTPAINE -->
         <a href="{{ smartpaine_url }}" class="hh-line-card hh-line-card-2">
@@ -576,7 +548,7 @@
           <div class="hh-line-body">
             <span class="hh-line-cat">Salud · Recuperación</span>
             <h3 class="hh-line-name">Loop Band®</h3>
-            <p class="hh-line-desc">Bandas de resistencia de élite. Entrena en el hotel, en la playa o en casa. Compatible con cualquier rutina. Sin excusas.</p>
+            <p class="hh-line-desc">Mide tu sueño profundo, tu pulso en reposo y tu recuperación mientras duermes. Sin pantalla y sin suscripción: cada mañana sabes si hoy entrenas o descansas.</p>
             <div class="hh-line-footer">
               <span class="hh-line-price">{{ atacama_band_price }}</span>
               <span class="hh-line-cta">Ver producto →</span>
@@ -600,16 +572,16 @@
             El mercado te vendía<br><em>apariencia.</em><br>Nosotros te damos<br><em>performance.</em>
           </h2>
           <p class="hh-manifesto-body">
-            Cada producto HALO empieza con una pregunta: ¿qué le falta al viajero activo que nadie en el mercado latinoamericano se ha molestado en resolver? La Compress Bag elimina las multas de equipaje. Atacama Vision PRO lleva la IA a tu campo visual. La Loop Band te dice por qué amaneces cansado.<br><br>
+            Cada producto HALO empieza con una pregunta: ¿qué le falta a la persona activa que nadie en el mercado latinoamericano se ha molestado en resolver? Atacama Vision PRO lleva la IA a tu campo visual. La Loop Band te muestra cuánto descansaste de verdad.<br><br>
             No vendemos accesorios. Vendemos ventajas medibles.
           </p>
           <div class="hh-manifesto-nums">
             <div class="hh-manifesto-num">
-              <span class="hh-manifesto-num-val">3</span>
+              <span class="hh-manifesto-num-val">2</span>
               <span class="hh-manifesto-num-lbl">Líneas de producto</span>
             </div>
             <div class="hh-manifesto-num">
-              <span class="hh-manifesto-num-val">+4.8K</span>
+              <span class="hh-manifesto-num-val">+2.4K</span>
               <span class="hh-manifesto-num-lbl">Clientes en Chile</span>
             </div>
             <div class="hh-manifesto-num">
@@ -621,17 +593,11 @@
 
         <div>
           <div class="hh-mini-grid">
-            <a href="{{ compress_bag_url }}" class="hh-mini" style="text-decoration:none;">
-              <img src="{{ compress_bag_img }}" alt="Compress Bag" class="hh-mini-img">
-              <span class="hh-mini-name">Compress Bag® Pro</span>
-              <span class="hh-mini-tag">Viaje sin costo de equipaje</span>
-              <span class="hh-mini-badge">$0 en Sky</span>
-            </a>
             <a href="{{ atacama_band_url }}" class="hh-mini" style="text-decoration:none;">
               <img src="{{ atacama_band_img }}" alt="Loop Band" class="hh-mini-img">
               <span class="hh-mini-name">Loop Band®</span>
-              <span class="hh-mini-tag">Entrena donde estés</span>
-              <span class="hh-mini-badge">Multi-nivel</span>
+              <span class="hh-mini-tag">Mide tu descanso real</span>
+              <span class="hh-mini-badge">Sin suscripción</span>
             </a>
             <a href="{{ smartpaine_url }}" class="hh-mini span-2" style="text-decoration:none;">
               <img src="{{ smartpaine_img }}" alt="Atacama Vision PRO" class="hh-mini-img">
@@ -656,12 +622,6 @@
       <h2 class="hh-h2">Cada línea,<br>una ventaja real.</h2>
       <div class="hh-features-bento">
 
-        <div class="hh-feat dark span-2">
-          <div class="hh-feat-icon">✈️</div>
-          <span class="hh-feat-line">Compress Bag® Pro</span>
-          <h3 class="hh-feat-name">Vacío en 30 segundos. Tarifa $0 garantizada.</h3>
-          <p class="hh-feat-desc">Válvula de doble sentido + Turbo-Pump incluida de regalo. Comprimís 10 días de ropa a 20 cm de profundidad. Matemáticamente calibrada para Sky, JetSMART y LATAM. El primer vuelo recupera tu inversión.</p>
-        </div>
 
         <div class="hh-feat">
           <div class="hh-feat-icon">🧠</div>
@@ -680,22 +640,15 @@
         <div class="hh-feat">
           <div class="hh-feat-icon">🔥</div>
           <span class="hh-feat-line">Loop Band® — Recuperación</span>
-          <h3 class="hh-feat-name">Sin excusas para no entrenar</h3>
-          <p class="hh-feat-desc">Ocupa 0 espacio en tu Compress Bag. Múltiples niveles de resistencia para cualquier nivel de entrenamiento.</p>
-        </div>
-
-        <div class="hh-feat">
-          <div class="hh-feat-icon">⚡</div>
-          <span class="hh-feat-line">Compress Bag® — Conectividad</span>
-          <h3 class="hh-feat-name">Puerto USB en el hombro</h3>
-          <p class="hh-feat-desc">Carga tu teléfono mientras caminas. USB-A integrado para conectar tu powerbank interno y mantener todo cargado en tránsito.</p>
+          <h3 class="hh-feat-name">Un número cada mañana: entrenas o descansas</h3>
+          <p class="hh-feat-desc">Mide tu sueño profundo, tu variabilidad cardíaca y tu pulso en reposo toda la noche. Sin pantalla, sin notificaciones y sin mensualidad por ver tus propios datos.</p>
         </div>
 
         <div class="hh-feat">
           <div class="hh-feat-icon">🛡️</div>
           <span class="hh-feat-line">Garantía HALO — Todas las líneas</span>
-          <h3 class="hh-feat-name">90 días sin preguntas</h3>
-          <p class="hh-feat-desc">Cualquier falla de fabricación tiene reposición inmediata bajo la Ley del Consumidor SERNAC. Sin excusas.</p>
+          <h3 class="hh-feat-name">Si llega con una falla de fábrica, la reponemos</h3>
+          <p class="hh-feat-desc">90 días de garantía por defectos de fabricación, adicional a los derechos que te da la Ley del Consumidor. La gestión la hacemos nosotros y el envío lo pagamos nosotros.</p>
         </div>
 
       </div>
@@ -710,7 +663,7 @@
       <div class="hh-reviews-hdr">
         <div>
           <span class="hh-eyebrow">Lo Que Dice Chile</span>
-          <h2 class="hh-h2">+4.800 clientes.<br>Una sola conclusión.</h2>
+          <h2 class="hh-h2">+2.400 clientes.<br>Una sola conclusión.</h2>
         </div>
         <div class="hh-tp-badge">
           <span class="hh-tp-stars">★★★★★</span>
@@ -722,19 +675,6 @@
       </div>
 
       <div class="hh-reviews-grid">
-
-        <div class="hh-rv">
-          <div class="hh-rv-stars">★★★★★</div>
-          <span class="hh-rv-tag">🎒 Compress Bag® Pro</span>
-          <p class="hh-rv-quote">"Usé la Compress Bag en 4 vuelos a Miami. Sin pagar un peso extra. La Turbo-Pump incluida la llevo siempre. En 25 segundos lista. No puedo creer que viví sin esto."</p>
-          <div class="hh-rv-author">
-            <div class="hh-rv-av">MC</div>
-            <div>
-              <p class="hh-rv-name">María C.</p>
-              <p class="hh-rv-meta">Viajera frecuente · Santiago</p>
-            </div>
-          </div>
-        </div>
 
         <div class="hh-rv">
           <div class="hh-rv-stars">★★★★★</div>
@@ -752,7 +692,7 @@
         <div class="hh-rv">
           <div class="hh-rv-stars">★★★★★</div>
           <span class="hh-rv-tag">💪 Loop Band®</span>
-          <p class="hh-rv-quote">"Las Loop Band van dentro de la Compress Bag y no ocupan nada. Entreno en el hotel igual que en el gym. Para el precio que tienen son brutales."</p>
+          <p class="hh-rv-quote">"Creía que dormía bien. La Loop Band me mostró cuánto sueño profundo tenía en realidad y ahí entendí por qué amanecía sin energía. Ahora sé qué días me conviene entrenar."</p>
           <div class="hh-rv-author">
             <div class="hh-rv-av">CF</div>
             <div>
@@ -777,13 +717,6 @@
       </div>
       <div class="hh-faq-body">
 
-        <div class="hh-faq-item">
-          <div class="hh-faq-q" onclick="this.parentElement.classList.toggle('open')">
-            <span class="hh-faq-qt">¿La Compress Bag realmente pasa en cabina sin pagar?</span>
-            <span class="hh-faq-ico">+</span>
-          </div>
-          <div class="hh-faq-a"><p>Sí. Las dimensiones de 45×35×20 cm están calibradas para la normativa de artículo personal gratuito de Sky, JetSMART, LATAM, Avianca y Copa Airlines. Cientos de clientes la usan semanalmente sin problema. Revisa la normativa de tu aerolínea si tienes dudas.</p></div>
-        </div>
 
         <div class="hh-faq-item">
           <div class="hh-faq-q" onclick="this.parentElement.classList.toggle('open')">
@@ -798,7 +731,7 @@
             <span class="hh-faq-qt">¿Cuáles son los tiempos y costos de despacho?</span>
             <span class="hh-faq-ico">+</span>
           </div>
-          <div class="hh-faq-a"><p>Despachamos el mismo día hábil para compras antes de las 14:00 hrs. En Santiago 24 a 48 hrs. A regiones 2 a 4 días hábiles. Despacho gratuito en pedidos sobre $49,990. Para pedidos menores, el costo es de $3,990.</p></div>
+          <div class="hh-faq-a"><p>Despachamos el mismo día hábil para compras antes de las 14:00 hrs. En Santiago 24 a 48 hrs. A regiones 2 a 4 días hábiles. Despacho gratuito en pedidos sobre $49.990. Para pedidos menores, el costo es de $3,990.</p></div>
         </div>
 
         <div class="hh-faq-item">
@@ -814,7 +747,7 @@
             <span class="hh-faq-qt">¿Qué garantía tienen todos los productos HALO?</span>
             <span class="hh-faq-ico">+</span>
           </div>
-          <div class="hh-faq-a"><p>90 días de garantía legal completa según la Ley del Consumidor (SERNAC). Cualquier defecto de fabricación en cualquier línea — Compress Bag, Atacama Vision PRO o Loop Band — tiene reposición inmediata sin preguntas.</p></div>
+          <div class="hh-faq-a"><p>90 días de garantía por defectos de fabricación en toda la línea HALO, adicionales a los derechos que te entrega la Ley del Consumidor. Si el producto llega dañado o falla por algo nuestro, te lo reponemos y el envío lo pagamos nosotros.</p></div>
         </div>
 
       </div>
@@ -828,18 +761,17 @@
     <div class="hh-c">
       <div class="hh-cta-inner">
         <div class="hh-cta-badges">
-          <div class="hh-cta-badge"><div class="hh-cta-badge-icon">🛡️</div><span class="hh-cta-badge-title">90 Días Garantía</span><span class="hh-cta-badge-sub">Sin preguntas · SERNAC</span></div>
+          <div class="hh-cta-badge"><div class="hh-cta-badge-icon">🛡️</div><span class="hh-cta-badge-title">90 días de garantía</span><span class="hh-cta-badge-sub">Por defectos de fábrica</span></div>
           <div class="hh-cta-badge"><div class="hh-cta-badge-icon">🚚</div><span class="hh-cta-badge-title">Despacho Exprés</span><span class="hh-cta-badge-sub">Mismo día · Todo Chile</span></div>
           <div class="hh-cta-badge"><div class="hh-cta-badge-icon">🔒</div><span class="hh-cta-badge-title">Pago Seguro</span><span class="hh-cta-badge-sub">MercadoPago · 3 cuotas</span></div>
-          <div class="hh-cta-badge"><div class="hh-cta-badge-icon">⭐</div><span class="hh-cta-badge-title">4.9 Trustpilot</span><span class="hh-cta-badge-sub">+4.800 clientes felices</span></div>
+          <div class="hh-cta-badge"><div class="hh-cta-badge-icon">⭐</div><span class="hh-cta-badge-title">4.9 Trustpilot</span><span class="hh-cta-badge-sub">+2.400 clientes felices</span></div>
         </div>
         <div class="hh-cta-line"></div>
         <h2 class="hh-cta-h">Tres líneas.<br>Un solo estándar: HALO.</h2>
-        <p class="hh-cta-sub">Compress Bag® · Atacama Vision PRO® · Loop Band®</p>
+        <p class="hh-cta-sub">Atacama Vision PRO® · Loop Band®</p>
         <div class="hh-cta-btns">
           <a href="/collections/all" class="hh-btn hh-btn-green" style="padding:16px 36px;font-size:15px;">Ver toda la colección →</a>
-          <a href="{{ compress_bag_url }}" class="hh-btn hh-btn-ghost-white">Compress Bag® Pro</a>
-          <a href="{{ smartpaine_url }}" class="hh-btn hh-btn-ghost-white">Atacama Vision PRO®</a>
+                    <a href="{{ smartpaine_url }}" class="hh-btn hh-btn-ghost-white">Atacama Vision PRO®</a>
           <a href="{{ atacama_band_url }}" class="hh-btn hh-btn-ghost-white">Loop Band®</a>
         </div>
       </div>

@@ -244,7 +244,7 @@
   .hl-hero__img-wrap {
     position: relative; border-radius: var(--radius-lg); overflow: hidden;
     background: var(--titanium-dark) !important; border: 1px solid var(--border-subtle);
-    aspect-ratio: 4/5;
+    /* sin proporción fija: la foto manda y no se recorta nunca */
     display: flex; align-items: center; justify-content: center;
   }
   .hl-hero__img-wrap::after {
@@ -585,7 +585,7 @@
   /* RESPONSIVE */
   @media (max-width: 900px) {
     .hl-hero__grid, .hl-pain__grid { grid-template-columns: 1fr; gap: 40px; }
-    .hl-hero__img-wrap { aspect-ratio: 1/1; max-height: 340px; }
+    .hl-hero__img-wrap { max-height: none; }
     .hl-cred__grid { grid-template-columns: repeat(2,1fr); }
     .hl-bullets__grid { grid-template-columns: 1fr 1fr; }
     .hl-how__steps { grid-template-columns: 1fr; }

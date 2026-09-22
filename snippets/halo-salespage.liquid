@@ -584,6 +584,9 @@
   .hl-faq__a.open { max-height: 300px; }
   .hl-faq__a-inner { padding-top: 14px; font-size: 0.9rem; color: var(--text-muted) !important; line-height: 1.7; }
 
+  @keyframes hl-titila { 0%, 100% { opacity: 1; } 50% { opacity: 0.15; } }
+  .hl-titila { animation: hl-titila 0.7s steps(1, end) infinite; }
+
   .hl-cta__cod {
     display: flex; align-items: flex-start; gap: 10px;
     margin-top: 12px; padding: 12px 14px;
@@ -734,9 +737,9 @@
             </div>
 
             <!-- 3. Reloj de la oferta -->
-            <div class="hl-cta__reloj" style="font-size: 0.85rem; font-weight: 700; color: #E53935; margin-bottom: 16px; display:flex; align-items:center; justify-content:center; gap:6px; width: 100%;">
+            <div class="hl-cta__reloj" id="hl-oferta-bloque" style="font-size: 0.85rem; font-weight: 700; color: #E53935; margin-bottom: 16px; display:flex; align-items:center; justify-content:center; gap:6px; width: 100%;">
               <span class="hl-hero__dot" style="background:#E53935; box-shadow: 0 0 8px #E53935; width:6px; height:6px;"></span>
-              El precio de lanzamiento se mantiene por <span id="hl-oferta-reloj" style="font-variant-numeric:tabular-nums;">--:--:--</span>
+              <span id="hl-oferta-texto">🔒 Precio congelado por <span id="hl-oferta-reloj" style="font-variant-numeric:tabular-nums;">--:--:--</span></span>
             </div>
 
             <!-- 4. Envío Gratis -->
@@ -1468,7 +1471,7 @@
           <span style="opacity:0.7; font-size:0.85em; text-decoration:line-through;">{{ product.compare_at_price | money | replace: ',', '.' }}</span>
           <span>{{ product.price | money | replace: ',', '.' }}</span>
         </span>
-        <span class="wb-sticky-btn-subtitle" id="sticky-timer-wrap">El precio de lanzamiento se mantiene por <span id="sticky-timer">--:--:--</span> ⏱️</span>
+        <span class="wb-sticky-btn-subtitle" id="sticky-timer-wrap">🔒 Precio congelado por <span id="sticky-timer">--:--:--</span></span>
       </a>
     </div>
   </div>
@@ -1504,11 +1507,30 @@
 
     function dosDigitos(n) { return n < 10 ? '0' + n : '' + n; }
 
+    var bloque = document.getElementById('hl-oferta-bloque');
+    var texto = document.getElementById('hl-oferta-texto');
+    var yaVencio = false;
+
+    function vencer() {
+      // Al vencer: el aviso titila unos segundos y después desaparece del todo.
+      if (yaVencio) return;
+      yaVencio = true;
+      if (texto) texto.textContent = '⚠️ Se agota la oferta';
+      if (bloque) bloque.classList.add('hl-titila');
+      if (envoltorio) {
+        envoltorio.textContent = '⚠️ Se agota la oferta';
+        envoltorio.classList.add('hl-titila');
+      }
+      setTimeout(function () {
+        if (bloque) bloque.style.display = 'none';
+        if (envoltorio) envoltorio.style.display = 'none';
+      }, 10000);
+    }
+
     function pintarReloj() {
       var falta = hasta - Date.now();
       if (falta <= 0) {
-        if (reloj) reloj.parentNode.textContent = 'Precio de lanzamiento vigente';
-        if (envoltorio) envoltorio.style.display = 'none';
+        vencer();
         return false;
       }
       var seg = Math.floor(falta / 1000);

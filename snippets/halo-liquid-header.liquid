@@ -1,99 +1,217 @@
+{%- comment -%}
+  HALO · barra flotante de vidrio (estilo Apple) + carro con la marca.
+  - En la salespage el menú no se imprime (ver layout/theme.liquid), acá solo
+    se anula el espacio que dejaba.
+  - En el resto del sitio la barra flota sobre el contenido: sin franja blanca.
+{%- endcomment -%}
+
+{%- assign hl_sin_menu = false -%}
+{%- if template.suffix == 'halo-salespage' or template.suffix == 'no-header' or template.suffix == 'landing-no-header' -%}
+  {%- assign hl_sin_menu = true -%}
+{%- endif -%}
+
 <style id="halo-liquid-header-css">
-  /* HALO LIQUID GLASS HEADER */
-  .page__header {
-      position: fixed !important;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000 !important;
-      background: rgba(10, 10, 10, 0.65) !important;
-      backdrop-filter: blur(20px) saturate(150%) !important;
-      -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3) !important;
-  }
-  
-  /* Make sure body content is pushed down */
-  .container {
-      padding-top: 70px;
-  }
-  
-  /* Text and Icon Colors for Dark Glass */
-  .page__header, .page__header a, .page__header .nav__link {
-      color: #FFFFFF !important;
-  }
-  .page__header svg path {
-      fill: #FFFFFF !important;
-  }
-  
-  /* Desktop Layout: Menu Left, Logo Center, Cart Right */
-  @media screen and (min-width: 768px) {
-      .container {
-          padding-top: 90px;
-      }
-      .page__header--width {
-          display: flex !important;
-          justify-content: space-between !important;
-          align-items: center !important;
-      }
-      .main__navigation {
-          order: 1 !important;
-          flex: 1 1 0 !important;
-          justify-content: flex-start !important;
-          text-align: left !important;
-      }
-      .header__logo {
-          order: 2 !important;
-          flex: 1 1 0 !important;
-          display: flex !important;
-          justify-content: center !important;
-      }
-      .header__utility {
-          order: 3 !important;
-          flex: 1 1 0 !important;
-          justify-content: flex-end !important;
-      }
-  }
-  
-  /* Mobile Layout */
-  @media screen and (max-width: 767px) {
-      .page__header--width {
-          display: flex !important;
-          justify-content: space-between !important;
-          align-items: center !important;
-          padding: 0 15px !important;
-      }
-      .mobile-submenu-label {
-          order: 1 !important;
-          color: #FFFFFF !important;
-      }
-      .mobile-submenu-label i {
-          color: #FFFFFF !important;
-      }
-      .header__logo {
-          order: 2 !important;
-          flex-grow: 1 !important;
-          display: flex !important;
-          justify-content: center !important;
-      }
-      .header__utility {
-          order: 3 !important;
-      }
+  :root {
+    --halo-verde: #00C97B;
+    --halo-vidrio: rgba(14, 16, 20, 0.55);
+    --halo-vidrio-alto: rgba(10, 11, 14, 0.78);
+    --halo-borde: rgba(255, 255, 255, 0.14);
   }
 
-  /* Mobile Menu Drawer Dark Theme */
+  /* El contenido arranca pegado arriba: la barra flota encima, no empuja. */
+  .container { padding-top: 0 !important; }
+
+{%- if hl_sin_menu -%}
+  .page__header { display: none !important; }
+{%- else -%}
+
+  /* ---------- la barra ---------- */
+  .page__header {
+    position: fixed !important;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1180px, calc(100% - 28px));
+    z-index: 1000 !important;
+    border-radius: 999px !important;
+    background: var(--halo-vidrio) !important;
+    -webkit-backdrop-filter: blur(26px) saturate(180%);
+    backdrop-filter: blur(26px) saturate(180%);
+    border: 1px solid var(--halo-borde) !important;
+    box-shadow:
+      0 10px 34px rgba(0, 0, 0, 0.38),
+      inset 0 1px 0 rgba(255, 255, 255, 0.18),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.30) !important;
+    overflow: hidden;
+    transition: top .32s cubic-bezier(.22,.61,.36,1),
+                width .32s cubic-bezier(.22,.61,.36,1),
+                background .32s ease, box-shadow .32s ease;
+  }
+
+  /* El reflejo especular que le da el aspecto de vidrio de verdad. */
+  .page__header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.03) 38%, rgba(255,255,255,0) 60%),
+      radial-gradient(120% 180% at 12% -40%, rgba(255,255,255,0.20) 0%, rgba(255,255,255,0) 55%);
+  }
+
+  /* Al bajar se compacta y se opaca un poco: se lee sobre cualquier fondo. */
+  .page__header.halo-scrolled {
+    top: 8px;
+    width: min(1040px, calc(100% - 20px));
+    background: var(--halo-vidrio-alto) !important;
+    box-shadow:
+      0 14px 40px rgba(0, 0, 0, 0.46),
+      inset 0 1px 0 rgba(255, 255, 255, 0.16),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.34) !important;
+  }
+
+  .page__header--width {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 10px;
+    height: 58px;
+    padding: 0 10px !important;
+    max-width: none !important;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ---------- tipografía e iconos ---------- */
+  .page__header,
+  .page__header a,
+  .page__header .nav__link,
+  .page__header .minicart__label { color: #FFFFFF !important; }
+  .page__header svg path { fill: #FFFFFF !important; }
+
+  .page__header .nav__link {
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.01em;
+    padding: 8px 14px !important;
+    border-radius: 999px !important;
+    opacity: 0.86;
+    transition: background .2s ease, opacity .2s ease;
+  }
+  .page__header .nav__link:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.12) !important;
+  }
+
+  /* Cada control es un círculo de vidrio propio. */
+  .page__header .mobile-submenu-label,
+  .page__header .header__utility > *,
+  .page__header .minicart__button {
+    position: relative;
+  }
+  .page__header .mobile-submenu-label,
+  .page__header .minicart__label,
+  .page__header .search__label,
+  .page__header [for^="search"],
+  .page__header .header__utility label,
+  .page__header .header__utility > a {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    cursor: pointer;
+    transition: background .2s ease, transform .2s ease;
+  }
+  .page__header .mobile-submenu-label:hover,
+  .page__header .minicart__label:hover,
+  .page__header .header__utility label:hover,
+  .page__header .header__utility > a:hover {
+    background: rgba(255, 255, 255, 0.20);
+    transform: translateY(-1px);
+  }
+  .page__header .mobile-submenu-label i { color: #FFFFFF !important; font-size: 1.15rem; }
+
+  /* La pelotita del contador, en verde HALO. */
+  .page__header .item__count {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: 999px;
+    background: var(--halo-verde) !important;
+    color: #04130C !important;
+    font-size: 0.68rem !important;
+    font-weight: 800 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 201, 123, 0.45);
+  }
+
+  .page__header .header__logo img,
+  .page__header .logo--default { max-height: 26px !important; width: auto !important; }
+
+  /* ---------- orden: menú · logo · acciones ---------- */
+  .page__header .header__utility {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .page__header .main__navigation { order: 1 !important; flex: 1 1 0 !important; justify-content: flex-start !important; display: flex !important; }
+    .page__header .header__logo     { order: 2 !important; flex: 0 0 auto !important; display: flex !important; justify-content: center !important; }
+    .page__header .header__utility  { order: 3 !important; flex: 1 1 0 !important; justify-content: flex-end !important; }
+  }
+
+  @media screen and (max-width: 767px) {
+    .page__header { top: 10px; width: calc(100% - 20px); }
+    .page__header.halo-scrolled { top: 6px; width: calc(100% - 14px); }
+    .page__header--width { height: 54px; padding: 0 8px !important; }
+    .page__header .mobile-submenu-label { order: 1 !important; }
+    .page__header .header__logo { order: 2 !important; flex-grow: 1 !important; display: flex !important; justify-content: center !important; }
+    .page__header .header__utility { order: 3 !important; }
+  }
+
+  /* ---------- cajón de navegación móvil ---------- */
   .mobile__navigation {
-      background: #0A0A0A !important;
-      border-right: 1px solid rgba(255,255,255,0.1) !important;
+    background: rgba(10, 11, 14, 0.92) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    backdrop-filter: blur(24px) saturate(160%);
+    border-right: 1px solid rgba(255, 255, 255, 0.10) !important;
   }
   .mobile__navigation .nav__link {
-      color: #FFFFFF !important;
-      border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+    color: #FFFFFF !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
   }
-  .mobile__navigation .mobile__submenu__toggle i {
-      color: #00C97B !important;
-  }
-  .mobile__navigation__footer {
-      border-top: 1px solid rgba(255,255,255,0.05) !important;
-  }
+  .mobile__navigation .mobile__submenu__toggle i { color: var(--halo-verde) !important; }
+  .mobile__navigation__footer { border-top: 1px solid rgba(255, 255, 255, 0.06) !important; }
+
+{%- endif -%}
 </style>
+
+{%- unless hl_sin_menu -%}
+<script>
+  // La barra se compacta al bajar. Sin librerías y sin bloquear el scroll.
+  (function () {
+    var barras = [], abajo = null;
+    function pinta() {
+      var ahora = window.scrollY > 24;
+      if (ahora === abajo) return;
+      abajo = ahora;
+      for (var i = 0; i < barras.length; i++) barras[i].classList.toggle('halo-scrolled', ahora);
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      barras = [].slice.call(document.querySelectorAll('.page__header'));
+      pinta();
+      window.addEventListener('scroll', pinta, { passive: true });
+    });
+  })();
+</script>
+{%- endunless -%}

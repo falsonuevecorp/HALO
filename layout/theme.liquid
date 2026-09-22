@@ -55,6 +55,7 @@
     {% render 'layout__custom-code--head' %}
   {% render 'motosport-css' %}
   {% render 'halo-liquid-header' %}
+  {% render 'halo-minicart' %}
   </head>
   <body class="template--{{template}}">
           <!--
@@ -74,7 +75,7 @@
         <div id="booster__popup--holder" class="booster__popup--holder">
         </div>
 
-        {% if template.suffix == 'no-header' or template.suffix == 'landing-no-header' %}
+        {% if template.suffix == 'no-header' or template.suffix == 'landing-no-header' or template.suffix == 'halo-salespage' %}
         {% elsif template.suffix == 'landing-alt-header' %}
           {% section 'header-alt' %}
         {% else %}

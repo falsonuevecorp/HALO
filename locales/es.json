@@ -1,0 +1,161 @@
+{
+  "general": {
+    "404": {
+      "title": "No encontrado",
+      "subtext_html": "La página que buscabas no existe",
+      "backToProducts": "Volver a los productos",
+      "backHome": "Volver al inicio"
+    },
+    "newsletter_form": {
+      "confirmation": "¡Gracias por suscribirte!"
+    },
+    "buttons": {
+      "buy_now": "Comprar ahora",
+      "add_to_cart": "Agregar al carro",
+      "add_to_cart_selection": "Elige una opción",
+      "add_to_cart_loading": "Agregando al carro...",
+      "view_cart": "Ver mi carro",
+      "sold_out": "Agotado",
+      "inline_upsell": "Aprovechar la oferta",
+      "continue": "Seguir comprando",
+      "checkout": "Ir a pagar",
+      "update_cart": "Actualizar carro",
+      "product_page_next": "Producto siguiente",
+      "product_page_previous": "Producto anterior",
+      "show_more": "Ver más",
+      "submit": "Enviar"
+    },
+    "tags": {
+      "tags": "Etiquetas",
+      "sale": "oferta",
+      "free": "gratis",
+      "off": "OFF"
+    },
+    "search": {
+      "heading": "Encuentra lo que necesitas",
+      "placeholder": "Loop Band, lentes...",
+      "no_matches": "Ningún producto coincide con tu búsqueda"
+    },
+    "countdown": {
+      "days": "días",
+      "hours": "horas",
+      "minutes": "minutos",
+      "seconds": "segundos"
+    }
+  },
+  "i18n": {
+    "language": "Idioma",
+    "currency": "Moneda"
+  },
+  "cart": {
+    "page": {
+      "title": "Tu carro",
+      "currency_notice": "Esta tienda usa conversión de moneda. Tu pedido se procesará en %curr_code% (%curr_symbol%), aunque los precios se muestren en otra moneda.",
+      "additional_notes": "Notas adicionales",
+      "total": "Total",
+      "grand_total": "Total a pagar",
+      "discount": "Ahorras",
+      "empty_title": "¡Tu carro está vacío!",
+      "empty_text": "Todavía no agregaste nada a tu carro",
+      "empty_suggestion": "Estos son algunos productos que te pueden gustar",
+      "empty_button": "Ver todos los productos",
+      "expires": "Tu carro se libera en"
+    }
+  },
+  "collection_page": {
+    "sidebar": {
+      "all_products": "Todos los productos",
+      "back_to_all": "Volver a todos los productos"
+    }
+  },
+  "product_page": {
+    "page": {
+      "product_description": "Descripción del producto"
+    },
+    "apps": {
+      "in_stock": "QUEDAN EN STOCK",
+      "no_stock": "SIN STOCK",
+      "watching": "están viendo este producto.",
+      "cart": "lo tienen en su carro."
+    },
+    "card": {
+      "from": "desde "
+    }
+  },
+  "minicart": {
+    "empty_text": "Tu carro está vacío",
+    "empty_button": "Ver todos los productos"
+  },
+  "contact": {
+    "page": {
+      "success": "Gracias por escribirnos. Te respondemos pronto."
+    },
+    "buttons": {
+      "submit": "Enviar",
+      "back_to_contact": "Volver al formulario"
+    }
+  },
+  "navigation": {
+    "breadcrumbs": {
+      "home": "Inicio",
+      "collections": "Colecciones",
+      "cart": "Carro"
+    },
+    "buttons": {
+      "prev": "Anterior",
+      "next": "Siguiente",
+      "load_more": "Cargar más",
+      "sign_in": "Iniciar sesión",
+      "sign_up": "Crear cuenta",
+      "log_out": "Cerrar sesión",
+      "back_to_shop": "Volver a la tienda"
+    }
+  },
+  "upsell": {
+    "added": "¡Producto agregado al carro!",
+    "in_cart": "Tienes %itemCount% en tu carro.",
+    "total": "Total: %total%"
+  },
+  "recently_bought": {
+    "purchased": "%name% compró:",
+    "ago": "hace %time% minutos.",
+    "someone": "Alguien"
+  },
+  "customer_area": {
+    "account": {
+      "order_num": "N° de pedido",
+      "date": "Fecha",
+      "payment": "Pago",
+      "full": "Preparación",
+      "total": "Total del pedido",
+      "tracking": "Seguimiento",
+      "status": "Estado",
+      "no_orders": "Todavía no has hecho ningún pedido.",
+      "phone": "Teléfono",
+      "address": "Dirección",
+      "default_addy": "Dirección predeterminada",
+      "no_addy": "No hay ninguna dirección guardada.",
+      "edit_addy": "Editar direcciones",
+      "success_addy": "Dirección agregada correctamente.",
+      "update_addy": "Dirección actualizada correctamente.",
+      "first_name": "Nombre",
+      "last_name": "Apellido"
+    },
+    "forms": {
+      "email": "Correo electrónico",
+      "login": "Iniciar sesión",
+      "register": "Crear una cuenta",
+      "register_here": "¿No tienes cuenta? Regístrate acá.",
+      "password": "Contraseña",
+      "confirm_password": "Confirma tu contraseña",
+      "forgot_password": "¿Olvidaste tu contraseña?",
+      "already_member": "¿Ya tienes cuenta? Inicia sesión acá",
+      "reset_password": "Restablecer contraseña",
+      "activate": "Activar cuenta",
+      "decline": "Rechazar invitación",
+      "sign_in_title": "Entra a tu cuenta",
+      "sign_up_title": "Crea tu cuenta",
+      "newsletter_success": "Gracias por suscribirte"
+    }
+  }
+}

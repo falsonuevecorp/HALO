@@ -1,0 +1,176 @@
+{%- comment -%}
+  Descuento de salida para la salespage.
+
+  Se muestra una sola vez por navegador, cuando la persona hace ademán de
+  irse. El cupón tiene que existir en Shopify con el mismo código.
+
+  Uso: {% render 'halo-salida-descuento', product: product, codigo: 'HALO5000', monto: '$5.000' %}
+{%- endcomment -%}
+
+{%- assign codigo = codigo | default: 'HALO5000' -%}
+{%- assign monto  = monto  | default: '$5.000' -%}
+{%- if product.available -%}
+
+<style>
+  .hls-velo {
+    position: fixed; inset: 0; z-index: 99998;
+    background: rgba(8, 12, 16, 0.62);
+    -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+    opacity: 0; pointer-events: none; transition: opacity .28s ease;
+  }
+  .hls-modal {
+    position: fixed; z-index: 99999;
+    left: 50%; top: 50%; transform: translate(-50%, -46%) scale(0.97);
+    width: min(420px, calc(100% - 32px));
+    background: #fff; border-radius: 22px; padding: 30px 26px 24px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.32);
+    text-align: center; opacity: 0; pointer-events: none;
+    transition: opacity .28s ease, transform .28s cubic-bezier(.22,.61,.36,1);
+  }
+  .hls-abierto .hls-velo { opacity: 1; pointer-events: auto; }
+  .hls-abierto .hls-modal { opacity: 1; pointer-events: auto; transform: translate(-50%, -50%) scale(1); }
+
+  .hls-tag {
+    display: inline-block; font-size: 0.68rem; font-weight: 800;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--green-signal); background: rgba(0,138,84,0.10);
+    border: 1px solid rgba(0,138,84,0.22); border-radius: 999px; padding: 6px 14px;
+  }
+  .hls-titulo {
+    font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.55rem;
+    line-height: 1.15; letter-spacing: -0.02em; margin: 16px 0 10px;
+    color: var(--text-white) !important;
+  }
+  .hls-titulo em { font-style: normal; color: var(--cyan-orbit); }
+  .hls-sub { font-size: 0.92rem; line-height: 1.45; color: var(--text-muted) !important; margin-bottom: 20px; }
+  .hls-precio { display: flex; align-items: baseline; justify-content: center; gap: 10px; margin-bottom: 20px; }
+  .hls-precio s { font-size: 1rem; color: var(--text-subtle) !important; }
+  .hls-precio b { font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 900; color: var(--text-white) !important; }
+  .hls-btn {
+    display: block; width: 100%; border: 0; cursor: pointer;
+    background: var(--cyan-cta); color: #04222A !important;
+    font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1rem;
+    padding: 16px; border-radius: 999px; box-shadow: var(--cyan-glow);
+    transition: transform .18s ease;
+  }
+  .hls-btn:hover { transform: translateY(-1px); }
+  .hls-btn[disabled] { opacity: .6; cursor: default; transform: none; }
+  .hls-no {
+    display: block; width: 100%; margin-top: 12px; border: 0; background: none;
+    font-size: 0.82rem; color: var(--text-subtle) !important; cursor: pointer; padding: 6px;
+  }
+  .hls-no:hover { color: var(--text-muted) !important; }
+  .hls-letra { font-size: 0.72rem; color: var(--text-subtle) !important; margin-top: 14px; }
+  .hls-cerrar {
+    position: absolute; top: 14px; right: 16px; border: 0; background: none;
+    font-size: 1.3rem; line-height: 1; color: var(--text-subtle) !important; cursor: pointer;
+  }
+</style>
+
+<div class="hls-velo" data-hls-cerrar></div>
+<div class="hls-modal" role="dialog" aria-modal="true" aria-labelledby="hls-titulo" hidden>
+  <button type="button" class="hls-cerrar" data-hls-cerrar aria-label="Cerrar">×</button>
+  <span class="hls-tag">Solo por esta visita</span>
+  <h2 class="hls-titulo" id="hls-titulo">Espera. Te descontamos <em>{{ monto }}</em>.</h2>
+  <p class="hls-sub">Se aplica solo ahora y no lo vas a volver a ver. Si en Santiago, además pagas cuando te llegue.</p>
+  <div class="hls-precio">
+    <s>{{ product.price | money | replace: ',', '.' }}</s>
+    <b data-hls-precio>{{ product.price | minus: 500000 | money | replace: ',', '.' }}</b>
+  </div>
+  <button type="button" class="hls-btn" data-hls-si>Aplicar mi descuento</button>
+  <button type="button" class="hls-no" data-hls-cerrar>No, gracias</button>
+  <p class="hls-letra">El descuento se aplica solo en el checkout.</p>
+</div>
+
+<script>
+(function () {
+  var VISTO = 'hl_salida_vista';
+  var CODIGO = {{ codigo | json }};
+  var MAIN = {{ product.selected_or_first_available_variant.id | json }};
+  var velo = document.querySelector('.hls-velo');
+  var modal = document.querySelector('.hls-modal');
+  if (!velo || !modal) return;
+
+  function yaLoVio() {
+    try { return localStorage.getItem(VISTO) === '1'; } catch (e) { return false; }
+  }
+  function marcarVisto() {
+    try { localStorage.setItem(VISTO, '1'); } catch (e) {}
+  }
+
+  var abierto = false;
+  function abrir() {
+    if (abierto || yaLoVio()) return;
+    abierto = true;
+    marcarVisto();            // se marca al mostrarlo: una vez por navegador
+    modal.hidden = false;
+    requestAnimationFrame(function () { document.documentElement.classList.add('hls-abierto'); });
+    desconectar();
+  }
+  function cerrar() {
+    document.documentElement.classList.remove('hls-abierto');
+    setTimeout(function () { modal.hidden = true; }, 300);
+  }
+
+  // ── Señales de salida ────────────────────────────────────────────────
+  // En el computador, el cursor saliendo por arriba. En el teléfono no existe
+  // ese evento: se usa un tirón de scroll hacia arriba después de que la
+  // persona ya bajó y lleva un rato en la página.
+  var desde = Date.now();
+  var ultimoY = window.scrollY, maxY = 0, tiempoUltimo = Date.now();
+
+  function porCursor(ev) {
+    if (ev.clientY <= 0 && !ev.relatedTarget) abrir();
+  }
+  function porScroll() {
+    var y = window.scrollY;
+    maxY = Math.max(maxY, y);
+    var ahora = Date.now();
+    var dt = ahora - tiempoUltimo;
+    var subida = ultimoY - y;
+    ultimoY = y; tiempoUltimo = ahora;
+    if (Date.now() - desde < 10000) return;   // nunca en los primeros 10 s
+    if (maxY < 500) return;                   // ni a quien no bajó nada
+    if (subida > 60 && dt < 220 && y < maxY * 0.55) abrir();
+  }
+  function desconectar() {
+    document.removeEventListener('mouseout', porCursor);
+    window.removeEventListener('scroll', porScroll);
+  }
+
+  if (!yaLoVio()) {
+    document.addEventListener('mouseout', porCursor);
+    window.addEventListener('scroll', porScroll, { passive: true });
+  }
+
+  // ── Acciones ─────────────────────────────────────────────────────────
+  Array.prototype.forEach.call(document.querySelectorAll('[data-hls-cerrar]'), function (el) {
+    el.addEventListener('click', cerrar);
+  });
+  document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape' && abierto) cerrar(); });
+
+  var si = modal.querySelector('[data-hls-si]');
+  si.addEventListener('click', function () {
+    si.disabled = true;
+    si.textContent = 'Aplicando…';
+    // Si marcó la correa más arriba, se lleva las dos.
+    var items = [{ id: MAIN, quantity: 1 }];
+    var check = document.querySelector('[data-hlu-check]');
+    var sel = document.querySelector('[data-hlu-variant]');
+    if (check && check.checked && sel && sel.value) items.push({ id: sel.value, quantity: 1 });
+
+    var alCheckout = '/discount/' + encodeURIComponent(CODIGO) + '?redirect=%2Fcheckout';
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ items: items })
+    }).then(function () {
+      window.location.href = alCheckout;
+    }).catch(function () {
+      window.location.href = alCheckout;
+    });
+  });
+})();
+</script>
+
+{%- endif -%}

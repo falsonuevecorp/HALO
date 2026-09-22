@@ -29,9 +29,13 @@
   .page__header {
     position: fixed !important;
     top: 14px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
     width: min(1180px, calc(100% - 28px));
+    height: 58px !important;
+    min-height: 0 !important;
+    padding: 0 !important;
     z-index: 1000 !important;
     border-radius: 999px !important;
     background: var(--halo-vidrio) !important;
@@ -42,7 +46,6 @@
       0 10px 34px rgba(0, 0, 0, 0.38),
       inset 0 1px 0 rgba(255, 255, 255, 0.18),
       inset 0 -1px 0 rgba(0, 0, 0, 0.30) !important;
-    overflow: hidden;
     transition: top .32s cubic-bezier(.22,.61,.36,1),
                 width .32s cubic-bezier(.22,.61,.36,1),
                 background .32s ease, box-shadow .32s ease;
@@ -53,6 +56,7 @@
     content: "";
     position: absolute;
     inset: 0;
+    border-radius: inherit;
     pointer-events: none;
     background:
       linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.03) 38%, rgba(255,255,255,0) 60%),
@@ -77,6 +81,7 @@
     gap: 10px;
     height: 58px;
     padding: 0 10px !important;
+    margin: 0 !important;
     max-width: none !important;
     position: relative;
     z-index: 1;
@@ -104,22 +109,22 @@
   }
 
   /* Cada control es un círculo de vidrio propio. */
-  .page__header .mobile-submenu-label,
-  .page__header .header__utility > *,
-  .page__header .minicart__button {
-    position: relative;
-  }
+  .page__header .minicart__button { position: relative; }
+  .page__header .header__utility .overlay,
+  .page__header .minicart__holder { border-radius: 0 !important; background: none; }
   .page__header .mobile-submenu-label,
   .page__header .minicart__label,
-  .page__header .search__label,
-  .page__header [for^="search"],
-  .page__header .header__utility label,
-  .page__header .header__utility > a {
+  .page__header .search__icon {
     display: inline-flex !important;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    flex: 0 0 40px !important;
+    width: 40px !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+    height: 40px !important;
+    padding: 0 !important;
+    margin: 0 !important;
     border-radius: 50% !important;
     background: rgba(255, 255, 255, 0.10);
     border: 1px solid rgba(255, 255, 255, 0.12);
@@ -128,12 +133,13 @@
   }
   .page__header .mobile-submenu-label:hover,
   .page__header .minicart__label:hover,
-  .page__header .header__utility label:hover,
-  .page__header .header__utility > a:hover {
+  .page__header .search__icon:hover {
     background: rgba(255, 255, 255, 0.20);
     transform: translateY(-1px);
   }
-  .page__header .mobile-submenu-label i { color: #FFFFFF !important; font-size: 1.15rem; }
+  .page__header .mobile-submenu-label i,
+  .page__header .search__icon i,
+  .page__header .minicart__label i { color: #FFFFFF !important; font-size: 1.15rem; }
 
   /* La pelotita del contador, en verde HALO. */
   .page__header .item__count {
@@ -171,12 +177,23 @@
   }
 
   @media screen and (max-width: 767px) {
-    .page__header { top: 10px; width: calc(100% - 20px); }
+    .page__header { top: 10px; width: calc(100% - 20px); height: 54px !important; }
     .page__header.halo-scrolled { top: 6px; width: calc(100% - 14px); }
     .page__header--width { height: 54px; padding: 0 8px !important; }
     .page__header .mobile-submenu-label { order: 1 !important; }
     .page__header .header__logo { order: 2 !important; flex-grow: 1 !important; display: flex !important; justify-content: center !important; }
     .page__header .header__utility { order: 3 !important; }
+  }
+
+  /* La barra flota encima, así que el primer bloque respira por debajo de ella.
+     El relleno va dentro de la sección (que sí tiene fondo), nunca fuera. */
+  main > .shopify-section:first-of-type > section:first-of-type,
+  main > .shopify-section:first-of-type > div:first-of-type > section:first-of-type,
+  main > .shopify-section:first-of-type > div:first-of-type:not(:has(section)) { padding-top: 92px; }
+  @media screen and (max-width: 767px) {
+    main > .shopify-section:first-of-type > section:first-of-type,
+    main > .shopify-section:first-of-type > div:first-of-type > section:first-of-type,
+    main > .shopify-section:first-of-type > div:first-of-type:not(:has(section)) { padding-top: 78px; }
   }
 
   /* ---------- cajón de navegación móvil ---------- */

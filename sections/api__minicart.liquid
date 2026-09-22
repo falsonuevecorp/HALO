@@ -1,7 +1,7 @@
 {% capture cartHTML %}
 <div class="minicart">
   <div class="minicart__entries fancy-scroll">
-    <h3 class="h-reset minicart__title">{{'cart.page.title' | t}} <span>({{cart.item_count}})</span><span class="minicart__close" onclick="BoosterTheme.cart.close()">Close</span></h3>
+    <h3 class="h-reset minicart__title">{{'cart.page.title' | t}} <span>({{cart.item_count}})</span><span class="minicart__close" onclick="BoosterTheme.cart.close()">Cerrar</span></h3>
     {% if settings.cartTimer and cart.items.size > 0 %}
       <div class="minicart__timer" data-countdown data-ct-key="cart-ct-timer" data-duration="{{settings.cartTimerDuration}}" data-duration-format="minutes">
           <span>{{'cart.page.expires'|t}}</span> <span class="minutes">00</span>:<span class="seconds">00</span>

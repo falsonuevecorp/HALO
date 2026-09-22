@@ -145,7 +145,13 @@
     {{ '/services/javascripts/currencies.js' | script_tag }}
     {% comment %} If you want to serve the non-minified version, remove .min extension {% endcomment %}
     {{ 'booster.min.js' | asset_url | script_tag }}
-    {{ 'unicons.css' | asset_url | stylesheet_tag }}
+    {%- if template.suffix == 'halo-salespage' -%}
+      {%- comment -%} Esta página no usa ningún icono de unicons: se carga sin bloquear el pintado. {%- endcomment -%}
+      <link rel="stylesheet" href="{{ 'unicons.css' | asset_url }}" media="print" onload="this.media='all'">
+      <noscript><link rel="stylesheet" href="{{ 'unicons.css' | asset_url }}"></noscript>
+    {%- else -%}
+      {{ 'unicons.css' | asset_url | stylesheet_tag }}
+    {%- endif -%}
  
     {% unless settings.bodyHTML == blank %}
       {{settings.bodyHTML}}

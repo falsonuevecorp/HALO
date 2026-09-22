@@ -1,5 +1,7 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,400&family=JetBrains+Mono:wght@500;600&display=swap">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@500;600&display=swap');
 
   /* ===================================================
      HALO® NEURO — LONG-FORM SALESPAGE v2.0 "IM8 Protocol"
@@ -735,8 +737,15 @@
           {% if product.featured_image %}
             <!-- Shopify Native Product Image -->
             <img src="{{ product.featured_image | img_url: '1200x' }}"
+                 srcset="{{ product.featured_image | img_url: '480x' }} 480w,
+                         {{ product.featured_image | img_url: '640x' }} 640w,
+                         {{ product.featured_image | img_url: '800x' }} 800w,
+                         {{ product.featured_image | img_url: '1000x' }} 1000w,
+                         {{ product.featured_image | img_url: '1200x' }} 1200w"
+                 sizes="(min-width: 900px) 540px, 100vw"
                  alt="{{ product.title }}"
                  width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"
+                 fetchpriority="high" decoding="async"
                  style="width:100%; height:auto; display:block; object-fit:contain; border-radius:20px; box-shadow:0 10px 40px rgba(0,0,0,0.18);">
           {% else %}
             <!-- PLACEHOLDER PREMIUM 1 (Fallback si no subes imagen en Shopify) -->
@@ -1398,7 +1407,7 @@
   <!-- STICKY BAR -->
   <div class="hl-sticky-bar" id="sticky-bar">
     <div class="hl-sticky-bar__inner">
-      <a href="#oferta" class="wb-sticky-direct-btn">
+      <a href="/cart/add?id={{ product.variants.first.id }}&quantity=1&return_to=%2Fcheckout" class="wb-sticky-direct-btn">
         <span class="wb-sticky-btn-title">
           <span>Obtener Descuento</span>
           <span style="opacity:0.7; font-size:0.85em; text-decoration:line-through;">{{ product.compare_at_price | money }}</span>

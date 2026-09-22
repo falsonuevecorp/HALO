@@ -253,7 +253,7 @@
       });
 
       // 3 · intercepta los CTA de compra
-      $$('a.hl-btn-cta[href*="/cart/add"]').forEach(function (a) {
+      $$('a[href*="/cart/add"]').forEach(function (a) {
         a.addEventListener('click', function (ev) {
           if (busy) return;
           var seen = false;

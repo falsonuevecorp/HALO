@@ -823,9 +823,13 @@
 
       <!-- La noche real, medida: el argumento del producto en una imagen -->
       <div style="margin-top: 60px;">
-        <img src="{{ 'halo-noche-medida.jpg' | asset_url }}" alt="Informe de una noche: 8 horas en cama, 41 minutos de sueño profundo y 31% de recuperación" loading="lazy" decoding="async"
-             style="width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; border-radius:20px; display:block;
-                    box-shadow:0 18px 50px rgba(0,0,0,0.35); background:#0A0F13;">
+        <picture>
+          {%- comment -%} En el teléfono va la versión vertical: la ancha queda ilegible. {%- endcomment -%}
+          <source media="(max-width: 700px)" srcset="{{ 'halo-noche-medida-movil.jpg' | asset_url }}">
+          <img src="{{ 'halo-noche-medida.jpg' | asset_url }}" alt="Informe de una noche: 8 horas en cama, 41 minutos de sueño profundo y 31% de recuperación" loading="lazy" decoding="async"
+               style="width:100%; height:auto; border-radius:20px; display:block;
+                      box-shadow:0 18px 50px rgba(0,0,0,0.35); background:#0A0F13;">
+        </picture>
       </div>
 
     </div>

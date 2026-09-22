@@ -637,43 +637,30 @@
             <span class="hl-proof__txt"><b>5/5</b> · +100 opiniones</span>
           </div>
 
-          <h1 class="h-display">
-            Deja de adivinar tu recuperación y empieza a <em style="color:var(--cyan-orbit);">dominarla.</em>
-          </h1>
+          <h1 class="h-display">{{ product.title }}</h1>
 
           <p class="body-lg" style="color:#A0AAB5; margin-top:20px; margin-bottom:0;">
-            Tu reloj te dice la hora.<br>La Loop Band® te dice <strong style="color: var(--text-white) !important;">por qué amaneciste muerto</strong>.
+            Cada mañana abres la app y sabes tres cosas: <strong style="color: var(--text-white) !important;">cuánto dormiste de verdad</strong>, cómo viene tu recuperación y si hoy te conviene entrenar o parar.
           </p>
 
           <div class="hl-hero__badge-row">
             <div class="hl-hero__badge">
               <svg viewBox="0 0 14 14" fill="none"><path d="M7 1l1.8 3.6L13 5.3l-3 2.9.7 4.1L7 10.2l-3.7 2.1.7-4.1-3-2.9 4.2-.7z" fill="#00ECFF"/></svg>
-              Precisión Biométrica
+              Sueño profundo y REM medidos
             </div>
             <div class="hl-hero__badge">
               <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#00C97B" stroke-width="1.5"/><path d="M4.5 7l2 2 3-3" stroke="#00C97B" stroke-width="1.5" stroke-linecap="round"/></svg>
-              Diseño 100% Sin Pantalla
+              Cero notificaciones. Nunca vibra.
             </div>
             <div class="hl-hero__badge">
               <svg viewBox="0 0 14 14" fill="none"><rect x="1" y="3" width="12" height="9" rx="1.5" stroke="#A0AAB5" stroke-width="1.5"/><path d="M5 3V2a2 2 0 014 0v1" stroke="#A0AAB5" stroke-width="1.5"/></svg>
-              Batería Extendida
+              Hasta 30 días de batería
             </div>
           </div>
 
           <!-- CTA BOX -->
           <div class="hl-hero__cta-box" style="border: 1px solid var(--border-subtle); padding: 20px 16px; border-radius: 16px; background: #fff; margin-top: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); width: 100%; box-sizing: border-box !important;">
             
-            <!-- 1. Top Badges -->
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border-subtle); width: 100%;">
-              <div style="display: flex; align-items: center; gap: 4px; font-size: 0.75rem; font-weight: 700; color: #009EE3; margin:0; padding:0;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="#009EE3"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
-                MercadoPago Seguro
-              </div>
-              <div style="display: flex; align-items: center; gap: 4px; font-size: 0.75rem; font-weight: 600; color: var(--green-signal); margin:0; padding:0;">
-                💳 3 cuotas sin interés
-              </div>
-            </div>
-
             <!-- Precios (Centrados) -->
             <div class="hl-price-row" style="justify-content: center; width: 100%; margin-left: 0; padding-left: 0;">
               <span class="hl-price-main" id="price-display">{{ product.price | money }}</span>
@@ -747,9 +734,10 @@
         <div class="hl-hero__img-wrap" style="border: none; background: transparent !important; position: relative;">
           {% if product.featured_image %}
             <!-- Shopify Native Product Image -->
-            <img src="{{ product.featured_image | img_url: '1000x1000', crop: 'center' }}"
+            <img src="{{ product.featured_image | img_url: '1200x' }}"
                  alt="{{ product.title }}"
-                 style="width:100%;height:100%;object-fit:cover; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
+                 width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"
+                 style="width:100%; height:auto; display:block; object-fit:contain; border-radius:20px; box-shadow:0 10px 40px rgba(0,0,0,0.18);">
           {% else %}
             <!-- PLACEHOLDER PREMIUM 1 (Fallback si no subes imagen en Shopify) -->
             <div class="hl-placeholder-premium" style="width:100%; height:100%; min-height:500px; display:flex; flex-direction:column; align-items:center; justify-content:center; background: radial-gradient(circle at center, #1A1A1A 0%, #050505 100%); border: 1px solid rgba(0,236,255,0.15); border-radius: 20px; position:relative; overflow:hidden;">
@@ -833,9 +821,9 @@
         </div>
       </div>
 
-      <!-- PLACEHOLDER PREMIUM 2: Diseño 100% Sin Pantalla -->
+      <!-- La noche real, medida: el argumento del producto en una imagen -->
       <div style="margin-top: 60px;">
-        <img src="{{ 'halo-sin-pantalla.jpg' | asset_url }}" alt="Loop Band en la muñeca durante la noche, sin pantalla ni luces" loading="lazy" decoding="async"
+        <img src="{{ 'halo-noche-medida.jpg' | asset_url }}" alt="Informe de una noche: 8 horas en cama, 41 minutos de sueño profundo y 31% de recuperación" loading="lazy" decoding="async"
              style="width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; border-radius:20px; display:block;
                     box-shadow:0 18px 50px rgba(0,0,0,0.35); background:#0A0F13;">
       </div>
@@ -850,28 +838,28 @@
     <div class="hl-wrap">
       <div style="text-align:center; margin-bottom:40px;">
         <span class="mono-tag" style="display:block;margin-bottom:12px;">EL ESTÁNDAR BIOMÉTRICO</span>
-        <h2 class="h-sub">Te la pones y te olvidas de que existe.</h2>
+        <h2 class="h-sub">Te la pones y ella hace el resto.</h2>
       </div>
       <div class="hl-cred__grid">
         <div class="hl-cred__item">
           <div class="hl-cred__icon">🧬</div>
-          <div class="hl-cred__title">Biometría de Precisión Clínica</div>
-          <div class="hl-cred__desc">Sensores ópticos avanzados que miden cada latido, variabilidad cardíaca (HRV) y niveles de oxígeno en sangre.</div>
+          <div class="hl-cred__title">Sabes cuánto dormiste de verdad, no cuánto estuviste en cama</div>
+          <div class="hl-cred__desc">Mide tus fases de sueño —profundo, REM y ligero—, tu pulso en reposo, tu variabilidad cardíaca y tu oxígeno en sangre durante toda la noche.</div>
         </div>
         <div class="hl-cred__item">
           <div class="hl-cred__icon">⚡</div>
-          <div class="hl-cred__title">Batería de Larga Duración</div>
-          <div class="hl-cred__desc">Olvídate de cargar tu reloj cada noche. La arquitectura sin pantalla permite días ininterrumpidos de rastreo.</div>
+          <div class="hl-cred__title">La cargas una vez al mes, no todas las noches</div>
+          <div class="hl-cred__desc">Hasta 30 días con una sola carga. Nunca vas a tener que elegir entre medir tu sueño y dejarla enchufada justo la noche que importaba.</div>
         </div>
         <div class="hl-cred__item">
           <div class="hl-cred__icon">🏆</div>
-          <div class="hl-cred__title">Confort Nivel Élite</div>
-          <div class="hl-cred__desc">Materiales hipoalergénicos ultra ligeros. Ni siquiera notarás que la llevas puesta mientras duermes o entrenas.</div>
+          <div class="hl-cred__title">No te la sacas para entrenar, ni para dormir, ni para la ducha</div>
+          <div class="hl-cred__desc">Silicona hipoalergénica, sin pantalla ni botones que se enganchen, y resiste 1 metro bajo el agua. Se queda puesta, y por eso no se te pierde ningún dato.</div>
         </div>
         <div class="hl-cred__item">
           <div class="hl-cred__icon">🛡️</div>
-          <div class="hl-cred__title">90 días de garantía</div>
-          <div class="hl-cred__desc">Controles de calidad en cada lote. Si te llega con un defecto de fábrica, nos hacemos cargo del reemplazo.</div>
+          <div class="hl-cred__title">Si llega con una falla de fábrica, te la reemplazamos</div>
+          <div class="hl-cred__desc">90 días de garantía por defectos de fabricación y control de calidad lote por lote. La gestión la hacemos nosotros: escribes y la reponemos.</div>
         </div>
       </div>
     </div>
@@ -884,9 +872,9 @@
     <div class="hl-wrap">
       <div class="hl-wrap--narrow">
         <span class="mono-tag" style="display:block;margin-bottom:16px; text-align:center;">El Paradigma Invisible</span>
-        <h2 class="h-title" style="text-align:center;">Mide todo el día sin que mires <em style="color:var(--cyan-orbit);">nada</em>.</h2>
+        <h2 class="h-title" style="text-align:center;">Cada mañana te dice si hoy <em style="color:var(--cyan-orbit);">empujas o paras</em>.</h2>
         <p class="body-lg" style="text-align:center; margin-top:20px;">
-          Toda la inteligencia de un laboratorio biométrico, comprimida en una banda que simplemente vive contigo.
+          Un solo número en la app: tu score de recuperación. Sale de tu variabilidad cardíaca, tu pulso en reposo y cuánto sueño profundo alcanzaste anoche.
         </p>
       </div>
 

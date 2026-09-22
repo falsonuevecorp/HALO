@@ -7,9 +7,16 @@
   Uso: {% render 'halo-salida-descuento', product: product, codigo: 'HALO5000', monto: '$5.000' %}
 {%- endcomment -%}
 
+{%- comment -%}
+  INTERRUPTOR. Va en false hasta que el cupón exista en Shopify: prometer un
+  descuento que el checkout no aplica es peor que no mostrar nada.
+  Cuando el código esté creado, ponlo en true.
+{%- endcomment -%}
+{%- assign activo = false -%}
+
 {%- assign codigo = codigo | default: 'HALO5000' -%}
 {%- assign monto  = monto  | default: '$5.000' -%}
-{%- if product.available -%}
+{%- if activo and product.available -%}
 
 <style>
   .hls-velo {

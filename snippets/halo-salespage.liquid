@@ -584,8 +584,49 @@
   .hl-faq__a.open { max-height: 300px; }
   .hl-faq__a-inner { padding-top: 14px; font-size: 0.9rem; color: var(--text-muted) !important; line-height: 1.7; }
 
+  .hl-cta__cod {
+    display: flex; align-items: flex-start; gap: 10px;
+    margin-top: 12px; padding: 12px 14px;
+    background: #F1F8F3; border: 1px solid rgba(0,138,84,0.22);
+    border-radius: 12px; font-size: 0.86rem; line-height: 1.35;
+    color: var(--text-muted) !important;
+  }
+  .hl-cta__cod b { color: var(--green-signal) !important; }
+  .hl-cod__icono { font-size: 1.1rem; line-height: 1; }
+  .hl-cod__sub { display: block; font-size: 0.78rem; color: var(--text-subtle) !important; margin-top: 2px; }
+
   /* RESPONSIVE */
   @media (max-width: 900px) {
+    /* ── El primer pantallazo decide la venta ──────────────────────────
+       En el teléfono el orden pasa a ser: prueba social · titular ·
+       bajada · foto · precio · botón. Todo lo demás baja.
+       `display: contents` disuelve la columna de texto para poder
+       intercalar la foto entre sus hijos.                              */
+    .hl-hero__grid { display: flex !important; flex-direction: column; gap: 0 !important; }
+    .hl-hero__copy { display: contents; }
+    .hl-hero__proof    { order: 1; }
+    .hl-hero .h-display { order: 2; font-size: 1.62rem !important; line-height: 1.12; }
+    .hl-hero__copy > .body-lg { order: 3; font-size: 0.95rem !important; margin-top: 10px !important; margin-bottom: 14px !important; }
+    .hl-hero__img-wrap { order: 4; margin-bottom: 16px; }
+    .hl-hero__cta-box  { order: 5; margin-top: 0 !important; }
+    .hl-hero__badge-row { order: 6; margin-top: 18px; }
+
+    /* Dentro de la caja: precio y botón primero, el resto después. */
+    .hl-hero__cta-box { display: flex; flex-direction: column; }
+    .hl-cta__precio  { order: 1; }
+    .hl-cta__boton   { order: 2; }
+    .hl-trust-micro  { order: 3; }
+    .hl-cta__cod     { order: 4; }
+    .hl-cta__correa  { order: 5; }
+    .hl-cta__mp      { order: 6; margin-top: 14px; }
+    .hl-cta__reloj   { order: 7; margin-bottom: 0 !important; }
+    .hl-cta__envio   { order: 8; margin-top: 12px; margin-bottom: 0 !important; }
+    .hl-cta__trust   { order: 9; }
+
+    /* Cada píxel de arriba cuenta: el sello y la bajada van más apretados. */
+    .hl-hero__proof { margin-bottom: 14px !important; padding: 5px 12px 5px 6px !important; }
+    .hl-hero { padding-top: 10px !important; }
+    .hl-hero__cta-box { padding: 16px 14px !important; }
     .hl-hero__grid, .hl-pain__grid { grid-template-columns: 1fr; gap: 40px; }
     .hl-hero__img-wrap { max-height: none; }
     .hl-cred__grid { grid-template-columns: repeat(2,1fr); }
@@ -621,7 +662,7 @@
   ============================================== -->
   <div class="hl-announcement">
     <div class="hl-announcement__marquee">
-      🔥 LANZAMIENTO: 30% OFF en tu primer pedido <span>|</span> 🚚 Despacho Express GRATIS sobre $59.990 <span>|</span> 🛡️ 90 días de garantía
+      💵 PAGA AL RECIBIR en Santiago <span>|</span> 🚚 Envío GRATIS a todo Chile <span>|</span> 🛡️ 90 días de garantía
     </div>
   </div>
 
@@ -642,7 +683,7 @@
           <h1 class="h-display">{{ product.title }}</h1>
 
           <p class="body-lg" style="color:#A0AAB5; margin-top:20px; margin-bottom:0;">
-            <strong style="color: var(--text-white) !important;">Duermes ocho horas y amaneces sin energía.</strong><br>La Loop Band® mide cuánto de eso fue sueño profundo y cada mañana te dice si hoy entrenas o descansas.
+            <strong style="color: var(--text-white) !important;">Duermes ocho horas y amaneces sin energía.</strong> Mide tu sueño profundo y te dice cada mañana si hoy entrenas o descansas.
           </p>
 
           <div class="hl-hero__badge-row">
@@ -664,14 +705,14 @@
           <div class="hl-hero__cta-box" style="border: 1px solid var(--border-subtle); padding: 20px 16px; border-radius: 16px; background: #fff; margin-top: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); width: 100%; box-sizing: border-box !important;">
             
             <!-- Precios (Centrados) -->
-            <div class="hl-price-row" style="justify-content: center; width: 100%; margin-left: 0; padding-left: 0;">
+            <div class="hl-price-row hl-cta__precio" style="justify-content: center; width: 100%; margin-left: 0; padding-left: 0;">
               <span class="hl-price-main" id="price-display">{{ product.price | money | replace: ',', '.' }}</span>
               <span class="hl-price-compare" id="price-compare" style="text-decoration: line-through; opacity: 0.6; font-size:1.2rem;">{{ product.compare_at_price | money | replace: ',', '.' }}</span>
               <span class="hl-price-badge" id="price-badge" style="background:#E53935; color:#fff; padding: 2px 8px; border-radius: 4px; font-weight:bold; font-size:0.8rem;">30% OFF</span>
             </div>
             
             <!-- MERCADOPAGO PREMIUM BANNER -->
-            <div class="hl-mp-card">
+            <div class="hl-mp-card hl-cta__mp">
               <div class="hl-mp-card__logo">
                 <img src="https://http2.mlstatic.com/frontend-assets/mp-web-navigation/ui-navigation/5.19.1/mercadopago/logo__small@2x.png" alt="Mercado Pago" width="34" height="34" loading="lazy">
               </div>
@@ -693,26 +734,35 @@
             </div>
 
             <!-- 3. Reloj de la oferta -->
-            <div style="font-size: 0.85rem; font-weight: 700; color: #E53935; margin-bottom: 16px; display:flex; align-items:center; justify-content:center; gap:6px; width: 100%;">
+            <div class="hl-cta__reloj" style="font-size: 0.85rem; font-weight: 700; color: #E53935; margin-bottom: 16px; display:flex; align-items:center; justify-content:center; gap:6px; width: 100%;">
               <span class="hl-hero__dot" style="background:#E53935; box-shadow: 0 0 8px #E53935; width:6px; height:6px;"></span>
               El precio de lanzamiento se mantiene por <span id="hl-oferta-reloj" style="font-variant-numeric:tabular-nums;">--:--:--</span>
             </div>
 
             <!-- 4. Envío Gratis -->
-            <div style="background: #E8F5E9; color: #2E7D32; padding: 10px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; text-align: center; margin-bottom: 16px; width: 100%; box-sizing: border-box !important;">
-              🚚 Envío GRATIS a todo Chile (MISMO DÍA)
+            <div class="hl-cta__envio" style="background: #E8F5E9; color: #2E7D32; padding: 10px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; text-align: center; margin-bottom: 16px; width: 100%; box-sizing: border-box !important;">
+              🚚 Envío GRATIS a todo Chile · 💵 Paga al recibir en Santiago
             </div>
 
             <!-- 5. CTA Doble -->
-            <a href="/cart/add?id={{ product.variants.first.id }}&quantity=1&return_to=%2Fcheckout" class="hl-btn-cta" id="hero-cta" style="padding: 16px 12px; line-height:1.2; display:block; width: 100%; box-sizing: border-box !important; margin: 0 auto;">
+            <a href="/cart/add?id={{ product.variants.first.id }}&quantity=1&return_to=%2Fcheckout" class="hl-btn-cta hl-cta__boton" id="hero-cta" style="padding: 16px 12px; line-height:1.2; display:block; width: 100%; box-sizing: border-box !important; margin: 0 auto;">
               <span style="display:block; font-size:1.05rem; font-weight:900; margin-bottom:4px; text-align: center;">PIDE AHORA Y APROVECHA EL DESCUENTO 🎁</span>
               <span style="display:block; font-size:0.75rem; font-weight:500; opacity:0.9; text-align: center;">ANTES DE QUE SE AGOTE LA PROMO 🚀</span>
             </a>
 
-            {% render 'halo-upsell-correa', product: product, block: 'addon' %}
+            <div class="hl-cta__correa">{% render 'halo-upsell-correa', product: product, block: 'addon' %}</div>
+
+            <!-- Pago al recibir · solo Santiago -->
+            <div class="hl-cta__cod">
+              <span class="hl-cod__icono">💵</span>
+              <span>
+                <b>Paga al recibir</b> en Santiago.
+                <span class="hl-cod__sub">Pagas cuando la banda llega a tu puerta.</span>
+              </span>
+            </div>
 
             <!-- 6. Trustpilot (Centrado) -->
-            <div style="display:flex; flex-direction:column; align-items:center; margin-top: 16px; width: 100%;">
+            <div class="hl-cta__trust" style="display:flex; flex-direction:column; align-items:center; margin-top: 16px; width: 100%;">
               <div style="display:flex; gap:2px; margin-bottom:4px; justify-content: center; width: 100%;">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="#00B67A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="#00B67A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -735,6 +785,9 @@
         <!-- PRODUCTO IMAGE -->
         <div class="hl-hero__img-wrap" style="border: none; background: transparent !important; position: relative;">
           {% if product.featured_image %}
+            <picture>
+            {%- comment -%} En el teléfono el recorte cuadrado ocupa 94 px menos y deja el precio a la vista. {%- endcomment -%}
+            <source media="(max-width: 900px)" srcset="{{ 'halo-hero-movil.jpg' | asset_url }}">
             <!-- Shopify Native Product Image -->
             <img src="{{ product.featured_image | img_url: '1200x' }}"
                  srcset="{{ product.featured_image | img_url: '480x' }} 480w,
@@ -747,6 +800,7 @@
                  width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"
                  fetchpriority="high" decoding="async"
                  style="width:100%; height:auto; display:block; object-fit:contain; border-radius:20px; box-shadow:0 10px 40px rgba(0,0,0,0.18);">
+            </picture>
           {% else %}
             <!-- PLACEHOLDER PREMIUM 1 (Fallback si no subes imagen en Shopify) -->
             <div class="hl-placeholder-premium" style="width:100%; height:100%; min-height:500px; display:flex; flex-direction:column; align-items:center; justify-content:center; background: radial-gradient(circle at center, #1A1A1A 0%, #050505 100%); border: 1px solid rgba(0,236,255,0.15); border-radius: 20px; position:relative; overflow:hidden;">
@@ -1278,7 +1332,7 @@
         <h2 class="h-title">Todo lo que necesitas <em style="color:var(--cyan-orbit);">saber</em>.</h2>
       </div>
       <div class="hl-faq__list">
-        {% assign faqs = "¿Cuánto dura la batería y cómo se carga?|Loop Band tiene una autonomía de hasta 30 días con monitoreo continuo 24/7. Se carga de 0 a 100% en menos de 90 minutos con el cargador magnético incluido.||¿Es resistente al agua?|Sí. Loop Band cuenta con certificación IP67. Puedes ducharte, nadar y sudar intensamente sin tener que quitártela.||¿Tengo que pagar una suscripción mensual en la App?|¡No! A diferencia de otros anillos o bandas, nuestra aplicación es 100% gratuita de por vida. No retenemos tus datos de salud detrás de un muro de pago.||¿Necesito tener mi teléfono cerca mientras duermo o entreno?|No. Loop Band tiene memoria interna. Puedes entrenar o dormir sin el teléfono. Solo abre la aplicación después y los datos se sincronizarán vía Bluetooth.||¿Cómo funciona la Garantía?|Tienes 90 días desde que la recibes. Cubre defectos de fábrica: que llegue dañada o que los sensores fallen por algo nuestro. En ese caso te enviamos una banda nueva y el envío lo pagamos nosotros.||¿Funciona tanto en iOS como en Android?|Absolutamente. Nuestra App está optimizada y disponible para ambas plataformas con sincronización perfecta." | split: "||" %}
+        {% assign faqs = "¿Puedo pagar cuando me llegue?|Sí, si estás en Santiago. Eliges “Pago contra entrega” en el checkout y pagas cuando el repartidor te entrega la banda, sin adelantar nada. Fuera de Santiago el pago va al momento de la compra, con tarjeta o en 3 cuotas.||¿Cuánto dura la batería y cómo se carga?|Loop Band tiene una autonomía de hasta 30 días con monitoreo continuo 24/7. Se carga de 0 a 100% en menos de 90 minutos con el cargador magnético incluido.||¿Es resistente al agua?|Sí. Loop Band cuenta con certificación IP67. Puedes ducharte, nadar y sudar intensamente sin tener que quitártela.||¿Tengo que pagar una suscripción mensual en la App?|¡No! A diferencia de otros anillos o bandas, nuestra aplicación es 100% gratuita de por vida. No retenemos tus datos de salud detrás de un muro de pago.||¿Necesito tener mi teléfono cerca mientras duermo o entreno?|No. Loop Band tiene memoria interna. Puedes entrenar o dormir sin el teléfono. Solo abre la aplicación después y los datos se sincronizarán vía Bluetooth.||¿Cómo funciona la Garantía?|Tienes 90 días desde que la recibes. Cubre defectos de fábrica: que llegue dañada o que los sensores fallen por algo nuestro. En ese caso te enviamos una banda nueva y el envío lo pagamos nosotros.||¿Funciona tanto en iOS como en Android?|Absolutamente. Nuestra App está optimizada y disponible para ambas plataformas con sincronización perfecta." | split: "||" %}
         {% for faq_item in faqs %}
           {% assign faq_parts = faq_item | split: "|" %}
           <div class="hl-faq__item">
@@ -1366,6 +1420,7 @@
             <span>🔒 Pago 100% Seguro</span>
             <span>🛡️ 90 días de garantía</span>
             <span>📦 Despacho Gratis</span>
+            <span>💵 Paga al recibir en Santiago</span>
           </div>
         </div>
       </div>

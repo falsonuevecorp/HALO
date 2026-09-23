@@ -584,6 +584,25 @@
   .hl-faq__a.open { max-height: 300px; }
   .hl-faq__a-inner { padding-top: 14px; font-size: 0.9rem; color: var(--text-muted) !important; line-height: 1.7; }
 
+  .hl-caja { background: var(--obsidian); }
+  .hl-caja__grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 40px;
+  }
+  .hl-caja__item {
+    background: var(--titanium-dark); border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md); padding: 24px 20px; text-align: center;
+  }
+  .hl-caja__num {
+    display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+    font-weight: 600; letter-spacing: 0.1em; color: var(--cyan-orbit);
+    border: 1px solid rgba(0,122,140,0.25); border-radius: 999px; padding: 3px 10px; margin-bottom: 14px;
+  }
+  .hl-caja__ico { font-size: 1.9rem; line-height: 1; margin-bottom: 12px; }
+  .hl-caja__nombre { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 0.98rem; color: var(--text-white) !important; margin-bottom: 6px; }
+  .hl-caja__desc { font-size: 0.84rem; line-height: 1.45; color: var(--text-muted) !important; }
+  @media (max-width: 860px) { .hl-caja__grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 460px) { .hl-caja__grid { grid-template-columns: 1fr; gap: 12px; } .hl-caja__item { display: flex; align-items: center; gap: 14px; text-align: left; padding: 16px; } .hl-caja__ico { margin-bottom: 0; } .hl-caja__num { display: none; } }
+
   .hl-costo {
     margin-top: 56px; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);
     background: var(--titanium-dark); padding: 32px 28px;
@@ -1412,6 +1431,45 @@
     </div>
   </section>
 
+  <!-- Qué llega en la caja -->
+  <section class="hl-section--sm hl-caja">
+    <div class="hl-wrap">
+      <div style="text-align:center;">
+        <span class="mono-tag" style="display:block;margin-bottom:12px;">ABRE LA CAJA</span>
+        <h2 class="h-title">Lo que llega a tu puerta.</h2>
+        <p class="body-md" style="max-width:520px; margin:16px auto 0;">
+          Nada que comprar aparte. La primera noche ya estás midiendo.
+        </p>
+      </div>
+      <div class="hl-caja__grid">
+        <div class="hl-caja__item">
+          <span class="hl-caja__num">01</span>
+          <div class="hl-caja__ico">➰</div>
+          <div class="hl-caja__nombre">El módulo Loop Band®</div>
+          <div class="hl-caja__desc">Los sensores PPG, la memoria interna y la batería. Sin pantalla que mirar.</div>
+        </div>
+        <div class="hl-caja__item">
+          <span class="hl-caja__num">02</span>
+          <div class="hl-caja__ico">🎽</div>
+          <div class="hl-caja__nombre">La correa de tu color</div>
+          <div class="hl-caja__desc">La que elegiste al comprar. Se cambia sin herramientas.</div>
+        </div>
+        <div class="hl-caja__item">
+          <span class="hl-caja__num">03</span>
+          <div class="hl-caja__ico">🔌</div>
+          <div class="hl-caja__nombre">El cargador magnético</div>
+          <div class="hl-caja__desc">Se pega solo. De 0 a 100% en menos de 90 minutos, una vez al mes.</div>
+        </div>
+        <div class="hl-caja__item">
+          <span class="hl-caja__num">04</span>
+          <div class="hl-caja__ico">📖</div>
+          <div class="hl-caja__nombre">La guía de inicio</div>
+          <div class="hl-caja__desc">Impresa, en castellano. Cómo ponértela y qué mirar la primera semana.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- =============================================
        PASO 13: GRAND SLAM OFFER + GODFATHER GUARANTEE
   ============================================== -->
@@ -1431,18 +1489,28 @@
           <div class="hl-offer__item">
             <div class="hl-offer__item-icon">➰</div>
             <div>
-              <div class="hl-offer__item-name">Dispositivo LOOP BAND®</div>
-              <div class="hl-offer__item-desc">Sensores PPG · Batería hasta 30 días · App 100% Gratis de por vida</div>
+              <div class="hl-offer__item-name">Loop Band®, su correa y su cargador magnético</div>
+              <div class="hl-offer__item-desc">Todo lo que necesitas para empezar la primera noche. Nada que comprar aparte.</div>
             </div>
             <div class="hl-offer__item-val">
-              <div class="orig">$180.000</div>
+              <div class="orig">$105.000</div>
+            </div>
+          </div>
+          <div class="hl-offer__item">
+            <div class="hl-offer__item-icon">📱</div>
+            <div>
+              <div class="hl-offer__item-name">La app completa, gratis de por vida</div>
+              <div class="hl-offer__item-desc">Sin planes, sin niveles y sin una mensualidad que puedas dejar de pagar.</div>
+            </div>
+            <div class="hl-offer__item-val">
+              <div class="free">INCLUIDA</div>
             </div>
           </div>
           <div class="hl-offer__item">
             <div class="hl-offer__item-icon">📚</div>
             <div>
               <div class="hl-offer__item-name">E-Book: Masterizando tu Recuperación</div>
-              <div class="hl-offer__item-desc">Guía para interpretar tu HRV y maximizar tu energía.</div>
+              <div class="hl-offer__item-desc">Cómo leer tu HRV, tu pulso en reposo y tus fases de sueño sin ser médico.</div>
             </div>
             <div class="hl-offer__item-val">
               <div class="orig">$29.990</div>
@@ -1452,8 +1520,8 @@
           <div class="hl-offer__item" style="border-bottom:none;">
             <div class="hl-offer__item-icon">🚚</div>
             <div>
-              <div class="hl-offer__item-name">Despacho Express Prioritario</div>
-              <div class="hl-offer__item-desc">Entrega en 24–48 hrs. a todo Chile</div>
+              <div class="hl-offer__item-name">Despacho Express y pago al recibir</div>
+              <div class="hl-offer__item-desc">En Santiago llega en menos de 24 horas y lo pagas cuando lo tienes en la mano.</div>
             </div>
             <div class="hl-offer__item-val">
               <div class="orig">$4.990</div>
@@ -1463,7 +1531,7 @@
           <div class="hl-offer__total">
             <div>
               <div class="hl-offer__total-label">Valor Total</div>
-              <div class="hl-offer__total-orig">{{ product.compare_at_price | money | replace: ',', '.' }}</div>
+              <div class="hl-offer__total-orig">$139.980</div>
             </div>
             <div style="text-align:right;">
               <div class="hl-offer__total-label">Precio de Lanzamiento</div>

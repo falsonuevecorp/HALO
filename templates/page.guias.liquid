@@ -1,0 +1,102 @@
+{%- comment -%}
+  Página de descarga de las guías. No va en el menú: se llega por el link
+  que va en el correo de confirmación del pedido.
+
+  Requiere que los cuatro PDF estén subidos en Shopify en
+  Contenido → Archivos, con exactamente estos nombres.
+{%- endcomment -%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+
+<style>
+  .hg { --tinta:#0A0F13; --gris:#5C6878; --borde:rgba(10,15,19,.10); --acento:#007A8C;
+        font-family:'Inter',sans-serif; background:#fff; color:var(--tinta);
+        padding:72px 20px 96px; }
+  .hg__wrap { max-width:760px; margin:0 auto; }
+  .hg__marca { font-size:.72rem; font-weight:900; letter-spacing:.5em; color:var(--gris); }
+  .hg__tag { display:inline-block; margin-top:28px; font-size:.64rem; font-weight:800; letter-spacing:.16em;
+             text-transform:uppercase; color:var(--acento); border:1px solid rgba(0,122,140,.28);
+             border-radius:999px; padding:6px 14px; }
+  .hg h1 { font-size:2.6rem; font-weight:900; letter-spacing:-.03em; line-height:1.06; margin:20px 0 0; }
+  .hg__sub { margin-top:16px; font-size:1.02rem; line-height:1.6; color:var(--gris); max-width:560px; }
+  .hg__lista { margin-top:48px; display:flex; flex-direction:column; gap:14px; }
+  .hg__item { display:flex; align-items:center; gap:20px; padding:22px 24px;
+              border:1px solid var(--borde); border-radius:18px; text-decoration:none; color:inherit;
+              transition:border-color .24s ease, transform .24s cubic-bezier(.22,.61,.36,1), box-shadow .24s ease; }
+  .hg__item:hover { border-color:var(--tinta); transform:translateY(-1px); box-shadow:0 12px 30px rgba(10,15,19,.08); }
+  .hg__n { flex:0 0 auto; width:42px; height:42px; border-radius:50%; border:1px solid var(--borde);
+           display:flex; align-items:center; justify-content:center; font-size:.82rem; font-weight:800; color:var(--gris); }
+  .hg__txt { flex:1; }
+  .hg__t { font-size:1.05rem; font-weight:800; letter-spacing:-.01em; }
+  .hg__d { font-size:.88rem; color:var(--gris); margin-top:4px; line-height:1.45; }
+  .hg__meta { font-size:.68rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--gris);
+              white-space:nowrap; display:flex; align-items:center; gap:8px; }
+  .hg__item:hover .hg__meta { color:var(--tinta); }
+  .hg__pie { margin-top:56px; padding-top:28px; border-top:1px solid var(--borde);
+             font-size:.86rem; line-height:1.6; color:var(--gris); }
+  .hg__pie a { color:var(--tinta); font-weight:700; text-decoration:none; border-bottom:1px solid var(--borde); }
+  @media (max-width:560px) {
+    .hg { padding:52px 18px 72px; }
+    .hg h1 { font-size:2rem; }
+    .hg__item { gap:14px; padding:18px; }
+    .hg__n { width:36px; height:36px; }
+    .hg__meta { display:none; }
+  }
+</style>
+
+<div class="hg">
+  <div class="hg__wrap">
+    <div class="hg__marca">HALO</div>
+    <span class="hg__tag">Incluido con tu Loop Band®</span>
+    <h1>Tus guías.</h1>
+    <p class="hg__sub">
+      Cuatro documentos para que los números de tu banda se conviertan en decisiones.
+      Son tuyos: descárgalos y guárdalos donde quieras.
+    </p>
+
+    <div class="hg__lista">
+      <a class="hg__item" href="{{ '1-masterizando-recuperacion.pdf' | file_url }}" download>
+        <span class="hg__n">01</span>
+        <span class="hg__txt">
+          <span class="hg__t">Masterizando tu Recuperación</span>
+          <span class="hg__d">El manual completo: cómo leer tu HRV, tu pulso en reposo, tus fases de sueño y tu score, y qué hacer con cada uno.</span>
+        </span>
+        <span class="hg__meta">7 págs · PDF ↓</span>
+      </a>
+
+      <a class="hg__item" href="{{ '2-optimizacion-sueno.pdf' | file_url }}" download>
+        <span class="hg__n">02</span>
+        <span class="hg__txt">
+          <span class="hg__t">Optimización del Sueño</span>
+          <span class="hg__d">Las seis palancas que mueven tu sueño profundo y un protocolo de catorce días para descubrir cuál es la tuya.</span>
+        </span>
+        <span class="hg__meta">4 págs · PDF ↓</span>
+      </a>
+
+      <a class="hg__item" href="{{ '3-protocolo-atletas.pdf' | file_url }}" download>
+        <span class="hg__n">03</span>
+        <span class="hg__txt">
+          <span class="hg__t">Protocolo de Recuperación para Atletas</span>
+          <span class="hg__d">Cómo armar la semana con tu score, cuándo tocar descarga, y qué esperar en viaje, competencia y vuelta de lesión.</span>
+        </span>
+        <span class="hg__meta">4 págs · PDF ↓</span>
+      </a>
+
+      <a class="hg__item" href="{{ '4-stretching-nocturno.pdf' | file_url }}" download>
+        <span class="hg__n">04</span>
+        <span class="hg__txt">
+          <span class="hg__t">Rutina de Stretching Nocturno</span>
+          <span class="hg__d">Seis movimientos en diez minutos para bajar revoluciones antes de dormir, con versión corta de tres.</span>
+        </span>
+        <span class="hg__meta">4 págs · PDF ↓</span>
+      </a>
+    </div>
+
+    <p class="hg__pie">
+      Material educativo de HALO. No reemplaza la opinión de un profesional de la salud.<br>
+      ¿Algo no descarga? Escríbenos y te los mandamos por correo. <a href="{{ routes.root_url }}">Volver a hellohalo.us</a>
+    </p>
+  </div>
+</div>

@@ -556,6 +556,11 @@
   .hl-final-cta__urgency .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green-signal); animation: pulse-dot 2s ease infinite; }
 
   /* STICKY BAR */
+  /* El widget de WhatsApp se planta encima del botón de compra.
+     Cuando la barra aparece, lo subimos para que no se tapen. */
+  #chat-bubble.whatsapp-widget { transition: transform .3s cubic-bezier(.22,.61,.36,1); }
+  html.hl-sticky-on #chat-bubble.whatsapp-widget { transform: translateY(-84px); }
+
   .hl-sticky-bar {
     position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
     background: rgba(255, 255, 255, 0.95);
@@ -569,26 +574,50 @@
   .hl-sticky-bar__inner { max-width: 600px; margin: 0 auto; width: 100%; }
 
   .wb-sticky-direct-btn {
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    display: flex; align-items: center; justify-content: space-between; gap: 14px;
     width: 100%; background: #0A0F13;
-    color: #ffffff !important; text-decoration: none; padding: 14px 24px;
+    color: #ffffff !important; text-decoration: none;
+    padding: 9px 9px 9px 22px;
     border-radius: 999px; border: 1px solid #0A0F13; cursor: pointer;
-    box-shadow: 0 1px 2px rgba(10,15,19,0.10), 0 12px 30px rgba(10,15,19,0.26);
-    transition: background .26s ease, transform .26s cubic-bezier(.22,.61,.36,1), box-shadow .26s ease;
+    box-shadow: 0 1px 2px rgba(10,15,19,0.10), 0 14px 34px rgba(10,15,19,0.30);
+    transition: background .26s ease, transform .26s cubic-bezier(.22,.61,.36,1);
     box-sizing: border-box;
   }
   .wb-sticky-direct-btn:hover { background: #19222B; transform: translateY(-1px); }
-  .wb-sticky-btn-title {
-    font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; line-height: 1.2;
-    margin: 0; display: flex; align-items: center; justify-content: center; gap: 12px;
-    color: #ffffff !important; letter-spacing: -0.005em;
+
+  /* izquierda: el dato */
+  .wbs__izq { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+  .wbs__precios { display: flex; align-items: baseline; gap: 8px; }
+  .wbs__precio {
+    font-family: 'Inter', sans-serif; font-size: 19px; font-weight: 800;
+    letter-spacing: -0.02em; color: #FFFFFF !important; font-variant-numeric: tabular-nums;
   }
-  .wb-sticky-btn-title span { color: #ffffff !important; }
+  .wbs__antes {
+    font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.40) !important;
+    text-decoration: line-through; font-variant-numeric: tabular-nums;
+  }
   .wb-sticky-btn-subtitle {
-    font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600;
-    letter-spacing: 0.16em; text-transform: uppercase;
-    margin-top: 4px; margin-bottom: 0; text-align: center;
-    color: rgba(255,255,255,0.48) !important;
+    font-family: 'Inter', sans-serif; font-size: 9.5px; font-weight: 600;
+    letter-spacing: 0.10em; text-transform: uppercase;
+    margin: 2px 0 0; text-align: left;
+    color: rgba(255,255,255,0.45) !important; white-space: nowrap;
+  }
+
+  /* derecha: la acción, en claro para que no compita con el precio */
+  .wbs__accion {
+    flex: 0 0 auto; display: inline-flex; align-items: center; gap: 8px;
+    background: #FFFFFF; color: #0A0F13 !important;
+    font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 700;
+    letter-spacing: -0.005em; padding: 12px 20px; border-radius: 999px;
+    transition: background .24s ease;
+  }
+  .wb-sticky-direct-btn:hover .wbs__accion { background: #EDF0F5; }
+  .wbs__accion .hl-cta__flecha { opacity: .6; }
+  .wb-sticky-direct-btn:hover .wbs__accion .hl-cta__flecha { transform: translateX(3px); opacity: 1; }
+  @media (max-width: 380px) {
+    .wb-sticky-direct-btn { padding-left: 16px; }
+    .wbs__precio { font-size: 17px; }
+    .wbs__accion { padding: 11px 15px; font-size: 12.5px; }
   }
 
   /* FAQ */
@@ -909,8 +938,8 @@
         </div>
         <div class="hl-proof-divider"></div>
         <div class="hl-proof-stat">
-          <div class="hl-proof-stat__num">Sin</div>
-          <div class="hl-proof-stat__label">suscripción: la app es gratis de por vida</div>
+          <div class="hl-proof-stat__num">$0</div>
+          <div class="hl-proof-stat__label">de suscripción. La app es gratis de por vida</div>
         </div>
       </div>
     </div>
@@ -1619,13 +1648,14 @@
   <div class="hl-sticky-bar" id="sticky-bar">
     <div class="hl-sticky-bar__inner">
       <a href="/cart/add?id={{ product.variants.first.id }}&quantity=1&return_to=%2Fcheckout" class="wb-sticky-direct-btn">
-        <span class="wb-sticky-btn-title">
-          <span>Comenzar esta noche</span>
-          <span style="opacity:0.45; font-size:0.85em; text-decoration:line-through;">{{ product.compare_at_price | money | replace: ',', '.' }}</span>
-          <span class="hl-cta__precio-btn">{{ product.price | money | replace: ',', '.' }}</span>
-          <svg class="hl-cta__flecha" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg>
+        <span class="wbs__izq">
+          <span class="wbs__precios">
+            <span class="wbs__precio">{{ product.price | money | replace: ',', '.' }}</span>
+            <s class="wbs__antes">{{ product.compare_at_price | money | replace: ',', '.' }}</s>
+          </span>
+          <span class="wb-sticky-btn-subtitle" id="sticky-timer-wrap">Congelado <span id="sticky-timer">--:--:--</span></span>
         </span>
-        <span class="wb-sticky-btn-subtitle" id="sticky-timer-wrap">Precio congelado por <span id="sticky-timer">--:--:--</span></span>
+        <span class="wbs__accion">Comenzar <svg class="hl-cta__flecha" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></span>
       </a>
     </div>
   </div>
@@ -1642,7 +1672,10 @@
     if(bar && hero){
       window.addEventListener('scroll', function(){
         var heroBottom = hero.getBoundingClientRect().bottom;
-        bar.classList.toggle('visible', heroBottom < 0);
+        var arriba = heroBottom < 0;
+        bar.classList.toggle('visible', arriba);
+        // La burbuja de WhatsApp vive en la misma esquina: se corre para arriba.
+        document.documentElement.classList.toggle('hl-sticky-on', arriba);
       }, {passive:true});
     }
 
@@ -1674,7 +1707,7 @@
       if (texto) texto.textContent = '⚠️ Se agota la oferta';
       if (bloque) bloque.classList.add('hl-titila');
       if (envoltorio) {
-        envoltorio.textContent = '⚠️ Se agota la oferta';
+        envoltorio.textContent = 'Se agota la oferta';
         envoltorio.classList.add('hl-titila');
       }
       setTimeout(function () {

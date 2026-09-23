@@ -584,6 +584,33 @@
   .hl-faq__a.open { max-height: 300px; }
   .hl-faq__a-inner { padding-top: 14px; font-size: 0.9rem; color: var(--text-muted) !important; line-height: 1.7; }
 
+  .hl-costo {
+    margin-top: 56px; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);
+    background: var(--titanium-dark); padding: 32px 28px;
+    box-shadow: 0 14px 40px rgba(0,0,0,0.06);
+  }
+  .hl-costo__head { text-align: center; margin-bottom: 26px; }
+  .hl-costo__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .hl-costo__col {
+    border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+    padding: 22px 20px; background: var(--obsidian);
+  }
+  .hl-costo__col--halo { border-color: rgba(0,138,84,0.32); background: rgba(0,138,84,0.05); }
+  .hl-costo__quien { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-subtle) !important; }
+  .hl-costo__col--halo .hl-costo__quien { color: var(--green-signal) !important; }
+  .hl-costo__linea { display: flex; justify-content: space-between; gap: 10px; font-size: 0.88rem; padding: 10px 0; border-bottom: 1px solid var(--border-subtle); color: var(--text-muted) !important; }
+  .hl-costo__linea:last-of-type { border-bottom: 0; }
+  .hl-costo__total { margin-top: 14px; padding-top: 14px; border-top: 2px solid var(--border-subtle); }
+  .hl-costo__total b { display: block; font-family: 'Inter', sans-serif; font-size: 1.7rem; font-weight: 900; color: var(--text-white) !important; letter-spacing: -0.02em; }
+  .hl-costo__col--halo .hl-costo__total b { color: var(--green-signal) !important; }
+  .hl-costo__total span { font-size: 0.78rem; color: var(--text-subtle) !important; }
+  .hl-costo__pie { margin-top: 22px; text-align: center; font-size: 0.9rem; color: var(--text-muted) !important; }
+  @media (max-width: 620px) {
+    .hl-costo { padding: 24px 18px; }
+    .hl-costo__grid { grid-template-columns: 1fr; }
+    .hl-costo__total b { font-size: 1.45rem; }
+  }
+
   @keyframes hl-titila { 0%, 100% { opacity: 1; } 50% { opacity: 0.15; } }
   .hl-titila { animation: hl-titila 0.7s steps(1, end) infinite; }
 
@@ -1099,6 +1126,39 @@
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <!-- El costo real a tres años: la mensualidad puesta en número -->
+      <div class="hl-costo">
+        <div class="hl-costo__head">
+          <span class="mono-tag" style="display:block;margin-bottom:10px;">EL COSTO REAL A TRES AÑOS</span>
+          <h3 class="h-sub">Una se paga una vez. La otra, todos los meses.</h3>
+        </div>
+        <div class="hl-costo__grid">
+          <div class="hl-costo__col hl-costo__col--halo">
+            <div class="hl-costo__quien">➰ Loop Band®</div>
+            <div class="hl-costo__linea"><span>El aparato</span><b>{{ product.price | money | replace: ',', '.' }}</b></div>
+            <div class="hl-costo__linea"><span>La app, 36 meses</span><b>$0</b></div>
+            <div class="hl-costo__linea"><span>Tus datos históricos</span><b>Tuyos</b></div>
+            <div class="hl-costo__total">
+              <b>{{ product.price | money | replace: ',', '.' }}</b>
+              <span>Eso es todo. No hay una segunda cuenta.</span>
+            </div>
+          </div>
+          <div class="hl-costo__col">
+            <div class="hl-costo__quien">💍 Las que cobran mensualidad</div>
+            <div class="hl-costo__linea"><span>El aparato</span><b>Aparte</b></div>
+            <div class="hl-costo__linea"><span>La app, 36 meses</span><b>US$10 al mes</b></div>
+            <div class="hl-costo__linea"><span>Si dejas de pagar</span><b>Se apagan</b></div>
+            <div class="hl-costo__total">
+              <b>+ US$360</b>
+              <span>Solo en mensualidad, sin contar el aparato.</span>
+            </div>
+          </div>
+        </div>
+        <p class="hl-costo__pie">
+          Trescientos sesenta dólares es <strong style="color:var(--text-white) !important;">más de cinco veces</strong> lo que cuesta la Loop Band® entera. Y son por leer los datos de tu propio cuerpo.
+        </p>
       </div>
     </div>
   </section>

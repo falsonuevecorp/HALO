@@ -66,6 +66,7 @@
   {% render 'motosport-css' %}
   {% render 'halo-liquid-header' %}
   {% render 'halo-minicart' %}
+  {% if template.name == 'cart' %}{% render 'halo-cartpage' %}{% endif %}
   </head>
   <body class="template--{{template}}">
           <!--

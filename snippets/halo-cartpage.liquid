@@ -1,0 +1,86 @@
+{%- comment -%}
+  HALO · la página del carro con la identidad de la marca.
+  Mismo criterio que el cajón: solo estilos sobre el marcado de BoosterTheme,
+  más los bloques propios que se insertan desde sections/cart-page.liquid.
+{%- endcomment -%}
+<style id="halo-cartpage-css">
+  .template-cart .container,
+  .template-cart .breadcrumbs { background: transparent !important; }
+  body.template-cart { background: #0B0D10 !important; color: #FFFFFF !important; }
+  .template-cart .breadcrumbs, .template-cart .breadcrumbs a { color: rgba(255,255,255,.42) !important; }
+
+  /* ---------- encabezado ---------- */
+  .template-cart .cart__header h1 {
+    font-family: Arimo, sans-serif; font-weight: 800 !important;
+    font-size: 1.55rem !important; letter-spacing: -.01em; color: #FFFFFF !important;
+  }
+  /* El botón de pagar de arriba sobra: hay uno al final, junto al total. */
+  .template-cart .cart__header .checkout__button { display: none !important; }
+
+  /* ---------- cada producto ---------- */
+  .template-cart .cart__item {
+    background: rgba(255,255,255,.035) !important;
+    border: 1px solid rgba(255,255,255,.09) !important;
+    border-radius: 14px !important;
+    padding: 14px !important; margin-bottom: 12px !important;
+  }
+  .template-cart .cart__info--text a,
+  .template-cart .cart__info--text { color: #FFFFFF !important; font-weight: 600; }
+  .template-cart .cart__info--variant { color: rgba(255,255,255,.48) !important; font-weight: 400; }
+  .template-cart .card__img--container { border-radius: 10px !important; overflow: hidden; background: #15191F; }
+  .template-cart .cart__punit, .template-cart .cart__ptotal { color: #FFFFFF !important; font-weight: 700; }
+  .template-cart .cart__compare-price { color: rgba(255,255,255,.34) !important; text-decoration: line-through; font-weight: 400; }
+  .template-cart .cart__trash svg { fill: rgba(255,255,255,.42) !important; }
+  .template-cart .cart__trash:hover svg { fill: #FF6B6B !important; }
+
+  .template-cart .quantity--input {
+    background: rgba(255,255,255,.06) !important;
+    border: 1px solid rgba(255,255,255,.14) !important;
+    border-radius: 999px !important; overflow: hidden;
+  }
+  .template-cart .quantity--input__button,
+  .template-cart .quantity--input__input {
+    background: transparent !important; color: #FFFFFF !important; border: none !important;
+  }
+
+  /* ---------- notas ---------- */
+  .template-cart .cart__notes span { color: rgba(255,255,255,.52) !important; font-size: .82rem; }
+  .template-cart .cart__notes--note {
+    background: rgba(255,255,255,.04) !important;
+    border: 1px solid rgba(255,255,255,.12) !important;
+    border-radius: 12px !important; color: #FFFFFF !important;
+    padding: 12px !important; rows: 3;
+  }
+  .template-cart .cart__notes--note { min-height: 92px !important; height: 92px !important; }
+  .template-cart .cart__notes--note::placeholder { color: rgba(255,255,255,.30) !important; }
+
+  /* ---------- el total ---------- */
+  .template-cart .cart__total {
+    background: rgba(255,255,255,.04) !important;
+    border: 1px solid rgba(255,255,255,.10) !important;
+    border-radius: 14px !important; padding: 18px !important;
+  }
+  .template-cart .cart__total > .cart__total { background: none !important; border: none !important; padding: 0 !important; }
+  .template-cart .cart__total span { color: rgba(255,255,255,.58) !important; }
+  .template-cart .cart__discount--amount { color: #00C97B !important; font-weight: 800; }
+  .template-cart .cart__grandtotal {
+    display: block; margin-top: 10px; padding-top: 12px;
+    border-top: 1px solid rgba(255,255,255,.10);
+    font-size: 1.05rem !important; font-weight: 800 !important; color: #FFFFFF !important;
+  }
+  .template-cart .cart__grandtotal .jsPrice { color: #FFFFFF !important; font-size: 1.3rem; font-weight: 800; }
+  .template-cart .cart__continue { color: rgba(255,255,255,.55) !important; }
+
+  .template-cart .button--primary,
+  .template-cart button[name="checkout"] {
+    background: #FFFFFF !important; color: #0A0F13 !important;
+    border: none !important; border-radius: 999px !important;
+    font-weight: 800 !important; letter-spacing: .01em; padding: 15px 22px !important;
+  }
+  .template-cart .button--primary:hover { background: rgba(255,255,255,.88) !important; }
+
+  /* ---------- carro vacío ---------- */
+  .template-cart .cart__header h1,
+  .template-cart .cart__suggestion,
+  .template-cart h3 { color: #FFFFFF !important; }
+</style>

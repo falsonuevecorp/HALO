@@ -51,8 +51,8 @@
     "page": {
       "title": "Tu carro",
       "currency_notice": "Esta tienda usa conversión de moneda. Tu pedido se procesará en %curr_code% (%curr_symbol%), aunque los precios se muestren en otra moneda.",
-      "additional_notes": "Notas adicionales",
-      "total": "Total",
+      "additional_notes": "¿Algo que debamos saber del envío?",
+      "total": "Precio normal",
       "grand_total": "Total a pagar",
       "discount": "Ahorras",
       "empty_title": "¡Tu carro está vacío!",

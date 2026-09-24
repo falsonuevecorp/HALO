@@ -1,3 +1,11 @@
+{%- assign hc_umbral = 5000000 -%}
+{%- assign hc_falta = hc_umbral | minus: cart.total_price -%}
+{%- assign hc_correa = all_products['strap-de-silicon-loob-band'] -%}
+{%- assign hc_tiene_correa = false -%}
+{%- for item in cart.items -%}
+  {%- if item.product.handle == 'strap-de-silicon-loob-band' -%}{%- assign hc_tiene_correa = true -%}{%- endif -%}
+{%- endfor -%}
+
 {% unless cart.items.size == 0 %}
 {% assign tran_checkout = 'general.buttons.checkout' | t %}
 {% assign tran_update = 'general.buttons.update_cart' | t %}
@@ -15,6 +23,20 @@
                 {% endif %}
             {% render 'button__submit', text: tran_checkout, name: 'checkout' %}
         </div>
+    </div>
+
+    <div class="col-12 hm-envio {% if hc_falta <= 0 %}hm-envio--listo{% endif %}" style="margin:0 0 16px;">
+      <div class="hm-envio__texto">
+        {%- if hc_falta <= 0 -%}
+          🎉 <b>Tu envío es gratis.</b> Llega mañana si estás en Santiago.
+        {%- else -%}
+          Te faltan <b>{{ hc_falta | money | replace: ',', '.' }}</b> para el envío gratis
+        {%- endif -%}
+      </div>
+      <div class="hm-envio__riel">
+        {%- assign hc_pct = cart.total_price | times: 100 | divided_by: hc_umbral -%}
+        <span style="width: {% if hc_pct > 100 %}100{% else %}{{ hc_pct }}{% endif %}%"></span>
+      </div>
     </div>
 
     {% assign totalAmount = 0 %}
@@ -135,6 +157,26 @@
         {{ 'cart.page.currency_notice' | t | replace: '%curr_symbol%', cart.currency.symbol | replace: '%curr_code%', cart.currency.iso_code }}
     </div>
     {% endif %}
+    {%- if hc_correa.id and hc_tiene_correa == false -%}
+      <div class="col-12 hm-extra" style="margin:0 0 20px; padding-top:0; border-top:none;">
+        <div class="hm-extra__tit">Se le suele sumar</div>
+        <div class="hm-correa">
+          <img src="{{ hc_correa.featured_image | img_url: '120x' }}" alt="{{ hc_correa.title | escape }}" width="52" height="52" loading="lazy">
+          <div class="hm-correa__cuerpo">
+            <div class="hm-correa__nombre">Una correa de repuesto</div>
+            <div class="hm-correa__desc">La sudada se lava mientras la otra sigue midiendo. Se cambia sin herramientas.</div>
+            <div class="hm-correa__precio">
+              <b>{{ hc_correa.price | money | replace: ',', '.' }}</b>
+              {%- if hc_correa.compare_at_price > hc_correa.price -%}
+                <s>{{ hc_correa.compare_at_price | money | replace: ',', '.' }}</s>
+              {%- endif -%}
+            </div>
+          </div>
+          <button type="button" class="hm-correa__btn" data-hm-add="{{ hc_correa.selected_or_first_available_variant.id }}">Añadir</button>
+        </div>
+      </div>
+    {%- endif -%}
+
     <div class="row cart__additional">
         <div class="col-12 col-md-4 cart__additional--left">
             <a class="cart__continue"
@@ -159,6 +201,9 @@
                 </span>
                 {% endif %}
                 <span class="cart__grandtotal">{{'cart.page.grand_total' | t}}: <span class="jsPrice">{{ cart.total_price | money | strip_html }}</span></span>
+                <div class="hm-confianza" style="margin:12px 0 14px;">
+                  <span>🔒 Pago seguro</span><span>·</span><span>🛡️ 90 días de garantía</span><span>·</span><span>💵 Paga al recibir en Santiago</span>
+                </div>
                 {% render 'button__submit', text: tran_checkout, name: 'checkout', class: 'button--full-width' %}
             </div>
         </div>

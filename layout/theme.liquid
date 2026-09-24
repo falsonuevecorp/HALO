@@ -17,12 +17,14 @@
         el teléfono bajaba la foto de escritorio que nunca muestra y recién
         después pedía la suya. Son dos descargas y el LCP se iba a 7 s.
       {%- endcomment -%}
-      <link rel="preload" as="image" fetchpriority="high" media="(max-width: 900px)"
+      {%- comment -%}
+        Solo se precarga la del teléfono, que es donde está el 88% del
+        tráfico. La de escritorio entra por su <source> y no se precarga: con
+        `media` puesto igual se descargaba en móvil, y son 169 kB que esa
+        pantalla nunca muestra.
+      {%- endcomment -%}
+      <link rel="preload" as="image" fetchpriority="high"
             href="{{ 'halo-hero-movil.jpg' | asset_url }}">
-      <link rel="preload" as="image" fetchpriority="high" media="(min-width: 901px)"
-            href="{{ product.featured_image | img_url: '1200x' }}"
-            imagesrcset="{{ product.featured_image | img_url: '800x' }} 800w, {{ product.featured_image | img_url: '1000x' }} 1000w, {{ product.featured_image | img_url: '1200x' }} 1200w"
-            imagesizes="540px">
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     {%- endif -%}

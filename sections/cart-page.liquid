@@ -80,11 +80,11 @@
                         </div>
                     </div>
                     <div class="col-12 no-gap cart__ptotal start unflex">
-                        {%- if item.original_line_price != item.line_price -%}{{ item.original_line_price | money | strip_html }}{%- endif -%}
-                        <span class="jsPrice">{{- item.line_price | money | strip_html -}}</span>
+                        {%- if item.original_line_price != item.line_price -%}{{ item.original_line_price | money | strip_html | replace: ',', '.' }}{%- endif -%}
+                        <span class="jsPrice">{{- item.line_price | money | strip_html | replace: ',', '.' -}}</span>
                         {% if product.compare_at_price > 0 %}
                         <span
-                            class="cart__compare-price jsPrice">{{product.compare_at_price | times: item.quantity | money | strip_html}}</span>
+                            class="cart__compare-price jsPrice">{{product.compare_at_price | times: item.quantity | money | strip_html | replace: ',', '.' }}</span>
                         {% endif %}
                         {%- for discount in item.discounts -%}{{- discount.title -}}{%- endfor -%}
                     </div>
@@ -101,9 +101,9 @@
             {% render 'ms-icon', icon: 'trash' %}
         </div>
         <div class="col-md-2 cart__punit hide-mobile">
-            <span class="jsPrice">{{ item.price | money | strip_html }}</span>
+            <span class="jsPrice">{{ item.price | money | strip_html | replace: ',', '.' }}</span>
             {% if product.compare_at_price > 0 %}
-            <span class="cart__compare-price cart__compare-price--punit jsPrice">{{product.compare_at_price | money | strip_html}}</span>
+            <span class="cart__compare-price cart__compare-price--punit jsPrice">{{product.compare_at_price | money | strip_html | replace: ',', '.' }}</span>
             {% endif %}
         </div>
         <div class="col-5 col-md-5 cart__qtyTotal--holder hide-mobile">
@@ -125,21 +125,21 @@
                 {%- if item.original_line_price != item.line_price -%}
                     <div class="cart-item__discounted-prices">
                         <s class="cart-item__old-price product-option jsPrice">
-                            {{ item.original_line_price | money | strip_html }}
+                            {{ item.original_line_price | money | strip_html | replace: ',', '.' }}
                         </s>
                         <strong class="cart-item__final-price product-option">
-                            <span class="jsPrice">{{- item.line_price | money | strip_html -}}</span>
+                            <span class="jsPrice">{{- item.line_price | money | strip_html | replace: ',', '.' -}}</span>
                         </strong>
                     </div>
                 {%- else -%}
                     <div class="product-option">
-                        <span class="jsPrice">{{- item.line_price | money | strip_html -}}</span>
+                        <span class="jsPrice">{{- item.line_price | money | strip_html | replace: ',', '.' -}}</span>
                     </div>
                 {%- endif -%}
                 {% assign totalOriginal = 0 %}
                 {% if product.compare_at_price > 0 %}
                 {% assign totalOriginal = product.compare_at_price | times: item.quantity %}
-                <span class="cart__compare-price jsPrice">{{product.compare_at_price | times: item.quantity | money | strip_html }}</span>
+                <span class="cart__compare-price jsPrice">{{product.compare_at_price | times: item.quantity | money | strip_html | replace: ',', '.' }}</span>
                 {% assign totalAmount = totalAmount | plus: totalOriginal %}
                 {% else %}
                 {% assign totalAmount = totalAmount | plus: item.line_price %}
@@ -190,17 +190,17 @@
             </div>
             <div class="cart__total">
                 {% if totalAmount > cart.total_price and section.settings.discount != 'none' %}
-                <span class="cart__total">{{'cart.page.total' | t}}: <span class="jsPrice">{{ totalAmount | money | strip_html }}</span></span>
+                <span class="cart__total">{{'cart.page.total' | t}}: <span class="jsPrice">{{ totalAmount | money | strip_html | replace: ',', '.' }}</span></span>
                 <span class="cart__discount">{{'cart.page.discount' | t}}: <span class="cart__discount--amount {% if section.settings.discount == 'money' %}jsPrice{% endif %}">
                         {% if section.settings.discount == 'money' %}
-                        -{{totalAmount | minus: cart.total_price | money | strip_html }}
+                        -{{totalAmount | minus: cart.total_price | money | strip_html | replace: ',', '.' }}
                         {% else %}
                         {{ cart.total_price | minus: totalAmount | times: 100 | divided_by: totalAmount }}%
                         {% endif %}
                     </span>
                 </span>
                 {% endif %}
-                <span class="cart__grandtotal">{{'cart.page.grand_total' | t}}: <span class="jsPrice">{{ cart.total_price | money | strip_html }}</span></span>
+                <span class="cart__grandtotal">{{'cart.page.grand_total' | t}}: <span class="jsPrice">{{ cart.total_price | money | strip_html | replace: ',', '.' }}</span></span>
                 <div class="hm-confianza" style="margin:12px 0 14px;">
                   <span>🔒 Pago seguro</span><span>·</span><span>🛡️ 90 días de garantía</span><span>·</span><span>💵 Paga al recibir en Santiago</span>
                 </div>

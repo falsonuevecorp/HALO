@@ -745,13 +745,13 @@
     /* Dentro de la caja: precio y botón primero, el resto después. */
     .hl-hero__cta-box { display: flex; flex-direction: column; }
     .hl-cta__precio  { order: 1; }
-    .hl-cta__boton   { order: 2; }
-    .hl-cta__mp      { order: 3; margin-top: 18px; }
-    .hl-cta__benef   { order: 4; }
-    .hl-cta__cod     { order: 5; }
-    .hl-cta__caja    { order: 6; }
-    .hl-cta__correa  { order: 7; }
-    .hl-cta__reloj   { order: 8; margin-bottom: 0 !important; }
+    .hl-cta__reloj   { order: 2; margin: 6px 0 0 !important; }
+    .hl-cta__boton   { order: 3; }
+    .hl-cta__mp      { order: 4; margin-top: 18px; }
+    .hl-cta__benef   { order: 5; }
+    .hl-cta__cod     { order: 6; }
+    .hl-cta__caja    { order: 7; }
+    .hl-cta__correa  { order: 8; }
     .hl-cta__envio   { order: 9; margin-top: 12px; margin-bottom: 0 !important; }
     .hl-cta__trust   { order: 10; }
     .hl-cta__local   { order: 11; }
@@ -829,15 +829,15 @@
               <span class="hl-price-badge" id="price-badge" style="background:transparent; color:var(--text-muted); border:1px solid var(--border-subtle); padding: 3px 10px; border-radius:999px; font-weight:700; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase;">{{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price }}% menos</span>
             </div>
             
-            <!-- 3. Reloj de la oferta -->
-            <div class="hl-cta__reloj" id="hl-oferta-bloque" style="font-size: 0.85rem; font-weight: 700; color: #E53935; margin-bottom: 16px; display:flex; align-items:center; justify-content:center; gap:6px; width: 100%;">
-              <span class="hl-hero__dot" style="background:#E53935; box-shadow: 0 0 8px #E53935; width:6px; height:6px;"></span>
-              <span id="hl-oferta-texto">🔒 Precio congelado por <span id="hl-oferta-reloj" style="font-variant-numeric:tabular-nums;">--:--:--</span></span>
-            </div>
-
             <!-- 4. Envío Gratis -->
             <div class="hl-cta__envio" style="background: #E8F5E9; color: #2E7D32; padding: 10px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; text-align: center; margin-bottom: 16px; width: 100%; box-sizing: border-box !important;">
               🚚 Envío GRATIS a todo Chile · 💵 Paga al recibir en Santiago
+            </div>
+
+            <!-- 3. Reloj de la oferta -->
+            <div class="hl-cta__reloj" id="hl-oferta-bloque" style="font-size: 0.85rem; font-weight: 700; color: #E53935; margin-bottom: 16px; display:flex; align-items:center; justify-content:center; gap:6px; width: 100%;">
+              <span class="hl-hero__dot" style="background:#E53935; box-shadow: 0 0 8px #E53935; width:6px; height:6px;"></span>
+              <span id="hl-oferta-texto">🔒 Descuento congelado por <span id="hl-oferta-reloj" style="font-variant-numeric:tabular-nums;">--:--:--</span></span>
             </div>
 
             <!-- 5. CTA Doble -->
@@ -853,7 +853,7 @@
               </div>
               <div class="hl-mp-card__body">
                 <div class="hl-mp-card__line">
-                  Paga en <span class="hl-mp-highlight">6 cuotas</span> de <span class="hl-mp-amount">{% if product %}{{ product.price | divided_by: 6 | money | replace: ',', '.' }}{% else %}$9.998{% endif %}</span>
+                  Paga <span class="hl-mp-highlight">hasta en 6 cuotas</span> de <span class="hl-mp-amount">{% if product %}{{ product.price | divided_by: 6 | money | replace: ',', '.' }}{% else %}$9.998{% endif %}</span>
                 </div>
                 <div class="hl-mp-card__meta">
                   <span class="hl-mp-green">
@@ -873,22 +873,22 @@
               <div class="hl-benef__fila">
                 <span class="hl-benef__ico">🌙</span>
                 <span>
-                  <span class="hl-benef__t">Sabes por qué amaneciste cansado</span>
-                  <span class="hl-benef__d">Ves qué te quitó sueño profundo anoche.</span>
+                  <span class="hl-benef__t">Mide tu sueño profundo, ligero y REM</span>
+                  <span class="hl-benef__d">Ves cuántos minutos de cada uno dormiste y qué noches descansas mejor.</span>
                 </span>
               </div>
               <div class="hl-benef__fila">
                 <span class="hl-benef__ico">💪</span>
                 <span>
-                  <span class="hl-benef__t">Hoy sabes si entrenar o parar</span>
-                  <span class="hl-benef__d">Un número cada mañana, no cien gráficos.</span>
+                  <span class="hl-benef__t">Mide calorías, pulso y minutos de cada entrenamiento</span>
+                  <span class="hl-benef__d">Ves cuánto quemaste de verdad y en qué zona de pulso estuviste.</span>
                 </span>
               </div>
               <div class="hl-benef__fila">
                 <span class="hl-benef__ico">🔋</span>
                 <span>
-                  <span class="hl-benef__t">Un mes sin buscar el cargador</span>
-                  <span class="hl-benef__d">Hasta 30 días con una sola carga.</span>
+                  <span class="hl-benef__t">Hasta 30 días con una sola carga</span>
+                  <span class="hl-benef__d">La cargas una vez al mes y te olvidas.</span>
                 </span>
               </div>
               <div class="hl-benef__fila">
@@ -913,7 +913,7 @@
 
             <!-- Qué llega en la caja, para quien no baja de la primera pantalla -->
             <div class="hl-cta__caja">
-              <b>En la caja:</b> la Loop Band®, la correa de tu color, el cargador magnético y la guía de inicio en castellano. Nada que comprar aparte.
+              <b>En la caja:</b> la Loop Band®, la correa de tu color y el cargador magnético.
             </div>
 
             <!-- 6. Trustpilot (Centrado) -->
@@ -1024,12 +1024,12 @@
       <div class="hl-pain__grid">
         <div>
           <span class="mono-tag" style="display:block;margin-bottom:12px; color:#FF6B6B;">TUS NOCHES</span>
-          <h2 class="h-title">Descubres qué te está robando el sueño profundo. Y lo <em style="color:#FF6B6B;">corriges esta noche</em>.</h2>
+          <h2 class="h-title">Mide tu sueño profundo, ligero y REM, y te muestra <em style="color:#FF6B6B;">qué noches descansas mejor</em>.</h2>
           <p class="body-lg" style="margin-top:20px;">
-            Ves qué noches se cayó tu descanso y con qué se relacionan: cena tarde, alcohol, entrenar de noche, estrés.
+            Cuántos minutos de cada fase dormiste, tu pulso mientras dormías y tu oxígeno en sangre. Cada noche, en un informe.
           </p>
           <p class="body-md">
-            Cambias una sola cosa y a los tres días <strong style="color:#FF6B6B;">el dato te dice si sirvió</strong>. No esperas meses para saberlo.
+            Con dos semanas de historial ves <strong style="color:#FF6B6B;">qué noches se cayó tu sueño profundo</strong> y qué tenían en común: cena tarde, alcohol, entrenar de noche.
           </p>
           <p style="color: var(--text-white) !important; font-weight:700; font-size:1rem; margin-top:24px;">Y el sueño profundo es donde tu cuerpo repara el músculo que rompiste entrenando.</p>
         </div>
@@ -1077,9 +1077,9 @@
     <div class="hl-wrap">
       <div style="text-align:center; margin-bottom:40px;">
         <span class="mono-tag" style="display:block;margin-bottom:12px;">CADA MAÑANA</span>
-        <h2 class="h-title">Dejas de perder semanas entrenando <em style="color:var(--cyan-orbit);">el día equivocado</em>.</h2>
+        <h2 class="h-title">Mide cuántas calorías quemas al día y <em style="color:var(--cyan-orbit);">cómo avanza semana a semana</em>.</h2>
         <p class="body-md" style="max-width:540px; margin:16px auto 0;">
-          Al despertar tienes tu recuperación de 0 a 100. Alta: hoy aprietas. Baja: trote suave, y llegas entero al día que de verdad importa.
+          Calorías activas y en reposo, pasos y minutos de movimiento. Y al despertar, tu recuperación de 0 a 100 para saber cuánto puedes exigirte hoy.
         </p>
       </div>
       <div class="hl-cred__grid">
@@ -1119,9 +1119,9 @@
     <div class="hl-wrap">
       <div style="text-align:center; margin-bottom:40px;">
         <span class="mono-tag" style="display:block;margin-bottom:12px;">MIENTRAS ENTRENAS</span>
-        <h2 class="h-title">Corres suave los días suaves y <em style="color:var(--cyan-orbit);">fuerte los días fuertes</em>.</h2>
+        <h2 class="h-title">Mide si de verdad corriste en <em style="color:var(--cyan-orbit);">Zona 2</em>, o te fuiste a Zona 4 otra vez.</h2>
         <p class="body-md" style="max-width:540px; margin:16px auto 0;">
-          Ves en qué zona de pulso estuviste de verdad, cuánto gastaste según tu pulso real y cómo respondió tu cuerpo. Sin elegir modo y sin llevar el teléfono.
+          Pulso minuto a minuto, tiempo en cada zona, distancia y calorías de la sesión. Sin elegir modo y sin llevar el teléfono.
         </p>
       </div>
       <div class="hl-cred__grid">

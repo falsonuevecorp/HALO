@@ -707,7 +707,7 @@
   .hl-cta__caja b { color: var(--text-dark) !important; font-weight: 700; }
 
   /* Hasta 6 cuotas, justo bajo el precio: es la primera objeción de plata. */
-  .hl-cta__cuotas { width: 100%; margin-top: 10px; }
+  .hl-cta__cuotas { width: 100%; margin-top: 18px; }
   .hl-cta__cuotas img { width: 100%; height: auto; display: block; border-radius: 8px; }
 
   /* Los cuatro resultados, inmediatamente después del botón. */
@@ -749,18 +749,17 @@
     /* Dentro de la caja: precio y botón primero, el resto después. */
     .hl-hero__cta-box { display: flex; flex-direction: column; }
     .hl-cta__precio  { order: 1; }
-    .hl-cta__cuotas  { order: 2; }
-    .hl-cta__boton   { order: 3; }
+    .hl-cta__boton   { order: 2; }
+    .hl-cta__cuotas  { order: 3; }
     .hl-cta__benef   { order: 4; }
-    .hl-trust-micro  { order: 5; }
-    .hl-cta__cod     { order: 6; }
-    .hl-cta__caja    { order: 7; }
-    .hl-cta__correa  { order: 8; }
-    .hl-cta__mp      { order: 9; margin-top: 14px; }
-    .hl-cta__reloj   { order: 10; margin-bottom: 0 !important; }
-    .hl-cta__envio   { order: 11; margin-top: 12px; margin-bottom: 0 !important; }
-    .hl-cta__trust   { order: 12; }
-    .hl-cta__local   { order: 13; }
+    .hl-cta__cod     { order: 5; }
+    .hl-cta__caja    { order: 6; }
+    .hl-cta__correa  { order: 7; }
+    .hl-cta__mp      { order: 8; margin-top: 14px; }
+    .hl-cta__reloj   { order: 9; margin-bottom: 0 !important; }
+    .hl-cta__envio   { order: 10; margin-top: 12px; margin-bottom: 0 !important; }
+    .hl-cta__trust   { order: 11; }
+    .hl-cta__local   { order: 12; }
 
     /* Cada píxel de arriba cuenta: el sello y la bajada van más apretados. */
     .hl-hero__proof { margin-bottom: 14px !important; padding: 5px 12px 5px 6px !important; }
@@ -835,12 +834,6 @@
               <span class="hl-price-badge" id="price-badge" style="background:transparent; color:var(--text-muted); border:1px solid var(--border-subtle); padding: 3px 10px; border-radius:999px; font-weight:700; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase;">{{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price }}% menos</span>
             </div>
             
-            <!-- Hasta 6 cuotas sin interés -->
-            <div class="hl-cta__cuotas">
-              <img src="{{ 'halo-cuotas-mercadopago.png' | asset_url }}" width="800" height="110" loading="eager" decoding="async"
-                   alt="Hasta 6 cuotas sin interés con Mercado Pago. Visa, Mastercard, American Express y Diners Club.">
-            </div>
-
             <!-- MERCADOPAGO PREMIUM BANNER -->
             <div class="hl-mp-card hl-cta__mp">
               <div class="hl-mp-card__logo">
@@ -879,6 +872,12 @@
               <span class="hl-cta__linea">Comenzar esta noche <svg class="hl-cta__flecha" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></span>
               <span class="hl-cta__nota">Llega mañana · Pagas al recibir</span>
             </a>
+
+            <!-- Hasta 6 cuotas sin interés -->
+            <div class="hl-cta__cuotas">
+              <img src="{{ 'halo-cuotas-mercadopago.png' | asset_url }}" width="800" height="110" loading="eager" decoding="async"
+                   alt="Hasta 6 cuotas sin interés con Mercado Pago. Visa, Mastercard, American Express y Diners Club.">
+            </div>
 
             <!-- Cuatro resultados, no cuatro características -->
             <div class="hl-cta__benef">
@@ -942,18 +941,11 @@
               </div>
             </div>
 
-            <div class="hl-trust-micro" style="margin-top:16px; justify-content: center; width: 100%;">
-              <span>Pago seguro</span>
-              <span>·</span>
-              <span>90 días de garantía</span>
-            </div>
-
             <!-- Quién te despacha y desde dónde -->
             <div class="hl-cta__local">
               <div class="hl-local__item">
                 <span class="hl-local__ico">📍</span>
                 <span class="hl-local__t">Despacho desde Santiago</span>
-                <span class="hl-local__d">No viene de China</span>
               </div>
               <div class="hl-local__item">
                 <span class="hl-local__ico">🚚</span>

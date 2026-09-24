@@ -706,10 +706,6 @@
   }
   .hl-cta__caja b { color: var(--text-dark) !important; font-weight: 700; }
 
-  /* Hasta 6 cuotas, justo bajo el precio: es la primera objeción de plata. */
-  .hl-cta__cuotas { width: 100%; margin-top: 18px; }
-  .hl-cta__cuotas img { width: 100%; height: auto; display: block; border-radius: 8px; }
-
   /* Los cuatro resultados, inmediatamente después del botón. */
   .hl-cta__benef { width: 100%; margin-top: 14px; display: grid; gap: 10px; }
   .hl-benef__fila { display: flex; align-items: flex-start; gap: 10px; text-align: left; }
@@ -750,16 +746,15 @@
     .hl-hero__cta-box { display: flex; flex-direction: column; }
     .hl-cta__precio  { order: 1; }
     .hl-cta__boton   { order: 2; }
-    .hl-cta__cuotas  { order: 3; }
+    .hl-cta__mp      { order: 3; margin-top: 18px; }
     .hl-cta__benef   { order: 4; }
     .hl-cta__cod     { order: 5; }
     .hl-cta__caja    { order: 6; }
     .hl-cta__correa  { order: 7; }
-    .hl-cta__mp      { order: 8; margin-top: 14px; }
-    .hl-cta__reloj   { order: 9; margin-bottom: 0 !important; }
-    .hl-cta__envio   { order: 10; margin-top: 12px; margin-bottom: 0 !important; }
-    .hl-cta__trust   { order: 11; }
-    .hl-cta__local   { order: 12; }
+    .hl-cta__reloj   { order: 8; margin-bottom: 0 !important; }
+    .hl-cta__envio   { order: 9; margin-top: 12px; margin-bottom: 0 !important; }
+    .hl-cta__trust   { order: 10; }
+    .hl-cta__local   { order: 11; }
 
     /* Cada píxel de arriba cuenta: el sello y la bajada van más apretados. */
     .hl-hero__proof { margin-bottom: 14px !important; padding: 5px 12px 5px 6px !important; }
@@ -834,6 +829,23 @@
               <span class="hl-price-badge" id="price-badge" style="background:transparent; color:var(--text-muted); border:1px solid var(--border-subtle); padding: 3px 10px; border-radius:999px; font-weight:700; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase;">{{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price }}% menos</span>
             </div>
             
+            <!-- 3. Reloj de la oferta -->
+            <div class="hl-cta__reloj" id="hl-oferta-bloque" style="font-size: 0.85rem; font-weight: 700; color: #E53935; margin-bottom: 16px; display:flex; align-items:center; justify-content:center; gap:6px; width: 100%;">
+              <span class="hl-hero__dot" style="background:#E53935; box-shadow: 0 0 8px #E53935; width:6px; height:6px;"></span>
+              <span id="hl-oferta-texto">🔒 Precio congelado por <span id="hl-oferta-reloj" style="font-variant-numeric:tabular-nums;">--:--:--</span></span>
+            </div>
+
+            <!-- 4. Envío Gratis -->
+            <div class="hl-cta__envio" style="background: #E8F5E9; color: #2E7D32; padding: 10px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; text-align: center; margin-bottom: 16px; width: 100%; box-sizing: border-box !important;">
+              🚚 Envío GRATIS a todo Chile · 💵 Paga al recibir en Santiago
+            </div>
+
+            <!-- 5. CTA Doble -->
+            <a href="/cart/add?id={{ product.variants.first.id }}&quantity=1&return_to=%2Fcheckout" class="hl-btn-cta hl-cta__boton" id="hero-cta" style="max-width:none;">
+              <span class="hl-cta__linea">Comenzar esta noche <svg class="hl-cta__flecha" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></span>
+              <span class="hl-cta__nota">Llega mañana · Pagas al recibir</span>
+            </a>
+
             <!-- MERCADOPAGO PREMIUM BANNER -->
             <div class="hl-mp-card hl-cta__mp">
               <div class="hl-mp-card__logo">
@@ -854,29 +866,6 @@
                   </span>
                 </div>
               </div>
-            </div>
-
-            <!-- 3. Reloj de la oferta -->
-            <div class="hl-cta__reloj" id="hl-oferta-bloque" style="font-size: 0.85rem; font-weight: 700; color: #E53935; margin-bottom: 16px; display:flex; align-items:center; justify-content:center; gap:6px; width: 100%;">
-              <span class="hl-hero__dot" style="background:#E53935; box-shadow: 0 0 8px #E53935; width:6px; height:6px;"></span>
-              <span id="hl-oferta-texto">🔒 Precio congelado por <span id="hl-oferta-reloj" style="font-variant-numeric:tabular-nums;">--:--:--</span></span>
-            </div>
-
-            <!-- 4. Envío Gratis -->
-            <div class="hl-cta__envio" style="background: #E8F5E9; color: #2E7D32; padding: 10px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; text-align: center; margin-bottom: 16px; width: 100%; box-sizing: border-box !important;">
-              🚚 Envío GRATIS a todo Chile · 💵 Paga al recibir en Santiago
-            </div>
-
-            <!-- 5. CTA Doble -->
-            <a href="/cart/add?id={{ product.variants.first.id }}&quantity=1&return_to=%2Fcheckout" class="hl-btn-cta hl-cta__boton" id="hero-cta" style="max-width:none;">
-              <span class="hl-cta__linea">Comenzar esta noche <svg class="hl-cta__flecha" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></span>
-              <span class="hl-cta__nota">Llega mañana · Pagas al recibir</span>
-            </a>
-
-            <!-- Hasta 6 cuotas sin interés -->
-            <div class="hl-cta__cuotas">
-              <img src="{{ 'halo-cuotas-mercadopago.png' | asset_url }}" width="800" height="110" loading="eager" decoding="async"
-                   alt="Hasta 6 cuotas sin interés con Mercado Pago. Visa, Mastercard, American Express y Diners Club.">
             </div>
 
             <!-- Cuatro resultados, no cuatro características -->

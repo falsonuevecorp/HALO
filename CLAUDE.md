@@ -47,3 +47,20 @@ Smilu Ve) y ese mensaje despista.
 - **No hay código de Meta en el tema.** El píxel entra por el canal de Facebook & Instagram, así que
   un push no lo puede borrar. Lo que sí rompe la configuración es cambiar el texto o las clases de un
   botón, porque el Event Setup Tool los usa como ancla.
+
+## Antes de encender anuncios
+
+**Se corre la skill `prelanzamiento`, y lo primero de la lista es el checkout**, con un carro real y
+leyendo lo que ve el comprador — no el panel de Shopify.
+
+```bash
+~/.claude/skills/prelanzamiento/scripts/revisar.sh https://hellohalo.us "atacama-band®" Santiago 8320000
+```
+
+El script comprueba solo: disponibilidad, agregar al carro, totales, tarifas de envío, traducciones
+rotas, errores de Liquid, analítica y enlaces vacíos. Lo que no puede comprobar —y es lo que más
+importa— es si los medios de pago que la página promete existen al pagar.
+
+**El 24 de septiembre de 2026 esta tienda llevaba 61 checkouts iniciados y 2 pagos empezados.** Se
+revisó la página entera durante días. El checkout solo aceptaba tarjeta de crédito, mientras la
+página prometía seis cuotas con Mercado Pago y pago al recibir en cinco lugares.

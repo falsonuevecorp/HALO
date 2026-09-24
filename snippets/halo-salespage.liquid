@@ -413,6 +413,7 @@
     background: var(--space-black);
   }
   .hl-accordion__content.open { max-height: 500px; }
+  .hl-accordion__content--alto.open { max-height: 1600px; }
   .hl-accordion__body { padding: 20px 24px; font-size: 0.9rem; color: var(--text-muted) !important; line-height: 1.7; }
 
   /* ===== STEP 10: TESTIMONIALS ===== */
@@ -705,6 +706,25 @@
   }
   .hl-cta__caja b { color: var(--text-dark) !important; font-weight: 700; }
 
+  /* Hasta 6 cuotas, justo bajo el precio: es la primera objeción de plata. */
+  .hl-cta__cuotas { width: 100%; margin-top: 12px; }
+  .hl-cta__cuotas img { width: 100%; height: auto; display: block; border-radius: 8px; }
+
+  /* Los cuatro resultados, inmediatamente después del botón. */
+  .hl-cta__benef { width: 100%; margin-top: 14px; display: grid; gap: 10px; }
+  .hl-benef__fila { display: flex; align-items: flex-start; gap: 10px; text-align: left; }
+  .hl-benef__ico { font-size: 1.05rem; line-height: 1.25; flex: 0 0 auto; }
+  .hl-benef__t { font-size: 0.87rem; font-weight: 700; color: var(--text-dark) !important; line-height: 1.3; }
+  .hl-benef__d { font-size: 0.78rem; color: var(--text-muted) !important; line-height: 1.4; margin-top: 1px; }
+
+  /* Quién despacha y desde dónde: lo que separa una marca de un intermediario. */
+  .hl-cta__local { width: 100%; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border-subtle);
+                   display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; text-align: center; }
+  .hl-local__item { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .hl-local__ico { font-size: 1.15rem; line-height: 1; }
+  .hl-local__t { font-size: 0.62rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: var(--text-dark) !important; line-height: 1.2; }
+  .hl-local__d { font-size: 0.62rem; color: var(--text-subtle) !important; line-height: 1.25; }
+
   /* RESPONSIVE */
   @media (max-width: 900px) {
     /* ── El primer pantallazo decide la venta ──────────────────────────
@@ -724,15 +744,18 @@
     /* Dentro de la caja: precio y botón primero, el resto después. */
     .hl-hero__cta-box { display: flex; flex-direction: column; }
     .hl-cta__precio  { order: 1; }
-    .hl-cta__boton   { order: 2; }
-    .hl-trust-micro  { order: 3; }
-    .hl-cta__cod     { order: 4; }
-    .hl-cta__caja    { order: 5; }
-    .hl-cta__correa  { order: 6; }
-    .hl-cta__mp      { order: 7; margin-top: 14px; }
-    .hl-cta__reloj   { order: 8; margin-bottom: 0 !important; }
-    .hl-cta__envio   { order: 9; margin-top: 12px; margin-bottom: 0 !important; }
-    .hl-cta__trust   { order: 10; }
+    .hl-cta__cuotas  { order: 2; }
+    .hl-cta__boton   { order: 3; }
+    .hl-cta__benef   { order: 4; }
+    .hl-trust-micro  { order: 5; }
+    .hl-cta__cod     { order: 6; }
+    .hl-cta__caja    { order: 7; }
+    .hl-cta__correa  { order: 8; }
+    .hl-cta__mp      { order: 9; margin-top: 14px; }
+    .hl-cta__reloj   { order: 10; margin-bottom: 0 !important; }
+    .hl-cta__envio   { order: 11; margin-top: 12px; margin-bottom: 0 !important; }
+    .hl-cta__trust   { order: 12; }
+    .hl-cta__local   { order: 13; }
 
     /* Cada píxel de arriba cuenta: el sello y la bajada van más apretados. */
     .hl-hero__proof { margin-bottom: 14px !important; padding: 5px 12px 5px 6px !important; }
@@ -797,21 +820,6 @@
             <strong style="color: var(--text-white) !important;">Duermes ocho horas y amaneces sin energía.</strong> Mide tu sueño profundo y te dice cada mañana si hoy entrenas o descansas.
           </p>
 
-          <div class="hl-hero__badge-row">
-            <div class="hl-hero__badge">
-              <svg viewBox="0 0 14 14" fill="none"><path d="M7 1l1.8 3.6L13 5.3l-3 2.9.7 4.1L7 10.2l-3.7 2.1.7-4.1-3-2.9 4.2-.7z" fill="#00ECFF"/></svg>
-              Sueño profundo y REM medidos
-            </div>
-            <div class="hl-hero__badge">
-              <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#00C97B" stroke-width="1.5"/><path d="M4.5 7l2 2 3-3" stroke="#00C97B" stroke-width="1.5" stroke-linecap="round"/></svg>
-              Cero notificaciones. Nunca vibra.
-            </div>
-            <div class="hl-hero__badge">
-              <svg viewBox="0 0 14 14" fill="none"><rect x="1" y="3" width="12" height="9" rx="1.5" stroke="#A0AAB5" stroke-width="1.5"/><path d="M5 3V2a2 2 0 014 0v1" stroke="#A0AAB5" stroke-width="1.5"/></svg>
-              Hasta 30 días de batería
-            </div>
-          </div>
-
           <!-- CTA BOX -->
           <div class="hl-hero__cta-box" style="border: 1px solid var(--border-subtle); padding: 20px 16px; border-radius: 16px; background: #fff; margin-top: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); width: 100%; box-sizing: border-box !important;">
             
@@ -822,6 +830,12 @@
               <span class="hl-price-badge" id="price-badge" style="background:transparent; color:var(--text-muted); border:1px solid var(--border-subtle); padding: 3px 10px; border-radius:999px; font-weight:700; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase;">{{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price }}% menos</span>
             </div>
             
+            <!-- Hasta 6 cuotas sin interés -->
+            <div class="hl-cta__cuotas">
+              <img src="{{ 'halo-cuotas-mercadopago.png' | asset_url }}" width="800" height="110" loading="eager" decoding="async"
+                   alt="Hasta 6 cuotas sin interés con Mercado Pago. Visa, Mastercard, American Express y Diners Club.">
+            </div>
+
             <!-- MERCADOPAGO PREMIUM BANNER -->
             <div class="hl-mp-card hl-cta__mp">
               <div class="hl-mp-card__logo">
@@ -829,7 +843,7 @@
               </div>
               <div class="hl-mp-card__body">
                 <div class="hl-mp-card__line">
-                  Paga en <span class="hl-mp-highlight">3 cuotas</span> de <span class="hl-mp-amount">{% if product %}{{ product.price | divided_by: 3 | money | replace: ',', '.' }}{% else %}$19.996{% endif %}</span>
+                  Paga en <span class="hl-mp-highlight">6 cuotas</span> de <span class="hl-mp-amount">{% if product %}{{ product.price | divided_by: 6 | money | replace: ',', '.' }}{% else %}$9.998{% endif %}</span>
                 </div>
                 <div class="hl-mp-card__meta">
                   <span class="hl-mp-green">
@@ -860,6 +874,38 @@
               <span class="hl-cta__linea">Comenzar esta noche <svg class="hl-cta__flecha" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></span>
               <span class="hl-cta__nota">Llega mañana · Pagas al recibir</span>
             </a>
+
+            <!-- Cuatro resultados, no cuatro características -->
+            <div class="hl-cta__benef">
+              <div class="hl-benef__fila">
+                <span class="hl-benef__ico">🌙</span>
+                <span>
+                  <span class="hl-benef__t">Sabes por qué amaneciste cansado</span>
+                  <span class="hl-benef__d">Ves qué te quitó sueño profundo anoche.</span>
+                </span>
+              </div>
+              <div class="hl-benef__fila">
+                <span class="hl-benef__ico">💪</span>
+                <span>
+                  <span class="hl-benef__t">Hoy sabes si entrenar o parar</span>
+                  <span class="hl-benef__d">Un número cada mañana, no cien gráficos.</span>
+                </span>
+              </div>
+              <div class="hl-benef__fila">
+                <span class="hl-benef__ico">🔋</span>
+                <span>
+                  <span class="hl-benef__t">Un mes sin buscar el cargador</span>
+                  <span class="hl-benef__d">Hasta 30 días con una sola carga.</span>
+                </span>
+              </div>
+              <div class="hl-benef__fila">
+                <span class="hl-benef__ico">🤫</span>
+                <span>
+                  <span class="hl-benef__t">No vibra, no suena, no se ilumina</span>
+                  <span class="hl-benef__d">Sin pantalla. Te olvidas de que la llevas.</span>
+                </span>
+              </div>
+            </div>
 
             <div class="hl-cta__correa">{% render 'halo-upsell-correa', product: product, block: 'addon' %}</div>
 
@@ -895,6 +941,25 @@
               <span>Pago seguro</span>
               <span>·</span>
               <span>90 días de garantía</span>
+            </div>
+
+            <!-- Quién te despacha y desde dónde -->
+            <div class="hl-cta__local">
+              <div class="hl-local__item">
+                <span class="hl-local__ico">📍</span>
+                <span class="hl-local__t">Despacho desde Santiago</span>
+                <span class="hl-local__d">No viene de China</span>
+              </div>
+              <div class="hl-local__item">
+                <span class="hl-local__ico">🚚</span>
+                <span class="hl-local__t">Envío gratis</span>
+                <span class="hl-local__d">A todo Chile</span>
+              </div>
+              <div class="hl-local__item">
+                <span class="hl-local__ico">🛡️</span>
+                <span class="hl-local__t">90 días</span>
+                <span class="hl-local__d">Garantía de fábrica</span>
+              </div>
             </div>
           </div>
         </div>
@@ -1054,7 +1119,7 @@
     <div class="hl-wrap">
       <div style="text-align:center;">
         <span class="mono-tag" style="display:block;margin-bottom:12px;">EL RETORNO DE INVERSIÓN</span>
-        <h2 class="h-title">Lo que te llevas por <em style="color:var(--cyan-orbit);">$59.990</em>.</h2>
+        <h2 class="h-title">Lo que te llevas por <em style="color:var(--cyan-orbit);">{{ product.price | money | replace: ',', '.' }}</em>.</h2>
       </div>
 
       <div class="hl-offer__box">
@@ -1070,7 +1135,7 @@
               <div class="hl-offer__item-desc">Todo lo que necesitas para empezar la primera noche. Nada que comprar aparte.</div>
             </div>
             <div class="hl-offer__item-val">
-              <div class="orig">$105.000</div>
+              <div class="orig">{{ product.compare_at_price | money | replace: ',', '.' }}</div>
             </div>
           </div>
           <div class="hl-offer__item">
@@ -1108,7 +1173,7 @@
           <div class="hl-offer__total">
             <div>
               <div class="hl-offer__total-label">Valor Total</div>
-              <div class="hl-offer__total-orig">$139.980</div>
+              <div class="hl-offer__total-orig">{% assign hl_valor = product.compare_at_price | plus: 2999000 | plus: 499000 %}{{ hl_valor | money | replace: ',', '.' }}</div>
             </div>
             <div style="text-align:right;">
               <div class="hl-offer__total-label">Precio de Lanzamiento</div>
@@ -1253,7 +1318,17 @@
           Mide lo mismo que ellos. Sin la pantalla que no necesitas y por una fracción de lo que cuestan en Chile.
         </p>
       </div>
-      <div style="overflow-x:auto; margin-top:0;">
+      <div class="hl-accordion" style="margin-top:28px;">
+        <div class="hl-accordion__item">
+          <button class="hl-accordion__trigger" onclick="toggleAccordion(this)">
+            <div>
+              <div class="hl-accordion__trigger-title">Ver la tabla completa</div>
+              <div class="hl-accordion__trigger-tag">Contra un smartwatch y un anillo</div>
+            </div>
+            <span class="hl-accordion__icon">+</span>
+          </button>
+          <div class="hl-accordion__content hl-accordion__content--alto">
+            <div class="hl-accordion__body" style="padding:0; overflow-x:auto;">
         <table class="hl-compare__table">
           <thead>
             <tr>
@@ -1296,6 +1371,9 @@
             </tr>
           </tbody>
         </table>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1310,7 +1388,7 @@
         <h2 class="h-title">Todo lo que necesitas <em style="color:var(--cyan-orbit);">saber</em>.</h2>
       </div>
       <div class="hl-faq__list">
-        {% assign faqs = "¿Puedo pagar cuando me llegue?|Sí, si estás en Santiago. Eliges “Pago contra entrega” en el checkout y pagas cuando el repartidor te entrega la banda, sin adelantar nada. Fuera de Santiago el pago va al momento de la compra, con tarjeta o en 3 cuotas.||¿Cuánto dura la batería y cómo se carga?|Loop Band tiene una autonomía de hasta 30 días con monitoreo continuo 24/7. Se carga de 0 a 100% en menos de 90 minutos con el cargador magnético incluido.||¿Es resistente al agua?|Sí. Loop Band cuenta con certificación IP67. Puedes ducharte, nadar y sudar intensamente sin tener que quitártela.||¿Tengo que pagar una suscripción mensual en la App?|No. La aplicación es 100% gratuita de por vida: no hay planes, no hay niveles y no retenemos tus datos de salud detrás de un muro de pago.||¿Necesito tener mi teléfono cerca mientras duermo o entreno?|No. Loop Band tiene memoria interna. Puedes entrenar o dormir sin el teléfono. Solo abre la aplicación después y los datos se sincronizarán vía Bluetooth.||¿Cómo funciona la Garantía?|Tienes 90 días desde que la recibes. Cubre defectos de fábrica: que llegue dañada o que los sensores fallen por algo nuestro. En ese caso te enviamos una banda nueva y el envío lo pagamos nosotros.||¿Funciona tanto en iOS como en Android?|Absolutamente. Nuestra App está optimizada y disponible para ambas plataformas con sincronización perfecta." | split: "||" %}
+        {% assign faqs = "¿Puedo pagar cuando me llegue?|Sí, si estás en Santiago. Eliges “Pago contra entrega” en el checkout y pagas cuando el repartidor te entrega la banda, sin adelantar nada. Fuera de Santiago el pago va al momento de la compra, con tarjeta o hasta en 6 cuotas sin interés.||¿Cuánto dura la batería y cómo se carga?|Loop Band tiene una autonomía de hasta 30 días con monitoreo continuo 24/7. Se carga de 0 a 100% en menos de 90 minutos con el cargador magnético incluido.||¿Es resistente al agua?|Sí. Loop Band cuenta con certificación IP67. Puedes ducharte, nadar y sudar intensamente sin tener que quitártela.||¿Tengo que pagar una suscripción mensual en la App?|No. La aplicación es 100% gratuita de por vida: no hay planes, no hay niveles y no retenemos tus datos de salud detrás de un muro de pago.||¿Necesito tener mi teléfono cerca mientras duermo o entreno?|No. Loop Band tiene memoria interna. Puedes entrenar o dormir sin el teléfono. Solo abre la aplicación después y los datos se sincronizarán vía Bluetooth.||¿Cómo funciona la Garantía?|Tienes 90 días desde que la recibes. Cubre defectos de fábrica: que llegue dañada o que los sensores fallen por algo nuestro. En ese caso te enviamos una banda nueva y el envío lo pagamos nosotros.||¿Funciona tanto en iOS como en Android?|Absolutamente. Nuestra App está optimizada y disponible para ambas plataformas con sincronización perfecta." | split: "||" %}
         {% for faq_item in faqs %}
           {% assign faq_parts = faq_item | split: "|" %}
           <div class="hl-faq__item">

@@ -39,6 +39,11 @@
   .template--cart .cart__item s,
   .template--cart .cart-item__old-price,
   .template--cart .cart-item__old-price .jsPrice { color: rgba(255,255,255,.34) !important; font-weight: 400; }
+  /* Va después y con una clase más: si no, el blanco de arriba se lo come. */
+  .template--cart .cart__item .cart__compare-price.jsPrice,
+  .template--cart .cart__item .cart__compare-price {
+    color: rgba(255,255,255,.34) !important; font-weight: 400 !important; text-decoration: line-through;
+  }
   .template--cart .cart__continue { color: rgba(255,255,255,.72) !important; }
   .template--cart .cart__continue:hover { color: #FFFFFF !important; }
   .template--cart .cart__trash svg { fill: rgba(255,255,255,.42) !important; }

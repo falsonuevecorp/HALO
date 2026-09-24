@@ -1021,7 +1021,17 @@
                             {{ product.featured_image | img_url: '1200x' }} 1200w"
                     sizes="540px"
                     width="1080" height="1350">
-            <img src="{{ 'halo-hero-movil.jpg' | asset_url }}"
+            {%- comment -%}
+              Se muestra a unos 250 px de ancho: servir el original de 1080
+              eran 133 kB tirados y 630 ms de espera. El srcset deja que el
+              teléfono elija según su densidad de pantalla.
+            {%- endcomment -%}
+            <img src="{{ 'halo-hero-movil.jpg' | asset_img_url: '540x' }}"
+                 srcset="{{ 'halo-hero-movil.jpg' | asset_img_url: '300x' }} 300w,
+                         {{ 'halo-hero-movil.jpg' | asset_img_url: '420x' }} 420w,
+                         {{ 'halo-hero-movil.jpg' | asset_img_url: '540x' }} 540w,
+                         {{ 'halo-hero-movil.jpg' | asset_img_url: '760x' }} 760w"
+                 sizes="(min-width: 901px) 540px, 68vw"
                  alt="{{ product.title }}"
                  width="1080" height="1080"
                  fetchpriority="high" decoding="async"

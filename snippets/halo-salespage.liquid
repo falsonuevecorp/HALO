@@ -301,12 +301,12 @@
   /* ===== Entradas al hacer scroll =====
      Solo opacidad y un desplazamiento de 14 px: no mueve el layout, corre en
      la GPU y no toca el hero, que es lo que mide el LCP.                    */
-  .hl-rev { opacity: 0; transform: translateY(14px);
-            transition: opacity .55s ease, transform .55s cubic-bezier(.22,.9,.3,1); }
+  .hl-rev { opacity: 0; transform: translateY(12px);
+            transition: opacity .38s ease, transform .38s cubic-bezier(.22,.9,.3,1); }
   .hl-rev.vista { opacity: 1; transform: none; }
-  .hl-rev--d1 { transition-delay: .07s; }
-  .hl-rev--d2 { transition-delay: .14s; }
-  .hl-rev--d3 { transition-delay: .21s; }
+  .hl-rev--d1 { transition-delay: .05s; }
+  .hl-rev--d2 { transition-delay: .10s; }
+  .hl-rev--d3 { transition-delay: .15s; }
 
   /* Destello lento sobre el botón: se nota, no distrae. */
   .hl-btn-cta { position: relative; overflow: hidden; }
@@ -1556,7 +1556,7 @@
       filas.forEach(function (f) {
         if (f.isIntersecting) { f.target.classList.add('vista'); ob.unobserve(f.target); }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    }, { threshold: 0, rootMargin: '0px 0px 22% 0px' });
     nodos.forEach(function (n) { ob.observe(n); });
   })();
 

@@ -308,6 +308,12 @@
   .hl-rev--d2 { transition-delay: .10s; }
   .hl-rev--d3 { transition-delay: .15s; }
 
+  /* La foto del hero flota muy despacio: da producto vivo sin tocar el LCP.
+     Va sobre la etiqueta <img>, no sobre su contenedor, para no mover nada
+     de lo que hay alrededor.                                              */
+  .hl-hero__img-wrap img { animation: hl-flota 5s ease-in-out infinite; will-change: transform; }
+  @keyframes hl-flota { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
   /* Destello lento sobre el botón: se nota, no distrae. */
   .hl-btn-cta { position: relative; overflow: hidden; }
   .hl-btn-cta::after {
@@ -330,6 +336,7 @@
   @media (prefers-reduced-motion: reduce) {
     .hl-rev { opacity: 1 !important; transform: none !important; transition: none !important; }
     .hl-btn-cta::after { animation: none; display: none; }
+    .hl-hero__img-wrap img { animation: none; }
   }
 
   /* ===== STEP 4: PAIN BRIDGE ===== */

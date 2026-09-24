@@ -24,9 +24,7 @@
         pantalla nunca muestra.
       {%- endcomment -%}
       <link rel="preload" as="image" fetchpriority="high"
-            href="{{ 'halo-hero-movil.jpg' | asset_img_url: '540x' }}"
-            imagesrcset="{{ 'halo-hero-movil.jpg' | asset_img_url: '300x' }} 300w, {{ 'halo-hero-movil.jpg' | asset_img_url: '420x' }} 420w, {{ 'halo-hero-movil.jpg' | asset_img_url: '540x' }} 540w, {{ 'halo-hero-movil.jpg' | asset_img_url: '760x' }} 760w"
-            imagesizes="(min-width: 901px) 540px, 68vw">
+            href="{{ 'halo-hero-movil.webp' | asset_url }}" type="image/webp">
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     {%- endif -%}

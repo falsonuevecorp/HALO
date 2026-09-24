@@ -846,18 +846,14 @@
                     sizes="540px"
                     width="1080" height="1350">
             {%- comment -%}
-              Se muestra a unos 250 px de ancho: servir el original de 1080
-              eran 133 kB tirados y 630 ms de espera. El srcset deja que el
-              teléfono elija según su densidad de pantalla.
+              Un solo archivo y sin srcset: con srcset el teléfono bajaba el de
+              540 y el de 760, 154 kB para mostrar uno. 760 px cubre pantallas
+              de densidad 2 y 3 en el hueco de 280 px en que se ve, y en WebP
+              pesa la mitad que el JPEG.
             {%- endcomment -%}
-            <img src="{{ 'halo-hero-movil.jpg' | asset_img_url: '540x' }}"
-                 srcset="{{ 'halo-hero-movil.jpg' | asset_img_url: '300x' }} 300w,
-                         {{ 'halo-hero-movil.jpg' | asset_img_url: '420x' }} 420w,
-                         {{ 'halo-hero-movil.jpg' | asset_img_url: '540x' }} 540w,
-                         {{ 'halo-hero-movil.jpg' | asset_img_url: '760x' }} 760w"
-                 sizes="(min-width: 901px) 540px, 68vw"
+            <img src="{{ 'halo-hero-movil.webp' | asset_url }}"
                  alt="{{ product.title }}"
-                 width="1080" height="1080"
+                 width="760" height="760"
                  fetchpriority="high" decoding="async"
                  style="width:100%; height:auto; display:block; object-fit:contain; border-radius:20px; box-shadow:0 10px 40px rgba(0,0,0,0.18);">
             </picture>

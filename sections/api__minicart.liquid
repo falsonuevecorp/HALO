@@ -99,7 +99,7 @@
     {% endfor %}
   </div>
   {%- if cart.items.size > 0 -%}
-    {%- if hm_correa and hm_tiene_correa == false -%}
+    {%- if hm_correa.id and hm_tiene_correa == false -%}
       <div class="hm-extra">
         <div class="hm-extra__tit">Se le suele sumar</div>
         <div class="hm-correa">
@@ -119,7 +119,7 @@
       </div>
     {%- endif -%}
 
-    {%- if hm_proteccion -%}
+    {%- if hm_proteccion.id -%}
       <label class="hm-prot {% if hm_tiene_proteccion %}hm-prot--on{% endif %}">
         <span class="hm-prot__ico">🛡️</span>
         <span class="hm-prot__cuerpo">

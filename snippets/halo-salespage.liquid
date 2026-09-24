@@ -298,6 +298,40 @@
   .hl-proof-stars { color: var(--amber-warn); font-size: 1.1rem; letter-spacing: 2px; }
   .hl-proof-bar__inner--movil { display: none; }
 
+  /* ===== Entradas al hacer scroll =====
+     Solo opacidad y un desplazamiento de 14 px: no mueve el layout, corre en
+     la GPU y no toca el hero, que es lo que mide el LCP.                    */
+  .hl-rev { opacity: 0; transform: translateY(14px);
+            transition: opacity .55s ease, transform .55s cubic-bezier(.22,.9,.3,1); }
+  .hl-rev.vista { opacity: 1; transform: none; }
+  .hl-rev--d1 { transition-delay: .07s; }
+  .hl-rev--d2 { transition-delay: .14s; }
+  .hl-rev--d3 { transition-delay: .21s; }
+
+  /* Destello lento sobre el botón: se nota, no distrae. */
+  .hl-btn-cta { position: relative; overflow: hidden; }
+  .hl-btn-cta::after {
+    content: ''; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,.16), transparent);
+    transform: skewX(-18deg); animation: hl-destello 5.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes hl-destello { 0%,72% { left: -60%; } 100% { left: 130%; } }
+
+  /* En escritorio las tarjetas se levantan al pasar por encima. */
+  @media (hover: hover) and (min-width: 901px) {
+    .hl-cred__item, .hl-caja__item, .hav {
+      transition: transform .3s cubic-bezier(.22,.9,.3,1), box-shadow .3s ease;
+    }
+    .hl-cred__item:hover, .hl-caja__item:hover { transform: translateY(-4px); }
+    .hav:hover { transform: translateY(-3px); box-shadow: 0 20px 52px rgba(10,15,19,.11); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hl-rev { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .hl-btn-cta::after { animation: none; display: none; }
+  }
+
   /* ===== STEP 4: PAIN BRIDGE ===== */
   .hl-pain { background: var(--space-black); }
   .hl-pain__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
@@ -592,7 +626,7 @@
   .wbs__precios { display: flex; align-items: baseline; gap: 8px; }
   .wbs__precio {
     font-family: 'Inter', sans-serif; font-size: 19px; font-weight: 800;
-    letter-spacing: -0.02em; color: #FFFFFF !important; font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em; color: #4FE0C0 !important; font-variant-numeric: tabular-nums;
   }
   .wbs__antes {
     font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.40) !important;
@@ -602,7 +636,7 @@
     font-family: 'Inter', sans-serif; font-size: 9.5px; font-weight: 600;
     letter-spacing: 0.10em; text-transform: uppercase;
     margin: 2px 0 0; text-align: left;
-    color: rgba(255,255,255,0.45) !important; white-space: nowrap;
+    color: rgba(255,255,255,0.52) !important; white-space: nowrap;
   }
 
   /* derecha: la acción, en claro para que no compita con el precio */
@@ -1489,7 +1523,7 @@
             <span class="wbs__precio">{{ product.price | money | replace: ',', '.' }}</span>
             <s class="wbs__antes">{{ product.compare_at_price | money | replace: ',', '.' }}</s>
           </span>
-          <span class="wb-sticky-btn-subtitle" id="sticky-timer-wrap">Congelado <span id="sticky-timer">--:--:--</span></span>
+          <span class="wb-sticky-btn-subtitle" id="sticky-timer-wrap">Oferta congelada · <span id="sticky-timer">--:--:--</span></span>
         </span>
         <span class="wbs__accion">Comenzar <svg class="hl-cta__flecha" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></span>
       </a>
@@ -1501,6 +1535,31 @@
 </div><!-- /halo-funnel -->
 
 <script>
+  // ---- ENTRADAS AL HACER SCROLL ----
+  // Se marcan en JS y no en el marcado: si el script no corre, nada queda
+  // invisible. La clase que esconde se agrega recién al observar.
+  (function () {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var sel = '.hl-section > .hl-wrap > div, .hl-section--sm > .hl-wrap > div,' +
+              '.hl-cred__item, .hl-caja__item, .hav, .hl-offer__box, .hl-guarantee,' +
+              '.hl-pain__card, .hl-faq__item, .hl-compare .hl-accordion';
+    var nodos = [].slice.call(document.querySelectorAll(sel));
+    if (!nodos.length || !('IntersectionObserver' in window)) return;
+
+    nodos.forEach(function (n, i) {
+      n.classList.add('hl-rev');
+      var d = i % 3;
+      if (d) n.classList.add('hl-rev--d' + d);
+    });
+
+    var ob = new IntersectionObserver(function (filas) {
+      filas.forEach(function (f) {
+        if (f.isIntersecting) { f.target.classList.add('vista'); ob.unobserve(f.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    nodos.forEach(function (n) { ob.observe(n); });
+  })();
+
   // ---- STICKY BAR & TIMER ----
   (function(){
     var bar = document.getElementById('sticky-bar');

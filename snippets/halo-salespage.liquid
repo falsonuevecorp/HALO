@@ -1123,11 +1123,7 @@
           <div class="hl-cred__desc">Si falla, escribes y te mandamos otra. El envío lo pagamos nosotros.</div>
         </div>
       </div>
-      <div style="margin-top: 48px;">
-        <img src="{{ 'halo-score-app.png' | asset_url }}" alt="Pantalla de la app con los datos del día" loading="lazy" decoding="async"
-             style="width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; border-radius:20px; display:block;
-                    box-shadow:0 18px 50px rgba(0,0,0,0.35); background:#0A0F13;">
-      </div>
+      {% render 'halo-app-visual', bloque: 'pulso' %}
     </div>
   </section>
 

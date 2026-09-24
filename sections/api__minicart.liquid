@@ -106,7 +106,7 @@
           <img src="{{ hm_correa.featured_image | img_url: '120x' }}" alt="{{ hm_correa.title | escape }}" width="52" height="52" loading="lazy">
           <div class="hm-correa__cuerpo">
             <div class="hm-correa__nombre">Una correa de repuesto</div>
-            <div class="hm-correa__desc">La sudada se lava mientras la otra sigue midiendo.</div>
+            <div class="hm-correa__desc">Solo la correa, sin banda. Se cambia sin herramientas.</div>
             <div class="hm-correa__precio">
               <b>{{ hm_correa.price | money | replace: ',', '.' }}</b>
               {%- if hm_correa.compare_at_price > hm_correa.price -%}

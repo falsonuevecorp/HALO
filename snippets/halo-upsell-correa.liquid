@@ -25,8 +25,8 @@
     <span class="hlu-addon__box" aria-hidden="true"></span>
     <img class="hlu-addon__img" src="{{ strap.featured_image | image_url: width: 120 }}" alt="{{ strap.title | escape }}" width="44" height="44" loading="lazy">
     <span class="hlu-addon__text">
-      <span class="hlu-addon__title">Una para entrenar, otra para el resto</span>
-      <span class="hlu-addon__sub">La sudada se lava. La otra sigue midiendo.</span>
+      <span class="hlu-addon__title">Súmale una correa de repuesto</span>
+      <span class="hlu-addon__sub">Solo la correa, sin banda. Se cambia sin herramientas: lavas la sudada y sigues midiendo con la otra.</span>
       <span class="hlu-addon__price">
         <strong>{{ strap_variant.price | money | replace: ',', '.' }}</strong>
         {%- if strap_variant.compare_at_price > strap_variant.price %}
@@ -162,8 +162,8 @@
     <div class="hlu-modal__veil" data-hlu-close></div>
     <div class="hlu-modal__card">
       <div class="hlu-modal__tag">Espera</div>
-      <div class="hlu-modal__title" id="hlu-modal-title">¿Le sumas la segunda correa?</div>
-      <div class="hlu-modal__sub">Una para entrenar, otra para el resto. Se suma a este pedido, sin envío extra.</div>
+      <div class="hlu-modal__title" id="hlu-modal-title">¿Le sumas una correa de repuesto?</div>
+      <div class="hlu-modal__sub">Es solo la correa, sin banda: se cambia sin herramientas y va en este mismo pedido, sin envío extra.</div>
       <img class="hlu-modal__img" src="{{ strap.featured_image | image_url: width: 320 }}" alt="{{ strap.title | escape }}" width="128" height="128" loading="lazy">
       <div class="hlu-modal__price">
         {{ strap_variant.price | money | replace: ',', '.' }}

@@ -1016,6 +1016,9 @@
     <!-- =============================================
        EL DOLOR Y EN QUÉ NOS DIFERENCIAMOS
   ============================================== -->
+    <!-- =============================================
+       EL DOLOR
+  ============================================== -->
   <section class="hl-section hl-pain">
     <div class="hl-wrap">
       <div class="hl-pain__grid">
@@ -1068,7 +1071,121 @@
   </section>
 
   <!-- =============================================
-       PRUEBA SOCIAL
+       LA SOLUCIÓN: CÓMO FUNCIONA
+  ============================================== -->
+  <section class="hl-section--sm hl-cred">
+    <div class="hl-wrap">
+      <div style="text-align:center; margin-bottom:40px;">
+        <span class="mono-tag" style="display:block;margin-bottom:12px;">CADA MAÑANA</span>
+        <h2 class="h-title">Un número te dice si hoy <em style="color:var(--cyan-orbit);">empujas o paras</em>.</h2>
+        <p class="body-md" style="max-width:540px; margin:16px auto 0;">
+          Sale de tu variabilidad cardíaca, tu pulso en reposo y el sueño profundo de anoche. Sin pantalla y sin configurar nada.
+        </p>
+      </div>
+      <div class="hl-cred__grid">
+        <div class="hl-cred__item">
+          <div class="hl-cred__icon">🧬</div>
+          <div class="hl-cred__title">Sabes cuánto dormiste de verdad, no cuánto estuviste en cama</div>
+          <div class="hl-cred__desc">Mide tus fases de sueño —profundo, REM y ligero—, tu pulso en reposo, tu variabilidad cardíaca y tu oxígeno en sangre durante toda la noche.</div>
+        </div>
+        <div class="hl-cred__item">
+          <div class="hl-cred__icon">⚡</div>
+          <div class="hl-cred__title">La cargas una vez al mes, no todas las noches</div>
+          <div class="hl-cred__desc">Hasta 30 días con una sola carga. Nunca vas a tener que elegir entre medir tu sueño y dejarla enchufada justo la noche que importaba.</div>
+        </div>
+        <div class="hl-cred__item">
+          <div class="hl-cred__icon">🏆</div>
+          <div class="hl-cred__title">No te la sacas para entrenar, ni para dormir, ni para la ducha</div>
+          <div class="hl-cred__desc">Silicona hipoalergénica, sin pantalla ni botones que se enganchen, y resiste 1 metro bajo el agua. Se queda puesta, y por eso no se te pierde ningún dato.</div>
+        </div>
+        <div class="hl-cred__item">
+          <div class="hl-cred__icon">🛡️</div>
+          <div class="hl-cred__title">Si llega con una falla de fábrica, te la reemplazamos</div>
+          <div class="hl-cred__desc">90 días de garantía por defectos de fabricación y control de calidad lote por lote. La gestión la hacemos nosotros: escribes y la reponemos.</div>
+        </div>
+      </div>
+      <div style="margin-top: 48px;">
+        <img src="{{ 'halo-score-app.png' | asset_url }}" alt="Pantalla de la app con el Score de Recuperación del día" loading="lazy" decoding="async"
+             style="width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; border-radius:20px; display:block;
+                    box-shadow:0 18px 50px rgba(0,0,0,0.35); background:#0A0F13;">
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       EN QUÉ NOS DIFERENCIAMOS
+  ============================================== -->
+  <section class="hl-section hl-compare">
+    <div class="hl-wrap">
+      <div style="text-align:center;">
+        <span class="mono-tag" style="display:block;margin-bottom:12px; color:#FF6B6B;">LA CRUDA REALIDAD</span>
+        <h2 class="h-title">LOOP BAND vs. Las <em style="color:#FF6B6B;">"Joyas" Caras</em>.</h2>
+        <p class="body-md" style="max-width:560px; margin:16px auto 0;">
+          Mide lo mismo que ellos. Sin la pantalla que no necesitas y por una fracción de lo que cuestan en Chile.
+        </p>
+      </div>
+      <div class="hl-accordion" style="margin-top:28px;">
+        <div class="hl-accordion__item">
+          <button class="hl-accordion__trigger" onclick="toggleAccordion(this)">
+            <div>
+              <div class="hl-accordion__trigger-title">Ver la tabla completa</div>
+              <div class="hl-accordion__trigger-tag">Contra un smartwatch y un anillo</div>
+            </div>
+            <span class="hl-accordion__icon">+</span>
+          </button>
+          <div class="hl-accordion__content hl-accordion__content--alto">
+            <div class="hl-accordion__body" style="padding:0; overflow-x:auto;">
+        <table class="hl-compare__table">
+          <thead>
+            <tr>
+              <th style="text-align:left; width:30%;">¿Por qué seguimos ganando?</th>
+              <th class="col-halo">➰ LOOP BAND®</th>
+              <th class="col-rival">⌚ Smartwatch de gama alta</th>
+              <th class="col-rival">💍 Anillo Inteligente</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="feature-label">100% Libre de Pantallas</td>
+              <td class="col-halo check">✓ SÍ (Cero distracciones)</td>
+              <td class="cross">✗ NO (Un celular en tu muñeca)</td>
+              <td class="check" style="color:var(--green-signal)">✓ SÍ</td>
+            </tr>
+            <tr>
+              <td class="feature-label">Notificaciones Invasivas</td>
+              <td class="col-halo check">✓ 0 (Paz mental absoluta)</td>
+              <td class="cross">✗ Imposible apagarlas del todo</td>
+              <td class="check" style="color:var(--green-signal)">✓ SÍ</td>
+            </tr>
+            <tr>
+              <td class="feature-label">Batería de larga duración</td>
+              <td class="col-halo check">✓ Hasta 30 días</td>
+              <td class="cross">✗ Patéticas 18 horas</td>
+              <td class="check" style="color:var(--green-signal)">✓ 4 a 7 días</td>
+            </tr>
+            <tr>
+              <td class="feature-label">Comodidad total para dormir</td>
+              <td class="col-halo check">✓ Banda elástica invisible</td>
+              <td class="cross">✗ Ladrillo de metal incómodo</td>
+              <td class="cross">✗ Metal duro que asfixia el dedo</td>
+            </tr>
+            <tr>
+              <td class="feature-label">Precio en Chile</td>
+              <td class="col-halo check">✓ {{ product.price | money | replace: ',', '.' }}</td>
+              <td class="cross">✗ Desde $300.000</td>
+              <td class="cross">✗ $169.990 a $419.000</td>
+            </tr>
+          </tbody>
+        </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       CONFIANZA: QUIÉNES YA LA USAN
   ============================================== -->
   <section class="hl-section hl-reviews">
     <div class="hl-wrap">
@@ -1115,7 +1232,75 @@
   </section>
 
   <!-- =============================================
-       LA OFERTA
+       OBJECIONES
+  ============================================== -->
+  <section class="hl-section hl-faq">
+    <div class="hl-wrap">
+      <div style="text-align:center;">
+        <span class="mono-tag" style="display:block;margin-bottom:12px;">PREGUNTAS FRECUENTES</span>
+        <h2 class="h-title">Todo lo que necesitas <em style="color:var(--cyan-orbit);">saber</em>.</h2>
+      </div>
+      <div class="hl-faq__list">
+        {% assign faqs = "¿Puedo pagar cuando me llegue?|Sí, si estás en Santiago. Eliges “Pago contra entrega” en el checkout y pagas cuando el repartidor te entrega la banda, sin adelantar nada. Fuera de Santiago el pago va al momento de la compra, con tarjeta o hasta en 6 cuotas sin interés.||¿Cuánto dura la batería y cómo se carga?|Loop Band tiene una autonomía de hasta 30 días con monitoreo continuo 24/7. Se carga de 0 a 100% en menos de 90 minutos con el cargador magnético incluido.||¿Es resistente al agua?|Sí. Loop Band cuenta con certificación IP67. Puedes ducharte, nadar y sudar intensamente sin tener que quitártela.||¿Tengo que pagar una suscripción mensual en la App?|No. La aplicación es 100% gratuita de por vida: no hay planes, no hay niveles y no retenemos tus datos de salud detrás de un muro de pago.||¿Necesito tener mi teléfono cerca mientras duermo o entreno?|No. Loop Band tiene memoria interna. Puedes entrenar o dormir sin el teléfono. Solo abre la aplicación después y los datos se sincronizarán vía Bluetooth.||¿Cómo funciona la Garantía?|Tienes 90 días desde que la recibes. Cubre defectos de fábrica: que llegue dañada o que los sensores fallen por algo nuestro. En ese caso te enviamos una banda nueva y el envío lo pagamos nosotros.||¿Funciona tanto en iOS como en Android?|Absolutamente. Nuestra App está optimizada y disponible para ambas plataformas con sincronización perfecta." | split: "||" %}
+        {% for faq_item in faqs %}
+          {% assign faq_parts = faq_item | split: "|" %}
+          <div class="hl-faq__item">
+            <div class="hl-faq__q" onclick="toggleFaq(this)">
+              <span>{{ faq_parts[0] }}</span>
+              <span class="ico">+</span>
+            </div>
+            <div class="hl-faq__a">
+              <div class="hl-faq__a-inner">{{ faq_parts[1] }}</div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       QUÉ LLEGA A TU PUERTA
+  ============================================== -->
+  <section class="hl-section--sm hl-caja">
+    <div class="hl-wrap">
+      <div style="text-align:center;">
+        <span class="mono-tag" style="display:block;margin-bottom:12px;">ABRE LA CAJA</span>
+        <h2 class="h-title">Lo que llega a tu puerta.</h2>
+        <p class="body-md" style="max-width:520px; margin:16px auto 0;">
+          Nada que comprar aparte. La primera noche ya estás midiendo.
+        </p>
+      </div>
+      <div class="hl-caja__grid">
+        <div class="hl-caja__item">
+          <span class="hl-caja__num">01</span>
+          <div class="hl-caja__ico">➰</div>
+          <div class="hl-caja__nombre">El módulo Loop Band®</div>
+          <div class="hl-caja__desc">Los sensores PPG, la memoria interna y la batería. Sin pantalla que mirar.</div>
+        </div>
+        <div class="hl-caja__item">
+          <span class="hl-caja__num">02</span>
+          <div class="hl-caja__ico">🎽</div>
+          <div class="hl-caja__nombre">La correa de tu color</div>
+          <div class="hl-caja__desc">La que elegiste al comprar. Se cambia sin herramientas.</div>
+        </div>
+        <div class="hl-caja__item">
+          <span class="hl-caja__num">03</span>
+          <div class="hl-caja__ico">🔌</div>
+          <div class="hl-caja__nombre">El cargador magnético</div>
+          <div class="hl-caja__desc">Se pega solo. De 0 a 100% en menos de 90 minutos, una vez al mes.</div>
+        </div>
+        <div class="hl-caja__item">
+          <span class="hl-caja__num">04</span>
+          <div class="hl-caja__ico">📖</div>
+          <div class="hl-caja__nombre">La guía de inicio</div>
+          <div class="hl-caja__desc">Impresa, en castellano. Cómo ponértela y qué mirar la primera semana.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       LA OFERTA: TODO LO QUE TE LLEVAS
   ============================================== -->
   <section class="hl-section hl-offer" id="oferta">
     <div class="hl-wrap">
@@ -1212,189 +1397,7 @@
     </div>
   </section>
 
-  <!-- =============================================
-       EL MECANISMO
-  ============================================== -->
-  <section class="hl-section--sm hl-cred">
-    <div class="hl-wrap">
-      <div style="text-align:center; margin-bottom:40px;">
-        <span class="mono-tag" style="display:block;margin-bottom:12px;">CADA MAÑANA</span>
-        <h2 class="h-title">Un número te dice si hoy <em style="color:var(--cyan-orbit);">empujas o paras</em>.</h2>
-        <p class="body-md" style="max-width:540px; margin:16px auto 0;">
-          Sale de tu variabilidad cardíaca, tu pulso en reposo y el sueño profundo de anoche. Sin pantalla y sin configurar nada.
-        </p>
-      </div>
-      <div class="hl-cred__grid">
-        <div class="hl-cred__item">
-          <div class="hl-cred__icon">🧬</div>
-          <div class="hl-cred__title">Sabes cuánto dormiste de verdad, no cuánto estuviste en cama</div>
-          <div class="hl-cred__desc">Mide tus fases de sueño —profundo, REM y ligero—, tu pulso en reposo, tu variabilidad cardíaca y tu oxígeno en sangre durante toda la noche.</div>
-        </div>
-        <div class="hl-cred__item">
-          <div class="hl-cred__icon">⚡</div>
-          <div class="hl-cred__title">La cargas una vez al mes, no todas las noches</div>
-          <div class="hl-cred__desc">Hasta 30 días con una sola carga. Nunca vas a tener que elegir entre medir tu sueño y dejarla enchufada justo la noche que importaba.</div>
-        </div>
-        <div class="hl-cred__item">
-          <div class="hl-cred__icon">🏆</div>
-          <div class="hl-cred__title">No te la sacas para entrenar, ni para dormir, ni para la ducha</div>
-          <div class="hl-cred__desc">Silicona hipoalergénica, sin pantalla ni botones que se enganchen, y resiste 1 metro bajo el agua. Se queda puesta, y por eso no se te pierde ningún dato.</div>
-        </div>
-        <div class="hl-cred__item">
-          <div class="hl-cred__icon">🛡️</div>
-          <div class="hl-cred__title">Si llega con una falla de fábrica, te la reemplazamos</div>
-          <div class="hl-cred__desc">90 días de garantía por defectos de fabricación y control de calidad lote por lote. La gestión la hacemos nosotros: escribes y la reponemos.</div>
-        </div>
-      </div>
-      <div style="margin-top: 48px;">
-        <img src="{{ 'halo-score-app.png' | asset_url }}" alt="Pantalla de la app con el Score de Recuperación del día" loading="lazy" decoding="async"
-             style="width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; border-radius:20px; display:block;
-                    box-shadow:0 18px 50px rgba(0,0,0,0.35); background:#0A0F13;">
-      </div>
-    </div>
-  </section>
 
-  <!-- =============================================
-       QUÉ LLEGA EN LA CAJA
-  ============================================== -->
-  <section class="hl-section--sm hl-caja">
-    <div class="hl-wrap">
-      <div style="text-align:center;">
-        <span class="mono-tag" style="display:block;margin-bottom:12px;">ABRE LA CAJA</span>
-        <h2 class="h-title">Lo que llega a tu puerta.</h2>
-        <p class="body-md" style="max-width:520px; margin:16px auto 0;">
-          Nada que comprar aparte. La primera noche ya estás midiendo.
-        </p>
-      </div>
-      <div class="hl-caja__grid">
-        <div class="hl-caja__item">
-          <span class="hl-caja__num">01</span>
-          <div class="hl-caja__ico">➰</div>
-          <div class="hl-caja__nombre">El módulo Loop Band®</div>
-          <div class="hl-caja__desc">Los sensores PPG, la memoria interna y la batería. Sin pantalla que mirar.</div>
-        </div>
-        <div class="hl-caja__item">
-          <span class="hl-caja__num">02</span>
-          <div class="hl-caja__ico">🎽</div>
-          <div class="hl-caja__nombre">La correa de tu color</div>
-          <div class="hl-caja__desc">La que elegiste al comprar. Se cambia sin herramientas.</div>
-        </div>
-        <div class="hl-caja__item">
-          <span class="hl-caja__num">03</span>
-          <div class="hl-caja__ico">🔌</div>
-          <div class="hl-caja__nombre">El cargador magnético</div>
-          <div class="hl-caja__desc">Se pega solo. De 0 a 100% en menos de 90 minutos, una vez al mes.</div>
-        </div>
-        <div class="hl-caja__item">
-          <span class="hl-caja__num">04</span>
-          <div class="hl-caja__ico">📖</div>
-          <div class="hl-caja__nombre">La guía de inicio</div>
-          <div class="hl-caja__desc">Impresa, en castellano. Cómo ponértela y qué mirar la primera semana.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
-  <!-- =============================================
-       PASO 8: US VS THEM
-  ============================================== -->
-  <section class="hl-section hl-compare">
-    <div class="hl-wrap">
-      <div style="text-align:center;">
-        <span class="mono-tag" style="display:block;margin-bottom:12px; color:#FF6B6B;">LA CRUDA REALIDAD</span>
-        <h2 class="h-title">LOOP BAND vs. Las <em style="color:#FF6B6B;">"Joyas" Caras</em>.</h2>
-        <p class="body-md" style="max-width:560px; margin:16px auto 0;">
-          Mide lo mismo que ellos. Sin la pantalla que no necesitas y por una fracción de lo que cuestan en Chile.
-        </p>
-      </div>
-      <div class="hl-accordion" style="margin-top:28px;">
-        <div class="hl-accordion__item">
-          <button class="hl-accordion__trigger" onclick="toggleAccordion(this)">
-            <div>
-              <div class="hl-accordion__trigger-title">Ver la tabla completa</div>
-              <div class="hl-accordion__trigger-tag">Contra un smartwatch y un anillo</div>
-            </div>
-            <span class="hl-accordion__icon">+</span>
-          </button>
-          <div class="hl-accordion__content hl-accordion__content--alto">
-            <div class="hl-accordion__body" style="padding:0; overflow-x:auto;">
-        <table class="hl-compare__table">
-          <thead>
-            <tr>
-              <th style="text-align:left; width:30%;">¿Por qué seguimos ganando?</th>
-              <th class="col-halo">➰ LOOP BAND®</th>
-              <th class="col-rival">⌚ Smartwatch de gama alta</th>
-              <th class="col-rival">💍 Anillo Inteligente</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="feature-label">100% Libre de Pantallas</td>
-              <td class="col-halo check">✓ SÍ (Cero distracciones)</td>
-              <td class="cross">✗ NO (Un celular en tu muñeca)</td>
-              <td class="check" style="color:var(--green-signal)">✓ SÍ</td>
-            </tr>
-            <tr>
-              <td class="feature-label">Notificaciones Invasivas</td>
-              <td class="col-halo check">✓ 0 (Paz mental absoluta)</td>
-              <td class="cross">✗ Imposible apagarlas del todo</td>
-              <td class="check" style="color:var(--green-signal)">✓ SÍ</td>
-            </tr>
-            <tr>
-              <td class="feature-label">Batería de larga duración</td>
-              <td class="col-halo check">✓ Hasta 30 días</td>
-              <td class="cross">✗ Patéticas 18 horas</td>
-              <td class="check" style="color:var(--green-signal)">✓ 4 a 7 días</td>
-            </tr>
-            <tr>
-              <td class="feature-label">Comodidad total para dormir</td>
-              <td class="col-halo check">✓ Banda elástica invisible</td>
-              <td class="cross">✗ Ladrillo de metal incómodo</td>
-              <td class="cross">✗ Metal duro que asfixia el dedo</td>
-            </tr>
-            <tr>
-              <td class="feature-label">Precio en Chile</td>
-              <td class="col-halo check">✓ {{ product.price | money | replace: ',', '.' }}</td>
-              <td class="cross">✗ Desde $300.000</td>
-              <td class="cross">✗ $169.990 a $419.000</td>
-            </tr>
-          </tbody>
-        </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =============================================
-       FAQ SECTION (antes del cierre)
-  ============================================== -->
-  <section class="hl-section hl-faq">
-    <div class="hl-wrap">
-      <div style="text-align:center;">
-        <span class="mono-tag" style="display:block;margin-bottom:12px;">PREGUNTAS FRECUENTES</span>
-        <h2 class="h-title">Todo lo que necesitas <em style="color:var(--cyan-orbit);">saber</em>.</h2>
-      </div>
-      <div class="hl-faq__list">
-        {% assign faqs = "¿Puedo pagar cuando me llegue?|Sí, si estás en Santiago. Eliges “Pago contra entrega” en el checkout y pagas cuando el repartidor te entrega la banda, sin adelantar nada. Fuera de Santiago el pago va al momento de la compra, con tarjeta o hasta en 6 cuotas sin interés.||¿Cuánto dura la batería y cómo se carga?|Loop Band tiene una autonomía de hasta 30 días con monitoreo continuo 24/7. Se carga de 0 a 100% en menos de 90 minutos con el cargador magnético incluido.||¿Es resistente al agua?|Sí. Loop Band cuenta con certificación IP67. Puedes ducharte, nadar y sudar intensamente sin tener que quitártela.||¿Tengo que pagar una suscripción mensual en la App?|No. La aplicación es 100% gratuita de por vida: no hay planes, no hay niveles y no retenemos tus datos de salud detrás de un muro de pago.||¿Necesito tener mi teléfono cerca mientras duermo o entreno?|No. Loop Band tiene memoria interna. Puedes entrenar o dormir sin el teléfono. Solo abre la aplicación después y los datos se sincronizarán vía Bluetooth.||¿Cómo funciona la Garantía?|Tienes 90 días desde que la recibes. Cubre defectos de fábrica: que llegue dañada o que los sensores fallen por algo nuestro. En ese caso te enviamos una banda nueva y el envío lo pagamos nosotros.||¿Funciona tanto en iOS como en Android?|Absolutamente. Nuestra App está optimizada y disponible para ambas plataformas con sincronización perfecta." | split: "||" %}
-        {% for faq_item in faqs %}
-          {% assign faq_parts = faq_item | split: "|" %}
-          <div class="hl-faq__item">
-            <div class="hl-faq__q" onclick="toggleFaq(this)">
-              <span>{{ faq_parts[0] }}</span>
-              <span class="ico">+</span>
-            </div>
-            <div class="hl-faq__a">
-              <div class="hl-faq__a-inner">{{ faq_parts[1] }}</div>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
-    </div>
-  </section>
 
   <!-- COMPRADOS JUNTOS -->
   <div style="padding: 0 20px 48px;">

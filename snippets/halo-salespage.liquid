@@ -1024,46 +1024,62 @@
   </div>
 
   <!-- Qué llega en la caja -->
-  <section class="hl-section--sm hl-caja">
+    <!-- =============================================
+       EL DOLOR Y EN QUÉ NOS DIFERENCIAMOS
+  ============================================== -->
+  <section class="hl-section hl-pain">
     <div class="hl-wrap">
-      <div style="text-align:center;">
-        <span class="mono-tag" style="display:block;margin-bottom:12px;">ABRE LA CAJA</span>
-        <h2 class="h-title">Lo que llega a tu puerta.</h2>
-        <p class="body-md" style="max-width:520px; margin:16px auto 0;">
-          Nada que comprar aparte. La primera noche ya estás midiendo.
-        </p>
+      <div class="hl-pain__grid">
+        <div>
+          <span class="mono-tag" style="display:block;margin-bottom:12px; color:#FF6B6B;">EL ENEMIGO DE LA OPTIMIZACIÓN</span>
+          <h2 class="h-title">Deja de adivinar por qué <em style="color:#FF6B6B;">amaneces cansado</em>.</h2>
+          <p class="body-lg" style="margin-top:20px;">
+            Entrenas duro y decides si descansar según cómo <em>sientes</em> que dormiste.
+          </p>
+          <p class="body-md">
+            Tu reloj es buenísimo para leer correos. Para tu descanso te da <strong style="color:#FF6B6B;">gráficos que no dicen nada</strong>.
+          </p>
+          <p style="color: var(--text-white) !important; font-weight:700; font-size:1rem; margin-top:24px;">Ya es hora de medirte con la misma precisión que exiges en tu vida.</p>
+        </div>
+
+        <!-- PATTERN INTERRUPT: Antes vs. Después -->
+        <div class="hl-pain__vs">
+          <div class="hl-pain__card hl-pain__card--bad">
+            <div class="hl-pain__card-label bad">❌ Juguetes Tecnológicos</div>
+            <div class="hl-pain__item"><span class="icon-bad">✗</span> Datos vagos y cero correlación clínica.</div>
+            <div class="hl-pain__item"><span class="icon-bad">✗</span> Cuestan tres a siete veces más por medir lo mismo.</div>
+            <div class="hl-pain__item"><span class="icon-bad">✗</span> Notificaciones constantes que destruyen tu focus.</div>
+            <div class="hl-pain__item"><span class="icon-bad">✗</span> Luz azul y vibraciones que arruinan tu fase REM.</div>
+            <div class="hl-pain__item"><span class="icon-bad">✗</span> Batería que no llega ni al fin de semana.</div>
+          </div>
+          <div class="hl-pain__vs-center">VS</div>
+          <div class="hl-pain__card hl-pain__card--good">
+            <div class="hl-pain__card-label good">✓ LOOP BAND®</div>
+            <div class="hl-pain__item"><span class="icon-good">✓</span> Precisión médica: HRV, SpO2 y Fases de Sueño.</div>
+            <div class="hl-pain__item"><span class="icon-good">✓</span> Cero suscripciones. Todos los datos 100% gratis.</div>
+            <div class="hl-pain__item"><span class="icon-good">✓</span> 100% Sin pantalla. Privacidad y paz mental absoluta.</div>
+            <div class="hl-pain__item"><span class="icon-good">✓</span> Diseño invisible. Te olvidas que la llevas puesta.</div>
+            <div class="hl-pain__item"><span class="icon-good">✓</span> Score de Recuperación Diario: Sabes cuándo apretar.</div>
+          </div>
+        </div>
       </div>
-      <div class="hl-caja__grid">
-        <div class="hl-caja__item">
-          <span class="hl-caja__num">01</span>
-          <div class="hl-caja__ico">➰</div>
-          <div class="hl-caja__nombre">El módulo Loop Band®</div>
-          <div class="hl-caja__desc">Los sensores PPG, la memoria interna y la batería. Sin pantalla que mirar.</div>
-        </div>
-        <div class="hl-caja__item">
-          <span class="hl-caja__num">02</span>
-          <div class="hl-caja__ico">🎽</div>
-          <div class="hl-caja__nombre">La correa de tu color</div>
-          <div class="hl-caja__desc">La que elegiste al comprar. Se cambia sin herramientas.</div>
-        </div>
-        <div class="hl-caja__item">
-          <span class="hl-caja__num">03</span>
-          <div class="hl-caja__ico">🔌</div>
-          <div class="hl-caja__nombre">El cargador magnético</div>
-          <div class="hl-caja__desc">Se pega solo. De 0 a 100% en menos de 90 minutos, una vez al mes.</div>
-        </div>
-        <div class="hl-caja__item">
-          <span class="hl-caja__num">04</span>
-          <div class="hl-caja__ico">📖</div>
-          <div class="hl-caja__nombre">La guía de inicio</div>
-          <div class="hl-caja__desc">Impresa, en castellano. Cómo ponértela y qué mirar la primera semana.</div>
-        </div>
+
+      <!-- La noche real, medida: el argumento del producto en una imagen -->
+      <div style="margin-top: 60px;">
+        <picture>
+          {%- comment -%} En el teléfono va la versión vertical: la ancha queda ilegible. {%- endcomment -%}
+          <source media="(max-width: 700px)" srcset="{{ 'halo-noche-medida-movil.jpg' | asset_url }}">
+          <img src="{{ 'halo-noche-medida.jpg' | asset_url }}" alt="Informe de una noche: 8 horas en cama, 41 minutos de sueño profundo y 31% de recuperación" loading="lazy" decoding="async"
+               style="width:100%; height:auto; border-radius:20px; display:block;
+                      box-shadow:0 18px 50px rgba(0,0,0,0.35); background:#0A0F13;">
+        </picture>
       </div>
+
     </div>
   </section>
 
   <!-- =============================================
-       PASO 10: TESTIMONIAL AVALANCHE
+       PRUEBA SOCIAL
   ============================================== -->
   <section class="hl-section hl-reviews">
     <div class="hl-wrap">
@@ -1110,7 +1126,7 @@
   </section>
 
   <!-- =============================================
-       PASO 13: GRAND SLAM OFFER + GODFATHER GUARANTEE
+       LA OFERTA
   ============================================== -->
   <section class="hl-section hl-offer" id="oferta">
     <div class="hl-wrap">
@@ -1208,61 +1224,7 @@
   </section>
 
   <!-- =============================================
-       PASO 4: PAIN & EMPATHY BRIDGE — Pattern Interrupt
-  ============================================== -->
-  <section class="hl-section hl-pain">
-    <div class="hl-wrap">
-      <div class="hl-pain__grid">
-        <div>
-          <span class="mono-tag" style="display:block;margin-bottom:12px; color:#FF6B6B;">EL ENEMIGO DE LA OPTIMIZACIÓN</span>
-          <h2 class="h-title">Deja de adivinar por qué <em style="color:#FF6B6B;">amaneces cansado</em>.</h2>
-          <p class="body-lg" style="margin-top:20px;">
-            Entrenas duro y decides si descansar según cómo <em>sientes</em> que dormiste.
-          </p>
-          <p class="body-md">
-            Tu reloj es buenísimo para leer correos. Para tu descanso te da <strong style="color:#FF6B6B;">gráficos que no dicen nada</strong>.
-          </p>
-          <p style="color: var(--text-white) !important; font-weight:700; font-size:1rem; margin-top:24px;">Ya es hora de medirte con la misma precisión que exiges en tu vida.</p>
-        </div>
-
-        <!-- PATTERN INTERRUPT: Antes vs. Después -->
-        <div class="hl-pain__vs">
-          <div class="hl-pain__card hl-pain__card--bad">
-            <div class="hl-pain__card-label bad">❌ Juguetes Tecnológicos</div>
-            <div class="hl-pain__item"><span class="icon-bad">✗</span> Datos vagos y cero correlación clínica.</div>
-            <div class="hl-pain__item"><span class="icon-bad">✗</span> Cuestan tres a siete veces más por medir lo mismo.</div>
-            <div class="hl-pain__item"><span class="icon-bad">✗</span> Notificaciones constantes que destruyen tu focus.</div>
-            <div class="hl-pain__item"><span class="icon-bad">✗</span> Luz azul y vibraciones que arruinan tu fase REM.</div>
-            <div class="hl-pain__item"><span class="icon-bad">✗</span> Batería que no llega ni al fin de semana.</div>
-          </div>
-          <div class="hl-pain__vs-center">VS</div>
-          <div class="hl-pain__card hl-pain__card--good">
-            <div class="hl-pain__card-label good">✓ LOOP BAND®</div>
-            <div class="hl-pain__item"><span class="icon-good">✓</span> Precisión médica: HRV, SpO2 y Fases de Sueño.</div>
-            <div class="hl-pain__item"><span class="icon-good">✓</span> Cero suscripciones. Todos los datos 100% gratis.</div>
-            <div class="hl-pain__item"><span class="icon-good">✓</span> 100% Sin pantalla. Privacidad y paz mental absoluta.</div>
-            <div class="hl-pain__item"><span class="icon-good">✓</span> Diseño invisible. Te olvidas que la llevas puesta.</div>
-            <div class="hl-pain__item"><span class="icon-good">✓</span> Score de Recuperación Diario: Sabes cuándo apretar.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- La noche real, medida: el argumento del producto en una imagen -->
-      <div style="margin-top: 60px;">
-        <picture>
-          {%- comment -%} En el teléfono va la versión vertical: la ancha queda ilegible. {%- endcomment -%}
-          <source media="(max-width: 700px)" srcset="{{ 'halo-noche-medida-movil.jpg' | asset_url }}">
-          <img src="{{ 'halo-noche-medida.jpg' | asset_url }}" alt="Informe de una noche: 8 horas en cama, 41 minutos de sueño profundo y 31% de recuperación" loading="lazy" decoding="async"
-               style="width:100%; height:auto; border-radius:20px; display:block;
-                      box-shadow:0 18px 50px rgba(0,0,0,0.35); background:#0A0F13;">
-        </picture>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- =============================================
-       PASO 5: CREDIBILITY STACK
+       EL MECANISMO
   ============================================== -->
   <section class="hl-section--sm hl-cred">
     <div class="hl-wrap">
@@ -1302,6 +1264,49 @@
       </div>
     </div>
   </section>
+
+  <!-- =============================================
+       QUÉ LLEGA EN LA CAJA
+  ============================================== -->
+  <section class="hl-section--sm hl-caja">
+    <div class="hl-wrap">
+      <div style="text-align:center;">
+        <span class="mono-tag" style="display:block;margin-bottom:12px;">ABRE LA CAJA</span>
+        <h2 class="h-title">Lo que llega a tu puerta.</h2>
+        <p class="body-md" style="max-width:520px; margin:16px auto 0;">
+          Nada que comprar aparte. La primera noche ya estás midiendo.
+        </p>
+      </div>
+      <div class="hl-caja__grid">
+        <div class="hl-caja__item">
+          <span class="hl-caja__num">01</span>
+          <div class="hl-caja__ico">➰</div>
+          <div class="hl-caja__nombre">El módulo Loop Band®</div>
+          <div class="hl-caja__desc">Los sensores PPG, la memoria interna y la batería. Sin pantalla que mirar.</div>
+        </div>
+        <div class="hl-caja__item">
+          <span class="hl-caja__num">02</span>
+          <div class="hl-caja__ico">🎽</div>
+          <div class="hl-caja__nombre">La correa de tu color</div>
+          <div class="hl-caja__desc">La que elegiste al comprar. Se cambia sin herramientas.</div>
+        </div>
+        <div class="hl-caja__item">
+          <span class="hl-caja__num">03</span>
+          <div class="hl-caja__ico">🔌</div>
+          <div class="hl-caja__nombre">El cargador magnético</div>
+          <div class="hl-caja__desc">Se pega solo. De 0 a 100% en menos de 90 minutos, una vez al mes.</div>
+        </div>
+        <div class="hl-caja__item">
+          <span class="hl-caja__num">04</span>
+          <div class="hl-caja__ico">📖</div>
+          <div class="hl-caja__nombre">La guía de inicio</div>
+          <div class="hl-caja__desc">Impresa, en castellano. Cómo ponértela y qué mirar la primera semana.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
 
   <!-- =============================================
        PASO 8: US VS THEM

@@ -296,6 +296,7 @@
   .hl-proof-stat__label { font-size: 0.78rem; color: var(--text-subtle); margin-top: 2px; }
   .hl-proof-divider { width: 1px; height: 40px; background: var(--border-subtle); }
   .hl-proof-stars { color: var(--amber-warn); font-size: 1.1rem; letter-spacing: 2px; }
+  .hl-proof-bar__inner--movil { display: none; }
 
   /* ===== STEP 4: PAIN BRIDGE ===== */
   .hl-pain { background: var(--space-black); }
@@ -313,7 +314,7 @@
     font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
     margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border-subtle);
   }
-  .hl-pain__card-label.bad { color: #FF6B6B; }
+  .hl-pain__card-label.bad { color: var(--text-subtle); }
   .hl-pain__card-label.good { color: var(--cyan-orbit); }
   .hl-pain__vs-center {
     display: flex; align-items: center; justify-content: center;
@@ -325,7 +326,7 @@
     font-size: 0.88rem; margin-bottom: 10px; color: var(--text-muted) !important;
   }
   .hl-pain__item:last-child { margin-bottom: 0; }
-  .hl-pain__item .icon-bad { color: #FF6B6B; flex-shrink: 0; }
+  .hl-pain__item .icon-bad { color: var(--text-subtle); flex-shrink: 0; }
   .hl-pain__item .icon-good { color: var(--cyan-orbit); flex-shrink: 0; }
 
   /* ===== STEP 5: CREDIBILITY STACK ===== */
@@ -390,7 +391,7 @@
   .hl-compare__table .col-rival { color: var(--text-subtle); }
   .hl-compare__table tbody td { color: var(--text-muted) !important; }
   .hl-compare__table .check { color: var(--green-signal); font-weight: 700; }
-  .hl-compare__table .cross { color: #FF6B6B; }
+  .hl-compare__table .cross { color: var(--text-subtle); }
   .hl-compare__table .feature-label { text-align: left; font-weight: 600; color: var(--text-white) !important; }
   .hl-compare__table tbody tr:hover td { background: rgba(0,0,0,0.02); }
 
@@ -774,8 +775,19 @@
   @media (max-width: 600px) {
     .hl-bullets__grid { grid-template-columns: 1fr; }
     .hl-cred__grid { grid-template-columns: 1fr 1fr; }
-    .hl-proof-bar__inner { gap: 20px; }
-    .hl-proof-divider { display: none; }
+    /* En el teléfono ocupaba cuatro filas. Pasa a una cinta que desliza sola:
+       se lee de un vistazo y devuelve 120 px a la primera pantalla. */
+    .hl-proof-bar { padding: 9px 0; overflow: hidden; }
+    .hl-proof-bar .hl-wrap { padding: 0 !important; max-width: none !important; }
+    .hl-proof-bar__inner { display: none !important; }
+    .hl-proof-bar__inner--movil { display: flex !important; width: max-content; animation: hl-cinta 26s linear infinite; }
+    .hl-proof-bar__inner--movil > span { display: flex; align-items: center; gap: 7px; padding: 0 18px; white-space: nowrap;
+                                         font-size: .78rem; color: var(--text-muted) !important; }
+    .hl-proof-bar__inner--movil b { color: var(--text-white) !important; font-weight: 800; }
+    .hl-proof-bar__inner--movil i { font-style: normal; color: var(--border-subtle); }
+    .hl-proof-bar__inner--movil .estrellas { color: var(--amber-warn); letter-spacing: 1px; }
+    @keyframes hl-cinta { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) { .hl-proof-bar__inner--movil { animation: none; } }
     .hl-pain__vs { grid-template-columns: 1fr; }
     .hl-pain__vs-center { display: none; }
     .hl-compare__table { font-size: 0.78rem; }
@@ -835,8 +847,8 @@
             </div>
 
             <!-- 3. Reloj de la oferta -->
-            <div class="hl-cta__reloj" id="hl-oferta-bloque" style="font-size: 0.85rem; font-weight: 700; color: #E53935; margin-bottom: 16px; display:flex; align-items:center; justify-content:center; gap:6px; width: 100%;">
-              <span class="hl-hero__dot" style="background:#E53935; box-shadow: 0 0 8px #E53935; width:6px; height:6px;"></span>
+            <div class="hl-cta__reloj" id="hl-oferta-bloque" style="font-size: 0.85rem; font-weight: 700; color: var(--amber-warn); margin-bottom: 16px; display:flex; align-items:center; justify-content:center; gap:6px; width: 100%;">
+              <span class="hl-hero__dot" style="background:var(--amber-warn); box-shadow: 0 0 8px var(--amber-warn); width:6px; height:6px;"></span>
               <span id="hl-oferta-texto">🔒 Descuento congelado por <span id="hl-oferta-reloj" style="font-variant-numeric:tabular-nums;">--:--:--</span></span>
             </div>
 
@@ -988,6 +1000,19 @@
   ============================================== -->
   <div class="hl-proof-bar">
     <div class="hl-wrap">
+      {%- comment -%} La cinta lleva la lista dos veces: así el bucle no deja hueco. {%- endcomment -%}
+      <div class="hl-proof-bar__inner--movil" aria-hidden="true">
+        <span class="estrellas">★★★★★</span><span><b>4,9 / 5,0</b> promedio</span><span><i>·</i></span>
+        <span><b>+2.400</b> clientes</span><span><i>·</i></span>
+        <span><b>90 días</b> de garantía</span><span><i>·</i></span>
+        <span><b>$0</b> de suscripción</span><span><i>·</i></span>
+        <span><b>Envío gratis</b> a todo Chile</span><span><i>·</i></span>
+        <span class="estrellas">★★★★★</span><span><b>4,9 / 5,0</b> promedio</span><span><i>·</i></span>
+        <span><b>+2.400</b> clientes</span><span><i>·</i></span>
+        <span><b>90 días</b> de garantía</span><span><i>·</i></span>
+        <span><b>$0</b> de suscripción</span><span><i>·</i></span>
+        <span><b>Envío gratis</b> a todo Chile</span><span><i>·</i></span>
+      </div>
       <div class="hl-proof-bar__inner">
         <div class="hl-proof-stat">
           <div class="hl-proof-stars">★★★★★</div>
@@ -1023,13 +1048,13 @@
     <div class="hl-wrap">
       <div class="hl-pain__grid">
         <div>
-          <span class="mono-tag" style="display:block;margin-bottom:12px; color:#FF6B6B;">TUS NOCHES</span>
-          <h2 class="h-title">Mide cuánto dormiste y cuánto fue sueño profundo, y te muestra <em style="color:#FF6B6B;">qué noches descansas mejor</em>.</h2>
+          <span class="mono-tag" style="display:block;margin-bottom:12px;">TUS NOCHES</span>
+          <h2 class="h-title">Mide cuánto dormiste y cuánto fue <em style="color:var(--cyan-orbit);">sueño profundo</em>.</h2>
           <p class="body-lg" style="margin-top:20px;">
-            Horas dormidas, minutos de sueño profundo y tu pulso mientras dormías. Cada noche queda guardada, hora por hora.
+            Horas, minutos de profundo y tu pulso. Cada noche, hora por hora.
           </p>
           <p class="body-md">
-            Con dos semanas de historial ves <strong style="color:#FF6B6B;">qué noches se cayó tu sueño profundo</strong> y qué tenían en común: cena tarde, alcohol, entrenar de noche.
+            En dos semanas ves <strong style="color:var(--cyan-orbit);">qué noches duermes peor</strong>: cena tarde, alcohol, entrenar de noche.
           </p>
           <p style="color: var(--text-white) !important; font-weight:700; font-size:1rem; margin-top:24px;">Y el sueño profundo es donde tu cuerpo repara el músculo que rompiste entrenando.</p>
         </div>
@@ -1079,23 +1104,23 @@
       <div class="hl-cred__grid">
         <div class="hl-cred__item">
           <div class="hl-cred__icon">🧬</div>
-          <div class="hl-cred__title">Sabes cuánto dormiste de verdad, no cuánto estuviste en cama</div>
-          <div class="hl-cred__desc">Cuántas horas dormiste de verdad, cuántas fueron sueño profundo y cómo se movió tu pulso durante toda la noche.</div>
+          <div class="hl-cred__title">Cuánto dormiste, no cuánto estuviste en cama</div>
+          <div class="hl-cred__desc">Horas, minutos de sueño profundo y tu pulso de la noche.</div>
         </div>
         <div class="hl-cred__item">
           <div class="hl-cred__icon">⚡</div>
-          <div class="hl-cred__title">La cargas una vez al mes, no todas las noches</div>
-          <div class="hl-cred__desc">Hasta 30 días con una sola carga. Nunca vas a tener que elegir entre medir tu sueño y dejarla enchufada justo la noche que importaba.</div>
+          <div class="hl-cred__title">Hasta 30 días con una carga</div>
+          <div class="hl-cred__desc">Ninguna noche se queda sin medir por estar enchufada.</div>
         </div>
         <div class="hl-cred__item">
           <div class="hl-cred__icon">🏆</div>
-          <div class="hl-cred__title">No te la sacas para entrenar, ni para dormir, ni para la ducha</div>
-          <div class="hl-cred__desc">Silicona hipoalergénica, sin pantalla ni botones que se enganchen, y resiste 1 metro bajo el agua. Se queda puesta, y por eso no se te pierde ningún dato.</div>
+          <div class="hl-cred__title">Aguanta 1 metro bajo el agua</div>
+          <div class="hl-cred__desc">Dúchate, entrena y duerme con ella. No te la sacas nunca.</div>
         </div>
         <div class="hl-cred__item">
           <div class="hl-cred__icon">🛡️</div>
-          <div class="hl-cred__title">Si llega con una falla de fábrica, te la reemplazamos</div>
-          <div class="hl-cred__desc">90 días de garantía por defectos de fabricación y control de calidad lote por lote. La gestión la hacemos nosotros: escribes y la reponemos.</div>
+          <div class="hl-cred__title">90 días de garantía de fábrica</div>
+          <div class="hl-cred__desc">Si falla, escribes y te mandamos otra. El envío lo pagamos nosotros.</div>
         </div>
       </div>
       <div style="margin-top: 48px;">
@@ -1154,8 +1179,8 @@
   <section class="hl-section hl-compare">
     <div class="hl-wrap">
       <div style="text-align:center;">
-        <span class="mono-tag" style="display:block;margin-bottom:12px; color:#FF6B6B;">COMPARADA</span>
-        <h2 class="h-title">Mide lo mismo que un <em style="color:#FF6B6B;">Apple Watch</em>, y dura 30 días en vez de un día.</h2>
+        <span class="mono-tag" style="display:block;margin-bottom:12px;">COMPARADA</span>
+        <h2 class="h-title">Mide lo mismo que un <em style="color:var(--cyan-orbit);">Apple Watch</em>, y dura 30 días en vez de un día.</h2>
         <p class="body-md" style="max-width:560px; margin:16px auto 0;">
           Si ya tienes un reloj o estás mirando un anillo inteligente, esto es lo que cambia.
         </p>

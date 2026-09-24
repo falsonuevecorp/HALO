@@ -1,3 +1,27 @@
+{%- comment -%}
+  El umbral de envío gratis vive en Configuración → Envíos. Si lo cambias allá,
+  cámbialo aquí: son dos lugares distintos y Liquid no puede leer el de envíos.
+{%- endcomment -%}
+{%- assign hm_umbral = 5000000 -%}
+{%- assign hm_falta = hm_umbral | minus: cart.total_price -%}
+{%- assign hm_correa = all_products['strap-de-silicon-loob-band'] -%}
+{%- assign hm_proteccion = all_products['proteccion-de-envio'] -%}
+{%- assign hm_ahorro = 0 -%}
+{%- for item in cart.items -%}
+  {%- if item.variant.compare_at_price > item.variant.price -%}
+    {%- assign hm_dif = item.variant.compare_at_price | minus: item.variant.price | times: item.quantity -%}
+    {%- assign hm_ahorro = hm_ahorro | plus: hm_dif -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign hm_tiene_correa = false -%}
+{%- for item in cart.items -%}
+  {%- if item.product.handle == 'strap-de-silicon-loob-band' -%}{%- assign hm_tiene_correa = true -%}{%- endif -%}
+{%- endfor -%}
+{%- assign hm_tiene_proteccion = false -%}
+{%- for item in cart.items -%}
+  {%- if item.product.handle == 'proteccion-de-envio' -%}{%- assign hm_tiene_proteccion = true -%}{%- endif -%}
+{%- endfor -%}
+
 {% capture cartHTML %}
 <div class="minicart">
   <div class="minicart__entries fancy-scroll">
@@ -8,6 +32,22 @@
       </div>
     {% endif %}
     
+    {%- if cart.items.size > 0 -%}
+      <div class="hm-envio {% if hm_falta <= 0 %}hm-envio--listo{% endif %}">
+        <div class="hm-envio__texto">
+          {%- if hm_falta <= 0 -%}
+            🎉 <b>Tu envío es gratis.</b>
+          {%- else -%}
+            Te faltan <b>{{ hm_falta | money | replace: ',', '.' }}</b> para el envío gratis
+          {%- endif -%}
+        </div>
+        <div class="hm-envio__riel">
+          {%- assign hm_pct = cart.total_price | times: 100 | divided_by: hm_umbral -%}
+          <span style="width: {% if hm_pct > 100 %}100{% else %}{{ hm_pct }}{% endif %}%"></span>
+        </div>
+      </div>
+    {%- endif -%}
+
     {% for item in cart.items %}
       <div class="minicart__entry">
         <a class="card__img--container minicart__image"  href="{{ item.url | within: collections.all }}">
@@ -34,6 +74,13 @@
 
             {%- for discount in item.discounts -%}{{- discount.title -}}{%- endfor -%}
           </span>
+          {%- if item.variant.compare_at_price > item.variant.price -%}
+            {%- assign hm_pc = item.variant.compare_at_price | minus: item.variant.price | times: 100 | divided_by: item.variant.compare_at_price -%}
+            <span class="hm-ahorro">
+              <s>{{ item.variant.compare_at_price | money | replace: ',', '.' }}</s>
+              <b>Ahorras {{ hm_pc }}%</b>
+            </span>
+          {%- endif -%}
           <div class="quantity--input">
             <button class="quantity--input__button quantity--input__incr" onclick="BoosterTheme.cart.quantityHandler(event, false)">-</button><!--
             --><input class="quantity--input__input" value={{item.quantity}} data-qty-input data-qty-int-input data-variant-id={{item.key}} onchange="BoosterTheme.cart.updateQuantity(event)" type="number" min="0" {% if item.variant.inventory_policy != "continue" %}max="{{ item.variant.inventory_quantity}}"{% endif%}><!--
@@ -51,15 +98,65 @@
       </div>
     {% endfor %}
   </div>
+  {%- if cart.items.size > 0 -%}
+    {%- if hm_correa and hm_tiene_correa == false -%}
+      <div class="hm-extra">
+        <div class="hm-extra__tit">Se le suele sumar</div>
+        <div class="hm-correa">
+          <img src="{{ hm_correa.featured_image | img_url: '120x' }}" alt="{{ hm_correa.title | escape }}" width="52" height="52" loading="lazy">
+          <div class="hm-correa__cuerpo">
+            <div class="hm-correa__nombre">Una correa de repuesto</div>
+            <div class="hm-correa__desc">La sudada se lava mientras la otra sigue midiendo.</div>
+            <div class="hm-correa__precio">
+              <b>{{ hm_correa.price | money | replace: ',', '.' }}</b>
+              {%- if hm_correa.compare_at_price > hm_correa.price -%}
+                <s>{{ hm_correa.compare_at_price | money | replace: ',', '.' }}</s>
+              {%- endif -%}
+            </div>
+          </div>
+          <button type="button" class="hm-correa__btn" data-hm-add="{{ hm_correa.selected_or_first_available_variant.id }}">Añadir</button>
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- if hm_proteccion -%}
+      <label class="hm-prot {% if hm_tiene_proteccion %}hm-prot--on{% endif %}">
+        <span class="hm-prot__ico">🛡️</span>
+        <span class="hm-prot__cuerpo">
+          <span class="hm-prot__tit">Protección de envío · {{ hm_proteccion.price | money | replace: ',', '.' }}</span>
+          <span class="hm-prot__desc">Si llega dañado o se pierde en el camino, te lo reponemos sin trámite.</span>
+        </span>
+        <input type="checkbox" class="hm-prot__check"
+               data-hm-proteccion="{{ hm_proteccion.selected_or_first_available_variant.id }}"
+               {% if hm_tiene_proteccion %}checked{% endif %}>
+        <span class="hm-prot__switch" aria-hidden="true"></span>
+      </label>
+    {%- endif -%}
+
+    <div class="hm-doc">
+      <div class="hm-doc__tit">¿Necesitas boleta o factura?</div>
+      <div class="hm-doc__ops">
+        <label><input type="radio" name="hm-doc" value="Boleta" data-hm-doc {% if cart.attributes.Documento != 'Factura' %}checked{% endif %}> Boleta</label>
+        <label><input type="radio" name="hm-doc" value="Factura" data-hm-doc {% if cart.attributes.Documento == 'Factura' %}checked{% endif %}> Factura</label>
+      </div>
+    </div>
+  {%- endif -%}
+
   {% unless cart.items.size == 0 %}
   <div class="minicart__bottom">
+    {%- if hm_ahorro > 0 -%}
+      <div class="hm-linea hm-linea--ahorro"><span>Ahorras</span><b>−{{ hm_ahorro | money | replace: ',', '.' }}</b></div>
+    {%- endif -%}
     <span class="minicart__total">Total: <span class="jsPrice">{{ cart.total_price | money | strip_html }}</span></span>
+    <div class="hm-confianza">
+      <span>🔒 Pago seguro</span><span>·</span><span>🛡️ 90 días de garantía</span><span>·</span><span>💵 Paga al recibir en Santiago</span>
+    </div>
     {% assign root_url = routes.root_url %}
     {% assign checkout_url = root_url | append: 'checkout' %}
     {% if root_url != '/' %}
       {% assign checkout_url = root_url | append: '/checkout' %}
     {% endif %}
-    <a class="button button--primary button--filled button--primary__filled button--full-width" href="{{ checkout_url }}">{{'general.buttons.checkout' | t}}</a>
+    <a class="button button--primary button--filled button--primary__filled button--full-width hm-pagar" href="{{ checkout_url }}">Ir a pagar · {{ cart.total_price | money | replace: ',', '.' }}</a>
     <a style="margin-top: 0.75rem; font-size: 0.9em; padding: 0.25rem" class="button button--primary button--text button--text button--full-width" href="{{ routes.cart_url }}">{{ 'general.buttons.view_cart' | t }}</a>
   </div>
   {% endunless %}

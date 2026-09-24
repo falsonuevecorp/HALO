@@ -311,7 +311,7 @@
   /* La foto del hero flota muy despacio: da producto vivo sin tocar el LCP.
      Va sobre la etiqueta <img>, no sobre su contenedor, para no mover nada
      de lo que hay alrededor.                                              */
-  .hl-hero__img-wrap img { animation: hl-flota 5s ease-in-out infinite; will-change: transform; }
+  .hl-hero__img-wrap img { animation: hl-flota 5s ease-in-out 1.2s infinite; }
   @keyframes hl-flota { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
 
   /* Destello lento sobre el botón: se nota, no distrae. */
@@ -1007,18 +1007,23 @@
         <div class="hl-hero__img-wrap" style="border: none; background: transparent !important; position: relative;">
           {% if product.featured_image %}
             <picture>
-            {%- comment -%} En el teléfono el recorte cuadrado ocupa 94 px menos y deja el precio a la vista. {%- endcomment -%}
-            <source media="(max-width: 900px)" srcset="{{ 'halo-hero-movil.jpg' | asset_url }}">
-            <!-- Shopify Native Product Image -->
-            <img src="{{ product.featured_image | img_url: '1200x' }}"
-                 srcset="{{ product.featured_image | img_url: '480x' }} 480w,
-                         {{ product.featured_image | img_url: '640x' }} 640w,
-                         {{ product.featured_image | img_url: '800x' }} 800w,
-                         {{ product.featured_image | img_url: '1000x' }} 1000w,
-                         {{ product.featured_image | img_url: '1200x' }} 1200w"
-                 sizes="(min-width: 900px) 540px, 1px"
+            {%- comment -%}
+              El <img> lleva la foto del teléfono, no la de escritorio: el
+              escáner de precarga de Chrome pide el `src` aunque un <source>
+              coincida, y así bajaba 169 kB que nunca se muestran. La de
+              escritorio entra por su propio <source>, que solo casa sobre
+              900 px. Las dos tienen recorte distinto (1:1 y 4:5), por eso el
+              alto se declara aquí y no se hereda del producto.
+            {%- endcomment -%}
+            <source media="(min-width: 901px)"
+                    srcset="{{ product.featured_image | img_url: '800x' }} 800w,
+                            {{ product.featured_image | img_url: '1000x' }} 1000w,
+                            {{ product.featured_image | img_url: '1200x' }} 1200w"
+                    sizes="540px"
+                    width="1080" height="1350">
+            <img src="{{ 'halo-hero-movil.jpg' | asset_url }}"
                  alt="{{ product.title }}"
-                 width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}"
+                 width="1080" height="1080"
                  fetchpriority="high" decoding="async"
                  style="width:100%; height:auto; display:block; object-fit:contain; border-radius:20px; box-shadow:0 10px 40px rgba(0,0,0,0.18);">
             </picture>

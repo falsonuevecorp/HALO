@@ -2,44 +2,46 @@
 
 Este repo es el tema vivo de **hellohalo.us**.
 
+## Cómo se publica: por GitHub, no por CLI
+
+El tema **`HALO/main`** está conectado a este repositorio (rama `main`). **Un `git push origin main`
+es el despliegue.** No hace falta el CLI y no se debe usar: escribe directo sobre el tema, lo
+desincroniza de la rama y deja la integración trabada.
+
+```bash
+git add -A && git commit -m "..." && git push origin main
+```
+
+El despliegue tarda un par de minutos. Para comprobar que llegó, buscar en el HTML vivo algo que
+solo exista en el commit nuevo:
+
+```bash
+curl -s "https://hellohalo.us/products/atacama-band%C2%AE?cb=$RANDOM" | grep -c "<marca del cambio>"
+```
+
+Si no llega, mirar **Tienda online → Temas**: cuando la sincronización falla, Shopify muestra un
+aviso de conflicto ahí.
+
 ## Tienda
 
 | | |
 |---|---|
 | Dominio público | `hellohalo.us` |
-| Dominio de Shopify | **`motosportcl-5asgzrqx.myshopify.com`** |
+| Handle del admin | `hellohalocl` |
+| `Shopify.shop` interno | `motosportcl-5asgzrqx.myshopify.com` |
 | `shopId` | `99687989555` |
-| Tema vivo | `188120564019` |
+| Tema vivo | `HALO/main` · `188120564019` |
 
-**El handle de la tienda NO es `hellohalocl`.** Esa tienda existe pero es otra y el CLI
-responde "you don't have access to this dev store", lo que parece un problema de sesión y no lo es.
-Para verificarlo sin adivinar:
-
-```bash
-curl -s https://hellohalo.us/ | grep -oE 'Shopify\.shop = "[^"]+"'
-```
-
-## Publicar
-
-```bash
-NPM_CONFIG_PREFIX=/Users/armandoluzardo/.npm-global ~/.npm-global/bin/shopify theme push \
-  --store motosportcl-5asgzrqx --theme 188120564019 --allow-live \
-  --only <archivo>
-```
-
-El prefijo `NPM_CONFIG_PREFIX` es obligatorio: sin él el CLI no encuentra su propia instalación.
-
-Si pide login, abre el navegador con un código de verificación. **Hay que entrar con la cuenta
-dueña de esta tienda**; con otra cuenta el login funciona pero el push falla con el mismo mensaje
-de "dev store".
+Los dos handles existen: la tienda se renombró y el admin usa `hellohalocl` mientras el objeto
+`Shopify.shop` del storefront sigue devolviendo el original. **Si alguna vez hay que usar el CLI, el
+error *"you don't have access to this dev store"* casi siempre significa que la sesión está abierta
+con la cuenta equivocada, no que el handle esté mal.** Armando tiene varias tiendas (Motosport,
+Smilu Ve) y ese mensaje despista.
 
 ## Código que no se toca
 
 - **Microsoft Clarity** vive al principio del `<head>` en `layout/theme.liquid`, proyecto
   `yjudh567uu`, con un comentario "NO BORRAR". Solo puede haber un tag: dos se pisan entre sí.
-- **No hay código de Meta en el tema.** El píxel entra por el canal de Facebook & Instagram.
-  Un push no lo puede borrar. Lo que sí rompe la configuración es cambiar el texto o las clases
-  de un botón, porque el Event Setup Tool los usa como ancla.
-
-Antes de empujar `layout/theme.liquid`, confirmar que el bloque de Clarity sigue ahí, y bajar
-primero los cambios hechos a mano en el editor de temas en vez de sobrescribirlos.
+- **No hay código de Meta en el tema.** El píxel entra por el canal de Facebook & Instagram, así que
+  un push no lo puede borrar. Lo que sí rompe la configuración es cambiar el texto o las clases de un
+  botón, porque el Event Setup Tool los usa como ancla.

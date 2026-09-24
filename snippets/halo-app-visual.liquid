@@ -27,9 +27,9 @@
   .hav__rosca svg { display: block; transform: rotate(-90deg); }
   .hav__rosca circle { fill: none; stroke-linecap: round; }
   .hav__rosca .pista { stroke: rgba(10,15,19,.07); }
-  .hav__rosca .arco { stroke-dasharray: var(--largo); stroke-dashoffset: var(--largo); }
-  .hav.on .hav__rosca .arco { animation: hav-dibuja 1.5s cubic-bezier(.22,.9,.3,1) forwards; }
-  @keyframes hav-dibuja { to { stroke-dashoffset: var(--resto); } }
+  .hav__rosca .arco { stroke-dasharray: var(--largo); stroke-dashoffset: var(--resto); }
+  .hav.on .hav__rosca .arco { animation: hav-dibuja 1.5s cubic-bezier(.22,.9,.3,1) backwards; }
+  @keyframes hav-dibuja { from { stroke-dashoffset: var(--largo); } }
   .hav__centro { position: absolute; inset: 0; display: flex; flex-direction: column;
                  align-items: center; justify-content: center; }
   .hav__centro b { font-size: 1.35rem; font-weight: 800; color: var(--text-white) !important; line-height: 1; }
@@ -44,9 +44,9 @@
   /* ---------- hipnograma ---------- */
   .hav__hipno { display: flex; align-items: flex-end; gap: 2px; height: 56px; margin-top: 16px; }
   .hav__hipno i { flex: 1 1 auto; border-radius: 2px; background: var(--tono);
-                  height: var(--alto); transform: scaleY(0); transform-origin: bottom;
-                  transition: transform .5s cubic-bezier(.22,.9,.3,1); transition-delay: var(--retraso); }
-  .hav.on .hav__hipno i { transform: scaleY(1); }
+                  height: var(--alto); transform-origin: bottom; }
+  .hav.on .hav__hipno i { animation: hav-sube .5s cubic-bezier(.22,.9,.3,1) var(--retraso) backwards; }
+  @keyframes hav-sube { from { transform: scaleY(0); } }
   .hav__horas { display: flex; justify-content: space-between; margin-top: 6px;
                 font-size: .62rem; color: var(--text-subtle) !important; }
 
@@ -54,12 +54,12 @@
   .hav__curva { margin-top: 4px; }
   .hav__curva svg { width: 100%; height: 92px; display: block; overflow: visible; }
   .hav__curva .linea { fill: none; stroke: #E53935; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round;
-                       stroke-dasharray: 1200; stroke-dashoffset: 1200; }
-  .hav.on .hav__curva .linea { animation: hav-traza 1.8s ease-out forwards; }
-  @keyframes hav-traza { to { stroke-dashoffset: 0; } }
-  .hav__curva .relleno { fill: url(#havDeg); opacity: 0; }
-  .hav.on .hav__curva .relleno { animation: hav-aparece .8s ease-out 1.1s forwards; }
-  @keyframes hav-aparece { to { opacity: 1; } }
+                       stroke-dasharray: 1200; stroke-dashoffset: 0; }
+  .hav.on .hav__curva .linea { animation: hav-traza 1.8s ease-out backwards; }
+  @keyframes hav-traza { from { stroke-dashoffset: 1200; } }
+  .hav__curva .relleno { fill: url(#havDeg); }
+  .hav.on .hav__curva .relleno { animation: hav-aparece .8s ease-out 1.1s backwards; }
+  @keyframes hav-aparece { from { opacity: 0; } }
 
   /* ---------- zonas ---------- */
   .hav__zonas { margin-top: 16px; display: grid; gap: 9px; }
@@ -67,9 +67,9 @@
   .hav__punto { width: 9px; height: 9px; border-radius: 50%; background: var(--tono); }
   .hav__barra { height: 7px; border-radius: 999px; background: rgba(10,15,19,.06); overflow: hidden; }
   .hav__barra i { display: block; height: 100%; border-radius: 999px; background: var(--tono);
-                  width: var(--ancho); transform: scaleX(0); transform-origin: left;
-                  transition: transform .8s cubic-bezier(.22,.9,.3,1); transition-delay: var(--retraso); }
-  .hav.on .hav__barra i { transform: scaleX(1); }
+                  width: var(--ancho); transform-origin: left; }
+  .hav.on .hav__barra i { animation: hav-crece .8s cubic-bezier(.22,.9,.3,1) var(--retraso) backwards; }
+  @keyframes hav-crece { from { transform: scaleX(0); } }
   .hav__zona > span:last-child { font-size: .72rem; color: var(--text-muted) !important; white-space: nowrap; }
   .hav__zona em { font-style: normal; font-weight: 700; color: var(--text-white) !important; }
   .hav__etq { font-size: .72rem; color: var(--text-muted) !important; }
@@ -81,8 +81,7 @@
   }
   @media (prefers-reduced-motion: reduce) {
     .hav .arco, .hav__hipno i, .hav__curva .linea, .hav__curva .relleno, .hav__barra i {
-      animation: none !important; transition: none !important;
-      stroke-dashoffset: var(--resto, 0) !important; transform: none !important; opacity: 1 !important;
+      animation: none !important;
     }
   }
 </style>

@@ -11,11 +11,18 @@
     </script>
 
     {%- if template.suffix == 'halo-salespage' and product.featured_image -%}
-      {%- comment -%} La foto del hero es el elemento LCP: que empiece a bajar antes del CSS. {%- endcomment -%}
-      <link rel="preload" as="image" fetchpriority="high"
+      {%- comment -%}
+        La foto del hero es el elemento LCP. El <picture> cambia de archivo en
+        900 px, así que la precarga tiene que cambiar con él: sin el `media`,
+        el teléfono bajaba la foto de escritorio que nunca muestra y recién
+        después pedía la suya. Son dos descargas y el LCP se iba a 7 s.
+      {%- endcomment -%}
+      <link rel="preload" as="image" fetchpriority="high" media="(max-width: 900px)"
+            href="{{ 'halo-hero-movil.jpg' | asset_url }}">
+      <link rel="preload" as="image" fetchpriority="high" media="(min-width: 901px)"
             href="{{ product.featured_image | img_url: '1200x' }}"
-            imagesrcset="{{ product.featured_image | img_url: '480x' }} 480w, {{ product.featured_image | img_url: '640x' }} 640w, {{ product.featured_image | img_url: '800x' }} 800w, {{ product.featured_image | img_url: '1000x' }} 1000w, {{ product.featured_image | img_url: '1200x' }} 1200w"
-            imagesizes="(min-width: 900px) 540px, 100vw">
+            imagesrcset="{{ product.featured_image | img_url: '800x' }} 800w, {{ product.featured_image | img_url: '1000x' }} 1000w, {{ product.featured_image | img_url: '1200x' }} 1200w"
+            imagesizes="540px">
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     {%- endif -%}

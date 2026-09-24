@@ -158,9 +158,10 @@
     {% comment %} If you want to serve the non-minified version, remove .min extension {% endcomment %}
     {{ 'booster.min.js' | asset_url | script_tag }}
     {%- if template.suffix == 'halo-salespage' -%}
-      {%- comment -%} Esta página no usa ningún icono de unicons: se carga sin bloquear el pintado. {%- endcomment -%}
-      <link rel="stylesheet" href="{{ 'unicons.css' | asset_url }}" media="print" onload="this.media='all'">
-      <noscript><link rel="stylesheet" href="{{ 'unicons.css' | asset_url }}"></noscript>
+      {%- comment -%}
+        La salespage no usa ni un icono de unicons, así que no se carga: son
+        62 kB de CSS más cuatro tipografías que encima fallan al decodificar.
+      {%- endcomment -%}
     {%- else -%}
       {{ 'unicons.css' | asset_url | stylesheet_tag }}
     {%- endif -%}

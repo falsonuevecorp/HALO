@@ -19,8 +19,10 @@ solo exista en el commit nuevo:
 curl -s "https://hellohalo.us/products/atacama-band%C2%AE?cb=$RANDOM" | grep -c "<marca del cambio>"
 ```
 
-Si no llega, mirar **Tienda online → Temas**: cuando la sincronización falla, Shopify muestra un
-aviso de conflicto ahí.
+Si no llega, mirar **Tienda online → Temas**. Ojo con una trampa: el tema `188120564019` **también**
+se llamaba `HALO/main` y ya no estaba conectado — Shopify conserva el nombre `repo/rama` aunque la
+conexión se rompa, así que parece conectado sin estarlo. La señal fiable de que la conexión está
+viva es que Shopify escriba commits de vuelta cuando alguien toca el editor de temas.
 
 ## Tienda
 
@@ -30,7 +32,7 @@ aviso de conflicto ahí.
 | Handle del admin | `hellohalocl` |
 | `Shopify.shop` interno | `motosportcl-5asgzrqx.myshopify.com` |
 | `shopId` | `99687989555` |
-| Tema vivo | `HALO/main` · `188120564019` |
+| Tema vivo | `HALO/main` · `189046686003` (conectado a GitHub el 24-09-2026) |
 
 Los dos handles existen: la tienda se renombró y el admin usa `hellohalocl` mientras el objeto
 `Shopify.shop` del storefront sigue devolviendo el original. **Si alguna vez hay que usar el CLI, el

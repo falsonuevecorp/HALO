@@ -34,6 +34,10 @@
   body.template--product .swatches__title{
     font-size:17px; font-weight:700; color:#fff; letter-spacing:.1px;
   }
+  /* El valor elegido ("- Azul marino") viene en #191D21: negro sobre negro. */
+  body.template--product .swatches__title span{
+    color:var(--hl-verde); font-weight:700;
+  }
   body.template--product p,
   body.template--product li,
   body.template--product .rte{ font-size:17px; line-height:1.65; color:var(--hl-texto); }
@@ -73,7 +77,7 @@
     background:#F4F6F7; border-radius:16px; overflow:hidden;
   }
   body.template--product .gallery__thumbnail{ border:2px solid transparent; }
-  body.template--product .gallery__thumbnail.active,
+  body.template--product .gallery__thumbnail[class*="active"],
   body.template--product .gallery__thumbnail:hover{ border-color:var(--hl-verde); }
 
   /* ---- Variantes ---- */
@@ -82,11 +86,13 @@
     border:2px solid var(--hl-borde); border-radius:11px;
     color:var(--hl-texto); font-size:16px; font-weight:600;
   }
-  body.template--product .swatch--color.active,
+  /* El tema marca el elegido con swatch--active, no con .active */
+  body.template--product .swatch--color.swatch--active,
   body.template--product .swatches__holder input:checked + label{
     border-color:var(--hl-verde); color:#fff;
     box-shadow:0 0 0 3px rgba(79,224,192,.18);
   }
+  body.template--product .swatch--disabled{ opacity:.32; }
 
   /* ---- Cantidad ---- */
   body.template--product .quantity--input,

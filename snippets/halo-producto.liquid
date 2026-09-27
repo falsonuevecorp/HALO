@@ -21,6 +21,8 @@
   body.template--product .shopify-section,
   body.template--product .product__row,
   body.template--product .breadcrumbs__wrapper,
+  body.template--product .breadcrumb,
+  body.template--product .breadcrumbs--default,
   body.template--product .subfooter{ background:transparent; }
 
   /* ---- Tipografía: todo sube. El tamaño base del tema se queda corto ---- */
@@ -92,7 +94,11 @@
     border-color:var(--hl-verde); color:#fff;
     box-shadow:0 0 0 3px rgba(79,224,192,.18);
   }
-  body.template--product .swatch--disabled{ opacity:.32; }
+  /* El deshabilitado viene en #EFEFEF: sobre negro era un cuadro blanco */
+  body.template--product .swatch--disabled{
+    background:var(--hl-panel) !important; opacity:.45;
+    border-color:var(--hl-borde); filter:grayscale(1);
+  }
 
   /* ---- Cantidad ---- */
   body.template--product .quantity--input,

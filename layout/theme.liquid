@@ -76,6 +76,13 @@
   {% render 'halo-liquid-header' %}
   {% render 'halo-minicart' %}
   {% if template.name == 'cart' %}{% render 'halo-cartpage' %}{% endif %}
+    {%- comment -%}
+      Marca de la plantilla de producto por defecto. Solo se carga ahí: los
+      productos con salespage propia (suffix) traen sus propios estilos.
+    {%- endcomment -%}
+    {%- if template contains 'product' and template.suffix == blank -%}
+      {% render 'halo-producto' %}
+    {%- endif -%}
   </head>
   <body class="template--{{template}}">
           <!--

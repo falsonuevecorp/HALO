@@ -1,0 +1,144 @@
+{%- comment -%}
+  Marca HALO para la plantilla de producto POR DEFECTO (la que usan la correa y
+  cualquier producto sin salespage propia).
+
+  Solo estilos: no se toca el marcado, ni el texto ni las clases de ningún botón
+  —el Event Setup Tool de Meta los usa como ancla y cambiarlos rompe los eventos.
+
+  Dos decisiones que no son obvias:
+  · La página va oscura, pero la galería se queda sobre una tarjeta clara. Las
+    fotos del catálogo tienen fondo blanco: sobre negro se verían como un
+    recuadro blanco flotando.
+  · El precio de oferta venía en rojo puro (#EF0000) y la barra de stock también.
+    En esta marca no se usa rojo en ningún caso.
+{%- endcomment -%}
+<style>
+  body.template--product{
+    --hl-fondo:#0B0D10; --hl-panel:#12171B; --hl-borde:rgba(255,255,255,.09);
+    --hl-texto:#E9EDF0; --hl-suave:#98A2AA; --hl-verde:#4FE0C0;
+    background:var(--hl-fondo); color:var(--hl-texto);
+  }
+  body.template--product .shopify-section,
+  body.template--product .product__row,
+  body.template--product .breadcrumbs__wrapper,
+  body.template--product .subfooter{ background:transparent; }
+
+  /* ---- Tipografía: todo sube. El tamaño base del tema se queda corto ---- */
+  body.template--product{ font-size:17px; line-height:1.6; }
+  body.template--product h1{
+    font-size:38px; font-weight:800; letter-spacing:-.8px; line-height:1.14;
+    color:#fff; margin-bottom:14px;
+  }
+  body.template--product h2{ font-size:26px; font-weight:800; color:#fff; letter-spacing:-.4px; }
+  body.template--product h3,
+  body.template--product .swatches__title{
+    font-size:17px; font-weight:700; color:#fff; letter-spacing:.1px;
+  }
+  body.template--product p,
+  body.template--product li,
+  body.template--product .rte{ font-size:17px; line-height:1.65; color:var(--hl-texto); }
+  body.template--product .breadcrumb,
+  body.template--product .breadcrumbs__wrapper a,
+  body.template--product .breadcrumbs__wrapper span{ font-size:14px; color:var(--hl-suave); }
+  body.template--product .breadcrumbs__wrapper a:hover{ color:var(--hl-verde); }
+
+  /* ---- Precio ---- */
+  body.template--product .product__price--sale,
+  body.template--product .product__price{
+    font-size:40px; font-weight:800; letter-spacing:-1.2px; color:var(--hl-verde);
+  }
+  body.template--product .product__price--old{
+    font-size:21px; font-weight:500; color:var(--hl-suave);
+    text-decoration:line-through; margin-left:9px;
+  }
+  body.template--product .tag,
+  body.template--product .tag--sale{
+    background:var(--hl-verde); color:#08100E; font-size:14px; font-weight:800;
+    letter-spacing:.3px; border-radius:999px; padding:5px 13px; border:0;
+  }
+
+  /* ---- Existencias: la barra era roja ---- */
+  body.template--product .product__stock{ font-size:16px; color:var(--hl-suave); }
+  body.template--product .product__stock strong,
+  body.template--product .amount--text{ color:#fff; font-weight:800; font-size:17px; }
+  body.template--product .amount--left,
+  body.template--product .amount--bar span{ background:var(--hl-verde) !important; }
+  body.template--product .amount--right,
+  body.template--product .amount--bar{ background:rgba(255,255,255,.10) !important; }
+
+  /* ---- Galería sobre tarjeta clara: las fotos tienen fondo blanco ---- */
+  body.template--product .product__page--gallery,
+  body.template--product .slide--product,
+  body.template--product .gallery__thumbnail{
+    background:#F4F6F7; border-radius:16px; overflow:hidden;
+  }
+  body.template--product .gallery__thumbnail{ border:2px solid transparent; }
+  body.template--product .gallery__thumbnail.active,
+  body.template--product .gallery__thumbnail:hover{ border-color:var(--hl-verde); }
+
+  /* ---- Variantes ---- */
+  body.template--product .swatch--color,
+  body.template--product .swatches__holder label{
+    border:2px solid var(--hl-borde); border-radius:11px;
+    color:var(--hl-texto); font-size:16px; font-weight:600;
+  }
+  body.template--product .swatch--color.active,
+  body.template--product .swatches__holder input:checked + label{
+    border-color:var(--hl-verde); color:#fff;
+    box-shadow:0 0 0 3px rgba(79,224,192,.18);
+  }
+
+  /* ---- Cantidad ---- */
+  body.template--product .quantity--input,
+  body.template--product .quantity--input input,
+  body.template--product .quantity--input__button{
+    background:var(--hl-panel); border-color:var(--hl-borde);
+    color:#fff; font-size:17px; font-weight:700;
+  }
+  body.template--product .quantity--input__button:hover{ color:var(--hl-verde); }
+
+  /* ---- Botones: se estila, NO se toca la clase ni el texto ---- */
+  body.template--product .button--primary,
+  body.template--product .button--primary__filled{
+    background:var(--hl-verde); color:#08100E;
+    font-size:18px; font-weight:800; letter-spacing:.2px;
+    border:0; border-radius:13px; padding:17px 22px;
+  }
+  body.template--product .button--primary:hover,
+  body.template--product .button--primary__filled:hover{ background:#6BEBD0; color:#08100E; }
+  body.template--product .button--secondary,
+  body.template--product .button--outline{
+    background:transparent; color:#fff; border:2px solid var(--hl-borde);
+    font-size:17px; font-weight:700; border-radius:13px; padding:15px 22px;
+  }
+  body.template--product .button--secondary:hover{ border-color:var(--hl-verde); color:var(--hl-verde); }
+
+  /* ---- Barra fija de móvil ---- */
+  body.template--product .sticky--mobile{
+    background:rgba(11,13,16,.96); border-top:1px solid var(--hl-borde);
+    backdrop-filter:blur(8px);
+  }
+  body.template--product .sticky--mobile .product__price{ font-size:24px; }
+
+  /* ---- Bloques de abajo ---- */
+  body.template--product .product__description,
+  body.template--product .product-page__recommended,
+  body.template--product .api__upsell{
+    color:var(--hl-texto); border-top:1px solid var(--hl-borde); padding-top:26px;
+  }
+  body.template--product .product__page--recommended .product__item,
+  body.template--product .grid__item--product{
+    background:var(--hl-panel); border:1px solid var(--hl-borde); border-radius:16px;
+  }
+  body.template--product .subfooter,
+  body.template--product .subfooter__block{ color:var(--hl-suave); font-size:15px; }
+  body.template--product a{ color:var(--hl-texto); }
+  body.template--product a:hover{ color:var(--hl-verde); }
+
+  @media (max-width:767px){
+    body.template--product h1{ font-size:30px; }
+    body.template--product .product__price--sale,
+    body.template--product .product__price{ font-size:33px; }
+    body.template--product{ font-size:16.5px; }
+  }
+</style>

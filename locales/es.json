@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "general": {
     "404": {
@@ -156,6 +165,12 @@
       "sign_in_title": "Entra a tu cuenta",
       "sign_up_title": "Crea tu cuenta",
       "newsletter_success": "Gracias por suscribirte"
+    }
+  },
+  "customer_accounts": {
+    "payment_methods": {
+      "credit_or_debit_card_title": "Tarjeta de Débito/Crédito",
+      "credit_card_title": "Tarjeta de Débito/Crédito"
     }
   }
 }

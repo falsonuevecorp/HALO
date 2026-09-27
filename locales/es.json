@@ -172,5 +172,15 @@
       "credit_or_debit_card_title": "Tarjeta de Débito/Crédito",
       "credit_card_title": "Tarjeta de Débito/Crédito"
     }
+  },
+  "shopify": {
+    "checkout": {
+      "payment": {
+        "pay_with_credit_card": "Tarjeta de Débito/Crédito"
+      },
+      "payment_gateway": {
+        "credit_card_label": "Tarjeta de Débito/Crédito"
+      }
+    }
   }
 }

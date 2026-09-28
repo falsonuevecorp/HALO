@@ -831,12 +831,16 @@
               900 px. Las dos tienen recorte distinto (1:1 y 4:5), por eso el
               alto se declara aquí y no se hereda del producto.
             {%- endcomment -%}
+            {%- comment -%}
+              Escritorio y móvil comparten ahora la misma toma, así que el
+              <source> apunta a un asset del tema en vez de a la foto del
+              producto: un solo archivo, cuadrado como el del teléfono, y sin
+              depender de que nadie cambie la imagen destacada en el admin.
+              1024 px cubre el hueco de 540 px a densidad 2.
+            {%- endcomment -%}
             <source media="(min-width: 901px)"
-                    srcset="{{ product.featured_image | img_url: '800x' }} 800w,
-                            {{ product.featured_image | img_url: '1000x' }} 1000w,
-                            {{ product.featured_image | img_url: '1200x' }} 1200w"
-                    sizes="540px"
-                    width="1080" height="1350">
+                    srcset="{{ 'halo-hero-desk.webp' | asset_url }}"
+                    width="1024" height="1024">
             {%- comment -%}
               Un solo archivo y sin srcset: con srcset el teléfono bajaba el de
               540 y el de 760, 154 kB para mostrar uno. 760 px cubre pantallas
@@ -844,7 +848,7 @@
               pesa la mitad que el JPEG.
             {%- endcomment -%}
             <img src="{{ 'halo-hero-movil.webp' | asset_url }}"
-                 alt="{{ product.title }}"
+                 alt="Loop Band® · 1 mes de autonomía"
                  width="760" height="760"
                  fetchpriority="high" decoding="async"
                  style="width:100%; height:auto; display:block; object-fit:contain; border-radius:20px; box-shadow:0 10px 40px rgba(0,0,0,0.18);">

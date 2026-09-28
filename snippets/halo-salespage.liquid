@@ -931,15 +931,24 @@
     </div>
   </section>
 
+  <!-- =============================================
+       QUÉ VES EN LA APP · el mosaico hace el trabajo del texto
+  ============================================== -->
+  <section class="hl-section--sm hl-mosaico">
+    <div class="hl-wrap">
+      <img src="{{ 'halo-app-mosaico.webp' | asset_url }}"
+           alt="Pantalla de la app: 6 h 41 min de sueño, 474 kcal quemadas, 26 de 63 minutos en quema de grasa y pulso medio de 138"
+           width="1080" height="1080" loading="lazy" decoding="async"
+           style="width:100%;height:auto;display:block;border-radius:24px;">
+    </div>
+  </section>
+
   <section class="hl-section hl-pain">
     <div class="hl-wrap">
       <div class="hl-pain__grid">
         <div>
           <span class="mono-tag" style="display:block;margin-bottom:12px;">TUS NOCHES</span>
           <h2 class="h-title">Mide cuánto dormiste y cuánto fue <em style="color:var(--cyan-orbit);">sueño profundo</em>.</h2>
-          <p class="body-lg" style="margin-top:20px;">
-            Horas, minutos de profundo y tu pulso. Cada noche, hora por hora.
-          </p>
           <p class="body-md">
             En dos semanas ves <strong style="color:var(--cyan-orbit);">qué noches duermes peor</strong>: cena tarde, alcohol, entrenar de noche.
           </p>
@@ -982,9 +991,6 @@
       <div style="text-align:center; margin-bottom:40px;">
         <span class="mono-tag" style="display:block;margin-bottom:12px;">CADA MAÑANA</span>
         <h2 class="h-title">Mide cuántas calorías quemas al día y <em style="color:var(--cyan-orbit);">cómo avanza semana a semana</em>.</h2>
-        <p class="body-md" style="max-width:540px; margin:16px auto 0;">
-          Calorías, pasos, distancia y minutos de movimiento. Cada día queda guardado, así que ves tu semana completa y si vas mejorando.
-        </p>
       </div>
       {% render 'halo-app-visual', bloque: 'dia' %}
 
@@ -1022,9 +1028,6 @@
       <div style="text-align:center; margin-bottom:40px;">
         <span class="mono-tag" style="display:block;margin-bottom:12px;">MIENTRAS ENTRENAS</span>
         <h2 class="h-title">Mide cuántos minutos estuviste <em style="color:var(--cyan-orbit);">quemando grasa</em> y cuántas calorías gastaste.</h2>
-        <p class="body-md" style="max-width:540px; margin:16px auto 0;">
-          Cada sesión queda con su pulso máximo y medio, la curva minuto a minuto, la duración y los minutos en calentamiento, quema de grasa y resistencia aeróbica.
-        </p>
       </div>
       {% render 'halo-app-visual', bloque: 'sesion' %}
 

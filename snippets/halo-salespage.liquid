@@ -570,19 +570,20 @@
   @keyframes hl-titila { 0%, 100% { opacity: 1; } 50% { opacity: 0.15; } }
   .hl-titila { animation: hl-titila 0.7s steps(1, end) infinite; }
 
-  .hl-cta__cod {
-    display: flex; align-items: flex-start; gap: 10px;
-    margin-top: 12px; padding: 12px 14px;
-    background: #F1F8F3; border: 1px solid rgba(0,138,84,0.22);
-    border-radius: 12px; font-size: 0.86rem; line-height: 1.35;
-    color: var(--text-muted) !important;
-  }
-  .hl-cta__cod b { color: var(--green-signal) !important; }
-  .hl-cod__icono { font-size: 1.1rem; line-height: 1; }
-  .hl-cod__sub { display: block; font-size: 0.78rem; color: var(--text-subtle) !important; margin-top: 2px; }
-
   /* Qué llega en la caja, dicho arriba: el 14% que viene de Facebook
      no baja de los 1.700 px y nunca ve la sección de la caja.          */
+  .hl-abre { padding: 96px 0 78px; }
+  .hl-abre__t {
+    font-family: 'Inter', sans-serif; font-weight: 800;
+    font-size: clamp(2rem, 7.2vw, 4rem); line-height: 1.06;
+    letter-spacing: -0.035em; text-align: center;
+    max-width: 17ch; margin: 0 auto;
+    color: var(--text-white) !important;
+    text-wrap: balance;
+  }
+  .hl-abre__t em { font-style: normal; color: var(--cyan-orbit) !important; }
+  @media (max-width: 760px) { .hl-abre { padding: 58px 0 44px; } }
+
   .hl-cta__caja {
     margin-top: 12px; padding: 11px 14px;
     background: rgba(10,15,19,0.04); border: 1px solid rgba(10,15,19,0.10);
@@ -632,7 +633,6 @@
     .hl-cta__boton   { order: 3; }
     .hl-cta__mp      { order: 4; margin-top: 18px; }
     .hl-cta__benef   { order: 5; }
-    .hl-cta__cod     { order: 6; }
     .hl-cta__caja    { order: 7; }
     .hl-cta__correa  { order: 8; }
     .hl-cta__envio   { order: 9; margin-top: 12px; margin-bottom: 0 !important; }
@@ -785,15 +785,6 @@
 
             <div class="hl-cta__correa">{% render 'halo-upsell-correa', product: product, block: 'addon' %}</div>
 
-            <!-- Pago al recibir · solo Santiago -->
-            <div class="hl-cta__cod">
-              <span class="hl-cod__icono">💵</span>
-              <span>
-                <b>Paga al recibir</b> en Santiago.
-                <span class="hl-cod__sub">Pagas cuando la banda llega a tu puerta.</span>
-              </span>
-            </div>
-
             <!-- 6. Trustpilot (Centrado) -->
             <div class="hl-cta__trust" style="display:flex; flex-direction:column; align-items:center; margin-top: 16px; width: 100%;">
               <div style="display:flex; gap:2px; margin-bottom:4px; justify-content: center; width: 100%;">
@@ -921,6 +912,21 @@
     <!-- =============================================
        EL DOLOR
   ============================================== -->
+  <!-- =============================================
+       APERTURA · una frase que resume el beneficio
+       Apple abre su página de reloj con una sola frase enorme y nada más
+       ("El dispositivo ideal para llevar una vida saludable"). Aquí hace el
+       mismo trabajo: resolver de qué va esto antes de entrar en el detalle.
+  ============================================== -->
+  <section class="hl-section hl-abre">
+    <div class="hl-wrap">
+      <h2 class="hl-abre__t">
+        Mide tu sueño, tu pulso y cada entrenamiento.<br>
+        <em>Y la cargas una vez al mes.</em>
+      </h2>
+    </div>
+  </section>
+
   <section class="hl-section hl-pain">
     <div class="hl-wrap">
       <div class="hl-pain__grid">

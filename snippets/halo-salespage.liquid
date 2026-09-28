@@ -5,7 +5,15 @@
   fuente variable, que es uno solo. Se va el 300, que no se usa en ningún sitio,
   y entra el 800, que sí se usa ocho veces y antes se sintetizaba.
 {%- endcomment -%}
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400..900;1,400&family=JetBrains+Mono:wght@500..600&display=swap">
+{%- comment -%}
+  La hoja de tipografías bloqueaba el primer pintado. Con media="print" y el
+  cambio en onload se descarga sin bloquear, y como lleva display=swap el
+  texto se pinta al instante con la tipografía del sistema.
+{%- endcomment -%}
+<link rel="stylesheet" media="print" onload="this.media='all';this.onload=null"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400..900;1,400&family=JetBrains+Mono:wght@500..600&display=swap">
+<noscript><link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400..900;1,400&family=JetBrains+Mono:wght@500..600&display=swap"></noscript>
 <style>
 
   /* ===================================================

@@ -159,9 +159,14 @@
     {% render 'layout__app--code' %}
     {% render 'layout__bstr--constants' %}
 
-    {{ '/services/javascripts/currencies.js' | script_tag }}
+    {%- comment -%}
+      Estos dos iban sin defer y bloqueaban el análisis del documento antes del
+      primer pintado. El filtro | script_tag de Shopify no admite defer, así que
+      la etiqueta va escrita a mano. Son el cambio que más mueve la aguja.
+    {%- endcomment -%}
+    <script src="/services/javascripts/currencies.js" defer="defer"></script>
     {% comment %} If you want to serve the non-minified version, remove .min extension {% endcomment %}
-    {{ 'booster.min.js' | asset_url | script_tag }}
+    <script src="{{ 'booster.min.js' | asset_url }}" defer="defer"></script>
     {%- if template.suffix == 'halo-salespage' -%}
       {%- comment -%}
         La salespage no usa ni un icono de unicons, así que no se carga: son

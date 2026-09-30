@@ -1,5 +1,3 @@
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 {%- comment -%}
   Pedir seis pesos sueltos son seis archivos; un rango hace que Google sirva la
   fuente variable, que es uno solo. Se va el 300, que no se usa en ningún sitio,
@@ -45,11 +43,11 @@
     --cyan-cta:      #00B8CC;          /* cyan original solo para botones CTA */
     --cyan-dim:      rgba(0,122,140,0.08);
     --cyan-glow:     0 4px 24px rgba(0,184,204,0.25);
-    --green-signal:  #008A54;
+    --green-signal:  #007A4A;  /* 5,2:1 sobre blanco y con texto blanco encima */
     --amber-warn:    #D4861A;
     --text-white:    #0D1117;          /* antes: blanco → ahora: casi negro */
     --text-muted:    #4A5568;          /* texto secundario oscuro */
-    --text-subtle:   #8A95A8;          /* texto terciario */
+    --text-subtle:   #6E7786;          /* texto terciario, 4,5:1 sobre blanco */
     --radius-sm:     8px;
     --radius-md:     16px;
     --radius-lg:     24px;
@@ -197,7 +195,7 @@
   .hl-mp-card__logo img { max-width: 100%; object-fit: contain; }
   .hl-mp-card__body { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
   .hl-mp-card__line { font-size: 0.92rem; font-weight: 600; color: var(--text-white) !important; }
-  .hl-mp-card__line .hl-mp-highlight { color: #009EE3 !important; font-weight: 700; }
+  .hl-mp-card__line .hl-mp-highlight { color: #007EB5 !important; font-weight: 700; }
   .hl-mp-card__line .hl-mp-amount { font-weight: 800; color: var(--text-white) !important; }
   .hl-mp-card__meta { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
   .hl-mp-card__meta .hl-mp-green {
@@ -785,7 +783,7 @@
             <!-- Precios (Centrados) -->
             <div class="hl-price-row hl-cta__precio" style="justify-content: center; width: 100%; margin-left: 0; padding-left: 0;">
               <span class="hl-price-main" id="price-display">{{ product.price | money | replace: ',', '.' }}</span>
-              <span class="hl-price-compare" id="price-compare" style="text-decoration: line-through; opacity: 0.6; font-size:1.2rem;">{{ product.compare_at_price | money | replace: ',', '.' }}</span>
+              <span class="hl-price-compare" id="price-compare" style="text-decoration: line-through; font-size:1.2rem;">{{ product.compare_at_price | money | replace: ',', '.' }}</span>
               <span class="hl-price-badge" id="price-badge" style="background:transparent; color:var(--text-muted); border:1px solid var(--border-subtle); padding: 3px 10px; border-radius:999px; font-weight:700; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase;">{{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price }}% menos</span>
             </div>
             
@@ -1168,58 +1166,58 @@
         <table class="hl-compare__table">
           <thead>
             <tr>
-              <th style="text-align:left; width:22%;"></th>
-              <th class="col-halo">➰ LOOP BAND®</th>
-              <th class="col-rival">📟 Banda barata<br><span style="font-weight:400;font-size:.78rem;">con pantalla, $25.000–$50.000</span></th>
-              <th class="col-rival">⌚ Apple Watch<br><span style="font-weight:400;font-size:.78rem;">o Galaxy Watch</span></th>
-              <th class="col-rival">💍 Anillo inteligente<br><span style="font-weight:400;font-size:.78rem;">Oura, Polar</span></th>
+              <th scope="col" style="text-align:left; width:22%;"></th>
+              <th scope="col" class="col-halo">➰ LOOP BAND®</th>
+              <th scope="col" class="col-rival">📟 Banda barata<br><span style="font-weight:400;font-size:.78rem;">con pantalla, $25.000–$50.000</span></th>
+              <th scope="col" class="col-rival">⌚ Apple Watch<br><span style="font-weight:400;font-size:.78rem;">o Galaxy Watch</span></th>
+              <th scope="col" class="col-rival">💍 Anillo inteligente<br><span style="font-weight:400;font-size:.78rem;">Oura, Polar</span></th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td class="feature-label">¿Cuánto dura la batería?</td>
+              <th scope="row" class="feature-label">¿Cuánto dura la batería?</th>
               <td class="col-halo check">✓ Hasta 30 días</td>
               <td class="cross">✗ Una o dos semanas</td>
               <td class="cross">✗ Un día. Lo cargas cada noche</td>
               <td class="check" style="color:var(--green-signal)">✓ 7 días</td>
             </tr>
             <tr>
-              <td class="feature-label">¿Te ilumina o vibra de madrugada?</td>
+              <th scope="row" class="feature-label">¿Te ilumina o vibra de madrugada?</th>
               <td class="col-halo check">✓ No tiene pantalla ni vibra</td>
               <td class="cross">✗ Sí: pantalla y notificaciones</td>
               <td class="cross">✗ Sí, salvo que lo configures</td>
               <td class="check" style="color:var(--green-signal)">✓ No</td>
             </tr>
             <tr>
-              <td class="feature-label">¿Se nota que llevas un aparato?</td>
+              <th scope="row" class="feature-label">¿Se nota que llevas un aparato?</th>
               <td class="col-halo check">✓ Nylon tejido y marco de acero</td>
               <td class="cross">✗ Plástico y silicona</td>
               <td class="cross">✗ Es un reloj, se ve</td>
               <td class="check" style="color:var(--green-signal)">✓ Es un anillo</td>
             </tr>
             <tr>
-              <td class="feature-label">¿La puedes llevar en el bíceps?</td>
+              <th scope="row" class="feature-label">¿La puedes llevar en el bíceps?</th>
               <td class="col-halo check">✓ Sí, muñeca o bíceps</td>
               <td class="cross">✗ Solo muñeca</td>
               <td class="cross">✗ Solo muñeca</td>
               <td class="cross">✗ Solo el dedo</td>
             </tr>
             <tr>
-              <td class="feature-label">¿Puedes seguir usando tu reloj de siempre?</td>
+              <th scope="row" class="feature-label">¿Puedes seguir usando tu reloj de siempre?</th>
               <td class="col-halo check">✓ Sí, va en el otro brazo</td>
               <td class="cross">✗ Te ocupa la muñeca</td>
               <td class="cross">✗ Lo reemplaza</td>
               <td class="check" style="color:var(--green-signal)">✓ Sí</td>
             </tr>
             <tr>
-              <td class="feature-label">¿Mide sueño, pulso y calorías?</td>
+              <th scope="row" class="feature-label">¿Mide sueño, pulso y calorías?</th>
               <td class="col-halo check">✓ Sí</td>
               <td class="check" style="color:var(--green-signal)">✓ Sí</td>
               <td class="check" style="color:var(--green-signal)">✓ Sí</td>
               <td class="check" style="color:var(--green-signal)">✓ Sí</td>
             </tr>
             <tr>
-              <td class="feature-label">¿Cuánto cuesta en Chile?</td>
+              <th scope="row" class="feature-label">¿Cuánto cuesta en Chile?</th>
               <td class="col-halo check">{{ product.price | money | replace: ',', '.' }}</td>
               <td class="col-rival">$25.000 a $50.000</td>
               <td class="cross">✗ Desde $300.000</td>

@@ -684,13 +684,17 @@
     /* Cada píxel de arriba cuenta: el sello y la bajada van más apretados. */
     .hl-hero__proof { margin-bottom: 14px !important; padding: 5px 12px 5px 6px !important; }
     .hl-hero { padding-top: 10px !important; }
-    /* En el teléfono la caja se come el margen del contenedor: 20px de padding
-       del .hl-wrap pasan a 8px de aire real, y el bloque se aprecia entero. */
+    /* En el teléfono la caja se come el margen del contenedor: de los 20px de
+       padding del .hl-wrap quedan 5px de aire y el bloque se aprecia entero. */
     .hl-hero__cta-box {
-      padding: 18px 13px !important;
-      margin-left: -12px !important;
-      margin-right: -12px !important;
+      padding: 18px 14px !important;
+      margin-left: -15px !important;
+      margin-right: -15px !important;
     }
+    /* El precio a 2,6rem y peso 900 llegaba pegado al borde de la caja.
+       Baja de cuerpo, se permite envolver y recupera aire a los lados. */
+    .hl-price-row { flex-wrap: wrap; gap: 10px; row-gap: 4px; }
+    .hl-price-main { font-size: 2.15rem; letter-spacing: -1.5px; }
     .hl-hero__grid, .hl-pain__grid { grid-template-columns: 1fr; gap: 40px; }
     .hl-hero__img-wrap { max-height: none; }
     .hl-cred__grid { grid-template-columns: repeat(2,1fr); }

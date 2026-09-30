@@ -5,13 +5,13 @@
 {%- endcomment -%}
 {%- comment -%}
   La hoja de tipografías bloqueaba el primer pintado. Con media="print" y el
-  cambio en onload se descarga sin bloquear, y como lleva display=swap el
+  cambio en onload se descarga sin bloquear, y como lleva display=optional el
   texto se pinta al instante con la tipografía del sistema.
 {%- endcomment -%}
 <link rel="stylesheet" media="print" onload="this.media='all';this.onload=null"
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400..900;1,400&family=JetBrains+Mono:wght@500..600&display=swap">
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400..900;1,400&family=JetBrains+Mono:wght@500..600&display=optional">
 <noscript><link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400..900;1,400&family=JetBrains+Mono:wght@500..600&display=swap"></noscript>
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400..900;1,400&family=JetBrains+Mono:wght@500..600&display=optional"></noscript>
 <style>
 
   /* ===================================================

@@ -684,7 +684,13 @@
     /* Cada píxel de arriba cuenta: el sello y la bajada van más apretados. */
     .hl-hero__proof { margin-bottom: 14px !important; padding: 5px 12px 5px 6px !important; }
     .hl-hero { padding-top: 10px !important; }
-    .hl-hero__cta-box { padding: 16px 14px !important; }
+    /* En el teléfono la caja se come el margen del contenedor: 20px de padding
+       del .hl-wrap pasan a 8px de aire real, y el bloque se aprecia entero. */
+    .hl-hero__cta-box {
+      padding: 18px 13px !important;
+      margin-left: -12px !important;
+      margin-right: -12px !important;
+    }
     .hl-hero__grid, .hl-pain__grid { grid-template-columns: 1fr; gap: 40px; }
     .hl-hero__img-wrap { max-height: none; }
     .hl-cred__grid { grid-template-columns: repeat(2,1fr); }
@@ -771,8 +777,8 @@
 
             <!-- 5. CTA Doble -->
             <a href="/cart/add?id={{ product.variants.first.id }}&quantity=1&return_to=%2Fcheckout" class="hl-btn-cta hl-cta__boton" id="hero-cta" style="max-width:none;">
-              <span class="hl-cta__linea">Pedir hoy hasta en 6 cuotas sin interés <svg class="hl-cta__flecha" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></span>
-              <span class="hl-cta__nota">Con envío gratis a todo Chile</span>
+              <span class="hl-cta__linea">Pedir hoy hasta en 6 cuotas de <span class="hl-cta__precio-btn">{{ product.price | divided_by: 6 | money | replace: ',', '.' }}</span> <svg class="hl-cta__flecha" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></span>
+              <span class="hl-cta__nota">Sin interés · Envío gratis a todo Chile</span>
             </a>
 
             <!-- MERCADOPAGO PREMIUM BANNER -->
@@ -1438,8 +1444,8 @@
         <div style="padding:0 40px 32px;">
           {% if product.available %}
             <a href="/cart/add?id={{ product.variants.first.id }}&quantity=1&return_to=%2Fcheckout" class="hl-btn-cta">
-              <span class="hl-cta__linea">Pedir hoy hasta en 6 cuotas sin interés <span class="hl-cta__precio-btn">· {{ product.price | money | replace: ',', '.' }}</span> <svg class="hl-cta__flecha" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></span>
-              <span class="hl-cta__nota">Con envío gratis a todo Chile</span>
+              <span class="hl-cta__linea">Pedir hoy hasta en 6 cuotas de <span class="hl-cta__precio-btn">{{ product.price | divided_by: 6 | money | replace: ',', '.' }}</span> <svg class="hl-cta__flecha" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></span>
+              <span class="hl-cta__nota">Sin interés · Envío gratis a todo Chile</span>
             </a>
           {% else %}
             <div class="hl-btn-cta" style="opacity:0.45; cursor:not-allowed;"><span class="hl-cta__linea">Agotado por ahora</span></div>
@@ -1480,8 +1486,8 @@
     </p>
     {% if product.available %}
       <a href="/cart/add?id={{ product.variants.first.id }}&quantity=1&return_to=%2Fcheckout" class="hl-btn-cta" style="max-width:420px;">
-        <span class="hl-cta__linea">Pedir hoy hasta en 6 cuotas sin interés <svg class="hl-cta__flecha" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></span>
-        <span class="hl-cta__nota">Con envío gratis a todo Chile</span>
+        <span class="hl-cta__linea">Pedir hoy hasta en 6 cuotas de <span class="hl-cta__precio-btn">{{ product.price | divided_by: 6 | money | replace: ',', '.' }}</span> <svg class="hl-cta__flecha" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></span>
+        <span class="hl-cta__nota">Sin interés · Envío gratis a todo Chile</span>
       </a>
     {% endif %}
     <div class="hl-final-cta__urgency">

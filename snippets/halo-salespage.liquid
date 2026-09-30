@@ -252,8 +252,11 @@
   .hl-hero__img-wrap {
     position: relative; border-radius: var(--radius-lg); overflow: hidden;
     background: var(--titanium-dark) !important; border: 1px solid var(--border-subtle);
-    /* sin proporción fija: la foto manda y no se recorta nunca */
     display: flex; align-items: center; justify-content: center;
+    /* La foto es cuadrada (760x760 y 1024x1024), así que reservar 1:1 no
+       recorta nada y evita que al cargar empuje la caja del CTA hacia abajo:
+       ese salto valía 0,197 de CLS, el 98% del total de la página. */
+    aspect-ratio: 1 / 1;
   }
   .hl-hero__img-wrap::after {
     content: ''; position: absolute; inset: 0;
@@ -709,7 +712,7 @@
     .hl-price-row { flex-wrap: wrap; gap: 10px; row-gap: 4px; }
     .hl-price-main { font-size: 2.15rem; letter-spacing: -1.5px; }
     .hl-hero__grid, .hl-pain__grid { grid-template-columns: 1fr; gap: 40px; }
-    .hl-hero__img-wrap { max-height: none; }
+    .hl-hero__img-wrap { max-height: none; aspect-ratio: 1 / 1; }
     .hl-cred__grid { grid-template-columns: repeat(2,1fr); }
     .hl-section { padding: 60px 0; }
     .hl-offer__body, .hl-offer__header { padding: 24px; }
